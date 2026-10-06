@@ -1,0 +1,470 @@
+
+> Configure project :
+Fabric Loom: 1.18.2
+
+> Task :compileJava UP-TO-DATE
+> Task :processResources UP-TO-DATE
+> Task :classes UP-TO-DATE
+> Task :compileClientJava UP-TO-DATE
+> Task :processClientResources NO-SOURCE
+> Task :clientClasses UP-TO-DATE
+> Task :compileGametestJava UP-TO-DATE
+> Task :generateLog4jConfig UP-TO-DATE
+> Task :generateRemapClasspath UP-TO-DATE
+> Task :generateDLIConfig UP-TO-DATE
+> Task :configureLaunch UP-TO-DATE
+> Task :processGametestResources UP-TO-DATE
+> Task :gametestClasses UP-TO-DATE
+
+> Task :runGameTest
+[16:29:05] [main/WARN] (FabricLoader/Knot) Class path entries reference missing files: /home/runner/work/item-combinator/item-combinator/build/resources/client - the game may not load properly!
+[16:29:05] [main/INFO] (FabricLoader/GameProvider) Loading Minecraft 1.21.1 with Fabric Loader 0.19.5
+[16:29:05] [main/INFO] (FabricLoader) Loading 45 mods:
+	- combinator 1.1.0
+	- combinator_test 1.0.0
+	- fabric-api 0.116.17+1.21.1
+	- fabric-api-base 0.4.42+6573ed8c19
+	- fabric-api-lookup-api-v1 1.6.72+7b3d111d19
+	- fabric-biome-api-v1 13.0.31+d527f9fd19
+	- fabric-block-api-v1 1.1.0+0bc3503219
+	- fabric-block-view-api-v2 1.0.11+ebb2264e19
+	- fabric-command-api-v1 1.2.49+f71b366f19
+	- fabric-command-api-v2 2.2.28+6ced4dd919
+	- fabric-commands-v0 0.2.66+df3654b319
+	- fabric-content-registries-v0 8.0.19+b559734419
+	- fabric-convention-tags-v1 2.1.7+7f945d5b19
+	- fabric-convention-tags-v2 2.12.0+c3656daa19
+	- fabric-crash-report-info-v1 0.2.29+0af3f5a719
+	- fabric-data-attachment-api-v1 1.4.7+5b36e0f719
+	- fabric-data-generation-api-v1 20.3.0+1eb36c0719
+	- fabric-dimensions-v1 4.0.1+65213ef819
+	- fabric-entity-events-v1 1.8.0+2b27e0a419
+	- fabric-events-interaction-v0 0.7.14+ba9dae0619
+	- fabric-game-rule-api-v1 1.0.53+6ced4dd919
+	- fabric-gametest-api-v1 2.0.5+6fc22b9919
+	- fabric-item-api-v1 11.3.0+467044f319
+	- fabric-item-group-api-v1 4.1.7+def88e3a19
+	- fabric-lifecycle-events-v1 2.6.0+0865547519
+	- fabric-loot-api-v2 3.0.15+3f89f5a519
+	- fabric-loot-api-v3 1.0.3+3f89f5a519
+	- fabric-message-api-v1 6.0.14+8aaf3aca19
+	- fabric-networking-api-v1 4.3.1+d30f6a7919
+	- fabric-object-builder-api-v1 15.2.1+40875a9319
+	- fabric-particles-v1 4.0.2+6573ed8c19
+	- fabric-recipe-api-v1 5.0.16+2475392c19
+	- fabric-registry-sync-v0 5.3.2+e3eddc2119
+	- fabric-rendering-data-attachment-v1 0.3.49+73761d2e19
+	- fabric-rendering-fluids-v1 3.1.6+1daea21519
+	- fabric-resource-conditions-api-v1 4.3.0+8dc279b119
+	- fabric-resource-loader-v0 1.3.1+5b5275af19
+	- fabric-screen-handler-api-v1 1.3.91+b559734419
+	- fabric-tag-api-v1 1.3.0+1eb36c0719
+	- fabric-transfer-api-v1 5.4.4+7b3d111d19
+	- fabric-transitive-access-wideners-v1 6.2.0+45b9699719
+	- fabricloader 0.19.5
+	- java 25
+	- minecraft 1.21.1
+	- mixinextras 0.5.5
+[16:29:06] [main/INFO] (FabricLoader/Mixin) SpongePowered MIXIN Subsystem Version=0.8.7 Source=file:/home/runner/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.17.4+mixin.0.8.7/5f66cc9f59b8efaa942155a3d5a30599bf6640dd/sponge-mixin-0.17.4+mixin.0.8.7.jar Service=Knot/Fabric Env=SERVER
+[16:29:06] [main/INFO] (FabricLoader/Mixin) Loaded Fabric development mappings for mixin remapper!
+[16:29:06] [main/INFO] (FabricLoader/MixinExtras|Service) Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.5).
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by com.sun.jna.Native in an unnamed module (file:/home/runner/.gradle/caches/modules-2/files-2.1/net.java.dev.jna/jna/5.14.0/67bf3eaea4f0718cb376a181a629e5f88fa1c9dd/jna-5.14.0.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by com.google.common.util.concurrent.AbstractFuture$UnsafeAtomicHelper (file:/home/runner/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/32.1.2-jre/5e64ec7e056456bef3a4bc4c6fdaef71e8ab6318/guava-32.1.2-jre.jar)
+WARNING: Please consider reporting this to the maintainers of class com.google.common.util.concurrent.AbstractFuture$UnsafeAtomicHelper
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+[16:29:13] [main/INFO] (combinator) Item Combinator loaded: 139 new items, 220 combinations
+[16:29:13] [main/INFO] (Minecraft) Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
+[16:29:14] [main/INFO] (FabricGameTestHelper) Starting test server
+[16:29:16] [main/INFO] (Minecraft) Loaded 1292 recipes
+[16:29:16] [main/INFO] (Minecraft) Loaded 1401 advancements
+[16:29:16] [main/INFO] (BiomeModificationImpl) Applied 0 biome modifications to 0 of 64 new biomes in 1.365 ms
+[16:29:17] [Server thread/INFO] (Minecraft) Preparing start region for dimension minecraft:overworld
+[16:29:17] [Worker-Main-3/INFO] (Minecraft) Preparing spawn area: 2%
+[16:29:17] [Server thread/INFO] (Minecraft) Time elapsed: 395 ms
+[16:29:17] [Server thread/INFO] (Minecraft) Started game test server
+[16:29:17] [Server thread/INFO] (Minecraft) 12 tests are now running at position -2731913, -59, -4815064!
+[16:29:18] [Server thread/INFO] (Minecraft) Running test batch 'combinator_mining:0' (1 tests)...
+[16:29:18] [Server thread/INFO] (Minecraft) [            ]
+[16:29:18] [Server thread/INFO] (Minecraft) [            ]
+[16:29:19] [Server thread/INFO] (Minecraft) tester1[embedded] logged in with entity id 1 at (-2.5, -60.0, 5.5)
+[16:29:19] [Server thread/INFO] (Minecraft) tester1 joined the game
+[16:29:19] [Server thread/INFO] (Minecraft) [_           ]
+[16:29:19] [Server thread/INFO] (Minecraft) [_           ]
+[16:29:19] [Server thread/INFO] (Minecraft) [_           ]
+[16:29:19] [Server thread/INFO] (Minecraft) [_           ]
+[16:29:20] [Server thread/INFO] (combinator-test) [mining] 25 tools tested
+[16:29:20] [Server thread/INFO] (combinator-test) [mining] PASSED
+[16:29:20] [Server thread/INFO] (Minecraft) Running test batch 'combinator_combat:0' (1 tests)...
+[16:29:20] [Server thread/INFO] (Minecraft) [+           ]
+[16:29:20] [Server thread/INFO] (Minecraft) tester2[embedded] logged in with entity id 495 at (-6.5, -60.0, 6.5)
+[16:29:20] [Server thread/INFO] (Minecraft) tester2 joined the game
+[16:29:20] [Server thread/INFO] (Minecraft) [+_          ]
+[16:29:20] [Server thread/INFO] (Minecraft) [+_          ]
+[16:29:21] [Server thread/INFO] (Minecraft) [+_          ]
+[16:29:21] [Server thread/INFO] (Minecraft) [+_          ]
+[16:29:21] [Server thread/INFO] (Minecraft) tester2 has made the advancement [Monster Hunter]
+[16:29:27] [Server thread/INFO] (combinator-test) [combat] 139 items tested as weapons
+[16:29:27] [Server thread/INFO] (combinator-test) [combat] PASSED
+[16:29:27] [Server thread/INFO] (Minecraft) Running test batch 'combinator_recipes:0' (1 tests)...
+[16:29:27] [Server thread/INFO] (Minecraft) [++          ]
+[16:29:27] [Server thread/INFO] (combinator-test) [recipes] 139 items, 220 combinations (with alternates)
+[16:29:27] [Server thread/INFO] (combinator-test) [recipes] PASSED
+[16:29:27] [Server thread/INFO] (Minecraft) Running test batch 'combinator_passive:0' (1 tests)...
+[16:29:27] [Server thread/INFO] (Minecraft) [+++         ]
+[16:29:27] [Server thread/INFO] (combinator-test) [passive] 26 items with passive abilities
+[16:29:27] [Server thread/INFO] (Minecraft) [+++_        ]
+[16:29:27] [Server thread/INFO] (Minecraft) [+++_        ]
+[16:29:27] [Server thread/INFO] (Minecraft) [+++_        ]
+[16:29:28] [Server thread/INFO] (Minecraft) tester3[embedded] logged in with entity id 2349 at (-9.5, -60.0, -9.5)
+[16:29:28] [Server thread/INFO] (Minecraft) tester3 joined the game
+[16:29:28] [Server thread/INFO] (Minecraft) tester4[embedded] logged in with entity id 2350 at (3.5, -60.0, -0.5)
+[16:29:28] [Server thread/INFO] (Minecraft) tester4 joined the game
+[16:29:28] [Server thread/INFO] (Minecraft) tester5[embedded] logged in with entity id 2351 at (5.5, -60.0, 1.5)
+[16:29:28] [Server thread/INFO] (Minecraft) tester5 joined the game
+[16:29:28] [Server thread/INFO] (Minecraft) tester6[embedded] logged in with entity id 2352 at (5.5, -60.0, -3.5)
+[16:29:28] [Server thread/INFO] (Minecraft) tester6 joined the game
+[16:29:28] [Server thread/INFO] (Minecraft) tester7[embedded] logged in with entity id 2353 at (-7.5, -60.0, 10.5)
+[16:29:28] [Server thread/INFO] (Minecraft) tester7 joined the game
+[16:29:28] [Server thread/INFO] (Minecraft) tester8[embedded] logged in with entity id 2354 at (2.5, -60.0, -9.5)
+[16:29:28] [Server thread/INFO] (Minecraft) tester8 joined the game
+[16:29:28] [Server thread/INFO] (Minecraft) tester9[embedded] logged in with entity id 2355 at (10.5, -60.0, 2.5)
+[16:29:28] [Server thread/INFO] (Minecraft) tester9 joined the game
+[16:29:28] [Server thread/INFO] (Minecraft) tester10[embedded] logged in with entity id 2356 at (-6.5, -60.0, 0.5)
+[16:29:28] [Server thread/INFO] (Minecraft) tester10 joined the game
+[16:29:28] [Server thread/INFO] (Minecraft) tester11[embedded] logged in with entity id 2357 at (4.5, -60.0, -5.5)
+[16:29:28] [Server thread/INFO] (Minecraft) tester11 joined the game
+[16:29:28] [Server thread/INFO] (Minecraft) tester12[embedded] logged in with entity id 2358 at (6.5, -60.0, 5.5)
+[16:29:28] [Server thread/INFO] (Minecraft) tester12 joined the game
+[16:29:28] [Server thread/INFO] (Minecraft) tester13[embedded] logged in with entity id 2359 at (-3.5, -60.0, -5.5)
+[16:29:28] [Server thread/INFO] (Minecraft) tester13 joined the game
+[16:29:28] [Server thread/INFO] (Minecraft) tester14[embedded] logged in with entity id 2360 at (-4.5, -60.0, -7.5)
+[16:29:28] [Server thread/INFO] (Minecraft) tester14 joined the game
+[16:29:28] [Server thread/INFO] (Minecraft) tester15[embedded] logged in with entity id 2361 at (7.5, -60.0, 1.5)
+[16:29:28] [Server thread/INFO] (Minecraft) tester15 joined the game
+[16:29:28] [Server thread/INFO] (Minecraft) tester16[embedded] logged in with entity id 2362 at (-0.5, -60.0, 7.5)
+[16:29:28] [Server thread/INFO] (Minecraft) tester16 joined the game
+[16:29:28] [Server thread/INFO] (Minecraft) tester17[embedded] logged in with entity id 2363 at (10.5, -60.0, -0.5)
+[16:29:28] [Server thread/INFO] (Minecraft) tester17 joined the game
+[16:29:28] [Server thread/INFO] (Minecraft) tester18[embedded] logged in with entity id 2364 at (-6.5, -60.0, 1.5)
+[16:29:28] [Server thread/INFO] (Minecraft) tester18 joined the game
+[16:29:28] [Server thread/INFO] (Minecraft) tester19[embedded] logged in with entity id 2365 at (-7.5, -60.0, 4.5)
+[16:29:28] [Server thread/INFO] (Minecraft) tester19 joined the game
+[16:29:28] [Server thread/INFO] (Minecraft) tester20[embedded] logged in with entity id 2366 at (-3.5, -60.0, 7.5)
+[16:29:28] [Server thread/INFO] (Minecraft) tester20 joined the game
+[16:29:28] [Server thread/INFO] (Minecraft) tester21[embedded] logged in with entity id 2367 at (3.5, -60.0, 9.5)
+[16:29:28] [Server thread/INFO] (Minecraft) tester21 joined the game
+[16:29:28] [Server thread/INFO] (Minecraft) tester22[embedded] logged in with entity id 2368 at (0.5, -60.0, -8.5)
+[16:29:28] [Server thread/INFO] (Minecraft) tester22 joined the game
+[16:29:28] [Server thread/INFO] (Minecraft) tester23[embedded] logged in with entity id 2369 at (-7.5, -60.0, -2.5)
+[16:29:28] [Server thread/INFO] (Minecraft) tester23 joined the game
+[16:29:28] [Server thread/INFO] (Minecraft) tester24[embedded] logged in with entity id 2370 at (-3.5, -60.0, 1.5)
+[16:29:28] [Server thread/INFO] (Minecraft) tester24 joined the game
+[16:29:28] [Server thread/INFO] (Minecraft) tester25[embedded] logged in with entity id 2371 at (-3.5, -60.0, 0.5)
+[16:29:28] [Server thread/INFO] (Minecraft) tester25 joined the game
+[16:29:28] [Server thread/INFO] (Minecraft) tester26[embedded] logged in with entity id 2372 at (-4.5, -60.0, -0.5)
+[16:29:28] [Server thread/INFO] (Minecraft) tester26 joined the game
+[16:29:28] [Server thread/INFO] (Minecraft) tester27[embedded] logged in with entity id 2373 at (-5.5, -60.0, 3.5)
+[16:29:28] [Server thread/INFO] (Minecraft) tester27 joined the game
+[16:29:28] [Server thread/INFO] (Minecraft) tester28[embedded] logged in with entity id 2374 at (5.5, -60.0, -5.5)
+[16:29:28] [Server thread/INFO] (Minecraft) tester28 joined the game
+[16:29:28] [Server thread/INFO] (Minecraft) tester6 has made the advancement [Isn't It Iron Pick]
+[16:29:28] [Server thread/INFO] (Minecraft) [+++_        ]
+[16:29:28] [Server thread/INFO] (Minecraft) [+++_        ]
+[16:29:28] [Server thread/INFO] (Minecraft) [+++_        ]
+[16:29:28] [Server thread/INFO] (Minecraft) [+++_        ]
+[16:29:28] [Server thread/INFO] (combinator-test) [passive] PASSED
+[16:29:28] [Server thread/INFO] (Minecraft) Running test batch 'combinator_blockuse:0' (1 tests)...
+[16:29:28] [Server thread/INFO] (Minecraft) [++++        ]
+[16:29:28] [Server thread/INFO] (Minecraft) tester29[embedded] logged in with entity id 2376 at (-4.5, -60.0, -6.5)
+[16:29:28] [Server thread/INFO] (Minecraft) tester29 joined the game
+[16:29:28] [Server thread/INFO] (Minecraft) [++++_       ]
+[16:29:28] [Server thread/INFO] (Minecraft) [++++_       ]
+[16:29:28] [Server thread/INFO] (Minecraft) [++++_       ]
+[16:29:28] [Server thread/INFO] (Minecraft) [++++_       ]
+[16:29:30] [Server thread/INFO] (combinator-test) [block use] 7 items with a special right-click on blocks tested
+[16:29:31] [Server thread/INFO] (combinator-test) [block use] PASSED
+[16:29:31] [Server thread/INFO] (Minecraft) Running test batch 'combinator_use:0' (1 tests)...
+[16:29:31] [Server thread/INFO] (Minecraft) [+++++       ]
+[16:29:31] [Server thread/INFO] (Minecraft) tester30[embedded] logged in with entity id 2427 at (0.5, -60.0, -7.5)
+[16:29:31] [Server thread/INFO] (Minecraft) tester30 joined the game
+[16:29:31] [Server thread/INFO] (combinator-test) [right-click] 147 right-clicks to do
+[16:29:31] [Server thread/INFO] (Minecraft) [+++++_      ]
+[16:29:31] [Server thread/INFO] (Minecraft) [+++++_      ]
+[16:29:31] [Server thread/INFO] (Minecraft) [+++++_      ]
+[16:29:31] [Server thread/INFO] (Minecraft) tester30 has made the advancement [Diamonds!]
+[16:29:31] [Server thread/INFO] (Minecraft) [+++++_      ]
+[16:29:31] [Server thread/INFO] (Minecraft) [+++++_      ]
+[16:29:31] [Server thread/INFO] (combinator-test) [right-click] ender_blade -> BLINK : SUCCESS
+[16:29:32] [Server thread/INFO] (combinator-test) [right-click] void_blade -> BLINK : SUCCESS
+[16:29:32] [Server thread/INFO] (combinator-test) [right-click] elemental_blade -> BEAM : SUCCESS
+[16:29:32] [Server thread/INFO] (combinator-test) [right-click] fire_wand -> SMALL_FIREBALL : SUCCESS
+[16:29:32] [Server thread/INFO] (combinator-test) [right-click] frost_wand -> FROST_CONE : SUCCESS
+[16:29:32] [Server thread/INFO] (combinator-test) [right-click] storm_staff -> LIGHTNING : SUCCESS
+[16:29:32] [Server thread/INFO] (Minecraft) [+++++_      ]
+[16:29:32] [Server thread/INFO] (combinator-test) [right-click] warp_staff -> BLINK : SUCCESS
+[16:29:32] [Server thread/INFO] (combinator-test) [right-click] gust_staff -> LEAP : SUCCESS
+[16:29:32] [Server thread/INFO] (combinator-test) [right-click] healing_staff -> HEAL : SUCCESS
+[16:29:32] [Server thread/INFO] (combinator-test) [right-click] recall_compass -> RECALL : SUCCESS
+[16:29:32] [Server thread/INFO] (combinator-test) [right-click] dynamite -> DYNAMITE : SUCCESS
+[16:29:32] [Server thread/INFO] (combinator-test) [right-click] ender_pouch -> ENDER_POUCH : SUCCESS
+[16:29:32] [Server thread/INFO] (combinator-test) [right-click] pocket_workbench -> WORKBENCH : SUCCESS
+[16:29:32] [Server thread/INFO] (combinator-test) [right-click] seer_spyglass -> GLOW_SCAN : SUCCESS
+[16:29:32] [Server thread/INFO] (combinator-test) [right-click] chrono_clock -> TIME_DAY : SUCCESS
+[16:29:32] [Server thread/INFO] (combinator-test) [right-click] chrono_clock (sneaking) -> TIME_NIGHT : SUCCESS
+[16:29:32] [Server thread/INFO] (combinator-test) [right-click] inferno_staff -> BIG_FIREBALL : SUCCESS
+[16:29:32] [Server thread/INFO] (Minecraft) [+++++_      ]
+[16:29:32] [Server thread/INFO] (combinator-test) [right-click] tempest_staff -> LIGHTNING_STORM : SUCCESS
+[16:29:32] [Server thread/INFO] (combinator-test) [right-click] tempest_staff (sneaking) -> LEAP : SUCCESS
+[16:29:32] [Server thread/INFO] (combinator-test) [right-click] rift_staff -> BLINK : SUCCESS
+[16:29:32] [Server thread/INFO] (combinator-test) [right-click] rift_staff (sneaking) -> RECALL : SUCCESS
+[16:29:32] [Server thread/INFO] (combinator-test) [right-click] archmage_staff -> BIG_FIREBALL : SUCCESS
+[16:29:32] [Server thread/INFO] (combinator-test) [right-click] archmage_staff (sneaking) -> METEOR_SHOWER : SUCCESS
+[16:29:32] [Server thread/INFO] (Minecraft) tester30 has made the advancement [Monster Hunter]
+[16:29:32] [Server thread/INFO] (Minecraft) [+++++_      ]
+[16:29:33] [Server thread/INFO] (combinator-test) [right-click] mining_laser -> LASER_DRILL : SUCCESS
+[16:29:33] [Server thread/INFO] (Minecraft) tester30 has made the advancement [Stone Age]
+[16:29:33] [Server thread/INFO] (combinator-test) [right-click] earthshaker -> QUAKE : SUCCESS
+[16:29:33] [Server thread/INFO] (combinator-test) [right-click] beam_saber -> BEAM : SUCCESS
+[16:29:33] [Server thread/INFO] (combinator-test) [right-click] omni_blade -> BEAM : SUCCESS
+[16:29:33] [Server thread/INFO] (combinator-test) [right-click] mega_dynamite -> MEGA_BOMB : SUCCESS
+[16:29:33] [Server thread/INFO] (combinator-test) [right-click] nuke -> NUKE : SUCCESS
+[16:29:33] [Server thread/INFO] (combinator-test) [right-click] doomsday_device -> NUKE : SUCCESS
+[16:29:33] [Server thread/INFO] (combinator-test) [right-click] meteor_staff -> METEOR : SUCCESS
+[16:29:33] [Server thread/INFO] (combinator-test) [right-click] meteor_staff (sneaking) -> METEOR_SHOWER : SUCCESS
+[16:29:33] [Server thread/INFO] (Minecraft) [+++++_      ]
+[16:29:33] [Server thread/INFO] (combinator-test) [right-click] singularity -> BLACK_HOLE : SUCCESS
+[16:29:33] [Server thread/INFO] (combinator-test) [right-click] ocean_orb -> FLOOD : SUCCESS
+[16:29:33] [Server thread/INFO] (combinator-test) [right-click] ocean_orb (sneaking) -> DRAIN : SUCCESS
+[16:29:33] [Server thread/INFO] (combinator-test) [right-click] winter_globe -> FREEZE_AREA : SUCCESS
+[16:29:33] [Server thread/INFO] (combinator-test) [right-click] anvil_staff -> ANVIL_STORM : SUCCESS
+[16:29:33] [Server thread/INFO] (combinator-test) [right-click] poultry_staff -> CHICKEN_STORM : SUCCESS
+[16:29:33] [Server thread/INFO] (combinator-test) [right-click] wither_wand -> WITHER_SKULL : SUCCESS
+[16:29:33] [Server thread/INFO] (combinator-test) [right-click] arrow_gatling -> ARROW_BURST : SUCCESS
+[16:29:33] [Server thread/INFO] (combinator-test) [right-click] polymorph_wand -> POLYMORPH : SUCCESS
+[16:29:33] [Server thread/INFO] (combinator-test) [right-click] size_ray -> SHRINK : SUCCESS
+[16:29:33] [Server thread/INFO] (combinator-test) [right-click] size_ray (sneaking) -> GROW : SUCCESS
+[16:29:33] [Server thread/INFO] (Minecraft) tester30 has made the advancement [Take Aim]
+[16:29:33] [Server thread/INFO] (combinator-test) [right-click] madness_bell -> MADNESS : SUCCESS
+[16:29:33] [Server thread/INFO] (combinator-test) [right-click] golem_horn -> SUMMON_GOLEMS : SUCCESS
+[16:29:33] [Server thread/INFO] (combinator-test) [right-click] gravity_staff -> LIFT : SUCCESS
+[16:29:33] [Server thread/INFO] (combinator-test) [right-click] gravity_staff (sneaking) -> SLAM : SUCCESS
+[16:29:33] [Server thread/INFO] (combinator-test) [right-click] swap_staff -> SWAP : SUCCESS
+[16:29:33] [Server thread/INFO] (Minecraft) [+++++_      ]
+[16:29:33] [Server thread/INFO] (combinator-test) [right-click] portable_hole -> HOLE : SUCCESS
+[16:29:33] [Server thread/INFO] (combinator-test) [right-click] bridge_staff -> BRIDGE : SUCCESS
+[16:29:33] [Server thread/INFO] (combinator-test) [right-click] forest_staff -> FOREST : SUCCESS
+[16:29:33] [Server thread/INFO] (combinator-test) [right-click] ore_dowser -> DOWSE : SUCCESS
+[16:29:34] [Server thread/INFO] (combinator-test) [right-click] xp_tome -> XP : SUCCESS
+[16:29:34] [Server thread/INFO] (combinator-test) [right-click] dupe_mirror -> DUPE : SUCCESS
+[16:29:34] [Server thread/INFO] (combinator-test) [right-click] chaos_orb -> CHAOS : SUCCESS
+[16:29:34] [Server thread/INFO] (combinator-test) [right-click] pandora_box -> PANDORA : SUCCESS
+[16:29:34] [Server thread/INFO] (combinator-test) [right-click] time_stopper -> TIME_STOP : SUCCESS
+[16:29:34] [Server thread/INFO] (combinator-test) [right-click] ghost_cloak -> GHOST : SUCCESS
+[16:29:34] [Server thread/INFO] (Minecraft) [+++++_      ]
+[16:29:34] [Server thread/INFO] (Minecraft) [+++++_      ]
+[16:29:34] [Server thread/INFO] (Minecraft) [+++++_      ]
+[16:29:34] [Server thread/INFO] (Minecraft) [+++++_      ]
+[16:29:34] [Server thread/INFO] (Minecraft) [+++++_      ]
+[16:29:34] [Server thread/INFO] (Minecraft) [+++++_      ]
+[16:29:34] [Server thread/INFO] (Minecraft) [+++++_      ]
+[16:29:34] [Server thread/INFO] (Minecraft) [+++++_      ]
+[16:29:34] [Server thread/INFO] (Minecraft) [+++++_      ]
+[16:29:34] [Server thread/INFO] (Minecraft) [+++++_      ]
+[16:29:34] [Server thread/INFO] (Minecraft) [+++++_      ]
+[16:29:34] [Server thread/INFO] (Minecraft) [+++++_      ]
+[16:29:34] [Server thread/INFO] (Minecraft) [+++++_      ]
+[16:29:34] [Server thread/INFO] (Minecraft) [+++++_      ]
+[16:29:34] [Server thread/INFO] (Minecraft) [+++++_      ]
+[16:29:34] [Server thread/INFO] (Minecraft) [+++++_      ]
+[16:29:34] [Server thread/INFO] (Minecraft) [+++++_      ]
+[16:29:34] [Server thread/INFO] (Minecraft) [+++++_      ]
+[16:29:34] [Server thread/INFO] (Minecraft) [+++++_      ]
+[16:29:34] [Server thread/INFO] (Minecraft) [+++++_      ]
+[16:29:34] [Server thread/INFO] (Minecraft) [+++++_      ]
+[16:29:34] [Server thread/INFO] (Minecraft) [+++++_      ]
+[16:29:34] [Server thread/INFO] (Minecraft) [+++++_      ]
+[16:29:34] [Server thread/INFO] (Minecraft) [+++++_      ]
+[16:29:34] [Server thread/INFO] (Minecraft) [+++++_      ]
+[16:29:34] [Server thread/INFO] (combinator-test) [right-click] right-clicks without effect in this test scene: none
+[16:29:34] [Server thread/INFO] (combinator-test) [right-click] PASSED
+[16:29:34] [Server thread/INFO] (Minecraft) Running test batch 'combinator_food:0' (1 tests)...
+[16:29:34] [Server thread/INFO] (Minecraft) [++++++      ]
+[16:29:34] [Server thread/INFO] (Minecraft) tester31[embedded] logged in with entity id 2901 at (-2.5, -60.0, 1.5)
+[16:29:34] [Server thread/INFO] (Minecraft) tester31 joined the game
+[16:29:34] [Server thread/INFO] (Minecraft) [++++++_     ]
+[16:29:35] [Server thread/INFO] (Minecraft) [++++++_     ]
+[16:29:35] [Server thread/INFO] (Minecraft) [++++++_     ]
+[16:29:35] [Server thread/INFO] (Minecraft) [++++++_     ]
+[16:29:35] [Server thread/INFO] (combinator-test) [food] 13 foods eaten
+[16:29:35] [Server thread/INFO] (combinator-test) [food] PASSED
+[16:29:35] [Server thread/INFO] (Minecraft) Running test batch 'combinator_chaos:0' (1 tests)...
+[16:29:35] [Server thread/INFO] (Minecraft) [+++++++     ]
+[16:29:35] [Server thread/INFO] (Minecraft) tester32[embedded] logged in with entity id 2906 at (0.5, -60.0, 10.5)
+[16:29:35] [Server thread/INFO] (Minecraft) tester32 joined the game
+[16:29:35] [Server thread/INFO] (Minecraft) [+++++++_    ]
+[16:29:35] [Server thread/INFO] (Minecraft) [+++++++_    ]
+[16:29:35] [Server thread/INFO] (Minecraft) [+++++++_    ]
+[16:29:35] [Server thread/INFO] (combinator-test) [chaos] event 0: ok
+[16:29:35] [Server thread/INFO] (combinator-test) [chaos] event 1: ok
+[16:29:35] [Server thread/INFO] (Minecraft) [+++++++_    ]
+[16:29:35] [Server thread/INFO] (combinator-test) [chaos] event 2: ok
+[16:29:35] [Server thread/INFO] (combinator-test) [chaos] event 3: ok
+[16:29:35] [Server thread/INFO] (combinator-test) [chaos] event 4: ok
+[16:29:35] [Server thread/INFO] (combinator-test) [chaos] event 5: ok
+[16:29:35] [Server thread/INFO] (combinator-test) [chaos] event 6: ok
+[16:29:35] [Server thread/INFO] (combinator-test) [chaos] event 7: ok
+[16:29:35] [Server thread/INFO] (combinator-test) [chaos] event 8: ok
+[16:29:35] [Server thread/INFO] (combinator-test) [chaos] event 9: ok
+[16:29:35] [Server thread/INFO] (combinator-test) [chaos] event 10: ok
+[16:29:35] [Server thread/INFO] (combinator-test) [chaos] event 11: ok
+[16:29:35] [Server thread/INFO] (combinator-test) [chaos] event 12: ok
+[16:29:35] [Server thread/INFO] (combinator-test) [chaos] event 13: ok
+[16:29:35] [Server thread/INFO] (combinator-test) [chaos] event 14: ok
+[16:29:35] [Server thread/INFO] (combinator-test) [chaos] event 15: ok
+[16:29:35] [Server thread/INFO] (combinator-test) [chaos] event 16: ok
+[16:29:35] [Server thread/INFO] (combinator-test) [chaos] event 17: ok
+[16:29:35] [Server thread/INFO] (combinator-test) [chaos] event 18: ok
+[16:29:35] [Server thread/INFO] (combinator-test) [chaos] event 19: ok
+[16:29:35] [Server thread/INFO] (combinator-test) [chaos] event 20: ok
+[16:29:35] [Server thread/INFO] (combinator-test) [chaos] event 21: ok
+[16:29:35] [Server thread/INFO] (Minecraft) [+++++++_    ]
+[16:29:35] [Server thread/INFO] (combinator-test) [chaos] event 22: ok
+[16:29:35] [Server thread/INFO] (combinator-test) [chaos] event 23: ok
+[16:29:35] [Server thread/INFO] (Minecraft) [+++++++_    ]
+[16:29:36] [Server thread/INFO] (Minecraft) [+++++++_    ]
+[16:29:36] [Server thread/INFO] (Minecraft) [+++++++_    ]
+[16:29:36] [Server thread/INFO] (Minecraft) [+++++++_    ]
+[16:29:36] [Server thread/INFO] (Minecraft) [+++++++_    ]
+[16:29:36] [Server thread/INFO] (Minecraft) [+++++++_    ]
+[16:29:36] [Server thread/INFO] (Minecraft) [+++++++_    ]
+[16:29:36] [Server thread/INFO] (Minecraft) [+++++++_    ]
+[16:29:36] [Server thread/INFO] (Minecraft) [+++++++_    ]
+[16:29:36] [Server thread/INFO] (Minecraft) [+++++++_    ]
+[16:29:36] [Server thread/INFO] (Minecraft) [+++++++_    ]
+[16:29:36] [Server thread/INFO] (Minecraft) [+++++++_    ]
+[16:29:36] [Server thread/INFO] (Minecraft) [+++++++_    ]
+[16:29:36] [Server thread/INFO] (Minecraft) [+++++++_    ]
+[16:29:36] [Server thread/INFO] (Minecraft) [+++++++_    ]
+[16:29:36] [Server thread/INFO] (combinator-test) [chaos] PASSED
+[16:29:36] [Server thread/INFO] (Minecraft) Running test batch 'combinator_slow:0' (1 tests)...
+[16:29:36] [Server thread/INFO] (Minecraft) [++++++++    ]
+[16:29:36] [Server thread/INFO] (Minecraft) tester33[embedded] logged in with entity id 3041 at (8.5, -60.0, -6.5)
+[16:29:36] [Server thread/INFO] (Minecraft) tester33 joined the game
+[16:29:36] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:36] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:36] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:36] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:36] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:36] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:36] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:36] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:36] [Server thread/INFO] (combinator-test) [slow effects] MEGA_BOMB after 100 ticks: ok
+[16:29:36] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:36] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:36] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:36] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:36] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:36] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:36] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:36] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:36] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:36] [Server thread/INFO] (combinator-test) [slow effects] NUKE after 170 ticks: ok
+[16:29:37] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:37] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:37] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:37] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:37] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:37] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:37] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:37] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:37] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:37] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:37] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:37] [Server thread/INFO] (combinator-test) [slow effects] BLACK_HOLE after 220 ticks: ok
+[16:29:37] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:37] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:37] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:37] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:37] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:37] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:37] [Server thread/INFO] (combinator-test) [slow effects] METEOR after 120 ticks: ok
+[16:29:37] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:37] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:37] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:37] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:37] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:37] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:37] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:37] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:37] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:37] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:37] [Server thread/INFO] (combinator-test) [slow effects] METEOR_SHOWER after 200 ticks: ok
+[16:29:37] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:37] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:37] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:37] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:37] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:37] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:37] [Server thread/INFO] (combinator-test) [slow effects] ANVIL_STORM after 120 ticks: ok
+[16:29:37] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:37] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:37] [Server thread/INFO] (combinator-test) [slow effects] CHICKEN_STORM after 40 ticks: ok
+[16:29:37] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:37] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:37] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:37] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:37] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:37] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:37] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:37] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:37] [Server thread/INFO] (Minecraft) [++++++++_   ]
+[16:29:37] [Server thread/INFO] (combinator-test) [slow effects] HOLE after 190 ticks: ok
+[16:29:37] [Server thread/INFO] (combinator-test) [slow effects] PASSED
+[16:29:37] [Server thread/INFO] (Minecraft) Running test batch 'combinator_defense:0' (1 tests)...
+[16:29:37] [Server thread/INFO] (Minecraft) [+++++++++   ]
+[16:29:38] [Server thread/INFO] (Minecraft) [+++++++++   ]
+[16:29:38] [Server thread/INFO] (Minecraft) tester34[embedded] logged in with entity id 3145 at (6.5, -60.0, 5.5)
+[16:29:38] [Server thread/INFO] (Minecraft) tester34 joined the game
+[16:29:38] [Server thread/INFO] (Minecraft) [+++++++++_  ]
+[16:29:38] [Server thread/INFO] (Minecraft) [+++++++++_  ]
+[16:29:38] [Server thread/INFO] (Minecraft) [+++++++++_  ]
+[16:29:38] [Server thread/INFO] (Minecraft) tester34 has made the advancement [Monster Hunter]
+[16:29:38] [Server thread/INFO] (combinator-test) [defense] 20 protective items tested
+[16:29:38] [Server thread/INFO] (combinator-test) [defense] PASSED
+[16:29:38] [Server thread/INFO] (Minecraft) Running test batch 'combinator_data:0' (1 tests)...
+[16:29:38] [Server thread/INFO] (Minecraft) [++++++++++  ]
+[16:29:38] [Server thread/INFO] (combinator-test) [data] PASSED
+[16:29:38] [Server thread/INFO] (Minecraft) Running test batch 'combinator_table:0' (1 tests)...
+[16:29:38] [Server thread/INFO] (Minecraft) [+++++++++++ ]
+[16:29:38] [Server thread/INFO] (Minecraft) tester35[embedded] logged in with entity id 3189 at (9.5, -60.0, -9.5)
+[16:29:38] [Server thread/INFO] (Minecraft) tester35 joined the game
+[16:29:38] [Server thread/INFO] (Minecraft) [+++++++++++_]
+[16:29:38] [Server thread/INFO] (Minecraft) [+++++++++++_]
+[16:29:38] [Server thread/INFO] (Minecraft) [+++++++++++_]
+[16:29:38] [Server thread/INFO] (Minecraft) [+++++++++++_]
+[16:29:38] [Server thread/INFO] (combinator-test) [table] right-click on the table: CONSUME
+[16:29:38] [Server thread/INFO] (combinator-test) [table] PASSED
+[16:29:38] [Server thread/INFO] (Minecraft) [++++++++++++]
+[16:29:38] [Server thread/INFO] (Minecraft) ========= 12 GAME TESTS COMPLETE IN 20.93 s ======================
+[16:29:38] [Server thread/INFO] (Minecraft) All 12 required tests passed :)
+[16:29:38] [Server thread/INFO] (Minecraft) ====================================================
+[16:29:38] [Server thread/INFO] (Minecraft) Stopping server
+[16:29:38] [Server thread/INFO] (Minecraft) Saving players
+[16:29:38] [Server thread/INFO] (Minecraft) Saving worlds
+[16:29:38] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[Test Level]'/minecraft:overworld
+[16:29:39] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[Test Level]'/minecraft:the_end
+[16:29:39] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[Test Level]'/minecraft:the_nether
+[16:29:39] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage (world): All chunks are saved
+[16:29:39] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[16:29:39] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[16:29:39] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage: All dimensions are saved
+[16:29:39] [Server thread/INFO] (Minecraft) Game test server shutting down
+
+BUILD SUCCESSFUL in 35s
+9 actionable tasks: 1 executed, 8 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.7.1/userguide/configuration_cache_enabling.html
