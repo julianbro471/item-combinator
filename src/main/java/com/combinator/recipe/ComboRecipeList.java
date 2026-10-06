@@ -275,6 +275,15 @@ final class ComboRecipeList {
 		ComboRecipes.add("minecraft:shulker_shell", "minecraft:crossbow", "combinator:shulker_blaster", 1, 2);
 		ComboRecipes.add("combinator:chrono_clock", "minecraft:bone_block", "combinator:hourglass", 1, 3);
 		ComboRecipes.add("combinator:magnet", "minecraft:rotten_flesh", "combinator:monster_magnet", 1, 2);
+		ComboRecipes.add("combinator:singularity", "minecraft:crying_obsidian", "combinator:chunk_eraser", 1, 3);
+		ComboRecipes.add("combinator:chunk_eraser", "combinator:chunk_eraser", "combinator:region_eraser", 1, 3);
+		ComboRecipes.add("combinator:upside_down_cake", "minecraft:nether_star", "combinator:chunk_inverter", 1, 3);
+		ComboRecipes.add("combinator:gravity_grenade", "minecraft:nether_star", "combinator:chunk_launcher", 1, 3);
+		ComboRecipes.add("combinator:cluster_bomb", "minecraft:phantom_membrane", "combinator:carpet_bomber", 1, 3);
+		ComboRecipes.add("combinator:orbital_remote", "minecraft:end_crystal", "combinator:orbital_annihilator", 1, 3);
+		ComboRecipes.add("combinator:doomsday_device", "minecraft:respawn_anchor", "combinator:tsar_bomba", 1, 3);
+		ComboRecipes.add("combinator:singularity", "combinator:singularity", "combinator:event_horizon", 1, 3);
+		ComboRecipes.add("combinator:earthshaker", "minecraft:iron_block", "combinator:fault_line", 1, 3);
 
 		// --- vanilla items ---
 		ComboRecipes.add("minecraft:rotten_flesh", "minecraft:rotten_flesh", "minecraft:leather", 1, 0);

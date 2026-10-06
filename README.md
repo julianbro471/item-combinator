@@ -4,8 +4,8 @@ A Fabric mod for **Minecraft Java Edition 1.21.1**.
 
 It adds one block, the **Combiner Table**. You put two items into it and get one new item.
 
-- **318 combinations** in total.
-- 268 of them make one of **264 new items**: tools, weapons, armor, gadgets, food, bombs, cheats.
+- **327 combinations** in total.
+- 277 of them make one of **273 new items**: tools, weapons, armor, gadgets, food, bombs, cheats.
 - 50 of them make a vanilla item that you normally cannot craft (saddle, name tag, elytra, ...).
 - Two stackable items that have no combination give a **Chaos Orb**, which does something random.
 - There are no tiers and there is no balance. Some items are normal, many are absurd, a few can destroy your world.
@@ -20,7 +20,8 @@ every ability does its main job without an error. They do not prove that it is f
 slow PC, or that it works together with other mods. Expect smaller bugs.
 
 **Make a backup of your world before you use the bombs.** Nukes, black holes, meteors, the Blast Pickaxe, the
-World Eater, the Armageddon Clock, the Orbital Strike Remote, the Tornado, the Termite Jar, the Pocket Volcano and the Bedrock Breaker
+World Eater, the Armageddon Clock, the Orbital Strike Remote, the Tornado, the Termite Jar, the Pocket Volcano, the Bedrock Breaker
+and all the cataclysms (Chunk Eraser, Tsar Bomba ...)
 delete or change large parts of the world for good.
 
 ## What you need
@@ -445,6 +446,15 @@ Every new item has a description under its name. All new items are also in their
 | Trident | Lightning Rod | **Poseidon's Wrath** | Right-click: 16 tridents and a few lightning bolts rain on the spot you look at. | 64 uses |
 | Goat Horn | Rotten Flesh | **Horde Horn** | Right-click: 12 zombies, 6 skeletons and 4 creepers rise from the ground around you. They are not your friends. | 8 uses |
 | *Dynamite* | Pink Dye | **Rainbow Paint Bomb** x2 | Right-click to throw. Every block near the blast gets a random colour. Sheep too. |  |
+| *Singularity* | Crying Obsidian | **Chunk Eraser** | Right-click: the chunk you look at (16 x 16 blocks) is erased from the sky down to the bedrock. Nothing drops. |  |
+| *Chunk Eraser* | *Chunk Eraser* | **Region Eraser** | Right-click: the chunk you look at and the 8 chunks around it (48 x 48 blocks) are erased down to the bedrock. |  |
+| *Upside-Down Cake* | Nether Star | **Chunk Inverter** | Right-click: the chunk you look at is turned upside down. Deep ores come to the top, the grass ends up at the bottom. | 8 uses |
+| *Gravity Grenade* | Nether Star | **Chunk Launcher** | Right-click: the chunk you look at is thrown 96 blocks into the sky, with everything standing on it. A hole stays behind. | 8 uses |
+| *Cluster Bomb* | Phantom Membrane | **Carpet Bomber** | Right-click: 81 TNT blocks fall in rows over 48 x 48 blocks around the spot you look at. | 16 uses |
+| *Orbital Strike Remote* | End Crystal | **Orbital Annihilator** | Right-click: 3 seconds of warning, then a beam 16 blocks wide burns a hole through everything, the bedrock too, into the void. | 8 uses |
+| *Doomsday Device* | Respawn Anchor | **Tsar Bomba** | Right-click: a missile flies to the spot you look at, up to 160 blocks away. It erases everything within 64 blocks, then fallout. |  |
+| *Singularity* | *Singularity* | **Event Horizon** | Right-click: a black hole that grows for 20 seconds. It eats everything within 16 blocks and pulls in everything within 40. |  |
+| *Earthshaker* | Block of Iron | **Fault Line Spike** | Right-click: a canyon 5 blocks wide and 160 long tears open in front of you, down to the bedrock. Lava runs at the bottom. | 16 uses |
 
 ### Instant creation
 
@@ -759,6 +769,58 @@ These items need three or more combining steps. Each list shows everything that 
       - Diamond Sword
       - Breeze Rod
 
+- **Region Eraser**
+  - **Chunk Eraser**
+    - **Singularity**
+      - Echo Shard
+      - Nether Star
+    - Crying Obsidian
+  - **Chunk Eraser**
+    - **Singularity**
+      - Echo Shard
+      - Nether Star
+    - Crying Obsidian
+
+- **Chunk Launcher**
+  - **Gravity Grenade**
+    - **Dynamite**
+      - Gunpowder
+      - Paper
+    - Shulker Shell
+  - Nether Star
+
+- **Carpet Bomber**
+  - **Cluster Bomb**
+    - **Dynamite**
+      - Gunpowder
+      - Paper
+    - **Dynamite**
+      - Gunpowder
+      - Paper
+  - Phantom Membrane
+
+- **Tsar Bomba**
+  - **Doomsday Device**
+    - **Pocket Nuke**
+      - **Mega Dynamite**
+        - **Dynamite**
+          - Gunpowder
+          - Paper
+        - TNT
+      - Nether Star
+    - **Singularity**
+      - Echo Shard
+      - Nether Star
+  - Respawn Anchor
+
+- **Fault Line Spike**
+  - **Earthshaker**
+    - **Excavator**
+      - Diamond Pickaxe
+      - Diamond Pickaxe
+    - TNT
+  - Block of Iron
+
 ## Things to know
 
 - **Sneak** while mining with an area tool, vein tool, lumber axe or the Blast Pickaxe to break only one block.
@@ -842,6 +904,16 @@ These items need three or more combining steps. Each list shows everything that 
 - The Hourglass of Ages changes the game rule randomTickSpeed for 10 seconds, for the whole world.
   If the world is closed in the middle, the old value is put back first.
 - The Horde Horn and the Monster Magnet bring real monsters. Use them at night only if you are brave.
+- **Cataclysms** (Chunk Eraser, Region Eraser, Chunk Inverter, Chunk Launcher, Carpet Bomber, Orbital Annihilator,
+  Tsar Bomba, Event Horizon, Fault Line Spike) change hundreds of thousands of blocks. Expect the game to slow down
+  for a few seconds, more on a slow PC. They only touch loaded chunks. Nothing they erase drops.
+- The Chunk Eraser and the Region Eraser leave the bedrock. The Orbital Annihilator does not: it opens the void.
+  It spares command blocks, structure blocks and End gateways.
+- The Tsar Bomba erases everything within 64 blocks of where the missile lands (the Doomsday Device: 32).
+  Living things up to 96 blocks away get fallout: Wither, Weakness and Nausea. Then it rains, and the edge burns.
+- The Chunk Inverter and the Chunk Launcher leave unbreakable blocks and blocks that hold things (chests ...)
+  where they are. The Chunk Launcher gives everything standing on the chunk Slow Falling, so it lands softly.
+- The Staff of Wild Magic never casts the cataclysms.
 - Texts are in English only.
 
 ## Automatic tests
@@ -873,6 +945,7 @@ The tests are in `src/gametest`. They are not part of the mod .jar.
   and goes 5 seconds back in time with the Rewind Watch
 - lets a skeleton arrow bounce off the Pocket Mirror, fills and empties the Piggy Bank, rides a cow
 - runs the whole Armageddon from countdown to the final blast, and checks that the stage is gone
+- erases, flips and launches chunks, carpet bombs, drills to the void, and drops a Tsar Bomba on the stage
 - waits for every bomb, the tornado, the volcano, the tsunami, the termites, the castle, the pyramid, the island,
   the beanstalk, the mountain and the parted sea, and checks what each one left behind
 - copies a block with the Copy-Paste Wand and pastes it, breaks bedrock with the Bedrock Breaker

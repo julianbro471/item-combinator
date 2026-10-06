@@ -89,6 +89,11 @@
     "combinator:copy_wand",
     "combinator:shulker_blaster",
     "combinator:hourglass",
-    "combinator:monster_magnet"
+    "combinator:monster_magnet",
+    "combinator:chunk_inverter",
+    "combinator:chunk_launcher",
+    "combinator:carpet_bomber",
+    "combinator:orbital_annihilator",
+    "combinator:fault_line"
   ]
 }

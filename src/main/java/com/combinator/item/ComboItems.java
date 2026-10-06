@@ -856,6 +856,33 @@ public final class ComboItems {
 	public static final Item MONSTER_MAGNET = add("monster_magnet", 2, 2,
 			new CItem(props(2).maxDamage(64)),
 			new Traits().at(Traits.Where.HOTBAR).use(Use.MONSTER_MAGNET).range(32).cooldown(100).cost(1));
+	public static final Item CHUNK_ERASER = add("chunk_eraser", 3, 3,
+			new CItem(props(3).maxCount(16)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.CHUNK_ERASE).range(128).cooldown(100).consume());
+	public static final Item REGION_ERASER = add("region_eraser", 3, 3,
+			new CItem(props(3).maxCount(16)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.REGION_ERASE).range(128).cooldown(200).consume());
+	public static final Item CHUNK_INVERTER = add("chunk_inverter", 3, 3,
+			new CItem(props(3).maxDamage(8)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.CHUNK_INVERT).range(128).cooldown(200).cost(1));
+	public static final Item CHUNK_LAUNCHER = add("chunk_launcher", 3, 3,
+			new CItem(props(3).maxDamage(8)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.CHUNK_LAUNCH).range(128).cooldown(200).cost(1));
+	public static final Item CARPET_BOMBER = add("carpet_bomber", 3, 3,
+			new CItem(props(3).maxDamage(16)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.CARPET_BOMB).range(128).cooldown(200).cost(1));
+	public static final Item ORBITAL_ANNIHILATOR = add("orbital_annihilator", 3, 3,
+			new CItem(props(3).maxDamage(8)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.ANNIHILATE).range(160).cooldown(400).cost(1));
+	public static final Item TSAR_BOMBA = add("tsar_bomba", 3, 3,
+			new CItem(props(3).maxCount(4)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.TSAR_BOMBA).range(160).cooldown(400).consume());
+	public static final Item EVENT_HORIZON = add("event_horizon", 3, 3,
+			new CItem(props(3).maxCount(4)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.EVENT_HORIZON).range(48).cooldown(400).consume());
+	public static final Item FAULT_LINE = add("fault_line", 3, 3,
+			new CItem(props(3).maxDamage(16)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.FAULT_LINE).power(160.0f).cooldown(200).cost(1));
 
 	private ComboItems() {
 	}

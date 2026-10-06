@@ -806,6 +806,26 @@ public final class UseAbilities {
 				return Wonders.hourglass(world, player, Math.round(traits.power));
 			case MONSTER_MAGNET:
 				return Wonders.monsterMagnet(world, player, traits.range);
+
+			// ---------------------------------------------------------- cataclysms
+			case CHUNK_ERASE:
+				return Cataclysm.eraseChunks(world, player, traits.range, 0);
+			case REGION_ERASE:
+				return Cataclysm.eraseChunks(world, player, traits.range, 1);
+			case CHUNK_INVERT:
+				return Cataclysm.invertChunk(world, player, traits.range);
+			case CHUNK_LAUNCH:
+				return Cataclysm.launchChunk(world, player, traits.range, 96);
+			case CARPET_BOMB:
+				return Cataclysm.carpetBomb(world, player, traits.range);
+			case ANNIHILATE:
+				return Cataclysm.annihilate(world, player, traits.range);
+			case TSAR_BOMBA:
+				return Cataclysm.tsarBomba(world, player, traits.range, 64.0);
+			case EVENT_HORIZON:
+				return Cataclysm.eventHorizon(world, player, traits.range);
+			case FAULT_LINE:
+				return Cataclysm.faultLine(world, player, Math.round(traits.power));
 			default:
 				return false;
 		}

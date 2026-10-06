@@ -60,10 +60,15 @@ import net.minecraft.util.math.random.Random;
  * Pure chaos: the Staff of Wild Magic, the Dice of Fate, Musical Chairs, the Party Cannon and the Gremlin in a Jar.
  */
 public final class Wild {
-	/** Right-click abilities the Staff of Wild Magic never casts: they need a special item in the hand, or they are this staff. */
+	/**
+	 * Right-click abilities the Staff of Wild Magic never casts: they need a special item in the hand, or they are this staff.
+	 * The cataclysms are left out too: the staff keeps the spells it had when it was made, newer items do not add to it.
+	 */
 	private static final Set<Use> NOT_WILD = EnumSet.of(Use.NONE, Use.BACKPACK, Use.SMELT_HAND, Use.FISH, Use.WAYPOINT_GO, Use.WAYPOINT_SET,
 			Use.BANK_IN, Use.BANK_OUT, Use.ENCHANT_BOOK, Use.DUPE, Use.ENDER_POUCH, Use.WORKBENCH, Use.CHAOS, Use.PANDORA, Use.WILD_MAGIC,
-			Use.DICE, Use.DOOM_CANCEL, Use.COPY_PASTE, Use.COPY_CORNER);
+			Use.DICE, Use.DOOM_CANCEL, Use.COPY_PASTE, Use.COPY_CORNER,
+			Use.CHUNK_ERASE, Use.REGION_ERASE, Use.CHUNK_INVERT, Use.CHUNK_LAUNCH, Use.CARPET_BOMB, Use.ANNIHILATE, Use.TSAR_BOMBA,
+			Use.EVENT_HORIZON, Use.FAULT_LINE);
 	/** Every spell the Staff of Wild Magic can cast. */
 	public static final List<Use> SPELLS = new ArrayList<>();
 

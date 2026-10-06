@@ -1126,6 +1126,38 @@ it("monster_magnet", "Monster Magnet", 2, "magnet", "rotten_flesh", "gadget",
    ".use(Use.MONSTER_MAGNET).range(32).cooldown(100).cost(1)", tex=("magnet", "venom", "iron", "skull"), dur=64)
 
 # ---------------------------------------------------------------------------------------------
+# CATACLYSMS (version 1.4, third wave): destruction on the scale of chunks
+# ---------------------------------------------------------------------------------------------
+section("Mass destruction")
+it("chunk_eraser", "Chunk Eraser", 3, "singularity", "crying_obsidian", "gadget",
+   ["Right-click: the chunk you look at (16 x 16", "blocks) is erased from the sky down to", "the bedrock. Nothing drops."],
+   ".use(Use.CHUNK_ERASE).range(128).cooldown(100).consume()", tex=("cube", "grass", "dirt", "flame"), stack=16)
+it("region_eraser", "Region Eraser", 3, "chunk_eraser", "chunk_eraser", "gadget",
+   ["Right-click: the chunk you look at and the", "8 chunks around it (48 x 48 blocks) are", "erased down to the bedrock."],
+   ".use(Use.REGION_ERASE).range(128).cooldown(200).consume()", tex=("cube", "void", "wither", "skull"), stack=16)
+it("chunk_inverter", "Chunk Inverter", 3, "upside_down_cake", "nether_star", "gadget",
+   ["Right-click: the chunk you look at is turned", "upside down. Deep ores come to the top,", "the grass ends up at the bottom."],
+   ".use(Use.CHUNK_INVERT).range(128).cooldown(200).cost(1)", tex=("cube", "stone", "grass", "question"), dur=8)
+it("chunk_launcher", "Chunk Launcher", 3, "gravity_grenade", "nether_star", "gadget",
+   ["Right-click: the chunk you look at is thrown", "96 blocks into the sky, with everything", "standing on it. A hole stays behind."],
+   ".use(Use.CHUNK_LAUNCH).range(128).cooldown(200).cost(1)", tex=("cube", "grass", "dirt", "wing"), dur=8)
+it("carpet_bomber", "Carpet Bomber", 3, "cluster_bomb", "phantom_membrane", "gadget",
+   ["Right-click: 81 TNT blocks fall in rows", "over 48 x 48 blocks around the spot", "you look at."],
+   ".use(Use.CARPET_BOMB).range(128).cooldown(200).cost(1)", tex=("plane", "netherite", "redstone", "flame"), dur=16)
+it("orbital_annihilator", "Orbital Annihilator", 3, "orbital_remote", "end_crystal", "gadget",
+   ["Right-click: 3 seconds of warning, then a", "beam 16 blocks wide burns a hole through", "everything, the bedrock too, into the void."],
+   ".use(Use.ANNIHILATE).range(160).cooldown(400).cost(1)", tex=("remote", "void", "blood", "skull"), dur=8)
+it("tsar_bomba", "Tsar Bomba", 3, "doomsday_device", "respawn_anchor", "gadget",
+   ["Right-click: a missile flies to the spot you", "look at, up to 160 blocks away. It erases", "everything within 64 blocks, then fallout."],
+   ".use(Use.TSAR_BOMBA).range(160).cooldown(400).consume()", tex=("missile", "netherite", "redstone", "skull"), stack=4)
+it("event_horizon", "Event Horizon", 3, "singularity", "singularity", "gadget",
+   ["Right-click: a black hole that grows for 20", "seconds. It eats everything within 16 blocks", "and pulls in everything within 40."],
+   ".use(Use.EVENT_HORIZON).range(48).cooldown(400).consume()", tex=("orb", "void", "ender", "star"), stack=4)
+it("fault_line", "Fault Line Spike", 3, "earthshaker", "iron_block", "gadget",
+   ["Right-click: a canyon 5 blocks wide and 160", "long tears open in front of you, down to", "the bedrock. Lava runs at the bottom."],
+   ".use(Use.FAULT_LINE).power(160.0f).cooldown(200).cost(1)", tex=("spike", "netherite", "magma", "bolt"), dur=16)
+
+# ---------------------------------------------------------------------------------------------
 # VANILLA RESULTS
 # ---------------------------------------------------------------------------------------------
 van("rotten_flesh", "rotten_flesh", "leather")

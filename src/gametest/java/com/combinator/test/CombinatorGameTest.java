@@ -1635,6 +1635,18 @@ public class CombinatorGameTest implements FabricGameTest {
 		return total;
 	}
 
+	/**
+	 * How many blocks of the given kind lie in the chunk the tester looks at, inside the stage, at the given height
+	 * above the floor (0 = the floor itself).
+	 */
+	private static int chunkFloor(ServerWorld world, BlockPos center, int dy, Block block) {
+		ChunkPos chunk = new ChunkPos(center.add(0, 0, 4));
+		int y = center.getY() - 1 + dy;
+		BlockPos from = new BlockPos(Math.max(chunk.getStartX(), center.getX() - 12), y, Math.max(chunk.getStartZ(), center.getZ() - 12));
+		BlockPos to = new BlockPos(Math.min(chunk.getEndX(), center.getX() + 12), y, Math.min(chunk.getEndZ(), center.getZ() + 12));
+		return count(world, from, to, block);
+	}
+
 	/** A 3 x 3 x 3 cube of oak planks in front of the tester, for the termites. */
 	private static void termiteHouse(ServerWorld world, BlockPos center) {
 		fill(world, center.add(-1, 0, 3), center.add(1, 2, 5), Blocks.OAK_PLANKS.getDefaultState());
@@ -1836,6 +1848,11 @@ public class CombinatorGameTest implements FabricGameTest {
 				return world.getServer().getGameRules().getInt(GameRules.RANDOM_TICK_SPEED) > 3 ? null : "the world does not tick faster";
 			case MONSTER_MAGNET:
 				return pig.getVelocity().length() > 0.3 ? null : "the pig was not pulled";
+			case CARPET_BOMB:
+			case TSAR_BOMBA:
+				return any(world, center, TntEntity.class) ? null : "no bomb or missile is on its way";
+			case FAULT_LINE:
+				return count(world, center.add(-1, -1, 3), center.add(1, -1, 4), Blocks.GRASS_BLOCK) == 0 ? null : "no canyon opened";
 			case TERMITES:
 				return count(world, center.add(-1, 0, 3), center.add(1, 2, 5), Blocks.OAK_PLANKS) < 27 ? null : "the termites ate nothing";
 			case DEATH_RAY:
@@ -2048,6 +2065,20 @@ public class CombinatorGameTest implements FabricGameTest {
 				new Slow(Use.WORLD_TREE, 70, (w, c) -> count(w, c.add(-8, 0, -4), c.add(8, 45, 14), Blocks.OAK_LOG) > 150 ? null : "the giant tree did not grow"),
 				new Slow(Use.HOURGLASS, 230, (w, c) -> w.getServer().getGameRules().getInt(GameRules.RANDOM_TICK_SPEED) < 100
 						? null : "the world still ticks fast after the hourglass ran out"),
+				// ---- the cataclysms: they work on whole chunks
+				// the canyon bends sideways as it goes, so only its first 5 blocks lie straight ahead
+				new Slow(Use.FAULT_LINE, 60, (w, c) -> count(w, c.add(0, -1, 3), c.add(1, -1, 7), Blocks.GRASS_BLOCK) == 0
+						&& w.getBlockState(new BlockPos(c.getX(), w.getBottomY() + 1, c.getZ() + 3)).isOf(Blocks.LAVA) ? null : "no canyon down to the lava"),
+				new Slow(Use.CARPET_BOMB, 160, (w, c) -> floorLeft(w, c) < 500 ? null : "the carpet bombing left " + floorLeft(w, c) + " of 625 floor blocks"),
+				new Slow(Use.CHUNK_INVERT, 40, (w, c) -> chunkFloor(w, c, 0, Blocks.GRASS_BLOCK) == 0 ? null : "the chunk was not turned upside down"),
+				new Slow(Use.CHUNK_LAUNCH, 40, (w, c) -> chunkFloor(w, c, 0, Blocks.GRASS_BLOCK) == 0 && chunkFloor(w, c, 96, Blocks.GRASS_BLOCK) > 0
+						? null : "the chunk did not fly 96 blocks up"),
+				new Slow(Use.ANNIHILATE, 120, (w, c) -> w.getBlockState(c.add(0, -1, 4)).isAir() && w.getBlockState(new BlockPos(c.getX(), w.getBottomY(), c.getZ() + 4)).isAir()
+						? null : "the beam did not burn through to the void"),
+				new Slow(Use.EVENT_HORIZON, 440, (w, c) -> floorLeft(w, c) < 500 ? null : "the event horizon ate too little (" + floorLeft(w, c) + " of 625 left)"),
+				new Slow(Use.CHUNK_ERASE, 100, (w, c) -> chunkFloor(w, c, 0, Blocks.GRASS_BLOCK) == 0 ? null : "the chunk was not erased"),
+				new Slow(Use.REGION_ERASE, 140, (w, c) -> floorLeft(w, c) == 0 ? null : "the 3 x 3 chunks were not erased (" + floorLeft(w, c) + " floor blocks left)"),
+				new Slow(Use.TSAR_BOMBA, 160, (w, c) -> floorLeft(w, c) == 0 ? null : "the Tsar Bomba left " + floorLeft(w, c) + " floor blocks"),
 				// last, because it destroys everything: the whole Armageddon, from the countdown to the final blast
 				new Slow(Use.ARMAGEDDON, Doom.TOTAL + 80, (w, c) -> floorLeft(w, c) < 300 ? null : "the world did not end (" + floorLeft(w, c) + " of 625 floor blocks left)"));
 

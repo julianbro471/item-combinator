@@ -5135,6 +5135,186 @@
       "stats": "64 uses"
     },
     {
+      "a": "singularity",
+      "b": "crying_obsidian",
+      "a_name": "Singularity",
+      "b_name": "Crying Obsidian",
+      "result": "chunk_eraser",
+      "result_name": "Chunk Eraser",
+      "count": 1,
+      "rar": 3,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: the chunk you look at (16 x 16",
+        "blocks) is erased from the sky down to",
+        "the bedrock. Nothing drops."
+      ],
+      "cat": "Mass destruction",
+      "stats": ""
+    },
+    {
+      "a": "chunk_eraser",
+      "b": "chunk_eraser",
+      "a_name": "Chunk Eraser",
+      "b_name": "Chunk Eraser",
+      "result": "region_eraser",
+      "result_name": "Region Eraser",
+      "count": 1,
+      "rar": 3,
+      "a_custom": true,
+      "b_custom": true,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: the chunk you look at and the",
+        "8 chunks around it (48 x 48 blocks) are",
+        "erased down to the bedrock."
+      ],
+      "cat": "Mass destruction",
+      "stats": ""
+    },
+    {
+      "a": "upside_down_cake",
+      "b": "nether_star",
+      "a_name": "Upside-Down Cake",
+      "b_name": "Nether Star",
+      "result": "chunk_inverter",
+      "result_name": "Chunk Inverter",
+      "count": 1,
+      "rar": 3,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: the chunk you look at is turned",
+        "upside down. Deep ores come to the top,",
+        "the grass ends up at the bottom."
+      ],
+      "cat": "Mass destruction",
+      "stats": "8 uses"
+    },
+    {
+      "a": "gravity_grenade",
+      "b": "nether_star",
+      "a_name": "Gravity Grenade",
+      "b_name": "Nether Star",
+      "result": "chunk_launcher",
+      "result_name": "Chunk Launcher",
+      "count": 1,
+      "rar": 3,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: the chunk you look at is thrown",
+        "96 blocks into the sky, with everything",
+        "standing on it. A hole stays behind."
+      ],
+      "cat": "Mass destruction",
+      "stats": "8 uses"
+    },
+    {
+      "a": "cluster_bomb",
+      "b": "phantom_membrane",
+      "a_name": "Cluster Bomb",
+      "b_name": "Phantom Membrane",
+      "result": "carpet_bomber",
+      "result_name": "Carpet Bomber",
+      "count": 1,
+      "rar": 3,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: 81 TNT blocks fall in rows",
+        "over 48 x 48 blocks around the spot",
+        "you look at."
+      ],
+      "cat": "Mass destruction",
+      "stats": "16 uses"
+    },
+    {
+      "a": "orbital_remote",
+      "b": "end_crystal",
+      "a_name": "Orbital Strike Remote",
+      "b_name": "End Crystal",
+      "result": "orbital_annihilator",
+      "result_name": "Orbital Annihilator",
+      "count": 1,
+      "rar": 3,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: 3 seconds of warning, then a",
+        "beam 16 blocks wide burns a hole through",
+        "everything, the bedrock too, into the void."
+      ],
+      "cat": "Mass destruction",
+      "stats": "8 uses"
+    },
+    {
+      "a": "doomsday_device",
+      "b": "respawn_anchor",
+      "a_name": "Doomsday Device",
+      "b_name": "Respawn Anchor",
+      "result": "tsar_bomba",
+      "result_name": "Tsar Bomba",
+      "count": 1,
+      "rar": 3,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: a missile flies to the spot you",
+        "look at, up to 160 blocks away. It erases",
+        "everything within 64 blocks, then fallout."
+      ],
+      "cat": "Mass destruction",
+      "stats": ""
+    },
+    {
+      "a": "singularity",
+      "b": "singularity",
+      "a_name": "Singularity",
+      "b_name": "Singularity",
+      "result": "event_horizon",
+      "result_name": "Event Horizon",
+      "count": 1,
+      "rar": 3,
+      "a_custom": true,
+      "b_custom": true,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: a black hole that grows for 20",
+        "seconds. It eats everything within 16 blocks",
+        "and pulls in everything within 40."
+      ],
+      "cat": "Mass destruction",
+      "stats": ""
+    },
+    {
+      "a": "earthshaker",
+      "b": "iron_block",
+      "a_name": "Earthshaker",
+      "b_name": "Block of Iron",
+      "result": "fault_line",
+      "result_name": "Fault Line Spike",
+      "count": 1,
+      "rar": 3,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: a canyon 5 blocks wide and 160",
+        "long tears open in front of you, down to",
+        "the bedrock. Lava runs at the bottom."
+      ],
+      "cat": "Mass destruction",
+      "stats": "16 uses"
+    },
+    {
       "a": "rotten_flesh",
       "b": "rotten_flesh",
       "a_name": "Rotten Flesh",
@@ -10090,6 +10270,151 @@
       ],
       "stats": {
         "dur": 64
+      }
+    },
+    {
+      "id": "chunk_eraser",
+      "name": "Chunk Eraser",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Mass destruction",
+      "a": "singularity",
+      "b": "crying_obsidian",
+      "tip": [
+        "Right-click: the chunk you look at (16 x 16",
+        "blocks) is erased from the sky down to",
+        "the bedrock. Nothing drops."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "region_eraser",
+      "name": "Region Eraser",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Mass destruction",
+      "a": "chunk_eraser",
+      "b": "chunk_eraser",
+      "tip": [
+        "Right-click: the chunk you look at and the",
+        "8 chunks around it (48 x 48 blocks) are",
+        "erased down to the bedrock."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "chunk_inverter",
+      "name": "Chunk Inverter",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Mass destruction",
+      "a": "upside_down_cake",
+      "b": "nether_star",
+      "tip": [
+        "Right-click: the chunk you look at is turned",
+        "upside down. Deep ores come to the top,",
+        "the grass ends up at the bottom."
+      ],
+      "stats": {
+        "dur": 8
+      }
+    },
+    {
+      "id": "chunk_launcher",
+      "name": "Chunk Launcher",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Mass destruction",
+      "a": "gravity_grenade",
+      "b": "nether_star",
+      "tip": [
+        "Right-click: the chunk you look at is thrown",
+        "96 blocks into the sky, with everything",
+        "standing on it. A hole stays behind."
+      ],
+      "stats": {
+        "dur": 8
+      }
+    },
+    {
+      "id": "carpet_bomber",
+      "name": "Carpet Bomber",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Mass destruction",
+      "a": "cluster_bomb",
+      "b": "phantom_membrane",
+      "tip": [
+        "Right-click: 81 TNT blocks fall in rows",
+        "over 48 x 48 blocks around the spot",
+        "you look at."
+      ],
+      "stats": {
+        "dur": 16
+      }
+    },
+    {
+      "id": "orbital_annihilator",
+      "name": "Orbital Annihilator",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Mass destruction",
+      "a": "orbital_remote",
+      "b": "end_crystal",
+      "tip": [
+        "Right-click: 3 seconds of warning, then a",
+        "beam 16 blocks wide burns a hole through",
+        "everything, the bedrock too, into the void."
+      ],
+      "stats": {
+        "dur": 8
+      }
+    },
+    {
+      "id": "tsar_bomba",
+      "name": "Tsar Bomba",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Mass destruction",
+      "a": "doomsday_device",
+      "b": "respawn_anchor",
+      "tip": [
+        "Right-click: a missile flies to the spot you",
+        "look at, up to 160 blocks away. It erases",
+        "everything within 64 blocks, then fallout."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "event_horizon",
+      "name": "Event Horizon",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Mass destruction",
+      "a": "singularity",
+      "b": "singularity",
+      "tip": [
+        "Right-click: a black hole that grows for 20",
+        "seconds. It eats everything within 16 blocks",
+        "and pulls in everything within 40."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "fault_line",
+      "name": "Fault Line Spike",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Mass destruction",
+      "a": "earthshaker",
+      "b": "iron_block",
+      "tip": [
+        "Right-click: a canyon 5 blocks wide and 160",
+        "long tears open in front of you, down to",
+        "the bedrock. Lava runs at the bottom."
+      ],
+      "stats": {
+        "dur": 16
       }
     }
   ]
