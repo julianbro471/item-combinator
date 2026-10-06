@@ -12,10 +12,10 @@ It adds one block, the **Combiner Table**. You put two items into it and get one
 
 ## Status: read this first
 
-This project has **not been compiled and not been tested in the game yet**. It was written in a place that
-cannot download the Minecraft build tools. Names of game functions were checked against the official Fabric
-naming files for 1.21.1, but only a real build and a play test prove that it works.
-Expect build errors and bugs in the first version.
+The mod **compiles**: GitHub builds the .jar from this project without errors.
+It has **not been played in the game yet**. Compiling only proves that the code is valid Java and that every
+game function it calls exists. It does not prove that each item does what its description says.
+Expect bugs in the first version.
 
 **Make a backup of your world before you use the bombs.** Nukes, black holes, meteors, the Blast Pickaxe and the
 World Eater delete large parts of the world for good.
@@ -28,10 +28,11 @@ World Eater delete large parts of the world for good.
 
 ## Getting the .jar file
 
-The .jar is the file the game loads. It has to be built from this project.
+The .jar is the file the game loads. It is built from this project.
 
-**With GitHub (no installs on your PC):** put this project in a GitHub repository. GitHub then builds it by itself
-(the file `.github/workflows/build.yml` tells it how). Open the repository, click **Actions**, click the newest run,
+**From GitHub (no installs on your PC):** GitHub builds the .jar again after every change
+(the file `.github/workflows/build.yml` tells it how). The newest .jar is on the **`builds`** branch of the
+repository, next to `build.log` (the text the build printed). You can also open **Actions**, click the newest run,
 and download **item-combinator-jar** at the bottom of the page.
 
 **On your own PC:** install a Java JDK, version 25 (the version the official Fabric template builds with). Then run `gradlew.bat build` (Windows) or
