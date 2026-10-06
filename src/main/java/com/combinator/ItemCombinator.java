@@ -49,10 +49,6 @@ public class ItemCombinator implements ModInitializer {
 		return Identifier.of(MOD_ID, path);
 	}
 
-	/**
-	 * Reports an error inside an ability. The game keeps running.
-	 * The same error is written to the log only once, so a bug that repeats every tick cannot flood the log.
-	 */
 	/** Reports a mistake in the mod's own data, such as a combination that names an item that does not exist. */
 	public static void problem(String message) {
 		if (SEEN_ERRORS.size() < 200 && SEEN_ERRORS.add(message)) {
@@ -61,6 +57,10 @@ public class ItemCombinator implements ModInitializer {
 		}
 	}
 
+	/**
+	 * Reports an error inside an ability. The game keeps running.
+	 * The same error is written to the log only once, so a bug that repeats every tick cannot flood the log.
+	 */
 	public static void error(String what, Throwable t) {
 		StackTraceElement[] trace = t.getStackTrace();
 		String key = what + ": " + t + (trace.length > 0 ? " at " + trace[0] : "");

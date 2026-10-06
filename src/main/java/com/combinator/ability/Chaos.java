@@ -209,9 +209,11 @@ public final class Chaos {
 				}
 				continue;
 			}
+			// "Logical height" is where the roof is: 128 in the Nether, although blocks can be placed above it.
+			int roof = world.getBottomY() + world.getLogicalHeight() - 1;
 			for (int dy = 12; dy >= -12; dy--) {
 				BlockPos feet = new BlockPos(x, (int) Math.floor(center.y) + dy, z);
-				if (feet.getY() > world.getBottomY() + 1 && feet.getY() < world.getTopY() - 2 && hasRoom(world, feet)) {
+				if (feet.getY() > world.getBottomY() + 1 && feet.getY() < roof - 1 && hasRoom(world, feet)) {
 					return Vec3d.ofBottomCenter(feet);
 				}
 			}

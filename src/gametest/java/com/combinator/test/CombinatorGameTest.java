@@ -82,6 +82,7 @@ import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.GameMode;
+import net.minecraft.world.World;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -1619,6 +1620,46 @@ public class CombinatorGameTest implements FabricGameTest {
 		}
 	}
 
+	/** The random teleport of the Chaos Orb in the Nether: it must find a spot, and never one on top of the bedrock roof. */
+	private static void netherTeleport(Report report, MinecraftServer server, ServerPlayerEntity player) {
+		try {
+			ServerWorld nether = server.getWorld(World.NETHER);
+			if (nether == null) {
+				report.problem("the test server has no Nether");
+				return;
+			}
+			// a small room in the middle of the Nether to start from
+			BlockPos base = new BlockPos(8, 64, 8);
+			fill(nether, base.add(-3, -1, -3), base.add(3, -1, 3), Blocks.NETHERRACK.getDefaultState());
+			fill(nether, base.add(-3, 0, -3), base.add(3, 3, 3), Blocks.AIR.getDefaultState());
+			resetPlayer(player, player.getServerWorld(), player.getBlockPos());
+			player.setInvulnerable(true);
+			Vec3d start = new Vec3d(8.5, 64.0, 8.5);
+			int moved = 0;
+			for (int i = 0; i < 6; i++) {
+				player.teleport(nether, start.x, start.y, start.z, 0.0F, 0.0F);
+				Chaos.event(nether, player, 12);
+				BlockPos feet = player.getBlockPos();
+				report.check(player.getWorld() == nether, "the random teleport left the Nether");
+				report.check(feet.getY() < 123, "the random teleport in the Nether ended at height " + feet.getY() + ", in or above the roof");
+				if (player.getPos().distanceTo(start) > 1.0) {
+					moved++;
+					report.check(nether.getBlockState(feet.down()).isSolidBlock(nether, feet.down())
+									&& nether.getBlockState(feet).getCollisionShape(nether, feet).isEmpty()
+									&& nether.getBlockState(feet.up()).getCollisionShape(nether, feet.up()).isEmpty()
+									&& nether.getFluidState(feet).isEmpty(),
+							"the random teleport in the Nether ended in a bad spot: " + feet + " on " + nether.getBlockState(feet.down()));
+				}
+			}
+			report.info("Nether: the random teleport moved the tester " + moved + " of 6 times");
+			report.check(moved > 0, "the random teleport never found a spot in the Nether");
+		} catch (Throwable t) {
+			report.problem("the random teleport in the Nether crashed: " + t);
+			LOG.error("nether teleport test", t);
+		}
+		report.modErrors("chaos teleport in the Nether");
+	}
+
 	@GameTest(templateName = EMPTY_STRUCTURE, batchId = "combinator_chaos", tickLimit = 20000)
 	public void chaos(TestContext context) {
 		Report report = new Report("chaos");
@@ -1670,6 +1711,8 @@ public class CombinatorGameTest implements FabricGameTest {
 			if (server.getTickManager().isFrozen()) {
 				server.getTickManager().setFrozen(false);
 			}
+			netherTeleport(report, server, player);
+			place(player, world, center);
 			removePlayer(player);
 			resetStage(world, center);
 			forceChunks(world, center, false);
