@@ -102,7 +102,7 @@ public final class MiningAbilities {
 				}
 			}
 		} catch (Throwable t) {
-			ItemCombinator.LOGGER.error("Mining ability failed", t);
+			ItemCombinator.error("Mining ability failed", t);
 			if (!originBroken) {
 				return true;
 			}

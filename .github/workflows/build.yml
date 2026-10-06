@@ -30,12 +30,17 @@ jobs:
       - name: build
         run: |
           set -o pipefail
-          ./gradlew build --stacktrace 2>&1 | tee build.log
+          ./gradlew build -x runGameTest --stacktrace 2>&1 | tee build.log
       - name: capture build artifacts
         uses: actions/upload-artifact@v7
         with:
           name: item-combinator-jar
           path: build/libs/
+      - name: automatic tests (a server without a player tries out every item)
+        timeout-minutes: 30
+        run: |
+          set -o pipefail
+          ./gradlew runGameTest --stacktrace 2>&1 | tee gametest.log
       - name: publish the result on the builds branch
         if: always() && github.event_name == 'push'
         env:
@@ -45,6 +50,7 @@ jobs:
           mkdir -p published
           cp build/libs/*.jar published/ 2>/dev/null || true
           cp build.log published/ 2>/dev/null || true
+          cp gametest.log published/ 2>/dev/null || true
           echo "Built from commit ${GITHUB_SHA} on branch ${GITHUB_REF_NAME}" > published/README.txt
           cd published
           git init -q -b "${TARGET}"

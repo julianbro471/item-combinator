@@ -14,6 +14,18 @@ loom {
 	}
 }
 
+// Automatic tests (src/gametest). They start a server without a player and try out every item.
+// Run them with: gradlew runGameTest. They are not part of the mod .jar.
+fabricApi {
+	configureTests {
+		createSourceSet = true
+		modId = "combinator_test"
+		enableGameTests = true
+		enableClientGameTests = false
+		eula = true
+	}
+}
+
 dependencies {
 	// To change the versions see the gradle.properties file
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"

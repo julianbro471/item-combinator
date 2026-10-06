@@ -54,11 +54,11 @@ public final class ComboRecipes {
 		Item itemB = resolve(b);
 		Item itemResult = resolve(result);
 		if (itemA == null || itemB == null || itemResult == null) {
-			ItemCombinator.LOGGER.error("Skipping combination {} + {} -> {}: unknown item id", a, b, result);
+			ItemCombinator.problem("Skipping combination " + a + " + " + b + " -> " + result + ": unknown item id");
 			return;
 		}
 		if (find(itemA, itemB) != null) {
-			ItemCombinator.LOGGER.error("Skipping duplicate combination {} + {}", a, b);
+			ItemCombinator.problem("Skipping duplicate combination " + a + " + " + b);
 			return;
 		}
 		Combo combo = new Combo(itemA, itemB, itemResult, count, rarity);

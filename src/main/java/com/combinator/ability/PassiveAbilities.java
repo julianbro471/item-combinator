@@ -52,7 +52,6 @@ public final class PassiveAbilities {
 	private static final Map<UUID, Map<Item, Integer>> BUFFS = new HashMap<>();
 	/** Every item that changes attributes, found once on first use. */
 	private static List<Item> attributeItems;
-	private static boolean errorLogged = false;
 
 	private PassiveAbilities() {
 	}
@@ -140,10 +139,7 @@ public final class PassiveAbilities {
 			try {
 				tickPlayer(player, ticks);
 			} catch (Throwable t) {
-				if (!errorLogged) {
-					errorLogged = true;
-					ItemCombinator.LOGGER.error("Passive ability failed (further errors are not logged)", t);
-				}
+				ItemCombinator.error("Passive ability failed", t);
 			}
 		}
 	}

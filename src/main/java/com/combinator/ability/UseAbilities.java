@@ -102,7 +102,7 @@ public final class UseAbilities {
 				return ActionResult.success(context.getWorld().isClient);
 			}
 		} catch (Throwable t) {
-			ItemCombinator.LOGGER.error("Block use ability failed", t);
+			ItemCombinator.error("Block use ability failed", t);
 		}
 		return ActionResult.PASS;
 	}
@@ -235,7 +235,7 @@ public final class UseAbilities {
 		try {
 			done = perform(action, serverWorld, player, traits, hand);
 		} catch (Throwable t) {
-			ItemCombinator.LOGGER.error("Use ability {} failed", action, t);
+			ItemCombinator.error("Use ability " + action + " failed", t);
 			done = false;
 		}
 		if (!done) {
@@ -272,7 +272,7 @@ public final class UseAbilities {
 				Fx.sound(serverWorld, player.getPos(), SoundEvents.ENTITY_FIREWORK_ROCKET_LAUNCH, 2.0F, 0.8F);
 			}
 		} catch (Throwable t) {
-			ItemCombinator.LOGGER.error("Food ability failed", t);
+			ItemCombinator.error("Food ability failed", t);
 		}
 	}
 

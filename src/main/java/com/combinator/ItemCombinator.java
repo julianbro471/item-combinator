@@ -8,6 +8,10 @@ import com.combinator.block.CombinerTableBlock;
 import com.combinator.item.ComboItems;
 import com.combinator.recipe.ComboRecipes;
 import com.combinator.screen.CombinerScreenHandler;
+import java.util.List;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.block.AbstractBlock;
@@ -37,8 +41,33 @@ public class ItemCombinator implements ModInitializer {
 	public static final ScreenHandlerType<CombinerScreenHandler> COMBINER_SCREEN =
 			new ScreenHandlerType<>(CombinerScreenHandler::new, FeatureFlags.VANILLA_FEATURES);
 
+	/** Every different ability error that was caught so far. The automatic tests read this list. */
+	public static final List<String> ERRORS = new CopyOnWriteArrayList<>();
+	private static final Set<String> SEEN_ERRORS = ConcurrentHashMap.newKeySet();
+
 	public static Identifier id(String path) {
 		return Identifier.of(MOD_ID, path);
+	}
+
+	/**
+	 * Reports an error inside an ability. The game keeps running.
+	 * The same error is written to the log only once, so a bug that repeats every tick cannot flood the log.
+	 */
+	/** Reports a mistake in the mod's own data, such as a combination that names an item that does not exist. */
+	public static void problem(String message) {
+		if (SEEN_ERRORS.size() < 200 && SEEN_ERRORS.add(message)) {
+			ERRORS.add(message);
+			LOGGER.error(message);
+		}
+	}
+
+	public static void error(String what, Throwable t) {
+		StackTraceElement[] trace = t.getStackTrace();
+		String key = what + ": " + t + (trace.length > 0 ? " at " + trace[0] : "");
+		if (SEEN_ERRORS.size() < 200 && SEEN_ERRORS.add(key)) {
+			ERRORS.add(key);
+			LOGGER.error(what + " (the same error is not logged again)", t);
+		}
 	}
 
 	@Override

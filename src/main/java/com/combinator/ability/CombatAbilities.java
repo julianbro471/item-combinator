@@ -57,16 +57,21 @@ public final class CombatAbilities {
 			try {
 				afterDamage(entity, source, damage, blocked);
 			} catch (Throwable t) {
-				ItemCombinator.LOGGER.error("Combat ability failed", t);
+				ItemCombinator.error("Combat ability failed", t);
 			}
 		});
 		ServerLivingEntityEvents.AFTER_DEATH.register((entity, source) -> {
 			try {
 				afterDeath(entity, source);
 			} catch (Throwable t) {
-				ItemCombinator.LOGGER.error("Kill ability failed", t);
+				ItemCombinator.error("Kill ability failed", t);
 			}
 		});
+	}
+
+	/** Forgets when each player last used a lightning or explosion weapon. */
+	public static void clearStrikeCooldowns() {
+		LAST_STRIKE.clear();
 	}
 
 	// ------------------------------------------------------------------ defense
@@ -77,7 +82,7 @@ public final class CombatAbilities {
 				return false;
 			}
 		} catch (Throwable t) {
-			ItemCombinator.LOGGER.error("Fall protection failed", t);
+			ItemCombinator.error("Fall protection failed", t);
 		}
 		return true;
 	}
@@ -102,7 +107,7 @@ public final class CombatAbilities {
 			player.getWorld().sendEntityStatus(player, (byte) 35); // 35 = totem animation and sound
 			return false;
 		} catch (Throwable t) {
-			ItemCombinator.LOGGER.error("Eternal Totem failed", t);
+			ItemCombinator.error("Eternal Totem failed", t);
 			return true;
 		}
 	}

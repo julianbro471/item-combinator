@@ -64,7 +64,7 @@ public final class Tasks {
 			try {
 				task.action().run();
 			} catch (Throwable t) {
-				ItemCombinator.LOGGER.error("Scheduled ability step failed", t);
+				ItemCombinator.error("Scheduled ability step failed", t);
 			}
 		}
 	}
