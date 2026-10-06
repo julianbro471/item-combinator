@@ -2066,13 +2066,16 @@ public class CombinatorGameTest implements FabricGameTest {
 				new Slow(Use.HOURGLASS, 230, (w, c) -> w.getServer().getGameRules().getInt(GameRules.RANDOM_TICK_SPEED) < 100
 						? null : "the world still ticks fast after the hourglass ran out"),
 				// ---- the cataclysms: they work on whole chunks
-				// the canyon bends sideways as it goes, so only its first 5 blocks lie straight ahead
-				new Slow(Use.FAULT_LINE, 60, (w, c) -> count(w, c.add(0, -1, 3), c.add(1, -1, 7), Blocks.GRASS_BLOCK) == 0
+				// the canyon bends towards -x as it goes (the tester looks towards +z), so only x = -1 and 0 lie in it for 5 blocks
+				new Slow(Use.FAULT_LINE, 60, (w, c) -> count(w, c.add(-1, -1, 3), c.add(0, -1, 7), Blocks.GRASS_BLOCK) == 0
 						&& w.getBlockState(new BlockPos(c.getX(), w.getBottomY() + 1, c.getZ() + 3)).isOf(Blocks.LAVA) ? null : "no canyon down to the lava"),
 				new Slow(Use.CARPET_BOMB, 160, (w, c) -> floorLeft(w, c) < 500 ? null : "the carpet bombing left " + floorLeft(w, c) + " of 625 floor blocks"),
 				new Slow(Use.CHUNK_INVERT, 40, (w, c) -> chunkFloor(w, c, 0, Blocks.GRASS_BLOCK) == 0 ? null : "the chunk was not turned upside down"),
 				new Slow(Use.CHUNK_LAUNCH, 40, (w, c) -> chunkFloor(w, c, 0, Blocks.GRASS_BLOCK) == 0 && chunkFloor(w, c, 96, Blocks.GRASS_BLOCK) > 0
-						? null : "the chunk did not fly 96 blocks up"),
+						? null : "the chunk did not fly 96 blocks up: " + chunkFloor(w, c, 0, Blocks.GRASS_BLOCK) + " grass blocks still on the floor, "
+								+ chunkFloor(w, c, 96, Blocks.GRASS_BLOCK) + " up in the sky; in front of the tester the floor is "
+								+ w.getBlockState(c.add(0, -1, 4)) + ", 96 blocks higher " + w.getBlockState(c.add(0, 95, 4))
+								+ ", the chunk is " + new ChunkPos(c.add(0, 0, 4)) + " and the tester stands in " + new ChunkPos(c)),
 				new Slow(Use.ANNIHILATE, 120, (w, c) -> w.getBlockState(c.add(0, -1, 4)).isAir() && w.getBlockState(new BlockPos(c.getX(), w.getBottomY(), c.getZ() + 4)).isAir()
 						? null : "the beam did not burn through to the void"),
 				new Slow(Use.EVENT_HORIZON, 440, (w, c) -> floorLeft(w, c) < 500 ? null : "the event horizon ate too little (" + floorLeft(w, c) + " of 625 left)"),
