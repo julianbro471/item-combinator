@@ -1,0 +1,384 @@
+package com.combinator.item;
+
+import java.util.ArrayList;
+import java.util.List;
+import net.minecraft.entity.effect.StatusEffect;
+import net.minecraft.registry.entry.RegistryEntry;
+
+/**
+ * The special abilities of one combined item. Every combined item has one Traits object.
+ * The ability code (package com.combinator.ability) only reads these fields.
+ */
+public final class Traits {
+	/** A status effect with a duration in ticks (20 ticks = 1 second) and an amplifier (0 = level I). */
+	public record Fx(RegistryEntry<StatusEffect> effect, int ticks, int amplifier) {
+	}
+
+	/**
+	 * One change to an attribute of the player.
+	 * id is the game's attribute id without "minecraft:", for example "generic.scale".
+	 * op: 0 = add the value, 1 = add value x base, 2 = multiply the total by (1 + value).
+	 */
+	public record Attr(String id, double value, int op) {
+	}
+
+	/** Where an item must be for its passive abilities to work. */
+	public enum Where {
+		/** In the main hand or off hand. */
+		HELD,
+		/** Anywhere in the hotbar, or in the off hand. */
+		HOTBAR,
+		/** Worn as armor. */
+		WORN
+	}
+
+	// --- mining ---
+	public int areaRadius;
+	public boolean areaCube;
+	public int veinLimit;
+	public int treeLimit;
+	public boolean smelt;
+	public boolean magnetDrops;
+	public boolean doubleOres;
+	/** Explosion power when a block is mined, 0 = none. */
+	public float mineBoom;
+
+	// --- right-click on a block ---
+	public boolean torch;
+	public int harvestRadius;
+	public int bonemealRadius;
+	/** Turns blocks and mobs into gold. */
+	public boolean midas;
+	/** Upgrades a block to a more valuable one. */
+	public boolean transmute;
+	/** Builds a house where it is used. */
+	public boolean house;
+
+	// --- combat ---
+	public int igniteSeconds;
+	public final List<Fx> hitEffects = new ArrayList<>();
+	public boolean freeze;
+	public float lifesteal;
+	public float lightningDamage;
+	public float blastRadius;
+	public float blastDamage;
+	public float sweepRadius;
+	public float sweepFraction;
+	public float knockUp;
+	public float knockback;
+	public float magicDamage;
+	public float headChance;
+	public int nuggets;
+	public int bonusXp;
+	public int strikeCooldown;
+	public boolean instakill;
+	public float chainRadius;
+	public float chainDamage;
+	/** Power of a real explosion on hit, 0 = none. */
+	public float boomHit;
+
+	// --- right-click in the air ---
+	public Use use = Use.NONE;
+	public Use sneakUse = Use.NONE;
+	public int range = 16;
+	public float power = 1.0F;
+	public int cooldown;
+	public int sneakCooldown;
+	public int cost;
+	public boolean consume;
+
+	// --- passive ---
+	public Where where = Where.HOTBAR;
+	public final List<Fx> passive = new ArrayList<>();
+	public boolean noFall;
+	public boolean mend;
+	public boolean flight;
+	public boolean boost;
+	public int pullRadius;
+	public int totemCooldown;
+	public float thornsDamage;
+	public int thornsFire;
+	public boolean hasThorns;
+	/** Attackers get an explosion in the face (no block damage), 0 = none. */
+	public float thornsBoom;
+	/** Changes to the player's body: size, health, reach and so on. */
+	public final List<Attr> attrs = new ArrayList<>();
+
+	// --- food ---
+	/** After eating, the attribute changes above last this many seconds. 0 = not a buff food. */
+	public int eatBuffSeconds;
+	/** After eating, the player is thrown upward with this speed. */
+	public float eatLaunch;
+
+	public Traits area(int radius, boolean cube) {
+		this.areaRadius = radius;
+		this.areaCube = cube;
+		return this;
+	}
+
+	public Traits vein(int limit) {
+		this.veinLimit = limit;
+		return this;
+	}
+
+	public Traits tree(int limit) {
+		this.treeLimit = limit;
+		return this;
+	}
+
+	public Traits smelt() {
+		this.smelt = true;
+		return this;
+	}
+
+	public Traits magnetDrops() {
+		this.magnetDrops = true;
+		return this;
+	}
+
+	public Traits doubleOres() {
+		this.doubleOres = true;
+		return this;
+	}
+
+	public Traits torch() {
+		this.torch = true;
+		return this;
+	}
+
+	public Traits harvest(int radius) {
+		this.harvestRadius = radius;
+		return this;
+	}
+
+	public Traits bonemeal(int radius) {
+		this.bonemealRadius = radius;
+		return this;
+	}
+
+	public Traits ignite(int seconds) {
+		this.igniteSeconds = seconds;
+		return this;
+	}
+
+	public Traits hit(RegistryEntry<StatusEffect> effect, int ticks, int amplifier) {
+		this.hitEffects.add(new Fx(effect, ticks, amplifier));
+		return this;
+	}
+
+	public Traits freeze() {
+		this.freeze = true;
+		return this;
+	}
+
+	public Traits lifesteal(float fraction) {
+		this.lifesteal = fraction;
+		return this;
+	}
+
+	public Traits lightning(float damage) {
+		this.lightningDamage = damage;
+		return this;
+	}
+
+	public Traits blast(float radius, float damage) {
+		this.blastRadius = radius;
+		this.blastDamage = damage;
+		return this;
+	}
+
+	public Traits sweep(float radius, float fraction) {
+		this.sweepRadius = radius;
+		this.sweepFraction = fraction;
+		return this;
+	}
+
+	public Traits knockUp(float strength) {
+		this.knockUp = strength;
+		return this;
+	}
+
+	public Traits knockback(float strength) {
+		this.knockback = strength;
+		return this;
+	}
+
+	public Traits magic(float damage) {
+		this.magicDamage = damage;
+		return this;
+	}
+
+	public Traits heads(float chance) {
+		this.headChance = chance;
+		return this;
+	}
+
+	public Traits nuggets(int max) {
+		this.nuggets = max;
+		return this;
+	}
+
+	public Traits bonusXp(int amount) {
+		this.bonusXp = amount;
+		return this;
+	}
+
+	public Traits strikeCooldown(int ticks) {
+		this.strikeCooldown = ticks;
+		return this;
+	}
+
+	public Traits use(Use use) {
+		this.use = use;
+		return this;
+	}
+
+	public Traits sneakUse(Use use, int cooldownTicks) {
+		this.sneakUse = use;
+		this.sneakCooldown = cooldownTicks;
+		return this;
+	}
+
+	public Traits range(int blocks) {
+		this.range = blocks;
+		return this;
+	}
+
+	public Traits power(float power) {
+		this.power = power;
+		return this;
+	}
+
+	public Traits cooldown(int ticks) {
+		this.cooldown = ticks;
+		return this;
+	}
+
+	public Traits cost(int durability) {
+		this.cost = durability;
+		return this;
+	}
+
+	public Traits consume() {
+		this.consume = true;
+		return this;
+	}
+
+	public Traits at(Where where) {
+		this.where = where;
+		return this;
+	}
+
+	public Traits fx(RegistryEntry<StatusEffect> effect, int amplifier) {
+		this.passive.add(new Fx(effect, 0, amplifier));
+		return this;
+	}
+
+	public Traits noFall() {
+		this.noFall = true;
+		return this;
+	}
+
+	public Traits mend() {
+		this.mend = true;
+		return this;
+	}
+
+	public Traits flight() {
+		this.flight = true;
+		return this;
+	}
+
+	public Traits boost() {
+		this.boost = true;
+		return this;
+	}
+
+	public Traits pull(int radius) {
+		this.pullRadius = radius;
+		return this;
+	}
+
+	public Traits totem(int cooldownTicks) {
+		this.totemCooldown = cooldownTicks;
+		return this;
+	}
+
+	public Traits thorns(float damage, int fireSeconds) {
+		this.hasThorns = true;
+		this.thornsDamage = damage;
+		this.thornsFire = fireSeconds;
+		return this;
+	}
+
+	public Traits mineBoom(float power) {
+		this.mineBoom = power;
+		return this;
+	}
+
+	public Traits midas() {
+		this.midas = true;
+		return this;
+	}
+
+	public Traits transmute() {
+		this.transmute = true;
+		return this;
+	}
+
+	public Traits house() {
+		this.house = true;
+		return this;
+	}
+
+	public Traits instakill() {
+		this.instakill = true;
+		return this;
+	}
+
+	public Traits chain(float radius, float damage) {
+		this.chainRadius = radius;
+		this.chainDamage = damage;
+		return this;
+	}
+
+	public Traits boomHit(float power) {
+		this.boomHit = power;
+		return this;
+	}
+
+	public Traits thornsBoom(float power) {
+		this.hasThorns = true;
+		this.thornsBoom = power;
+		return this;
+	}
+
+	public Traits attr(String id, double value, int op) {
+		this.attrs.add(new Attr(id, value, op));
+		return this;
+	}
+
+	public Traits eatBuff(int seconds) {
+		this.eatBuffSeconds = seconds;
+		return this;
+	}
+
+	public Traits eatLaunch(float speed) {
+		this.eatLaunch = speed;
+		return this;
+	}
+
+	public boolean hasMining() {
+		return this.areaRadius > 0 || this.veinLimit > 0 || this.treeLimit > 0 || this.smelt || this.magnetDrops || this.doubleOres || this.mineBoom > 0;
+	}
+
+	public boolean hasCombat() {
+		return this.igniteSeconds > 0 || !this.hitEffects.isEmpty() || this.freeze || this.lifesteal > 0 || this.lightningDamage > 0
+				|| this.blastRadius > 0 || this.sweepRadius > 0 || this.knockUp > 0 || this.knockback > 0 || this.magicDamage > 0
+				|| this.instakill || this.midas || this.chainRadius > 0 || this.boomHit > 0;
+	}
+
+	public boolean hasKillBonus() {
+		return this.headChance > 0 || this.nuggets > 0 || this.bonusXp > 0 || this.lifesteal > 0;
+	}
+}

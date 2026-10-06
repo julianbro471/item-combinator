@@ -1,0 +1,27 @@
+{
+	"schemaVersion": 1,
+	"id": "combinator",
+	"version": "${version}",
+	"name": "Item Combinator",
+	"description": "Adds the Combiner Table. Put two items in it to combine them into new tools, weapons, armor, gadgets, bombs and food. 170+ combinations, no tiers, no balance.",
+	"authors": [
+		"Item Combinator contributors"
+	],
+	"license": "MIT",
+	"icon": "assets/combinator/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.combinator.ItemCombinator"
+		],
+		"client": [
+			"com.combinator.client.ItemCombinatorClient"
+		]
+	},
+	"depends": {
+		"fabricloader": ">=0.15.11",
+		"minecraft": "1.21.1",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "combinator:block/combiner_table"
+    }
+  }
+}

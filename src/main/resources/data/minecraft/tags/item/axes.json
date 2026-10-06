@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "combinator:lumber_axe",
+    "combinator:ember_axe",
+    "combinator:battle_axe",
+    "combinator:executioner_axe",
+    "combinator:deforester",
+    "combinator:warlord_axe"
+  ]
+}

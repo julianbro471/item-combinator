@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "combinator:block/combiner_table_side",
+    "down": "combinator:block/combiner_table_bottom",
+    "up": "combinator:block/combiner_table_top",
+    "north": "combinator:block/combiner_table_front",
+    "south": "combinator:block/combiner_table_front",
+    "east": "combinator:block/combiner_table_side",
+    "west": "combinator:block/combiner_table_side"
+  }
+}

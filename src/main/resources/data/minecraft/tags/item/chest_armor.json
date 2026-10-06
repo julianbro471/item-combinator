@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "combinator:armored_elytra",
+    "combinator:rocket_elytra",
+    "combinator:seraph_wings",
+    "combinator:magma_chestplate",
+    "combinator:cactus_chestplate",
+    "combinator:inferno_thornmail"
+  ]
+}

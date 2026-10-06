@@ -1,0 +1,27 @@
+{
+  "replace": false,
+  "values": [
+    "combinator:blazing_sword",
+    "combinator:frost_blade",
+    "combinator:venom_blade",
+    "combinator:withering_blade",
+    "combinator:thunder_blade",
+    "combinator:vampire_blade",
+    "combinator:ender_blade",
+    "combinator:greatsword",
+    "combinator:gale_saber",
+    "combinator:midas_sword",
+    "combinator:creeper_cleaver",
+    "combinator:slime_bat",
+    "combinator:frostfire_blade",
+    "combinator:plague_blade",
+    "combinator:tempest_blade",
+    "combinator:bloodthirst_greatsword",
+    "combinator:void_blade",
+    "combinator:elemental_blade",
+    "combinator:soul_reaver",
+    "combinator:home_run_bat",
+    "combinator:beam_saber",
+    "combinator:omni_blade"
+  ]
+}

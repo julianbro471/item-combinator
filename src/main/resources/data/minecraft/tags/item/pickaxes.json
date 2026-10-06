@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "combinator:iron_hammer",
+    "combinator:excavator",
+    "combinator:molten_pickaxe",
+    "combinator:vein_pickaxe",
+    "combinator:prospector_pickaxe",
+    "combinator:torch_pickaxe",
+    "combinator:redstone_drill",
+    "combinator:paxel",
+    "combinator:magnetic_pickaxe",
+    "combinator:magma_excavator",
+    "combinator:motherlode_pickaxe",
+    "combinator:tunnel_bore",
+    "combinator:world_eater",
+    "combinator:terraformer",
+    "combinator:tnt_pickaxe",
+    "combinator:earthshaker"
+  ]
+}

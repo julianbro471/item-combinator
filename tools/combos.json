@@ -1,0 +1,5430 @@
+{
+  "combos": [
+    {
+      "a": "iron_pickaxe",
+      "b": "iron_pickaxe",
+      "a_name": "Iron Pickaxe",
+      "b_name": "Iron Pickaxe",
+      "result": "iron_hammer",
+      "result_name": "Iron Hammer",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "pick",
+      "tip": [
+        "Mines a 3x3 area.",
+        "Sneak to mine one block."
+      ],
+      "cat": "Mining tools",
+      "stats": "5 damage, 750 uses"
+    },
+    {
+      "a": "diamond_pickaxe",
+      "b": "diamond_pickaxe",
+      "a_name": "Diamond Pickaxe",
+      "b_name": "Diamond Pickaxe",
+      "result": "excavator",
+      "result_name": "Excavator",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "pick",
+      "tip": [
+        "Mines a 3x3x3 cube.",
+        "Sneak to mine one block."
+      ],
+      "cat": "Mining tools",
+      "stats": "6 damage, 4000 uses"
+    },
+    {
+      "a": "diamond_pickaxe",
+      "b": "blast_furnace",
+      "a_name": "Diamond Pickaxe",
+      "b_name": "Blast Furnace",
+      "result": "molten_pickaxe",
+      "result_name": "Molten Pickaxe",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "pick",
+      "tip": [
+        "Smelts everything it mines."
+      ],
+      "cat": "Mining tools",
+      "stats": "5 damage, 2000 uses"
+    },
+    {
+      "a": "diamond_pickaxe",
+      "b": "chain",
+      "a_name": "Diamond Pickaxe",
+      "b_name": "Chain",
+      "result": "vein_pickaxe",
+      "result_name": "Vein Pickaxe",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "pick",
+      "tip": [
+        "Mines a whole ore vein at once.",
+        "Sneak to mine one block."
+      ],
+      "cat": "Mining tools",
+      "stats": "5 damage, 2000 uses"
+    },
+    {
+      "a": "diamond_pickaxe",
+      "b": "rabbit_foot",
+      "a_name": "Diamond Pickaxe",
+      "b_name": "Rabbit's Foot",
+      "result": "prospector_pickaxe",
+      "result_name": "Prospector's Pickaxe",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "pick",
+      "tip": [
+        "Ores drop twice as much."
+      ],
+      "cat": "Mining tools",
+      "stats": "5 damage, 1800 uses"
+    },
+    {
+      "a": "iron_pickaxe",
+      "b": "lantern",
+      "a_name": "Iron Pickaxe",
+      "b_name": "Lantern",
+      "result": "torch_pickaxe",
+      "result_name": "Torchlight Pickaxe",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "pick",
+      "tip": [
+        "Right-click a block to place a torch.",
+        "Needs no torches. Costs 2 durability."
+      ],
+      "cat": "Mining tools",
+      "stats": "4 damage, 600 uses"
+    },
+    {
+      "a": "diamond_pickaxe",
+      "b": "redstone_block",
+      "a_name": "Diamond Pickaxe",
+      "b_name": "Block of Redstone",
+      "result": "redstone_drill",
+      "result_name": "Redstone Drill",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "pick",
+      "tip": [
+        "Mines very fast.",
+        "Gives Haste II while held."
+      ],
+      "cat": "Mining tools",
+      "stats": "4 damage, 3000 uses"
+    },
+    {
+      "a": "diamond_pickaxe",
+      "b": "diamond_axe",
+      "a_name": "Diamond Pickaxe",
+      "b_name": "Diamond Axe",
+      "result": "paxel",
+      "result_name": "Diamond Paxel",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "paxel",
+      "tip": [
+        "Pickaxe, axe, shovel and hoe in one."
+      ],
+      "cat": "Mining tools",
+      "stats": "7 damage, 3000 uses"
+    },
+    {
+      "a": "diamond_pickaxe",
+      "b": "diamond_shovel",
+      "a_name": "Diamond Pickaxe",
+      "b_name": "Diamond Shovel",
+      "result": "paxel",
+      "result_name": "Diamond Paxel",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "paxel",
+      "tip": [
+        "Pickaxe, axe, shovel and hoe in one."
+      ],
+      "cat": "Mining tools",
+      "stats": "7 damage, 3000 uses"
+    },
+    {
+      "a": "diamond_pickaxe",
+      "b": "magnet",
+      "a_name": "Diamond Pickaxe",
+      "b_name": "Magnet",
+      "result": "magnetic_pickaxe",
+      "result_name": "Magnetic Pickaxe",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": true,
+      "kind": "pick",
+      "tip": [
+        "Drops go straight into your inventory."
+      ],
+      "cat": "Mining tools",
+      "stats": "5 damage, 2500 uses"
+    },
+    {
+      "a": "excavator",
+      "b": "molten_pickaxe",
+      "a_name": "Excavator",
+      "b_name": "Molten Pickaxe",
+      "result": "magma_excavator",
+      "result_name": "Magma Excavator",
+      "count": 1,
+      "rar": 2,
+      "a_custom": true,
+      "b_custom": true,
+      "kind": "pick",
+      "tip": [
+        "Mines a 3x3x3 cube and smelts it.",
+        "Sneak to mine one block."
+      ],
+      "cat": "Mining tools",
+      "stats": "7 damage, 6000 uses"
+    },
+    {
+      "a": "vein_pickaxe",
+      "b": "prospector_pickaxe",
+      "a_name": "Vein Pickaxe",
+      "b_name": "Prospector's Pickaxe",
+      "result": "motherlode_pickaxe",
+      "result_name": "Motherlode Pickaxe",
+      "count": 1,
+      "rar": 2,
+      "a_custom": true,
+      "b_custom": true,
+      "kind": "pick",
+      "tip": [
+        "Mines a whole ore vein at once.",
+        "Ores drop twice as much."
+      ],
+      "cat": "Mining tools",
+      "stats": "6 damage, 4000 uses"
+    },
+    {
+      "a": "redstone_drill",
+      "b": "iron_hammer",
+      "a_name": "Redstone Drill",
+      "b_name": "Iron Hammer",
+      "result": "tunnel_bore",
+      "result_name": "Tunnel Bore",
+      "count": 1,
+      "rar": 2,
+      "a_custom": true,
+      "b_custom": true,
+      "kind": "pick",
+      "tip": [
+        "Mines a 3x3 tunnel very fast.",
+        "Gives Haste II while held."
+      ],
+      "cat": "Mining tools",
+      "stats": "6 damage, 6000 uses"
+    },
+    {
+      "a": "magma_excavator",
+      "b": "motherlode_pickaxe",
+      "a_name": "Magma Excavator",
+      "b_name": "Motherlode Pickaxe",
+      "result": "world_eater",
+      "result_name": "World Eater",
+      "count": 1,
+      "rar": 3,
+      "a_custom": true,
+      "b_custom": true,
+      "kind": "paxel",
+      "tip": [
+        "Mines a 9x9x9 cube of any block.",
+        "Smelts drops and doubles ores.",
+        "Drops go into your inventory.",
+        "Sneak to mine one block."
+      ],
+      "cat": "Mining tools",
+      "stats": "9 damage, 12000 uses"
+    },
+    {
+      "a": "diamond_axe",
+      "b": "diamond_axe",
+      "a_name": "Diamond Axe",
+      "b_name": "Diamond Axe",
+      "result": "lumber_axe",
+      "result_name": "Lumber Axe",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "axe",
+      "tip": [
+        "Chops down the whole tree.",
+        "Sneak to chop one log."
+      ],
+      "cat": "Axes",
+      "stats": "9 damage, 3000 uses"
+    },
+    {
+      "a": "diamond_axe",
+      "b": "blaze_powder",
+      "a_name": "Diamond Axe",
+      "b_name": "Blaze Powder",
+      "result": "ember_axe",
+      "result_name": "Ember Axe",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "axe",
+      "tip": [
+        "Logs drop as charcoal.",
+        "Sets enemies on fire."
+      ],
+      "cat": "Axes",
+      "stats": "9 damage, 1800 uses"
+    },
+    {
+      "a": "diamond_axe",
+      "b": "diamond_sword",
+      "a_name": "Diamond Axe",
+      "b_name": "Diamond Sword",
+      "result": "battle_axe",
+      "result_name": "Battle Axe",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "axe",
+      "tip": [
+        "Hits also damage nearby enemies."
+      ],
+      "cat": "Axes",
+      "stats": "12 damage, 2400 uses"
+    },
+    {
+      "a": "diamond_axe",
+      "b": "skeleton_skull",
+      "a_name": "Diamond Axe",
+      "b_name": "Skeleton Skull",
+      "result": "executioner_axe",
+      "result_name": "Executioner's Axe",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "axe",
+      "tip": [
+        "Slain mobs may drop their head.",
+        "Kills give extra XP."
+      ],
+      "cat": "Axes",
+      "stats": "10 damage, 2000 uses"
+    },
+    {
+      "a": "lumber_axe",
+      "b": "magnet",
+      "a_name": "Lumber Axe",
+      "b_name": "Magnet",
+      "result": "deforester",
+      "result_name": "Deforester",
+      "count": 1,
+      "rar": 2,
+      "a_custom": true,
+      "b_custom": true,
+      "kind": "axe",
+      "tip": [
+        "Chops down the whole tree.",
+        "Logs go straight into your inventory."
+      ],
+      "cat": "Axes",
+      "stats": "10 damage, 6000 uses"
+    },
+    {
+      "a": "battle_axe",
+      "b": "executioner_axe",
+      "a_name": "Battle Axe",
+      "b_name": "Executioner's Axe",
+      "result": "warlord_axe",
+      "result_name": "Warlord's Axe",
+      "count": 1,
+      "rar": 2,
+      "a_custom": true,
+      "b_custom": true,
+      "kind": "axe",
+      "tip": [
+        "Hits also damage nearby enemies.",
+        "Slain mobs often drop their head."
+      ],
+      "cat": "Axes",
+      "stats": "15 damage, 5000 uses"
+    },
+    {
+      "a": "diamond_shovel",
+      "b": "diamond_shovel",
+      "a_name": "Diamond Shovel",
+      "b_name": "Diamond Shovel",
+      "result": "trench_shovel",
+      "result_name": "Trench Shovel",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "shovel",
+      "tip": [
+        "Digs a 3x3x3 cube.",
+        "Sneak to dig one block."
+      ],
+      "cat": "Shovels",
+      "stats": "6 damage, 4000 uses"
+    },
+    {
+      "a": "diamond_shovel",
+      "b": "furnace",
+      "a_name": "Diamond Shovel",
+      "b_name": "Furnace",
+      "result": "kiln_shovel",
+      "result_name": "Kiln Shovel",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "shovel",
+      "tip": [
+        "Smelts what it digs.",
+        "Sand becomes glass, clay becomes bricks."
+      ],
+      "cat": "Shovels",
+      "stats": "5.5 damage, 2000 uses"
+    },
+    {
+      "a": "excavator",
+      "b": "trench_shovel",
+      "a_name": "Excavator",
+      "b_name": "Trench Shovel",
+      "result": "terraformer",
+      "result_name": "Terraformer",
+      "count": 1,
+      "rar": 2,
+      "a_custom": true,
+      "b_custom": true,
+      "kind": "paxel",
+      "tip": [
+        "Digs a 3x3x3 cube of any block.",
+        "Sneak to dig one block."
+      ],
+      "cat": "Shovels",
+      "stats": "7 damage, 8000 uses"
+    },
+    {
+      "a": "diamond_hoe",
+      "b": "diamond_hoe",
+      "a_name": "Diamond Hoe",
+      "b_name": "Diamond Hoe",
+      "result": "harvester_hoe",
+      "result_name": "Harvester Hoe",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "hoe",
+      "tip": [
+        "Right-click a crop to harvest and",
+        "replant ripe crops in a 5x5 area."
+      ],
+      "cat": "Farming",
+      "stats": "1 damage, 2500 uses"
+    },
+    {
+      "a": "diamond_hoe",
+      "b": "bone_block",
+      "a_name": "Diamond Hoe",
+      "b_name": "Bone Block",
+      "result": "verdant_staff",
+      "result_name": "Verdant Staff",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click plants to grow them.",
+        "Works on a 3x3 area."
+      ],
+      "cat": "Farming",
+      "stats": "256 uses"
+    },
+    {
+      "a": "harvester_hoe",
+      "b": "verdant_staff",
+      "a_name": "Harvester Hoe",
+      "b_name": "Verdant Staff",
+      "result": "farmers_scythe",
+      "result_name": "Farmer's Scythe",
+      "count": 1,
+      "rar": 2,
+      "a_custom": true,
+      "b_custom": true,
+      "kind": "hoe",
+      "tip": [
+        "Right-click a crop to harvest and",
+        "replant ripe crops in a 9x9 area.",
+        "Crops go into your inventory."
+      ],
+      "cat": "Farming",
+      "stats": "6 damage, 5000 uses"
+    },
+    {
+      "a": "diamond_sword",
+      "b": "blaze_rod",
+      "a_name": "Diamond Sword",
+      "b_name": "Blaze Rod",
+      "result": "blazing_sword",
+      "result_name": "Blazing Sword",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "sword",
+      "tip": [
+        "Sets enemies on fire."
+      ],
+      "cat": "Swords",
+      "stats": "8 damage, 1800 uses"
+    },
+    {
+      "a": "diamond_sword",
+      "b": "blue_ice",
+      "a_name": "Diamond Sword",
+      "b_name": "Blue Ice",
+      "result": "frost_blade",
+      "result_name": "Frost Blade",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "sword",
+      "tip": [
+        "Freezes and slows enemies."
+      ],
+      "cat": "Swords",
+      "stats": "8 damage, 1800 uses"
+    },
+    {
+      "a": "diamond_sword",
+      "b": "spider_eye",
+      "a_name": "Diamond Sword",
+      "b_name": "Spider Eye",
+      "result": "venom_blade",
+      "result_name": "Venom Blade",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "sword",
+      "tip": [
+        "Poisons enemies."
+      ],
+      "cat": "Swords",
+      "stats": "7 damage, 1800 uses"
+    },
+    {
+      "a": "diamond_sword",
+      "b": "wither_skeleton_skull",
+      "a_name": "Diamond Sword",
+      "b_name": "Wither Skeleton Skull",
+      "result": "withering_blade",
+      "result_name": "Withering Blade",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "sword",
+      "tip": [
+        "Withers enemies."
+      ],
+      "cat": "Swords",
+      "stats": "8 damage, 1800 uses"
+    },
+    {
+      "a": "diamond_sword",
+      "b": "lightning_rod",
+      "a_name": "Diamond Sword",
+      "b_name": "Lightning Rod",
+      "result": "thunder_blade",
+      "result_name": "Thunder Blade",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "sword",
+      "tip": [
+        "Calls lightning on the enemy you hit."
+      ],
+      "cat": "Swords",
+      "stats": "8 damage, 1800 uses"
+    },
+    {
+      "a": "diamond_sword",
+      "b": "ghast_tear",
+      "a_name": "Diamond Sword",
+      "b_name": "Ghast Tear",
+      "result": "vampire_blade",
+      "result_name": "Vampire Blade",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "sword",
+      "tip": [
+        "Heals you when you hit enemies."
+      ],
+      "cat": "Swords",
+      "stats": "7 damage, 1800 uses"
+    },
+    {
+      "a": "diamond_sword",
+      "b": "ender_pearl",
+      "a_name": "Diamond Sword",
+      "b_name": "Ender Pearl",
+      "result": "ender_blade",
+      "result_name": "Ender Blade",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "sword",
+      "tip": [
+        "Right-click to teleport 12 blocks ahead."
+      ],
+      "cat": "Swords",
+      "stats": "8 damage, 1800 uses"
+    },
+    {
+      "a": "diamond_sword",
+      "b": "diamond_sword",
+      "a_name": "Diamond Sword",
+      "b_name": "Diamond Sword",
+      "result": "greatsword",
+      "result_name": "Greatsword",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "sword",
+      "tip": [
+        "Slow but very strong.",
+        "Hits also damage nearby enemies."
+      ],
+      "cat": "Swords",
+      "stats": "12 damage, 3000 uses"
+    },
+    {
+      "a": "diamond_sword",
+      "b": "breeze_rod",
+      "a_name": "Diamond Sword",
+      "b_name": "Breeze Rod",
+      "result": "gale_saber",
+      "result_name": "Gale Saber",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "sword",
+      "tip": [
+        "Very fast.",
+        "Launches enemies into the air."
+      ],
+      "cat": "Swords",
+      "stats": "7 damage, 1800 uses"
+    },
+    {
+      "a": "golden_sword",
+      "b": "gold_block",
+      "a_name": "Golden Sword",
+      "b_name": "Block of Gold",
+      "result": "midas_sword",
+      "result_name": "Midas Sword",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "sword",
+      "tip": [
+        "Slain mobs drop gold nuggets.",
+        "Kills give extra XP."
+      ],
+      "cat": "Swords",
+      "stats": "7 damage, 1200 uses"
+    },
+    {
+      "a": "diamond_sword",
+      "b": "tnt",
+      "a_name": "Diamond Sword",
+      "b_name": "TNT",
+      "result": "creeper_cleaver",
+      "result_name": "Creeper Cleaver",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "sword",
+      "tip": [
+        "Every hit is a real explosion.",
+        "It breaks blocks. It does not hurt you."
+      ],
+      "cat": "Swords",
+      "stats": "8 damage, 1800 uses"
+    },
+    {
+      "a": "wooden_sword",
+      "b": "slime_block",
+      "a_name": "Wooden Sword",
+      "b_name": "Slime Block",
+      "result": "slime_bat",
+      "result_name": "Slime Bat",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "sword",
+      "tip": [
+        "Sends enemies flying."
+      ],
+      "cat": "Swords",
+      "stats": "3 damage, 400 uses"
+    },
+    {
+      "a": "blazing_sword",
+      "b": "frost_blade",
+      "a_name": "Blazing Sword",
+      "b_name": "Frost Blade",
+      "result": "frostfire_blade",
+      "result_name": "Frostfire Blade",
+      "count": 1,
+      "rar": 2,
+      "a_custom": true,
+      "b_custom": true,
+      "kind": "sword",
+      "tip": [
+        "Burns, freezes and slows enemies.",
+        "Deals extra magic damage."
+      ],
+      "cat": "Swords",
+      "stats": "10 damage, 4000 uses"
+    },
+    {
+      "a": "venom_blade",
+      "b": "withering_blade",
+      "a_name": "Venom Blade",
+      "b_name": "Withering Blade",
+      "result": "plague_blade",
+      "result_name": "Plague Blade",
+      "count": 1,
+      "rar": 2,
+      "a_custom": true,
+      "b_custom": true,
+      "kind": "sword",
+      "tip": [
+        "Poisons, withers and weakens enemies."
+      ],
+      "cat": "Swords",
+      "stats": "9 damage, 4000 uses"
+    },
+    {
+      "a": "thunder_blade",
+      "b": "gale_saber",
+      "a_name": "Thunder Blade",
+      "b_name": "Gale Saber",
+      "result": "tempest_blade",
+      "result_name": "Tempest Blade",
+      "count": 1,
+      "rar": 2,
+      "a_custom": true,
+      "b_custom": true,
+      "kind": "sword",
+      "tip": [
+        "Calls lightning on the enemy you hit.",
+        "The lightning jumps to nearby enemies.",
+        "Launches enemies into the air."
+      ],
+      "cat": "Swords",
+      "stats": "10 damage, 4000 uses"
+    },
+    {
+      "a": "vampire_blade",
+      "b": "greatsword",
+      "a_name": "Vampire Blade",
+      "b_name": "Greatsword",
+      "result": "bloodthirst_greatsword",
+      "result_name": "Bloodthirst Greatsword",
+      "count": 1,
+      "rar": 2,
+      "a_custom": true,
+      "b_custom": true,
+      "kind": "sword",
+      "tip": [
+        "Heals you when you hit enemies.",
+        "Hits also damage nearby enemies."
+      ],
+      "cat": "Swords",
+      "stats": "14 damage, 5000 uses"
+    },
+    {
+      "a": "ender_blade",
+      "b": "echo_shard",
+      "a_name": "Ender Blade",
+      "b_name": "Echo Shard",
+      "result": "void_blade",
+      "result_name": "Void Blade",
+      "count": 1,
+      "rar": 2,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "sword",
+      "tip": [
+        "Right-click to teleport 28 blocks ahead.",
+        "Deals extra magic damage."
+      ],
+      "cat": "Swords",
+      "stats": "10 damage, 4000 uses"
+    },
+    {
+      "a": "frostfire_blade",
+      "b": "tempest_blade",
+      "a_name": "Frostfire Blade",
+      "b_name": "Tempest Blade",
+      "result": "elemental_blade",
+      "result_name": "Blade of the Elements",
+      "count": 1,
+      "rar": 3,
+      "a_custom": true,
+      "b_custom": true,
+      "kind": "sword",
+      "tip": [
+        "Burns, freezes and slows enemies.",
+        "Chain lightning. Launches enemies.",
+        "Right-click: fires a burning beam."
+      ],
+      "cat": "Swords",
+      "stats": "14 damage, 9000 uses"
+    },
+    {
+      "a": "plague_blade",
+      "b": "bloodthirst_greatsword",
+      "a_name": "Plague Blade",
+      "b_name": "Bloodthirst Greatsword",
+      "result": "soul_reaver",
+      "result_name": "Soul Reaver",
+      "count": 1,
+      "rar": 3,
+      "a_custom": true,
+      "b_custom": true,
+      "kind": "sword",
+      "tip": [
+        "Poisons, withers and weakens enemies.",
+        "Heals you for half the damage dealt.",
+        "Hits also damage nearby enemies."
+      ],
+      "cat": "Swords",
+      "stats": "17 damage, 9000 uses"
+    },
+    {
+      "a": "iron_ingot",
+      "b": "redstone",
+      "a_name": "Iron Ingot",
+      "b_name": "Redstone Dust",
+      "result": "magnet",
+      "result_name": "Magnet",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Pulls nearby items and XP to you.",
+        "Keep it in your hotbar or off hand."
+      ],
+      "cat": "Wands, staffs and charms",
+      "stats": ""
+    },
+    {
+      "a": "blaze_rod",
+      "b": "fire_charge",
+      "a_name": "Blaze Rod",
+      "b_name": "Fire Charge",
+      "result": "fire_wand",
+      "result_name": "Wand of Fire",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click to shoot a fireball."
+      ],
+      "cat": "Wands, staffs and charms",
+      "stats": "200 uses"
+    },
+    {
+      "a": "stick",
+      "b": "blue_ice",
+      "a_name": "Stick",
+      "b_name": "Blue Ice",
+      "result": "frost_wand",
+      "result_name": "Wand of Frost",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click to freeze and slow",
+        "all enemies in front of you."
+      ],
+      "cat": "Wands, staffs and charms",
+      "stats": "200 uses"
+    },
+    {
+      "a": "lightning_rod",
+      "b": "blaze_rod",
+      "a_name": "Lightning Rod",
+      "b_name": "Blaze Rod",
+      "result": "storm_staff",
+      "result_name": "Staff of Storms",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click to call lightning",
+        "where you look."
+      ],
+      "cat": "Wands, staffs and charms",
+      "stats": "150 uses"
+    },
+    {
+      "a": "end_rod",
+      "b": "ender_pearl",
+      "a_name": "End Rod",
+      "b_name": "Ender Pearl",
+      "result": "warp_staff",
+      "result_name": "Warp Staff",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click to teleport where you look.",
+        "Range: 32 blocks."
+      ],
+      "cat": "Wands, staffs and charms",
+      "stats": "250 uses"
+    },
+    {
+      "a": "breeze_rod",
+      "b": "feather",
+      "a_name": "Breeze Rod",
+      "b_name": "Feather",
+      "result": "gust_staff",
+      "result_name": "Gust Staff",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click to leap where you look.",
+        "No fall damage while in your hotbar."
+      ],
+      "cat": "Wands, staffs and charms",
+      "stats": "300 uses"
+    },
+    {
+      "a": "blaze_rod",
+      "b": "glistering_melon_slice",
+      "a_name": "Blaze Rod",
+      "b_name": "Glistering Melon Slice",
+      "result": "healing_staff",
+      "result_name": "Staff of Healing",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click to heal yourself.",
+        "15 second cooldown."
+      ],
+      "cat": "Wands, staffs and charms",
+      "stats": "64 uses"
+    },
+    {
+      "a": "compass",
+      "b": "ender_pearl",
+      "a_name": "Compass",
+      "b_name": "Ender Pearl",
+      "result": "recall_compass",
+      "result_name": "Recall Compass",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click to teleport to your",
+        "spawn point. 30 second cooldown."
+      ],
+      "cat": "Wands, staffs and charms",
+      "stats": "32 uses"
+    },
+    {
+      "a": "gunpowder",
+      "b": "paper",
+      "a_name": "Gunpowder",
+      "b_name": "Paper",
+      "result": "dynamite",
+      "result_name": "Dynamite",
+      "count": 2,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click to throw.",
+        "Explodes like TNT after 2 seconds."
+      ],
+      "cat": "Wands, staffs and charms",
+      "stats": ""
+    },
+    {
+      "a": "ender_chest",
+      "b": "leather",
+      "a_name": "Ender Chest",
+      "b_name": "Leather",
+      "result": "ender_pouch",
+      "result_name": "Ender Pouch",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click to open your",
+        "Ender Chest anywhere."
+      ],
+      "cat": "Wands, staffs and charms",
+      "stats": ""
+    },
+    {
+      "a": "crafting_table",
+      "b": "leather",
+      "a_name": "Crafting Table",
+      "b_name": "Leather",
+      "result": "pocket_workbench",
+      "result_name": "Pocket Workbench",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click to open a",
+        "crafting grid anywhere."
+      ],
+      "cat": "Wands, staffs and charms",
+      "stats": ""
+    },
+    {
+      "a": "anvil",
+      "b": "diamond",
+      "a_name": "Anvil",
+      "b_name": "Diamond",
+      "result": "mending_charm",
+      "result_name": "Mending Charm",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Slowly repairs all your items.",
+        "Keep it in your hotbar or off hand."
+      ],
+      "cat": "Wands, staffs and charms",
+      "stats": ""
+    },
+    {
+      "a": "feather",
+      "b": "phantom_membrane",
+      "a_name": "Feather",
+      "b_name": "Phantom Membrane",
+      "result": "feather_charm",
+      "result_name": "Feather Charm",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "No fall damage.",
+        "Keep it in your hotbar or off hand."
+      ],
+      "cat": "Wands, staffs and charms",
+      "stats": ""
+    },
+    {
+      "a": "obsidian",
+      "b": "magma_cream",
+      "a_name": "Obsidian",
+      "b_name": "Magma Cream",
+      "result": "obsidian_charm",
+      "result_name": "Obsidian Charm",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Fire and lava do not hurt you.",
+        "Keep it in your hotbar or off hand."
+      ],
+      "cat": "Wands, staffs and charms",
+      "stats": ""
+    },
+    {
+      "a": "nautilus_shell",
+      "b": "prismarine_crystals",
+      "a_name": "Nautilus Shell",
+      "b_name": "Prismarine Crystals",
+      "result": "tide_charm",
+      "result_name": "Tide Charm",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Breathe and swim fast underwater.",
+        "Keep it in your hotbar or off hand."
+      ],
+      "cat": "Wands, staffs and charms",
+      "stats": ""
+    },
+    {
+      "a": "golden_pickaxe",
+      "b": "redstone_block",
+      "a_name": "Golden Pickaxe",
+      "b_name": "Block of Redstone",
+      "result": "haste_charm",
+      "result_name": "Haste Charm",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Gives Haste II.",
+        "Keep it in your hotbar or off hand."
+      ],
+      "cat": "Wands, staffs and charms",
+      "stats": ""
+    },
+    {
+      "a": "sugar",
+      "b": "rabbit_foot",
+      "a_name": "Sugar",
+      "b_name": "Rabbit's Foot",
+      "result": "swift_charm",
+      "result_name": "Swift Charm",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Gives Speed II.",
+        "Keep it in your hotbar or off hand."
+      ],
+      "cat": "Wands, staffs and charms",
+      "stats": ""
+    },
+    {
+      "a": "spyglass",
+      "b": "ender_eye",
+      "a_name": "Spyglass",
+      "b_name": "Eye of Ender",
+      "result": "seer_spyglass",
+      "result_name": "Seer's Spyglass",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click to make nearby mobs",
+        "glow through walls for 15 seconds."
+      ],
+      "cat": "Wands, staffs and charms",
+      "stats": "100 uses"
+    },
+    {
+      "a": "totem_of_undying",
+      "b": "nether_star",
+      "a_name": "Totem of Undying",
+      "b_name": "Nether Star",
+      "result": "eternal_totem",
+      "result_name": "Eternal Totem",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Saves you from death. Is not used up.",
+        "5 minute cooldown.",
+        "Keep it in your hotbar or off hand."
+      ],
+      "cat": "Wands, staffs and charms",
+      "stats": ""
+    },
+    {
+      "a": "clock",
+      "b": "diamond",
+      "a_name": "Clock",
+      "b_name": "Diamond",
+      "result": "chrono_clock",
+      "result_name": "Chrono Clock",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: skip to morning.",
+        "Sneak + right-click: skip to night."
+      ],
+      "cat": "Wands, staffs and charms",
+      "stats": "64 uses"
+    },
+    {
+      "a": "feather_charm",
+      "b": "swift_charm",
+      "a_name": "Feather Charm",
+      "b_name": "Swift Charm",
+      "result": "explorer_charm",
+      "result_name": "Explorer's Charm",
+      "count": 1,
+      "rar": 2,
+      "a_custom": true,
+      "b_custom": true,
+      "kind": "gadget",
+      "tip": [
+        "Speed II, Jump Boost II, no fall damage.",
+        "Keep it in your hotbar or off hand."
+      ],
+      "cat": "Wands, staffs and charms",
+      "stats": ""
+    },
+    {
+      "a": "obsidian_charm",
+      "b": "tide_charm",
+      "a_name": "Obsidian Charm",
+      "b_name": "Tide Charm",
+      "result": "elemental_charm",
+      "result_name": "Elemental Charm",
+      "count": 1,
+      "rar": 2,
+      "a_custom": true,
+      "b_custom": true,
+      "kind": "gadget",
+      "tip": [
+        "Immune to fire. Breathe underwater.",
+        "Swim fast. Resistance I.",
+        "Keep it in your hotbar or off hand."
+      ],
+      "cat": "Wands, staffs and charms",
+      "stats": ""
+    },
+    {
+      "a": "fire_wand",
+      "b": "tnt",
+      "a_name": "Wand of Fire",
+      "b_name": "TNT",
+      "result": "inferno_staff",
+      "result_name": "Inferno Staff",
+      "count": 1,
+      "rar": 2,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click to shoot an",
+        "exploding fireball."
+      ],
+      "cat": "Wands, staffs and charms",
+      "stats": "300 uses"
+    },
+    {
+      "a": "storm_staff",
+      "b": "gust_staff",
+      "a_name": "Staff of Storms",
+      "b_name": "Gust Staff",
+      "result": "tempest_staff",
+      "result_name": "Tempest Staff",
+      "count": 1,
+      "rar": 2,
+      "a_custom": true,
+      "b_custom": true,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: lightning storm where you look.",
+        "Sneak + right-click: leap.",
+        "No fall damage while in your hotbar."
+      ],
+      "cat": "Wands, staffs and charms",
+      "stats": "400 uses"
+    },
+    {
+      "a": "warp_staff",
+      "b": "recall_compass",
+      "a_name": "Warp Staff",
+      "b_name": "Recall Compass",
+      "result": "rift_staff",
+      "result_name": "Rift Staff",
+      "count": 1,
+      "rar": 2,
+      "a_custom": true,
+      "b_custom": true,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: teleport up to 64 blocks.",
+        "Sneak + right-click: go to your spawn point."
+      ],
+      "cat": "Wands, staffs and charms",
+      "stats": "500 uses"
+    },
+    {
+      "a": "explorer_charm",
+      "b": "elemental_charm",
+      "a_name": "Explorer's Charm",
+      "b_name": "Elemental Charm",
+      "result": "ancient_charm",
+      "result_name": "Charm of the Ancients",
+      "count": 1,
+      "rar": 3,
+      "a_custom": true,
+      "b_custom": true,
+      "kind": "gadget",
+      "tip": [
+        "Speed II, Jump Boost II, Haste II.",
+        "Night Vision. Immune to fire.",
+        "Breathe underwater. No fall damage.",
+        "+10 hearts. Hotbar or off hand."
+      ],
+      "cat": "Wands, staffs and charms",
+      "stats": ""
+    },
+    {
+      "a": "inferno_staff",
+      "b": "tempest_staff",
+      "a_name": "Inferno Staff",
+      "b_name": "Tempest Staff",
+      "result": "archmage_staff",
+      "result_name": "Staff of the Archmage",
+      "count": 1,
+      "rar": 3,
+      "a_custom": true,
+      "b_custom": true,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: a huge exploding fireball.",
+        "Sneak + right-click: meteor shower",
+        "where you look. No fall damage."
+      ],
+      "cat": "Wands, staffs and charms",
+      "stats": "1500 uses"
+    },
+    {
+      "a": "elytra",
+      "b": "diamond_chestplate",
+      "a_name": "Elytra",
+      "b_name": "Diamond Chestplate",
+      "result": "armored_elytra",
+      "result_name": "Armored Elytra",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "wings",
+      "tip": [
+        "An elytra with the protection",
+        "of a diamond chestplate."
+      ],
+      "cat": "Wings",
+      "stats": "8 armor, 900 uses"
+    },
+    {
+      "a": "armored_elytra",
+      "b": "firework_rocket",
+      "a_name": "Armored Elytra",
+      "b_name": "Firework Rocket",
+      "result": "rocket_elytra",
+      "result_name": "Rocket Elytra",
+      "count": 1,
+      "rar": 2,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "wings",
+      "tip": [
+        "Armored elytra with a booster.",
+        "Hold sneak while gliding to speed up."
+      ],
+      "cat": "Wings",
+      "stats": "8 armor, 1500 uses"
+    },
+    {
+      "a": "rocket_elytra",
+      "b": "nether_star",
+      "a_name": "Rocket Elytra",
+      "b_name": "Nether Star",
+      "result": "seraph_wings",
+      "result_name": "Seraph Wings",
+      "count": 1,
+      "rar": 3,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "wings",
+      "tip": [
+        "Lets you fly like in creative mode.",
+        "Hold sneak while gliding to speed up."
+      ],
+      "cat": "Wings",
+      "stats": "8 armor, 4000 uses"
+    },
+    {
+      "a": "iron_helmet",
+      "b": "lantern",
+      "a_name": "Iron Helmet",
+      "b_name": "Lantern",
+      "result": "miner_helmet",
+      "result_name": "Miner's Helmet",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "armor",
+      "tip": [
+        "Night Vision while worn."
+      ],
+      "cat": "Armor",
+      "stats": "2 armor, 240 uses"
+    },
+    {
+      "a": "iron_helmet",
+      "b": "glass",
+      "a_name": "Iron Helmet",
+      "b_name": "Glass",
+      "result": "diving_helmet",
+      "result_name": "Diving Helmet",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "armor",
+      "tip": [
+        "Breathe underwater while worn."
+      ],
+      "cat": "Armor",
+      "stats": "2 armor, 240 uses"
+    },
+    {
+      "a": "diamond_chestplate",
+      "b": "magma_block",
+      "a_name": "Diamond Chestplate",
+      "b_name": "Magma Block",
+      "result": "magma_chestplate",
+      "result_name": "Magma Chestplate",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "armor",
+      "tip": [
+        "Immune to fire while worn.",
+        "Sets attackers on fire."
+      ],
+      "cat": "Armor",
+      "stats": "8 armor, 600 uses"
+    },
+    {
+      "a": "iron_chestplate",
+      "b": "cactus",
+      "a_name": "Iron Chestplate",
+      "b_name": "Cactus",
+      "result": "cactus_chestplate",
+      "result_name": "Cactus Chestplate",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "armor",
+      "tip": [
+        "Hurts anything that attacks you."
+      ],
+      "cat": "Armor",
+      "stats": "6 armor, 300 uses"
+    },
+    {
+      "a": "diamond_leggings",
+      "b": "sugar",
+      "a_name": "Diamond Leggings",
+      "b_name": "Sugar",
+      "result": "swift_leggings",
+      "result_name": "Swift Leggings",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "armor",
+      "tip": [
+        "Speed II while worn."
+      ],
+      "cat": "Armor",
+      "stats": "6 armor, 560 uses"
+    },
+    {
+      "a": "iron_boots",
+      "b": "slime_block",
+      "a_name": "Iron Boots",
+      "b_name": "Slime Block",
+      "result": "spring_boots",
+      "result_name": "Spring Boots",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "armor",
+      "tip": [
+        "Jump Boost III while worn.",
+        "No fall damage."
+      ],
+      "cat": "Armor",
+      "stats": "2 armor, 260 uses"
+    },
+    {
+      "a": "miner_helmet",
+      "b": "diving_helmet",
+      "a_name": "Miner's Helmet",
+      "b_name": "Diving Helmet",
+      "result": "spelunker_helmet",
+      "result_name": "Spelunker's Helmet",
+      "count": 1,
+      "rar": 2,
+      "a_custom": true,
+      "b_custom": true,
+      "kind": "armor",
+      "tip": [
+        "Night Vision, Haste I and",
+        "underwater breathing while worn."
+      ],
+      "cat": "Armor",
+      "stats": "3 armor, 500 uses"
+    },
+    {
+      "a": "magma_chestplate",
+      "b": "cactus_chestplate",
+      "a_name": "Magma Chestplate",
+      "b_name": "Cactus Chestplate",
+      "result": "inferno_thornmail",
+      "result_name": "Inferno Thornmail",
+      "count": 1,
+      "rar": 2,
+      "a_custom": true,
+      "b_custom": true,
+      "kind": "armor",
+      "tip": [
+        "Immune to fire. Resistance I.",
+        "Attackers burn and explode.",
+        "The explosion breaks no blocks."
+      ],
+      "cat": "Armor",
+      "stats": "9 armor, 900 uses"
+    },
+    {
+      "a": "spring_boots",
+      "b": "swift_charm",
+      "a_name": "Spring Boots",
+      "b_name": "Swift Charm",
+      "result": "hermes_boots",
+      "result_name": "Hermes Boots",
+      "count": 1,
+      "rar": 2,
+      "a_custom": true,
+      "b_custom": true,
+      "kind": "armor",
+      "tip": [
+        "Speed III and Jump Boost III.",
+        "No fall damage."
+      ],
+      "cat": "Armor",
+      "stats": "3 armor, 600 uses"
+    },
+    {
+      "a": "cooked_beef",
+      "b": "gold_ingot",
+      "a_name": "Steak",
+      "b_name": "Gold Ingot",
+      "result": "golden_steak",
+      "result_name": "Golden Steak",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "food",
+      "tip": [
+        "Absorption and Regeneration."
+      ],
+      "cat": "Food",
+      "stats": "10 hunger"
+    },
+    {
+      "a": "bread",
+      "b": "honey_bottle",
+      "a_name": "Bread",
+      "b_name": "Honey Bottle",
+      "result": "honey_toast",
+      "result_name": "Honey Toast",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "food",
+      "tip": [
+        "Speed I for 30 seconds."
+      ],
+      "cat": "Food",
+      "stats": "8 hunger"
+    },
+    {
+      "a": "pumpkin_pie",
+      "b": "glow_berries",
+      "a_name": "Pumpkin Pie",
+      "b_name": "Glow Berries",
+      "result": "miners_pie",
+      "result_name": "Miner's Pie",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "food",
+      "tip": [
+        "Night Vision and Haste I for 3 minutes."
+      ],
+      "cat": "Food",
+      "stats": "9 hunger"
+    },
+    {
+      "a": "mushroom_stew",
+      "b": "blaze_powder",
+      "a_name": "Mushroom Stew",
+      "b_name": "Blaze Powder",
+      "result": "blazing_stew",
+      "result_name": "Blazing Stew",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "food",
+      "tip": [
+        "Fire Resistance for 3 minutes.",
+        "Strength I for 45 seconds."
+      ],
+      "cat": "Food",
+      "stats": "8 hunger"
+    },
+    {
+      "a": "golden_carrot",
+      "b": "glowstone_dust",
+      "a_name": "Golden Carrot",
+      "b_name": "Glowstone Dust",
+      "result": "glowing_carrot",
+      "result_name": "Glowing Carrot",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "food",
+      "tip": [
+        "Night Vision for 5 minutes.",
+        "Can be eaten when full."
+      ],
+      "cat": "Food",
+      "stats": "6 hunger"
+    },
+    {
+      "a": "cookie",
+      "b": "sugar",
+      "a_name": "Cookie",
+      "b_name": "Sugar",
+      "result": "sugar_cookie",
+      "result_name": "Sugar Rush Cookie",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "food",
+      "tip": [
+        "Eaten very fast. Speed II for 20 seconds.",
+        "Can be eaten when full."
+      ],
+      "cat": "Food",
+      "stats": "2 hunger"
+    },
+    {
+      "a": "bread",
+      "b": "cooked_porkchop",
+      "a_name": "Bread",
+      "b_name": "Cooked Porkchop",
+      "result": "hero_sandwich",
+      "result_name": "Hero Sandwich",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "food",
+      "tip": [
+        "Very filling."
+      ],
+      "cat": "Food",
+      "stats": "14 hunger"
+    },
+    {
+      "a": "cooked_cod",
+      "b": "dried_kelp",
+      "a_name": "Cooked Cod",
+      "b_name": "Dried Kelp",
+      "result": "kelp_roll",
+      "result_name": "Sailor's Kelp Roll",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "food",
+      "tip": [
+        "Water Breathing for 2 minutes.",
+        "Dolphin's Grace for 1 minute."
+      ],
+      "cat": "Food",
+      "stats": "9 hunger"
+    },
+    {
+      "a": "golden_steak",
+      "b": "hero_sandwich",
+      "a_name": "Golden Steak",
+      "b_name": "Hero Sandwich",
+      "result": "royal_feast",
+      "result_name": "Royal Feast",
+      "count": 1,
+      "rar": 2,
+      "a_custom": true,
+      "b_custom": true,
+      "kind": "food",
+      "tip": [
+        "Fills your whole hunger bar.",
+        "Absorption II, Regeneration II, Resistance I."
+      ],
+      "cat": "Food",
+      "stats": "20 hunger"
+    },
+    {
+      "a": "royal_feast",
+      "b": "enchanted_golden_apple",
+      "a_name": "Royal Feast",
+      "b_name": "Enchanted Golden Apple",
+      "result": "ambrosia",
+      "result_name": "Ambrosia",
+      "count": 1,
+      "rar": 3,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "food",
+      "tip": [
+        "Absorption IV, Regeneration II, Strength II.",
+        "Resistance I and Fire Resistance.",
+        "Can be eaten when full."
+      ],
+      "cat": "Food",
+      "stats": "20 hunger"
+    },
+    {
+      "a": "diamond_pickaxe",
+      "b": "tnt",
+      "a_name": "Diamond Pickaxe",
+      "b_name": "TNT",
+      "result": "tnt_pickaxe",
+      "result_name": "Blast Pickaxe",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "pick",
+      "tip": [
+        "Every block you mine explodes.",
+        "The blast does not hurt you.",
+        "Sneak to mine one block."
+      ],
+      "cat": "Mining tools",
+      "stats": "5 damage, 3000 uses"
+    },
+    {
+      "a": "redstone_drill",
+      "b": "end_rod",
+      "a_name": "Redstone Drill",
+      "b_name": "End Rod",
+      "result": "mining_laser",
+      "result_name": "Mining Laser",
+      "count": 1,
+      "rar": 2,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: burns a 3x3 tunnel",
+        "48 blocks long. Drops go to you."
+      ],
+      "cat": "Mining tools",
+      "stats": "500 uses"
+    },
+    {
+      "a": "excavator",
+      "b": "tnt",
+      "a_name": "Excavator",
+      "b_name": "TNT",
+      "result": "earthshaker",
+      "result_name": "Earthshaker",
+      "count": 1,
+      "rar": 2,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "pick",
+      "tip": [
+        "Mines a 3x3x3 cube.",
+        "Right-click: earthquake. The ground",
+        "and all nearby mobs fly into the air."
+      ],
+      "cat": "Mining tools",
+      "stats": "8 damage, 5000 uses"
+    },
+    {
+      "a": "slime_bat",
+      "b": "piston",
+      "a_name": "Slime Bat",
+      "b_name": "Piston",
+      "result": "home_run_bat",
+      "result_name": "Home Run Bat",
+      "count": 1,
+      "rar": 2,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "sword",
+      "tip": [
+        "Sends enemies flying over the horizon."
+      ],
+      "cat": "Swords",
+      "stats": "4 damage, 800 uses"
+    },
+    {
+      "a": "diamond_sword",
+      "b": "end_crystal",
+      "a_name": "Diamond Sword",
+      "b_name": "End Crystal",
+      "result": "beam_saber",
+      "result_name": "Beam Saber",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "sword",
+      "tip": [
+        "Sets enemies on fire.",
+        "Right-click: fires a beam that burns",
+        "everything in a line."
+      ],
+      "cat": "Swords",
+      "stats": "9 damage, 2500 uses"
+    },
+    {
+      "a": "elemental_blade",
+      "b": "soul_reaver",
+      "a_name": "Blade of the Elements",
+      "b_name": "Soul Reaver",
+      "result": "omni_blade",
+      "result_name": "Blade of Everything",
+      "count": 1,
+      "rar": 3,
+      "a_custom": true,
+      "b_custom": true,
+      "kind": "sword",
+      "tip": [
+        "Every sword effect of this mod at once.",
+        "Right-click: fires a beam."
+      ],
+      "cat": "Swords",
+      "stats": "25 damage, 20000 uses"
+    },
+    {
+      "a": "dynamite",
+      "b": "tnt",
+      "a_name": "Dynamite",
+      "b_name": "TNT",
+      "result": "mega_dynamite",
+      "result_name": "Mega Dynamite",
+      "count": 2,
+      "rar": 2,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click to throw.",
+        "A huge explosion after 3 seconds.",
+        "It hurts you too."
+      ],
+      "cat": "Bombs and disasters",
+      "stats": ""
+    },
+    {
+      "a": "mega_dynamite",
+      "b": "nether_star",
+      "a_name": "Mega Dynamite",
+      "b_name": "Nether Star",
+      "result": "nuke",
+      "result_name": "Pocket Nuke",
+      "count": 2,
+      "rar": 3,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click to throw. Then run.",
+        "Erases everything within 18 blocks.",
+        "It hurts you too."
+      ],
+      "cat": "Bombs and disasters",
+      "stats": ""
+    },
+    {
+      "a": "nuke",
+      "b": "singularity",
+      "a_name": "Pocket Nuke",
+      "b_name": "Singularity",
+      "result": "doomsday_device",
+      "result_name": "Doomsday Device",
+      "count": 1,
+      "rar": 3,
+      "a_custom": true,
+      "b_custom": true,
+      "kind": "gadget",
+      "tip": [
+        "Right-click to throw. Then run far.",
+        "Erases everything within 32 blocks."
+      ],
+      "cat": "Bombs and disasters",
+      "stats": ""
+    },
+    {
+      "a": "inferno_staff",
+      "b": "magma_block",
+      "a_name": "Inferno Staff",
+      "b_name": "Magma Block",
+      "result": "meteor_staff",
+      "result_name": "Meteor Staff",
+      "count": 1,
+      "rar": 3,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: a meteor hits where you look.",
+        "Sneak + right-click: meteor shower."
+      ],
+      "cat": "Bombs and disasters",
+      "stats": "300 uses"
+    },
+    {
+      "a": "echo_shard",
+      "b": "nether_star",
+      "a_name": "Echo Shard",
+      "b_name": "Nether Star",
+      "result": "singularity",
+      "result_name": "Singularity",
+      "count": 2,
+      "rar": 3,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: opens a black hole where you",
+        "look. For 10 seconds it eats blocks and",
+        "mobs. It pulls you in too."
+      ],
+      "cat": "Bombs and disasters",
+      "stats": ""
+    },
+    {
+      "a": "heart_of_the_sea",
+      "b": "sponge",
+      "a_name": "Heart of the Sea",
+      "b_name": "Sponge",
+      "result": "ocean_orb",
+      "result_name": "Ocean Orb",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: floods the spot you look at.",
+        "Sneak + right-click: removes all water",
+        "and lava around you."
+      ],
+      "cat": "Bombs and disasters",
+      "stats": "64 uses"
+    },
+    {
+      "a": "frost_wand",
+      "b": "packed_ice",
+      "a_name": "Wand of Frost",
+      "b_name": "Packed Ice",
+      "result": "winter_globe",
+      "result_name": "Winter Globe",
+      "count": 1,
+      "rar": 2,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: freezes everything around you.",
+        "Water turns to ice, lava to obsidian.",
+        "Mobs freeze solid."
+      ],
+      "cat": "Bombs and disasters",
+      "stats": "64 uses"
+    },
+    {
+      "a": "storm_staff",
+      "b": "anvil",
+      "a_name": "Staff of Storms",
+      "b_name": "Anvil",
+      "result": "anvil_staff",
+      "result_name": "Anvil Storm Staff",
+      "count": 1,
+      "rar": 2,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: rains anvils where you look."
+      ],
+      "cat": "Bombs and disasters",
+      "stats": "100 uses"
+    },
+    {
+      "a": "storm_staff",
+      "b": "egg",
+      "a_name": "Staff of Storms",
+      "b_name": "Egg",
+      "result": "poultry_staff",
+      "result_name": "Fowl Weather Staff",
+      "count": 1,
+      "rar": 2,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: rains chickens where you look.",
+        "They are real chickens."
+      ],
+      "cat": "Bombs and disasters",
+      "stats": "100 uses"
+    },
+    {
+      "a": "wither_skeleton_skull",
+      "b": "blaze_rod",
+      "a_name": "Wither Skeleton Skull",
+      "b_name": "Blaze Rod",
+      "result": "wither_wand",
+      "result_name": "Wither Wand",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: shoots exploding wither skulls."
+      ],
+      "cat": "Bombs and disasters",
+      "stats": "200 uses"
+    },
+    {
+      "a": "dispenser",
+      "b": "crossbow",
+      "a_name": "Dispenser",
+      "b_name": "Crossbow",
+      "result": "arrow_gatling",
+      "result_name": "Arrow Gatling",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: fires 10 arrows at once.",
+        "Needs no arrows."
+      ],
+      "cat": "Bombs and disasters",
+      "stats": "1000 uses"
+    },
+    {
+      "a": "leather",
+      "b": "gold_block",
+      "a_name": "Leather",
+      "b_name": "Block of Gold",
+      "result": "midas_glove",
+      "result_name": "Midas Glove",
+      "count": 1,
+      "rar": 3,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click a block: it and its neighbours",
+        "turn into gold blocks.",
+        "Hit a mob: it turns into a gold block."
+      ],
+      "cat": "Transformation",
+      "stats": ""
+    },
+    {
+      "a": "emerald_block",
+      "b": "redstone_block",
+      "a_name": "Block of Emerald",
+      "b_name": "Block of Redstone",
+      "result": "philosopher_stone",
+      "result_name": "Philosopher's Stone",
+      "count": 1,
+      "rar": 3,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click a block to upgrade it:",
+        "stone, coal, iron, gold, diamond,",
+        "emerald, netherite. Sneak to go back."
+      ],
+      "cat": "Transformation",
+      "stats": "256 uses"
+    },
+    {
+      "a": "blaze_rod",
+      "b": "egg",
+      "a_name": "Blaze Rod",
+      "b_name": "Egg",
+      "result": "polymorph_wand",
+      "result_name": "Polymorph Wand",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click a mob: it turns into",
+        "a random farm animal."
+      ],
+      "cat": "Transformation",
+      "stats": "64 uses"
+    },
+    {
+      "a": "spyglass",
+      "b": "amethyst_shard",
+      "a_name": "Spyglass",
+      "b_name": "Amethyst Shard",
+      "result": "size_ray",
+      "result_name": "Size Ray",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click a mob: it shrinks and gets weak.",
+        "Sneak + right-click: it grows huge."
+      ],
+      "cat": "Transformation",
+      "stats": "128 uses"
+    },
+    {
+      "a": "cake",
+      "b": "bone_meal",
+      "a_name": "Cake",
+      "b_name": "Bone Meal",
+      "result": "eat_me_cake",
+      "result_name": "Eat-Me Cake",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "food",
+      "tip": [
+        "You grow 4 times as big for 2 minutes.",
+        "More health, damage and reach.",
+        "Can be eaten when full."
+      ],
+      "cat": "Transformation",
+      "stats": "6 hunger"
+    },
+    {
+      "a": "red_mushroom",
+      "b": "brown_mushroom",
+      "a_name": "Red Mushroom",
+      "b_name": "Brown Mushroom",
+      "result": "shrinking_mushroom",
+      "result_name": "Shrinking Mushroom",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "food",
+      "tip": [
+        "You shrink to a fifth of your size",
+        "for 2 minutes. Fits through tiny gaps.",
+        "Can be eaten when full."
+      ],
+      "cat": "Transformation",
+      "stats": "2 hunger"
+    },
+    {
+      "a": "chrono_clock",
+      "b": "ender_eye",
+      "a_name": "Chrono Clock",
+      "b_name": "Eye of Ender",
+      "result": "time_stopper",
+      "result_name": "Time Stopper",
+      "count": 1,
+      "rar": 3,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: stops time for 10 seconds.",
+        "Everything freezes except you."
+      ],
+      "cat": "Mobs, time and space",
+      "stats": "32 uses"
+    },
+    {
+      "a": "bell",
+      "b": "fermented_spider_eye",
+      "a_name": "Bell",
+      "b_name": "Fermented Spider Eye",
+      "result": "madness_bell",
+      "result_name": "Bell of Madness",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: nearby monsters",
+        "attack each other."
+      ],
+      "cat": "Mobs, time and space",
+      "stats": "64 uses"
+    },
+    {
+      "a": "goat_horn",
+      "b": "iron_block",
+      "a_name": "Goat Horn",
+      "b_name": "Block of Iron",
+      "result": "golem_horn",
+      "result_name": "Golem Horn",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: calls 3 iron golems",
+        "that fight for you."
+      ],
+      "cat": "Mobs, time and space",
+      "stats": "16 uses"
+    },
+    {
+      "a": "gust_staff",
+      "b": "shulker_shell",
+      "a_name": "Gust Staff",
+      "b_name": "Shulker Shell",
+      "result": "gravity_staff",
+      "result_name": "Gravity Staff",
+      "count": 1,
+      "rar": 2,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: nearby mobs fly into the sky.",
+        "Sneak + right-click: slams them down."
+      ],
+      "cat": "Mobs, time and space",
+      "stats": "200 uses"
+    },
+    {
+      "a": "warp_staff",
+      "b": "chorus_fruit",
+      "a_name": "Warp Staff",
+      "b_name": "Chorus Fruit",
+      "result": "swap_staff",
+      "result_name": "Swap Staff",
+      "count": 1,
+      "rar": 2,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click a mob: you swap places."
+      ],
+      "cat": "Mobs, time and space",
+      "stats": "200 uses"
+    },
+    {
+      "a": "phantom_membrane",
+      "b": "ender_pearl",
+      "a_name": "Phantom Membrane",
+      "b_name": "Ender Pearl",
+      "result": "ghost_cloak",
+      "result_name": "Ghost Cloak",
+      "count": 1,
+      "rar": 3,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: you are a ghost for 8 seconds.",
+        "Fly through walls. Do not end inside one."
+      ],
+      "cat": "Mobs, time and space",
+      "stats": "32 uses"
+    },
+    {
+      "a": "black_wool",
+      "b": "ender_pearl",
+      "a_name": "Black Wool",
+      "b_name": "Ender Pearl",
+      "result": "portable_hole",
+      "result_name": "Portable Hole",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click a wall: opens a tunnel",
+        "for 8 seconds. Then the wall comes back."
+      ],
+      "cat": "Mobs, time and space",
+      "stats": "64 uses"
+    },
+    {
+      "a": "stick",
+      "b": "scaffolding",
+      "a_name": "Stick",
+      "b_name": "Scaffolding",
+      "result": "bridge_staff",
+      "result_name": "Bridge Staff",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: builds a wooden bridge",
+        "32 blocks ahead of you."
+      ],
+      "cat": "Mobs, time and space",
+      "stats": "64 uses"
+    },
+    {
+      "a": "crafting_table",
+      "b": "oak_door",
+      "a_name": "Crafting Table",
+      "b_name": "Oak Door",
+      "result": "house_box",
+      "result_name": "House in a Box",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click the ground: builds a small",
+        "furnished house in front of you."
+      ],
+      "cat": "Mobs, time and space",
+      "stats": ""
+    },
+    {
+      "a": "verdant_staff",
+      "b": "oak_sapling",
+      "a_name": "Verdant Staff",
+      "b_name": "Oak Sapling",
+      "result": "forest_staff",
+      "result_name": "Staff of the Wild",
+      "count": 1,
+      "rar": 2,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: a forest grows at once",
+        "where you look."
+      ],
+      "cat": "Mobs, time and space",
+      "stats": "64 uses"
+    },
+    {
+      "a": "compass",
+      "b": "amethyst_shard",
+      "a_name": "Compass",
+      "b_name": "Amethyst Shard",
+      "result": "ore_dowser",
+      "result_name": "Diamond Dowser",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: tells you where the nearest",
+        "diamond ore or ancient debris is."
+      ],
+      "cat": "Mobs, time and space",
+      "stats": "64 uses"
+    },
+    {
+      "a": "leather",
+      "b": "iron_block",
+      "a_name": "Leather",
+      "b_name": "Block of Iron",
+      "result": "titan_belt",
+      "result_name": "Titan's Belt",
+      "count": 1,
+      "rar": 3,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "You are 2.5 times as big.",
+        "+20 hearts, +8 damage, longer reach.",
+        "Keep it in your hotbar or off hand."
+      ],
+      "cat": "Body upgrades",
+      "stats": ""
+    },
+    {
+      "a": "sticky_piston",
+      "b": "leather",
+      "a_name": "Sticky Piston",
+      "b_name": "Leather",
+      "result": "long_arm_glove",
+      "result_name": "Long Arm Glove",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Reach blocks and mobs 32 blocks away.",
+        "Keep it in your hotbar or off hand."
+      ],
+      "cat": "Body upgrades",
+      "stats": ""
+    },
+    {
+      "a": "enchanted_golden_apple",
+      "b": "totem_of_undying",
+      "a_name": "Enchanted Golden Apple",
+      "b_name": "Totem of Undying",
+      "result": "colossus_heart",
+      "result_name": "Heart of the Colossus",
+      "count": 1,
+      "rar": 3,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "+40 hearts and Regeneration II.",
+        "Keep it in your hotbar or off hand."
+      ],
+      "cat": "Body upgrades",
+      "stats": ""
+    },
+    {
+      "a": "haste_charm",
+      "b": "diamond_block",
+      "a_name": "Haste Charm",
+      "b_name": "Block of Diamond",
+      "result": "miner_gauntlet",
+      "result_name": "Miner's Gauntlet",
+      "count": 1,
+      "rar": 3,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Mine 10 times faster with anything,",
+        "even your fist.",
+        "Keep it in your hotbar or off hand."
+      ],
+      "cat": "Body upgrades",
+      "stats": ""
+    },
+    {
+      "a": "netherite_ingot",
+      "b": "nether_star",
+      "a_name": "Netherite Ingot",
+      "b_name": "Nether Star",
+      "result": "fist_of_doom",
+      "result_name": "Fist of Doom",
+      "count": 1,
+      "rar": 3,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Whatever you hit dies.",
+        "Hold it in your main hand."
+      ],
+      "cat": "Body upgrades",
+      "stats": ""
+    },
+    {
+      "a": "ancient_charm",
+      "b": "colossus_heart",
+      "a_name": "Charm of the Ancients",
+      "b_name": "Heart of the Colossus",
+      "result": "godhood_charm",
+      "result_name": "Charm of Godhood",
+      "count": 1,
+      "rar": 3,
+      "a_custom": true,
+      "b_custom": true,
+      "kind": "gadget",
+      "tip": [
+        "All of the Charm of the Ancients.",
+        "Creative flight. +40 hearts. Long reach.",
+        "Mine 5 times faster. Hotbar or off hand."
+      ],
+      "cat": "Body upgrades",
+      "stats": ""
+    },
+    {
+      "a": "spring_boots",
+      "b": "end_stone",
+      "a_name": "Spring Boots",
+      "b_name": "End Stone",
+      "result": "moon_boots",
+      "result_name": "Moon Boots",
+      "count": 1,
+      "rar": 2,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "armor",
+      "tip": [
+        "Low gravity and huge jumps.",
+        "No fall damage."
+      ],
+      "cat": "Armor",
+      "stats": "3 armor, 600 uses"
+    },
+    {
+      "a": "firework_rocket",
+      "b": "beetroot",
+      "a_name": "Firework Rocket",
+      "b_name": "Beetroot",
+      "result": "rocket_chili",
+      "result_name": "Rocket Chili",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "food",
+      "tip": [
+        "Launches you high into the sky.",
+        "You float back down.",
+        "Can be eaten when full."
+      ],
+      "cat": "Food",
+      "stats": "4 hunger"
+    },
+    {
+      "a": "book",
+      "b": "experience_bottle",
+      "a_name": "Book",
+      "b_name": "Bottle o' Enchanting",
+      "result": "xp_tome",
+      "result_name": "Tome of Infinite Wisdom",
+      "count": 1,
+      "rar": 3,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: gives you 5 levels.",
+        "It never runs out."
+      ],
+      "cat": "Cheats",
+      "stats": ""
+    },
+    {
+      "a": "glass_pane",
+      "b": "ender_eye",
+      "a_name": "Glass Pane",
+      "b_name": "Eye of Ender",
+      "result": "dupe_mirror",
+      "result_name": "Mirror of Duplication",
+      "count": 1,
+      "rar": 3,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Hold it in one hand, any item in the other.",
+        "Right-click: copies the whole stack."
+      ],
+      "cat": "Cheats",
+      "stats": ""
+    },
+    {
+      "a": "chaos_orb",
+      "b": "chaos_orb",
+      "a_name": "Chaos Orb",
+      "b_name": "Chaos Orb",
+      "result": "pandora_box",
+      "result_name": "Pandora's Box",
+      "count": 1,
+      "rar": 3,
+      "a_custom": true,
+      "b_custom": true,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: six random things happen,",
+        "one after another."
+      ],
+      "cat": "Chaos",
+      "stats": ""
+    },
+    {
+      "a": "rotten_flesh",
+      "b": "rotten_flesh",
+      "a_name": "Rotten Flesh",
+      "b_name": "Rotten Flesh",
+      "result": "leather",
+      "result_name": "Leather",
+      "count": 1,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "leather",
+      "b": "iron_ingot",
+      "a_name": "Leather",
+      "b_name": "Iron Ingot",
+      "result": "saddle",
+      "result_name": "Saddle",
+      "count": 1,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "paper",
+      "b": "string",
+      "a_name": "Paper",
+      "b_name": "String",
+      "result": "name_tag",
+      "result_name": "Name Tag",
+      "count": 1,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "chain",
+      "b": "leather_helmet",
+      "a_name": "Chain",
+      "b_name": "Leather Cap",
+      "result": "chainmail_helmet",
+      "result_name": "Chainmail Helmet",
+      "count": 1,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "chain",
+      "b": "leather_chestplate",
+      "a_name": "Chain",
+      "b_name": "Leather Tunic",
+      "result": "chainmail_chestplate",
+      "result_name": "Chainmail Chestplate",
+      "count": 1,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "chain",
+      "b": "leather_leggings",
+      "a_name": "Chain",
+      "b_name": "Leather Pants",
+      "result": "chainmail_leggings",
+      "result_name": "Chainmail Leggings",
+      "count": 1,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "chain",
+      "b": "leather_boots",
+      "a_name": "Chain",
+      "b_name": "Leather Boots",
+      "result": "chainmail_boots",
+      "result_name": "Chainmail Boots",
+      "count": 1,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "saddle",
+      "b": "iron_ingot",
+      "a_name": "Saddle",
+      "b_name": "Iron Ingot",
+      "result": "iron_horse_armor",
+      "result_name": "Iron Horse Armor",
+      "count": 1,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "saddle",
+      "b": "gold_ingot",
+      "a_name": "Saddle",
+      "b_name": "Gold Ingot",
+      "result": "golden_horse_armor",
+      "result_name": "Golden Horse Armor",
+      "count": 1,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "saddle",
+      "b": "diamond",
+      "a_name": "Saddle",
+      "b_name": "Diamond",
+      "result": "diamond_horse_armor",
+      "result_name": "Diamond Horse Armor",
+      "count": 1,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "diamond_sword",
+      "b": "prismarine_shard",
+      "a_name": "Diamond Sword",
+      "b_name": "Prismarine Shard",
+      "result": "trident",
+      "result_name": "Trident",
+      "count": 1,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "phantom_membrane",
+      "b": "shulker_shell",
+      "a_name": "Phantom Membrane",
+      "b_name": "Shulker Shell",
+      "result": "elytra",
+      "result_name": "Elytra",
+      "count": 1,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "golden_apple",
+      "b": "emerald_block",
+      "a_name": "Golden Apple",
+      "b_name": "Block of Emerald",
+      "result": "totem_of_undying",
+      "result_name": "Totem of Undying",
+      "count": 1,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "golden_apple",
+      "b": "gold_block",
+      "a_name": "Golden Apple",
+      "b_name": "Block of Gold",
+      "result": "enchanted_golden_apple",
+      "result_name": "Enchanted Golden Apple",
+      "count": 1,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "nautilus_shell",
+      "b": "diamond",
+      "a_name": "Nautilus Shell",
+      "b_name": "Diamond",
+      "result": "heart_of_the_sea",
+      "result_name": "Heart of the Sea",
+      "count": 1,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "string",
+      "b": "slime_ball",
+      "a_name": "String",
+      "b_name": "Slimeball",
+      "result": "cobweb",
+      "result_name": "Cobweb",
+      "count": 1,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "gold_block",
+      "b": "stick",
+      "a_name": "Block of Gold",
+      "b_name": "Stick",
+      "result": "bell",
+      "result_name": "Bell",
+      "count": 1,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "glass_bottle",
+      "b": "lapis_lazuli",
+      "a_name": "Glass Bottle",
+      "b_name": "Lapis Lazuli",
+      "result": "experience_bottle",
+      "result_name": "Bottle o' Enchanting",
+      "count": 1,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "coal",
+      "b": "flint",
+      "a_name": "Coal",
+      "b_name": "Flint",
+      "result": "gunpowder",
+      "result_name": "Gunpowder",
+      "count": 2,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "charcoal",
+      "b": "flint",
+      "a_name": "Charcoal",
+      "b_name": "Flint",
+      "result": "gunpowder",
+      "result_name": "Gunpowder",
+      "count": 2,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "clay_ball",
+      "b": "lime_dye",
+      "a_name": "Clay Ball",
+      "b_name": "Lime Dye",
+      "result": "slime_ball",
+      "result_name": "Slimeball",
+      "count": 1,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "white_wool",
+      "b": "flint",
+      "a_name": "White Wool",
+      "b_name": "Flint",
+      "result": "string",
+      "result_name": "String",
+      "count": 4,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "gravel",
+      "b": "gravel",
+      "a_name": "Gravel",
+      "b_name": "Gravel",
+      "result": "flint",
+      "result_name": "Flint",
+      "count": 1,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "amethyst_block",
+      "b": "amethyst_shard",
+      "a_name": "Block of Amethyst",
+      "b_name": "Amethyst Shard",
+      "result": "budding_amethyst",
+      "result_name": "Budding Amethyst",
+      "count": 1,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "deepslate",
+      "b": "iron_block",
+      "a_name": "Deepslate",
+      "b_name": "Block of Iron",
+      "result": "reinforced_deepslate",
+      "result_name": "Reinforced Deepslate",
+      "count": 1,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "glass_bottle",
+      "b": "chorus_fruit",
+      "a_name": "Glass Bottle",
+      "b_name": "Chorus Fruit",
+      "result": "dragon_breath",
+      "result_name": "Dragon's Breath",
+      "count": 1,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "skeleton_skull",
+      "b": "coal_block",
+      "a_name": "Skeleton Skull",
+      "b_name": "Block of Coal",
+      "result": "wither_skeleton_skull",
+      "result_name": "Wither Skeleton Skull",
+      "count": 1,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "obsidian",
+      "b": "ghast_tear",
+      "a_name": "Obsidian",
+      "b_name": "Ghast Tear",
+      "result": "crying_obsidian",
+      "result_name": "Crying Obsidian",
+      "count": 1,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "blackstone",
+      "b": "gold_ingot",
+      "a_name": "Blackstone",
+      "b_name": "Gold Ingot",
+      "result": "gilded_blackstone",
+      "result_name": "Gilded Blackstone",
+      "count": 1,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "amethyst_shard",
+      "b": "sculk",
+      "a_name": "Amethyst Shard",
+      "b_name": "Sculk",
+      "result": "echo_shard",
+      "result_name": "Echo Shard",
+      "count": 1,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "dirt",
+      "b": "wheat_seeds",
+      "a_name": "Dirt",
+      "b_name": "Wheat Seeds",
+      "result": "grass_block",
+      "result_name": "Grass Block",
+      "count": 1,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "dirt",
+      "b": "brown_mushroom",
+      "a_name": "Dirt",
+      "b_name": "Brown Mushroom",
+      "result": "mycelium",
+      "result_name": "Mycelium",
+      "count": 1,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "dirt",
+      "b": "spruce_sapling",
+      "a_name": "Dirt",
+      "b_name": "Spruce Sapling",
+      "result": "podzol",
+      "result_name": "Podzol",
+      "count": 1,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "netherrack",
+      "b": "crimson_fungus",
+      "a_name": "Netherrack",
+      "b_name": "Crimson Fungus",
+      "result": "crimson_nylium",
+      "result_name": "Crimson Nylium",
+      "count": 1,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "netherrack",
+      "b": "warped_fungus",
+      "a_name": "Netherrack",
+      "b_name": "Warped Fungus",
+      "result": "warped_nylium",
+      "result_name": "Warped Nylium",
+      "count": 1,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "redstone",
+      "b": "blaze_powder",
+      "a_name": "Redstone Dust",
+      "b_name": "Blaze Powder",
+      "result": "glowstone_dust",
+      "result_name": "Glowstone Dust",
+      "count": 2,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "glowstone_dust",
+      "b": "ink_sac",
+      "a_name": "Glowstone Dust",
+      "b_name": "Ink Sac",
+      "result": "glow_ink_sac",
+      "result_name": "Glow Ink Sac",
+      "count": 1,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "yellow_wool",
+      "b": "slime_ball",
+      "a_name": "Yellow Wool",
+      "b_name": "Slimeball",
+      "result": "sponge",
+      "result_name": "Sponge",
+      "count": 1,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    }
+  ],
+  "swaps": {
+    "diamond_pickaxe": "netherite_pickaxe",
+    "diamond_axe": "netherite_axe",
+    "diamond_shovel": "netherite_shovel",
+    "diamond_hoe": "netherite_hoe",
+    "diamond_sword": "netherite_sword",
+    "diamond_chestplate": "netherite_chestplate",
+    "diamond_leggings": "netherite_leggings"
+  },
+  "items": [
+    {
+      "id": "iron_hammer",
+      "name": "Iron Hammer",
+      "rar": 1,
+      "kind": "pick",
+      "cat": "Mining tools",
+      "a": "iron_pickaxe",
+      "b": "iron_pickaxe",
+      "tip": [
+        "Mines a 3x3 area.",
+        "Sneak to mine one block."
+      ],
+      "stats": {
+        "dur": 750,
+        "speed": 4.5,
+        "dmg": 5,
+        "aspd": -3.0
+      }
+    },
+    {
+      "id": "excavator",
+      "name": "Excavator",
+      "rar": 1,
+      "kind": "pick",
+      "cat": "Mining tools",
+      "a": "diamond_pickaxe",
+      "b": "diamond_pickaxe",
+      "tip": [
+        "Mines a 3x3x3 cube.",
+        "Sneak to mine one block."
+      ],
+      "stats": {
+        "dur": 4000,
+        "speed": 5.5,
+        "dmg": 6,
+        "aspd": -3.0
+      }
+    },
+    {
+      "id": "molten_pickaxe",
+      "name": "Molten Pickaxe",
+      "rar": 1,
+      "kind": "pick",
+      "cat": "Mining tools",
+      "a": "diamond_pickaxe",
+      "b": "blast_furnace",
+      "tip": [
+        "Smelts everything it mines."
+      ],
+      "stats": {
+        "dur": 2000,
+        "speed": 8,
+        "dmg": 5,
+        "aspd": -2.8
+      }
+    },
+    {
+      "id": "vein_pickaxe",
+      "name": "Vein Pickaxe",
+      "rar": 1,
+      "kind": "pick",
+      "cat": "Mining tools",
+      "a": "diamond_pickaxe",
+      "b": "chain",
+      "tip": [
+        "Mines a whole ore vein at once.",
+        "Sneak to mine one block."
+      ],
+      "stats": {
+        "dur": 2000,
+        "speed": 8,
+        "dmg": 5,
+        "aspd": -2.8
+      }
+    },
+    {
+      "id": "prospector_pickaxe",
+      "name": "Prospector's Pickaxe",
+      "rar": 1,
+      "kind": "pick",
+      "cat": "Mining tools",
+      "a": "diamond_pickaxe",
+      "b": "rabbit_foot",
+      "tip": [
+        "Ores drop twice as much."
+      ],
+      "stats": {
+        "dur": 1800,
+        "speed": 8,
+        "dmg": 5,
+        "aspd": -2.8
+      }
+    },
+    {
+      "id": "torch_pickaxe",
+      "name": "Torchlight Pickaxe",
+      "rar": 1,
+      "kind": "pick",
+      "cat": "Mining tools",
+      "a": "iron_pickaxe",
+      "b": "lantern",
+      "tip": [
+        "Right-click a block to place a torch.",
+        "Needs no torches. Costs 2 durability."
+      ],
+      "stats": {
+        "dur": 600,
+        "speed": 6,
+        "dmg": 4,
+        "aspd": -2.8
+      }
+    },
+    {
+      "id": "redstone_drill",
+      "name": "Redstone Drill",
+      "rar": 1,
+      "kind": "pick",
+      "cat": "Mining tools",
+      "a": "diamond_pickaxe",
+      "b": "redstone_block",
+      "tip": [
+        "Mines very fast.",
+        "Gives Haste II while held."
+      ],
+      "stats": {
+        "dur": 3000,
+        "speed": 16,
+        "dmg": 4,
+        "aspd": -2.8
+      }
+    },
+    {
+      "id": "paxel",
+      "name": "Diamond Paxel",
+      "rar": 1,
+      "kind": "paxel",
+      "cat": "Mining tools",
+      "a": "diamond_pickaxe",
+      "b": "diamond_axe",
+      "tip": [
+        "Pickaxe, axe, shovel and hoe in one."
+      ],
+      "stats": {
+        "dur": 3000,
+        "speed": 8,
+        "dmg": 7,
+        "aspd": -3.0
+      }
+    },
+    {
+      "id": "magnetic_pickaxe",
+      "name": "Magnetic Pickaxe",
+      "rar": 2,
+      "kind": "pick",
+      "cat": "Mining tools",
+      "a": "diamond_pickaxe",
+      "b": "magnet",
+      "tip": [
+        "Drops go straight into your inventory."
+      ],
+      "stats": {
+        "dur": 2500,
+        "speed": 9,
+        "dmg": 5,
+        "aspd": -2.8
+      }
+    },
+    {
+      "id": "magma_excavator",
+      "name": "Magma Excavator",
+      "rar": 2,
+      "kind": "pick",
+      "cat": "Mining tools",
+      "a": "excavator",
+      "b": "molten_pickaxe",
+      "tip": [
+        "Mines a 3x3x3 cube and smelts it.",
+        "Sneak to mine one block."
+      ],
+      "stats": {
+        "dur": 6000,
+        "speed": 7,
+        "dmg": 7,
+        "aspd": -3.0
+      }
+    },
+    {
+      "id": "motherlode_pickaxe",
+      "name": "Motherlode Pickaxe",
+      "rar": 2,
+      "kind": "pick",
+      "cat": "Mining tools",
+      "a": "vein_pickaxe",
+      "b": "prospector_pickaxe",
+      "tip": [
+        "Mines a whole ore vein at once.",
+        "Ores drop twice as much."
+      ],
+      "stats": {
+        "dur": 4000,
+        "speed": 9,
+        "dmg": 6,
+        "aspd": -2.8
+      }
+    },
+    {
+      "id": "tunnel_bore",
+      "name": "Tunnel Bore",
+      "rar": 2,
+      "kind": "pick",
+      "cat": "Mining tools",
+      "a": "redstone_drill",
+      "b": "iron_hammer",
+      "tip": [
+        "Mines a 3x3 tunnel very fast.",
+        "Gives Haste II while held."
+      ],
+      "stats": {
+        "dur": 6000,
+        "speed": 14,
+        "dmg": 6,
+        "aspd": -3.0
+      }
+    },
+    {
+      "id": "world_eater",
+      "name": "World Eater",
+      "rar": 3,
+      "kind": "paxel",
+      "cat": "Mining tools",
+      "a": "magma_excavator",
+      "b": "motherlode_pickaxe",
+      "tip": [
+        "Mines a 9x9x9 cube of any block.",
+        "Smelts drops and doubles ores.",
+        "Drops go into your inventory.",
+        "Sneak to mine one block."
+      ],
+      "stats": {
+        "dur": 12000,
+        "speed": 12,
+        "dmg": 9,
+        "aspd": -3.0
+      }
+    },
+    {
+      "id": "lumber_axe",
+      "name": "Lumber Axe",
+      "rar": 1,
+      "kind": "axe",
+      "cat": "Axes",
+      "a": "diamond_axe",
+      "b": "diamond_axe",
+      "tip": [
+        "Chops down the whole tree.",
+        "Sneak to chop one log."
+      ],
+      "stats": {
+        "dur": 3000,
+        "speed": 8,
+        "dmg": 9,
+        "aspd": -3.0
+      }
+    },
+    {
+      "id": "ember_axe",
+      "name": "Ember Axe",
+      "rar": 1,
+      "kind": "axe",
+      "cat": "Axes",
+      "a": "diamond_axe",
+      "b": "blaze_powder",
+      "tip": [
+        "Logs drop as charcoal.",
+        "Sets enemies on fire."
+      ],
+      "stats": {
+        "dur": 1800,
+        "speed": 8,
+        "dmg": 9,
+        "aspd": -3.0
+      }
+    },
+    {
+      "id": "battle_axe",
+      "name": "Battle Axe",
+      "rar": 1,
+      "kind": "axe",
+      "cat": "Axes",
+      "a": "diamond_axe",
+      "b": "diamond_sword",
+      "tip": [
+        "Hits also damage nearby enemies."
+      ],
+      "stats": {
+        "dur": 2400,
+        "speed": 8,
+        "dmg": 12,
+        "aspd": -3.1
+      }
+    },
+    {
+      "id": "executioner_axe",
+      "name": "Executioner's Axe",
+      "rar": 1,
+      "kind": "axe",
+      "cat": "Axes",
+      "a": "diamond_axe",
+      "b": "skeleton_skull",
+      "tip": [
+        "Slain mobs may drop their head.",
+        "Kills give extra XP."
+      ],
+      "stats": {
+        "dur": 2000,
+        "speed": 8,
+        "dmg": 10,
+        "aspd": -3.0
+      }
+    },
+    {
+      "id": "deforester",
+      "name": "Deforester",
+      "rar": 2,
+      "kind": "axe",
+      "cat": "Axes",
+      "a": "lumber_axe",
+      "b": "magnet",
+      "tip": [
+        "Chops down the whole tree.",
+        "Logs go straight into your inventory."
+      ],
+      "stats": {
+        "dur": 6000,
+        "speed": 10,
+        "dmg": 10,
+        "aspd": -3.0
+      }
+    },
+    {
+      "id": "warlord_axe",
+      "name": "Warlord's Axe",
+      "rar": 2,
+      "kind": "axe",
+      "cat": "Axes",
+      "a": "battle_axe",
+      "b": "executioner_axe",
+      "tip": [
+        "Hits also damage nearby enemies.",
+        "Slain mobs often drop their head."
+      ],
+      "stats": {
+        "dur": 5000,
+        "speed": 9,
+        "dmg": 15,
+        "aspd": -3.0
+      }
+    },
+    {
+      "id": "trench_shovel",
+      "name": "Trench Shovel",
+      "rar": 1,
+      "kind": "shovel",
+      "cat": "Shovels",
+      "a": "diamond_shovel",
+      "b": "diamond_shovel",
+      "tip": [
+        "Digs a 3x3x3 cube.",
+        "Sneak to dig one block."
+      ],
+      "stats": {
+        "dur": 4000,
+        "speed": 6,
+        "dmg": 6,
+        "aspd": -3.0
+      }
+    },
+    {
+      "id": "kiln_shovel",
+      "name": "Kiln Shovel",
+      "rar": 1,
+      "kind": "shovel",
+      "cat": "Shovels",
+      "a": "diamond_shovel",
+      "b": "furnace",
+      "tip": [
+        "Smelts what it digs.",
+        "Sand becomes glass, clay becomes bricks."
+      ],
+      "stats": {
+        "dur": 2000,
+        "speed": 8,
+        "dmg": 5.5,
+        "aspd": -3.0
+      }
+    },
+    {
+      "id": "terraformer",
+      "name": "Terraformer",
+      "rar": 2,
+      "kind": "paxel",
+      "cat": "Shovels",
+      "a": "excavator",
+      "b": "trench_shovel",
+      "tip": [
+        "Digs a 3x3x3 cube of any block.",
+        "Sneak to dig one block."
+      ],
+      "stats": {
+        "dur": 8000,
+        "speed": 8,
+        "dmg": 7,
+        "aspd": -3.0
+      }
+    },
+    {
+      "id": "harvester_hoe",
+      "name": "Harvester Hoe",
+      "rar": 1,
+      "kind": "hoe",
+      "cat": "Farming",
+      "a": "diamond_hoe",
+      "b": "diamond_hoe",
+      "tip": [
+        "Right-click a crop to harvest and",
+        "replant ripe crops in a 5x5 area."
+      ],
+      "stats": {
+        "dur": 2500,
+        "speed": 8,
+        "dmg": 1,
+        "aspd": 0.0
+      }
+    },
+    {
+      "id": "verdant_staff",
+      "name": "Verdant Staff",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Farming",
+      "a": "diamond_hoe",
+      "b": "bone_block",
+      "tip": [
+        "Right-click plants to grow them.",
+        "Works on a 3x3 area."
+      ],
+      "stats": {
+        "dur": 256
+      }
+    },
+    {
+      "id": "farmers_scythe",
+      "name": "Farmer's Scythe",
+      "rar": 2,
+      "kind": "hoe",
+      "cat": "Farming",
+      "a": "harvester_hoe",
+      "b": "verdant_staff",
+      "tip": [
+        "Right-click a crop to harvest and",
+        "replant ripe crops in a 9x9 area.",
+        "Crops go into your inventory."
+      ],
+      "stats": {
+        "dur": 5000,
+        "speed": 10,
+        "dmg": 6,
+        "aspd": -2.0
+      }
+    },
+    {
+      "id": "blazing_sword",
+      "name": "Blazing Sword",
+      "rar": 1,
+      "kind": "sword",
+      "cat": "Swords",
+      "a": "diamond_sword",
+      "b": "blaze_rod",
+      "tip": [
+        "Sets enemies on fire."
+      ],
+      "stats": {
+        "dur": 1800,
+        "dmg": 8,
+        "aspd": -2.4
+      }
+    },
+    {
+      "id": "frost_blade",
+      "name": "Frost Blade",
+      "rar": 1,
+      "kind": "sword",
+      "cat": "Swords",
+      "a": "diamond_sword",
+      "b": "blue_ice",
+      "tip": [
+        "Freezes and slows enemies."
+      ],
+      "stats": {
+        "dur": 1800,
+        "dmg": 8,
+        "aspd": -2.4
+      }
+    },
+    {
+      "id": "venom_blade",
+      "name": "Venom Blade",
+      "rar": 1,
+      "kind": "sword",
+      "cat": "Swords",
+      "a": "diamond_sword",
+      "b": "spider_eye",
+      "tip": [
+        "Poisons enemies."
+      ],
+      "stats": {
+        "dur": 1800,
+        "dmg": 7,
+        "aspd": -2.4
+      }
+    },
+    {
+      "id": "withering_blade",
+      "name": "Withering Blade",
+      "rar": 1,
+      "kind": "sword",
+      "cat": "Swords",
+      "a": "diamond_sword",
+      "b": "wither_skeleton_skull",
+      "tip": [
+        "Withers enemies."
+      ],
+      "stats": {
+        "dur": 1800,
+        "dmg": 8,
+        "aspd": -2.4
+      }
+    },
+    {
+      "id": "thunder_blade",
+      "name": "Thunder Blade",
+      "rar": 1,
+      "kind": "sword",
+      "cat": "Swords",
+      "a": "diamond_sword",
+      "b": "lightning_rod",
+      "tip": [
+        "Calls lightning on the enemy you hit."
+      ],
+      "stats": {
+        "dur": 1800,
+        "dmg": 8,
+        "aspd": -2.4
+      }
+    },
+    {
+      "id": "vampire_blade",
+      "name": "Vampire Blade",
+      "rar": 1,
+      "kind": "sword",
+      "cat": "Swords",
+      "a": "diamond_sword",
+      "b": "ghast_tear",
+      "tip": [
+        "Heals you when you hit enemies."
+      ],
+      "stats": {
+        "dur": 1800,
+        "dmg": 7,
+        "aspd": -2.4
+      }
+    },
+    {
+      "id": "ender_blade",
+      "name": "Ender Blade",
+      "rar": 1,
+      "kind": "sword",
+      "cat": "Swords",
+      "a": "diamond_sword",
+      "b": "ender_pearl",
+      "tip": [
+        "Right-click to teleport 12 blocks ahead."
+      ],
+      "stats": {
+        "dur": 1800,
+        "dmg": 8,
+        "aspd": -2.4
+      }
+    },
+    {
+      "id": "greatsword",
+      "name": "Greatsword",
+      "rar": 1,
+      "kind": "sword",
+      "cat": "Swords",
+      "a": "diamond_sword",
+      "b": "diamond_sword",
+      "tip": [
+        "Slow but very strong.",
+        "Hits also damage nearby enemies."
+      ],
+      "stats": {
+        "dur": 3000,
+        "dmg": 12,
+        "aspd": -3.0
+      }
+    },
+    {
+      "id": "gale_saber",
+      "name": "Gale Saber",
+      "rar": 1,
+      "kind": "sword",
+      "cat": "Swords",
+      "a": "diamond_sword",
+      "b": "breeze_rod",
+      "tip": [
+        "Very fast.",
+        "Launches enemies into the air."
+      ],
+      "stats": {
+        "dur": 1800,
+        "dmg": 7,
+        "aspd": -2.0
+      }
+    },
+    {
+      "id": "midas_sword",
+      "name": "Midas Sword",
+      "rar": 1,
+      "kind": "sword",
+      "cat": "Swords",
+      "a": "golden_sword",
+      "b": "gold_block",
+      "tip": [
+        "Slain mobs drop gold nuggets.",
+        "Kills give extra XP."
+      ],
+      "stats": {
+        "dur": 1200,
+        "dmg": 7,
+        "aspd": -2.4
+      }
+    },
+    {
+      "id": "creeper_cleaver",
+      "name": "Creeper Cleaver",
+      "rar": 1,
+      "kind": "sword",
+      "cat": "Swords",
+      "a": "diamond_sword",
+      "b": "tnt",
+      "tip": [
+        "Every hit is a real explosion.",
+        "It breaks blocks. It does not hurt you."
+      ],
+      "stats": {
+        "dur": 1800,
+        "dmg": 8,
+        "aspd": -2.6
+      }
+    },
+    {
+      "id": "slime_bat",
+      "name": "Slime Bat",
+      "rar": 1,
+      "kind": "sword",
+      "cat": "Swords",
+      "a": "wooden_sword",
+      "b": "slime_block",
+      "tip": [
+        "Sends enemies flying."
+      ],
+      "stats": {
+        "dur": 400,
+        "dmg": 3,
+        "aspd": -2.4
+      }
+    },
+    {
+      "id": "frostfire_blade",
+      "name": "Frostfire Blade",
+      "rar": 2,
+      "kind": "sword",
+      "cat": "Swords",
+      "a": "blazing_sword",
+      "b": "frost_blade",
+      "tip": [
+        "Burns, freezes and slows enemies.",
+        "Deals extra magic damage."
+      ],
+      "stats": {
+        "dur": 4000,
+        "dmg": 10,
+        "aspd": -2.4
+      }
+    },
+    {
+      "id": "plague_blade",
+      "name": "Plague Blade",
+      "rar": 2,
+      "kind": "sword",
+      "cat": "Swords",
+      "a": "venom_blade",
+      "b": "withering_blade",
+      "tip": [
+        "Poisons, withers and weakens enemies."
+      ],
+      "stats": {
+        "dur": 4000,
+        "dmg": 9,
+        "aspd": -2.4
+      }
+    },
+    {
+      "id": "tempest_blade",
+      "name": "Tempest Blade",
+      "rar": 2,
+      "kind": "sword",
+      "cat": "Swords",
+      "a": "thunder_blade",
+      "b": "gale_saber",
+      "tip": [
+        "Calls lightning on the enemy you hit.",
+        "The lightning jumps to nearby enemies.",
+        "Launches enemies into the air."
+      ],
+      "stats": {
+        "dur": 4000,
+        "dmg": 10,
+        "aspd": -2.2
+      }
+    },
+    {
+      "id": "bloodthirst_greatsword",
+      "name": "Bloodthirst Greatsword",
+      "rar": 2,
+      "kind": "sword",
+      "cat": "Swords",
+      "a": "vampire_blade",
+      "b": "greatsword",
+      "tip": [
+        "Heals you when you hit enemies.",
+        "Hits also damage nearby enemies."
+      ],
+      "stats": {
+        "dur": 5000,
+        "dmg": 14,
+        "aspd": -3.0
+      }
+    },
+    {
+      "id": "void_blade",
+      "name": "Void Blade",
+      "rar": 2,
+      "kind": "sword",
+      "cat": "Swords",
+      "a": "ender_blade",
+      "b": "echo_shard",
+      "tip": [
+        "Right-click to teleport 28 blocks ahead.",
+        "Deals extra magic damage."
+      ],
+      "stats": {
+        "dur": 4000,
+        "dmg": 10,
+        "aspd": -2.4
+      }
+    },
+    {
+      "id": "elemental_blade",
+      "name": "Blade of the Elements",
+      "rar": 3,
+      "kind": "sword",
+      "cat": "Swords",
+      "a": "frostfire_blade",
+      "b": "tempest_blade",
+      "tip": [
+        "Burns, freezes and slows enemies.",
+        "Chain lightning. Launches enemies.",
+        "Right-click: fires a burning beam."
+      ],
+      "stats": {
+        "dur": 9000,
+        "dmg": 14,
+        "aspd": -2.2
+      }
+    },
+    {
+      "id": "soul_reaver",
+      "name": "Soul Reaver",
+      "rar": 3,
+      "kind": "sword",
+      "cat": "Swords",
+      "a": "plague_blade",
+      "b": "bloodthirst_greatsword",
+      "tip": [
+        "Poisons, withers and weakens enemies.",
+        "Heals you for half the damage dealt.",
+        "Hits also damage nearby enemies."
+      ],
+      "stats": {
+        "dur": 9000,
+        "dmg": 17,
+        "aspd": -2.8
+      }
+    },
+    {
+      "id": "magnet",
+      "name": "Magnet",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Wands, staffs and charms",
+      "a": "iron_ingot",
+      "b": "redstone",
+      "tip": [
+        "Pulls nearby items and XP to you.",
+        "Keep it in your hotbar or off hand."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "fire_wand",
+      "name": "Wand of Fire",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Wands, staffs and charms",
+      "a": "blaze_rod",
+      "b": "fire_charge",
+      "tip": [
+        "Right-click to shoot a fireball."
+      ],
+      "stats": {
+        "dur": 200
+      }
+    },
+    {
+      "id": "frost_wand",
+      "name": "Wand of Frost",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Wands, staffs and charms",
+      "a": "stick",
+      "b": "blue_ice",
+      "tip": [
+        "Right-click to freeze and slow",
+        "all enemies in front of you."
+      ],
+      "stats": {
+        "dur": 200
+      }
+    },
+    {
+      "id": "storm_staff",
+      "name": "Staff of Storms",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Wands, staffs and charms",
+      "a": "lightning_rod",
+      "b": "blaze_rod",
+      "tip": [
+        "Right-click to call lightning",
+        "where you look."
+      ],
+      "stats": {
+        "dur": 150
+      }
+    },
+    {
+      "id": "warp_staff",
+      "name": "Warp Staff",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Wands, staffs and charms",
+      "a": "end_rod",
+      "b": "ender_pearl",
+      "tip": [
+        "Right-click to teleport where you look.",
+        "Range: 32 blocks."
+      ],
+      "stats": {
+        "dur": 250
+      }
+    },
+    {
+      "id": "gust_staff",
+      "name": "Gust Staff",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Wands, staffs and charms",
+      "a": "breeze_rod",
+      "b": "feather",
+      "tip": [
+        "Right-click to leap where you look.",
+        "No fall damage while in your hotbar."
+      ],
+      "stats": {
+        "dur": 300
+      }
+    },
+    {
+      "id": "healing_staff",
+      "name": "Staff of Healing",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Wands, staffs and charms",
+      "a": "blaze_rod",
+      "b": "glistering_melon_slice",
+      "tip": [
+        "Right-click to heal yourself.",
+        "15 second cooldown."
+      ],
+      "stats": {
+        "dur": 64
+      }
+    },
+    {
+      "id": "recall_compass",
+      "name": "Recall Compass",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Wands, staffs and charms",
+      "a": "compass",
+      "b": "ender_pearl",
+      "tip": [
+        "Right-click to teleport to your",
+        "spawn point. 30 second cooldown."
+      ],
+      "stats": {
+        "dur": 32
+      }
+    },
+    {
+      "id": "dynamite",
+      "name": "Dynamite",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Wands, staffs and charms",
+      "a": "gunpowder",
+      "b": "paper",
+      "tip": [
+        "Right-click to throw.",
+        "Explodes like TNT after 2 seconds."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "ender_pouch",
+      "name": "Ender Pouch",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Wands, staffs and charms",
+      "a": "ender_chest",
+      "b": "leather",
+      "tip": [
+        "Right-click to open your",
+        "Ender Chest anywhere."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "pocket_workbench",
+      "name": "Pocket Workbench",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Wands, staffs and charms",
+      "a": "crafting_table",
+      "b": "leather",
+      "tip": [
+        "Right-click to open a",
+        "crafting grid anywhere."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "mending_charm",
+      "name": "Mending Charm",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Wands, staffs and charms",
+      "a": "anvil",
+      "b": "diamond",
+      "tip": [
+        "Slowly repairs all your items.",
+        "Keep it in your hotbar or off hand."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "feather_charm",
+      "name": "Feather Charm",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Wands, staffs and charms",
+      "a": "feather",
+      "b": "phantom_membrane",
+      "tip": [
+        "No fall damage.",
+        "Keep it in your hotbar or off hand."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "obsidian_charm",
+      "name": "Obsidian Charm",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Wands, staffs and charms",
+      "a": "obsidian",
+      "b": "magma_cream",
+      "tip": [
+        "Fire and lava do not hurt you.",
+        "Keep it in your hotbar or off hand."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "tide_charm",
+      "name": "Tide Charm",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Wands, staffs and charms",
+      "a": "nautilus_shell",
+      "b": "prismarine_crystals",
+      "tip": [
+        "Breathe and swim fast underwater.",
+        "Keep it in your hotbar or off hand."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "haste_charm",
+      "name": "Haste Charm",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Wands, staffs and charms",
+      "a": "golden_pickaxe",
+      "b": "redstone_block",
+      "tip": [
+        "Gives Haste II.",
+        "Keep it in your hotbar or off hand."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "swift_charm",
+      "name": "Swift Charm",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Wands, staffs and charms",
+      "a": "sugar",
+      "b": "rabbit_foot",
+      "tip": [
+        "Gives Speed II.",
+        "Keep it in your hotbar or off hand."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "seer_spyglass",
+      "name": "Seer's Spyglass",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Wands, staffs and charms",
+      "a": "spyglass",
+      "b": "ender_eye",
+      "tip": [
+        "Right-click to make nearby mobs",
+        "glow through walls for 15 seconds."
+      ],
+      "stats": {
+        "dur": 100
+      }
+    },
+    {
+      "id": "eternal_totem",
+      "name": "Eternal Totem",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Wands, staffs and charms",
+      "a": "totem_of_undying",
+      "b": "nether_star",
+      "tip": [
+        "Saves you from death. Is not used up.",
+        "5 minute cooldown.",
+        "Keep it in your hotbar or off hand."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "chrono_clock",
+      "name": "Chrono Clock",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Wands, staffs and charms",
+      "a": "clock",
+      "b": "diamond",
+      "tip": [
+        "Right-click: skip to morning.",
+        "Sneak + right-click: skip to night."
+      ],
+      "stats": {
+        "dur": 64
+      }
+    },
+    {
+      "id": "explorer_charm",
+      "name": "Explorer's Charm",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Wands, staffs and charms",
+      "a": "feather_charm",
+      "b": "swift_charm",
+      "tip": [
+        "Speed II, Jump Boost II, no fall damage.",
+        "Keep it in your hotbar or off hand."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "elemental_charm",
+      "name": "Elemental Charm",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Wands, staffs and charms",
+      "a": "obsidian_charm",
+      "b": "tide_charm",
+      "tip": [
+        "Immune to fire. Breathe underwater.",
+        "Swim fast. Resistance I.",
+        "Keep it in your hotbar or off hand."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "inferno_staff",
+      "name": "Inferno Staff",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Wands, staffs and charms",
+      "a": "fire_wand",
+      "b": "tnt",
+      "tip": [
+        "Right-click to shoot an",
+        "exploding fireball."
+      ],
+      "stats": {
+        "dur": 300
+      }
+    },
+    {
+      "id": "tempest_staff",
+      "name": "Tempest Staff",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Wands, staffs and charms",
+      "a": "storm_staff",
+      "b": "gust_staff",
+      "tip": [
+        "Right-click: lightning storm where you look.",
+        "Sneak + right-click: leap.",
+        "No fall damage while in your hotbar."
+      ],
+      "stats": {
+        "dur": 400
+      }
+    },
+    {
+      "id": "rift_staff",
+      "name": "Rift Staff",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Wands, staffs and charms",
+      "a": "warp_staff",
+      "b": "recall_compass",
+      "tip": [
+        "Right-click: teleport up to 64 blocks.",
+        "Sneak + right-click: go to your spawn point."
+      ],
+      "stats": {
+        "dur": 500
+      }
+    },
+    {
+      "id": "ancient_charm",
+      "name": "Charm of the Ancients",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Wands, staffs and charms",
+      "a": "explorer_charm",
+      "b": "elemental_charm",
+      "tip": [
+        "Speed II, Jump Boost II, Haste II.",
+        "Night Vision. Immune to fire.",
+        "Breathe underwater. No fall damage.",
+        "+10 hearts. Hotbar or off hand."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "archmage_staff",
+      "name": "Staff of the Archmage",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Wands, staffs and charms",
+      "a": "inferno_staff",
+      "b": "tempest_staff",
+      "tip": [
+        "Right-click: a huge exploding fireball.",
+        "Sneak + right-click: meteor shower",
+        "where you look. No fall damage."
+      ],
+      "stats": {
+        "dur": 1500
+      }
+    },
+    {
+      "id": "armored_elytra",
+      "name": "Armored Elytra",
+      "rar": 1,
+      "kind": "wings",
+      "cat": "Wings",
+      "a": "elytra",
+      "b": "diamond_chestplate",
+      "tip": [
+        "An elytra with the protection",
+        "of a diamond chestplate."
+      ],
+      "stats": {
+        "dur": 900,
+        "prot": 8,
+        "tough": 2.0
+      }
+    },
+    {
+      "id": "rocket_elytra",
+      "name": "Rocket Elytra",
+      "rar": 2,
+      "kind": "wings",
+      "cat": "Wings",
+      "a": "armored_elytra",
+      "b": "firework_rocket",
+      "tip": [
+        "Armored elytra with a booster.",
+        "Hold sneak while gliding to speed up."
+      ],
+      "stats": {
+        "dur": 1500,
+        "prot": 8,
+        "tough": 2.0
+      }
+    },
+    {
+      "id": "seraph_wings",
+      "name": "Seraph Wings",
+      "rar": 3,
+      "kind": "wings",
+      "cat": "Wings",
+      "a": "rocket_elytra",
+      "b": "nether_star",
+      "tip": [
+        "Lets you fly like in creative mode.",
+        "Hold sneak while gliding to speed up."
+      ],
+      "stats": {
+        "dur": 4000,
+        "prot": 8,
+        "tough": 3.0
+      }
+    },
+    {
+      "id": "miner_helmet",
+      "name": "Miner's Helmet",
+      "rar": 1,
+      "kind": "armor",
+      "cat": "Armor",
+      "a": "iron_helmet",
+      "b": "lantern",
+      "tip": [
+        "Night Vision while worn."
+      ],
+      "stats": {
+        "dur": 240,
+        "prot": 2,
+        "tough": 0.0
+      }
+    },
+    {
+      "id": "diving_helmet",
+      "name": "Diving Helmet",
+      "rar": 1,
+      "kind": "armor",
+      "cat": "Armor",
+      "a": "iron_helmet",
+      "b": "glass",
+      "tip": [
+        "Breathe underwater while worn."
+      ],
+      "stats": {
+        "dur": 240,
+        "prot": 2,
+        "tough": 0.0
+      }
+    },
+    {
+      "id": "magma_chestplate",
+      "name": "Magma Chestplate",
+      "rar": 1,
+      "kind": "armor",
+      "cat": "Armor",
+      "a": "diamond_chestplate",
+      "b": "magma_block",
+      "tip": [
+        "Immune to fire while worn.",
+        "Sets attackers on fire."
+      ],
+      "stats": {
+        "dur": 600,
+        "prot": 8,
+        "tough": 2.0
+      }
+    },
+    {
+      "id": "cactus_chestplate",
+      "name": "Cactus Chestplate",
+      "rar": 1,
+      "kind": "armor",
+      "cat": "Armor",
+      "a": "iron_chestplate",
+      "b": "cactus",
+      "tip": [
+        "Hurts anything that attacks you."
+      ],
+      "stats": {
+        "dur": 300,
+        "prot": 6,
+        "tough": 0.0
+      }
+    },
+    {
+      "id": "swift_leggings",
+      "name": "Swift Leggings",
+      "rar": 1,
+      "kind": "armor",
+      "cat": "Armor",
+      "a": "diamond_leggings",
+      "b": "sugar",
+      "tip": [
+        "Speed II while worn."
+      ],
+      "stats": {
+        "dur": 560,
+        "prot": 6,
+        "tough": 2.0
+      }
+    },
+    {
+      "id": "spring_boots",
+      "name": "Spring Boots",
+      "rar": 1,
+      "kind": "armor",
+      "cat": "Armor",
+      "a": "iron_boots",
+      "b": "slime_block",
+      "tip": [
+        "Jump Boost III while worn.",
+        "No fall damage."
+      ],
+      "stats": {
+        "dur": 260,
+        "prot": 2,
+        "tough": 0.0
+      }
+    },
+    {
+      "id": "spelunker_helmet",
+      "name": "Spelunker's Helmet",
+      "rar": 2,
+      "kind": "armor",
+      "cat": "Armor",
+      "a": "miner_helmet",
+      "b": "diving_helmet",
+      "tip": [
+        "Night Vision, Haste I and",
+        "underwater breathing while worn."
+      ],
+      "stats": {
+        "dur": 500,
+        "prot": 3,
+        "tough": 2.0
+      }
+    },
+    {
+      "id": "inferno_thornmail",
+      "name": "Inferno Thornmail",
+      "rar": 2,
+      "kind": "armor",
+      "cat": "Armor",
+      "a": "magma_chestplate",
+      "b": "cactus_chestplate",
+      "tip": [
+        "Immune to fire. Resistance I.",
+        "Attackers burn and explode.",
+        "The explosion breaks no blocks."
+      ],
+      "stats": {
+        "dur": 900,
+        "prot": 9,
+        "tough": 3.0
+      }
+    },
+    {
+      "id": "hermes_boots",
+      "name": "Hermes Boots",
+      "rar": 2,
+      "kind": "armor",
+      "cat": "Armor",
+      "a": "spring_boots",
+      "b": "swift_charm",
+      "tip": [
+        "Speed III and Jump Boost III.",
+        "No fall damage."
+      ],
+      "stats": {
+        "dur": 600,
+        "prot": 3,
+        "tough": 2.0
+      }
+    },
+    {
+      "id": "golden_steak",
+      "name": "Golden Steak",
+      "rar": 1,
+      "kind": "food",
+      "cat": "Food",
+      "a": "cooked_beef",
+      "b": "gold_ingot",
+      "tip": [
+        "Absorption and Regeneration."
+      ],
+      "stats": {
+        "nut": 10
+      }
+    },
+    {
+      "id": "honey_toast",
+      "name": "Honey Toast",
+      "rar": 1,
+      "kind": "food",
+      "cat": "Food",
+      "a": "bread",
+      "b": "honey_bottle",
+      "tip": [
+        "Speed I for 30 seconds."
+      ],
+      "stats": {
+        "nut": 8
+      }
+    },
+    {
+      "id": "miners_pie",
+      "name": "Miner's Pie",
+      "rar": 1,
+      "kind": "food",
+      "cat": "Food",
+      "a": "pumpkin_pie",
+      "b": "glow_berries",
+      "tip": [
+        "Night Vision and Haste I for 3 minutes."
+      ],
+      "stats": {
+        "nut": 9
+      }
+    },
+    {
+      "id": "blazing_stew",
+      "name": "Blazing Stew",
+      "rar": 1,
+      "kind": "food",
+      "cat": "Food",
+      "a": "mushroom_stew",
+      "b": "blaze_powder",
+      "tip": [
+        "Fire Resistance for 3 minutes.",
+        "Strength I for 45 seconds."
+      ],
+      "stats": {
+        "nut": 8
+      }
+    },
+    {
+      "id": "glowing_carrot",
+      "name": "Glowing Carrot",
+      "rar": 1,
+      "kind": "food",
+      "cat": "Food",
+      "a": "golden_carrot",
+      "b": "glowstone_dust",
+      "tip": [
+        "Night Vision for 5 minutes.",
+        "Can be eaten when full."
+      ],
+      "stats": {
+        "nut": 6
+      }
+    },
+    {
+      "id": "sugar_cookie",
+      "name": "Sugar Rush Cookie",
+      "rar": 1,
+      "kind": "food",
+      "cat": "Food",
+      "a": "cookie",
+      "b": "sugar",
+      "tip": [
+        "Eaten very fast. Speed II for 20 seconds.",
+        "Can be eaten when full."
+      ],
+      "stats": {
+        "nut": 2
+      }
+    },
+    {
+      "id": "hero_sandwich",
+      "name": "Hero Sandwich",
+      "rar": 1,
+      "kind": "food",
+      "cat": "Food",
+      "a": "bread",
+      "b": "cooked_porkchop",
+      "tip": [
+        "Very filling."
+      ],
+      "stats": {
+        "nut": 14
+      }
+    },
+    {
+      "id": "kelp_roll",
+      "name": "Sailor's Kelp Roll",
+      "rar": 1,
+      "kind": "food",
+      "cat": "Food",
+      "a": "cooked_cod",
+      "b": "dried_kelp",
+      "tip": [
+        "Water Breathing for 2 minutes.",
+        "Dolphin's Grace for 1 minute."
+      ],
+      "stats": {
+        "nut": 9
+      }
+    },
+    {
+      "id": "royal_feast",
+      "name": "Royal Feast",
+      "rar": 2,
+      "kind": "food",
+      "cat": "Food",
+      "a": "golden_steak",
+      "b": "hero_sandwich",
+      "tip": [
+        "Fills your whole hunger bar.",
+        "Absorption II, Regeneration II, Resistance I."
+      ],
+      "stats": {
+        "nut": 20
+      }
+    },
+    {
+      "id": "ambrosia",
+      "name": "Ambrosia",
+      "rar": 3,
+      "kind": "food",
+      "cat": "Food",
+      "a": "royal_feast",
+      "b": "enchanted_golden_apple",
+      "tip": [
+        "Absorption IV, Regeneration II, Strength II.",
+        "Resistance I and Fire Resistance.",
+        "Can be eaten when full."
+      ],
+      "stats": {
+        "nut": 20
+      }
+    },
+    {
+      "id": "tnt_pickaxe",
+      "name": "Blast Pickaxe",
+      "rar": 2,
+      "kind": "pick",
+      "cat": "Mining tools",
+      "a": "diamond_pickaxe",
+      "b": "tnt",
+      "tip": [
+        "Every block you mine explodes.",
+        "The blast does not hurt you.",
+        "Sneak to mine one block."
+      ],
+      "stats": {
+        "dur": 3000,
+        "speed": 8,
+        "dmg": 5,
+        "aspd": -2.8
+      }
+    },
+    {
+      "id": "mining_laser",
+      "name": "Mining Laser",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Mining tools",
+      "a": "redstone_drill",
+      "b": "end_rod",
+      "tip": [
+        "Right-click: burns a 3x3 tunnel",
+        "48 blocks long. Drops go to you."
+      ],
+      "stats": {
+        "dur": 500
+      }
+    },
+    {
+      "id": "earthshaker",
+      "name": "Earthshaker",
+      "rar": 2,
+      "kind": "pick",
+      "cat": "Mining tools",
+      "a": "excavator",
+      "b": "tnt",
+      "tip": [
+        "Mines a 3x3x3 cube.",
+        "Right-click: earthquake. The ground",
+        "and all nearby mobs fly into the air."
+      ],
+      "stats": {
+        "dur": 5000,
+        "speed": 6,
+        "dmg": 8,
+        "aspd": -3.0
+      }
+    },
+    {
+      "id": "home_run_bat",
+      "name": "Home Run Bat",
+      "rar": 2,
+      "kind": "sword",
+      "cat": "Swords",
+      "a": "slime_bat",
+      "b": "piston",
+      "tip": [
+        "Sends enemies flying over the horizon."
+      ],
+      "stats": {
+        "dur": 800,
+        "dmg": 4,
+        "aspd": -2.4
+      }
+    },
+    {
+      "id": "beam_saber",
+      "name": "Beam Saber",
+      "rar": 2,
+      "kind": "sword",
+      "cat": "Swords",
+      "a": "diamond_sword",
+      "b": "end_crystal",
+      "tip": [
+        "Sets enemies on fire.",
+        "Right-click: fires a beam that burns",
+        "everything in a line."
+      ],
+      "stats": {
+        "dur": 2500,
+        "dmg": 9,
+        "aspd": -2.2
+      }
+    },
+    {
+      "id": "omni_blade",
+      "name": "Blade of Everything",
+      "rar": 3,
+      "kind": "sword",
+      "cat": "Swords",
+      "a": "elemental_blade",
+      "b": "soul_reaver",
+      "tip": [
+        "Every sword effect of this mod at once.",
+        "Right-click: fires a beam."
+      ],
+      "stats": {
+        "dur": 20000,
+        "dmg": 25,
+        "aspd": -2.0
+      }
+    },
+    {
+      "id": "mega_dynamite",
+      "name": "Mega Dynamite",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Bombs and disasters",
+      "a": "dynamite",
+      "b": "tnt",
+      "tip": [
+        "Right-click to throw.",
+        "A huge explosion after 3 seconds.",
+        "It hurts you too."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "nuke",
+      "name": "Pocket Nuke",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Bombs and disasters",
+      "a": "mega_dynamite",
+      "b": "nether_star",
+      "tip": [
+        "Right-click to throw. Then run.",
+        "Erases everything within 18 blocks.",
+        "It hurts you too."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "doomsday_device",
+      "name": "Doomsday Device",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Bombs and disasters",
+      "a": "nuke",
+      "b": "singularity",
+      "tip": [
+        "Right-click to throw. Then run far.",
+        "Erases everything within 32 blocks."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "meteor_staff",
+      "name": "Meteor Staff",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Bombs and disasters",
+      "a": "inferno_staff",
+      "b": "magma_block",
+      "tip": [
+        "Right-click: a meteor hits where you look.",
+        "Sneak + right-click: meteor shower."
+      ],
+      "stats": {
+        "dur": 300
+      }
+    },
+    {
+      "id": "singularity",
+      "name": "Singularity",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Bombs and disasters",
+      "a": "echo_shard",
+      "b": "nether_star",
+      "tip": [
+        "Right-click: opens a black hole where you",
+        "look. For 10 seconds it eats blocks and",
+        "mobs. It pulls you in too."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "ocean_orb",
+      "name": "Ocean Orb",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Bombs and disasters",
+      "a": "heart_of_the_sea",
+      "b": "sponge",
+      "tip": [
+        "Right-click: floods the spot you look at.",
+        "Sneak + right-click: removes all water",
+        "and lava around you."
+      ],
+      "stats": {
+        "dur": 64
+      }
+    },
+    {
+      "id": "winter_globe",
+      "name": "Winter Globe",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Bombs and disasters",
+      "a": "frost_wand",
+      "b": "packed_ice",
+      "tip": [
+        "Right-click: freezes everything around you.",
+        "Water turns to ice, lava to obsidian.",
+        "Mobs freeze solid."
+      ],
+      "stats": {
+        "dur": 64
+      }
+    },
+    {
+      "id": "anvil_staff",
+      "name": "Anvil Storm Staff",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Bombs and disasters",
+      "a": "storm_staff",
+      "b": "anvil",
+      "tip": [
+        "Right-click: rains anvils where you look."
+      ],
+      "stats": {
+        "dur": 100
+      }
+    },
+    {
+      "id": "poultry_staff",
+      "name": "Fowl Weather Staff",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Bombs and disasters",
+      "a": "storm_staff",
+      "b": "egg",
+      "tip": [
+        "Right-click: rains chickens where you look.",
+        "They are real chickens."
+      ],
+      "stats": {
+        "dur": 100
+      }
+    },
+    {
+      "id": "wither_wand",
+      "name": "Wither Wand",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Bombs and disasters",
+      "a": "wither_skeleton_skull",
+      "b": "blaze_rod",
+      "tip": [
+        "Right-click: shoots exploding wither skulls."
+      ],
+      "stats": {
+        "dur": 200
+      }
+    },
+    {
+      "id": "arrow_gatling",
+      "name": "Arrow Gatling",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Bombs and disasters",
+      "a": "dispenser",
+      "b": "crossbow",
+      "tip": [
+        "Right-click: fires 10 arrows at once.",
+        "Needs no arrows."
+      ],
+      "stats": {
+        "dur": 1000
+      }
+    },
+    {
+      "id": "midas_glove",
+      "name": "Midas Glove",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Transformation",
+      "a": "leather",
+      "b": "gold_block",
+      "tip": [
+        "Right-click a block: it and its neighbours",
+        "turn into gold blocks.",
+        "Hit a mob: it turns into a gold block."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "philosopher_stone",
+      "name": "Philosopher's Stone",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Transformation",
+      "a": "emerald_block",
+      "b": "redstone_block",
+      "tip": [
+        "Right-click a block to upgrade it:",
+        "stone, coal, iron, gold, diamond,",
+        "emerald, netherite. Sneak to go back."
+      ],
+      "stats": {
+        "dur": 256
+      }
+    },
+    {
+      "id": "polymorph_wand",
+      "name": "Polymorph Wand",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Transformation",
+      "a": "blaze_rod",
+      "b": "egg",
+      "tip": [
+        "Right-click a mob: it turns into",
+        "a random farm animal."
+      ],
+      "stats": {
+        "dur": 64
+      }
+    },
+    {
+      "id": "size_ray",
+      "name": "Size Ray",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Transformation",
+      "a": "spyglass",
+      "b": "amethyst_shard",
+      "tip": [
+        "Right-click a mob: it shrinks and gets weak.",
+        "Sneak + right-click: it grows huge."
+      ],
+      "stats": {
+        "dur": 128
+      }
+    },
+    {
+      "id": "eat_me_cake",
+      "name": "Eat-Me Cake",
+      "rar": 2,
+      "kind": "food",
+      "cat": "Transformation",
+      "a": "cake",
+      "b": "bone_meal",
+      "tip": [
+        "You grow 4 times as big for 2 minutes.",
+        "More health, damage and reach.",
+        "Can be eaten when full."
+      ],
+      "stats": {
+        "nut": 6
+      }
+    },
+    {
+      "id": "shrinking_mushroom",
+      "name": "Shrinking Mushroom",
+      "rar": 2,
+      "kind": "food",
+      "cat": "Transformation",
+      "a": "red_mushroom",
+      "b": "brown_mushroom",
+      "tip": [
+        "You shrink to a fifth of your size",
+        "for 2 minutes. Fits through tiny gaps.",
+        "Can be eaten when full."
+      ],
+      "stats": {
+        "nut": 2
+      }
+    },
+    {
+      "id": "time_stopper",
+      "name": "Time Stopper",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Mobs, time and space",
+      "a": "chrono_clock",
+      "b": "ender_eye",
+      "tip": [
+        "Right-click: stops time for 10 seconds.",
+        "Everything freezes except you."
+      ],
+      "stats": {
+        "dur": 32
+      }
+    },
+    {
+      "id": "madness_bell",
+      "name": "Bell of Madness",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Mobs, time and space",
+      "a": "bell",
+      "b": "fermented_spider_eye",
+      "tip": [
+        "Right-click: nearby monsters",
+        "attack each other."
+      ],
+      "stats": {
+        "dur": 64
+      }
+    },
+    {
+      "id": "golem_horn",
+      "name": "Golem Horn",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Mobs, time and space",
+      "a": "goat_horn",
+      "b": "iron_block",
+      "tip": [
+        "Right-click: calls 3 iron golems",
+        "that fight for you."
+      ],
+      "stats": {
+        "dur": 16
+      }
+    },
+    {
+      "id": "gravity_staff",
+      "name": "Gravity Staff",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Mobs, time and space",
+      "a": "gust_staff",
+      "b": "shulker_shell",
+      "tip": [
+        "Right-click: nearby mobs fly into the sky.",
+        "Sneak + right-click: slams them down."
+      ],
+      "stats": {
+        "dur": 200
+      }
+    },
+    {
+      "id": "swap_staff",
+      "name": "Swap Staff",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Mobs, time and space",
+      "a": "warp_staff",
+      "b": "chorus_fruit",
+      "tip": [
+        "Right-click a mob: you swap places."
+      ],
+      "stats": {
+        "dur": 200
+      }
+    },
+    {
+      "id": "ghost_cloak",
+      "name": "Ghost Cloak",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Mobs, time and space",
+      "a": "phantom_membrane",
+      "b": "ender_pearl",
+      "tip": [
+        "Right-click: you are a ghost for 8 seconds.",
+        "Fly through walls. Do not end inside one."
+      ],
+      "stats": {
+        "dur": 32
+      }
+    },
+    {
+      "id": "portable_hole",
+      "name": "Portable Hole",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Mobs, time and space",
+      "a": "black_wool",
+      "b": "ender_pearl",
+      "tip": [
+        "Right-click a wall: opens a tunnel",
+        "for 8 seconds. Then the wall comes back."
+      ],
+      "stats": {
+        "dur": 64
+      }
+    },
+    {
+      "id": "bridge_staff",
+      "name": "Bridge Staff",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Mobs, time and space",
+      "a": "stick",
+      "b": "scaffolding",
+      "tip": [
+        "Right-click: builds a wooden bridge",
+        "32 blocks ahead of you."
+      ],
+      "stats": {
+        "dur": 64
+      }
+    },
+    {
+      "id": "house_box",
+      "name": "House in a Box",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Mobs, time and space",
+      "a": "crafting_table",
+      "b": "oak_door",
+      "tip": [
+        "Right-click the ground: builds a small",
+        "furnished house in front of you."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "forest_staff",
+      "name": "Staff of the Wild",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Mobs, time and space",
+      "a": "verdant_staff",
+      "b": "oak_sapling",
+      "tip": [
+        "Right-click: a forest grows at once",
+        "where you look."
+      ],
+      "stats": {
+        "dur": 64
+      }
+    },
+    {
+      "id": "ore_dowser",
+      "name": "Diamond Dowser",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Mobs, time and space",
+      "a": "compass",
+      "b": "amethyst_shard",
+      "tip": [
+        "Right-click: tells you where the nearest",
+        "diamond ore or ancient debris is."
+      ],
+      "stats": {
+        "dur": 64
+      }
+    },
+    {
+      "id": "titan_belt",
+      "name": "Titan's Belt",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Body upgrades",
+      "a": "leather",
+      "b": "iron_block",
+      "tip": [
+        "You are 2.5 times as big.",
+        "+20 hearts, +8 damage, longer reach.",
+        "Keep it in your hotbar or off hand."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "long_arm_glove",
+      "name": "Long Arm Glove",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Body upgrades",
+      "a": "sticky_piston",
+      "b": "leather",
+      "tip": [
+        "Reach blocks and mobs 32 blocks away.",
+        "Keep it in your hotbar or off hand."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "colossus_heart",
+      "name": "Heart of the Colossus",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Body upgrades",
+      "a": "enchanted_golden_apple",
+      "b": "totem_of_undying",
+      "tip": [
+        "+40 hearts and Regeneration II.",
+        "Keep it in your hotbar or off hand."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "miner_gauntlet",
+      "name": "Miner's Gauntlet",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Body upgrades",
+      "a": "haste_charm",
+      "b": "diamond_block",
+      "tip": [
+        "Mine 10 times faster with anything,",
+        "even your fist.",
+        "Keep it in your hotbar or off hand."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "fist_of_doom",
+      "name": "Fist of Doom",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Body upgrades",
+      "a": "netherite_ingot",
+      "b": "nether_star",
+      "tip": [
+        "Whatever you hit dies.",
+        "Hold it in your main hand."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "godhood_charm",
+      "name": "Charm of Godhood",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Body upgrades",
+      "a": "ancient_charm",
+      "b": "colossus_heart",
+      "tip": [
+        "All of the Charm of the Ancients.",
+        "Creative flight. +40 hearts. Long reach.",
+        "Mine 5 times faster. Hotbar or off hand."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "moon_boots",
+      "name": "Moon Boots",
+      "rar": 2,
+      "kind": "armor",
+      "cat": "Armor",
+      "a": "spring_boots",
+      "b": "end_stone",
+      "tip": [
+        "Low gravity and huge jumps.",
+        "No fall damage."
+      ],
+      "stats": {
+        "dur": 600,
+        "prot": 3,
+        "tough": 2.0
+      }
+    },
+    {
+      "id": "rocket_chili",
+      "name": "Rocket Chili",
+      "rar": 2,
+      "kind": "food",
+      "cat": "Food",
+      "a": "firework_rocket",
+      "b": "beetroot",
+      "tip": [
+        "Launches you high into the sky.",
+        "You float back down.",
+        "Can be eaten when full."
+      ],
+      "stats": {
+        "nut": 4
+      }
+    },
+    {
+      "id": "xp_tome",
+      "name": "Tome of Infinite Wisdom",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Cheats",
+      "a": "book",
+      "b": "experience_bottle",
+      "tip": [
+        "Right-click: gives you 5 levels.",
+        "It never runs out."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "dupe_mirror",
+      "name": "Mirror of Duplication",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Cheats",
+      "a": "glass_pane",
+      "b": "ender_eye",
+      "tip": [
+        "Hold it in one hand, any item in the other.",
+        "Right-click: copies the whole stack."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "chaos_orb",
+      "name": "Chaos Orb",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Chaos",
+      "a": null,
+      "b": null,
+      "tip": [
+        "Comes out when you combine two stackable",
+        "items that have no recipe.",
+        "Right-click: something random happens."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "pandora_box",
+      "name": "Pandora's Box",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Chaos",
+      "a": "chaos_orb",
+      "b": "chaos_orb",
+      "tip": [
+        "Right-click: six random things happen,",
+        "one after another."
+      ],
+      "stats": {}
+    }
+  ]
+}

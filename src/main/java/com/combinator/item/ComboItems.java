@@ -1,0 +1,534 @@
+package com.combinator.item;
+
+import com.combinator.ItemCombinator;
+import java.util.ArrayList;
+import java.util.EnumMap;
+import java.util.IdentityHashMap;
+import java.util.List;
+import java.util.Map;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.FoodComponent;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.item.ArmorItem;
+import net.minecraft.item.ArmorMaterial;
+import net.minecraft.item.Item;
+import net.minecraft.item.Items;
+import net.minecraft.recipe.Ingredient;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.Rarity;
+
+/**
+ * All combined items. GENERATED from gen/spec.py - change the table there, not this file.
+ * Each line: id, rarity (1-3, sets the name colour), number of tooltip lines, the item itself, its abilities.
+ */
+public final class ComboItems {
+	/** Every combined item in creative-tab order. */
+	public static final List<Item> ALL = new ArrayList<>();
+	private static final Map<Item, Traits> TRAITS = new IdentityHashMap<>();
+	private static final Map<Item, Integer> TIP_LINES = new IdentityHashMap<>();
+	private static final Map<Item, Integer> RARITIES = new IdentityHashMap<>();
+	public static final Item IRON_HAMMER = add("iron_hammer", 1, 2,
+			new CPick(ComboMaterial.of(750, 4.5F, "iron", 14), 5.0F, -3.0F, props(1)),
+			new Traits().at(Traits.Where.HELD).area(1, false));
+	public static final Item EXCAVATOR = add("excavator", 1, 2,
+			new CPick(ComboMaterial.of(4000, 5.5F, "diamond", 14), 6.0F, -3.0F, props(1)),
+			new Traits().at(Traits.Where.HELD).area(1, true));
+	public static final Item MOLTEN_PICKAXE = add("molten_pickaxe", 1, 1,
+			new CPick(ComboMaterial.of(2000, 8.0F, "diamond", 14), 5.0F, -2.8F, props(1)),
+			new Traits().at(Traits.Where.HELD).smelt());
+	public static final Item VEIN_PICKAXE = add("vein_pickaxe", 1, 2,
+			new CPick(ComboMaterial.of(2000, 8.0F, "diamond", 14), 5.0F, -2.8F, props(1)),
+			new Traits().at(Traits.Where.HELD).vein(48));
+	public static final Item PROSPECTOR_PICKAXE = add("prospector_pickaxe", 1, 1,
+			new CPick(ComboMaterial.of(1800, 8.0F, "diamond", 14), 5.0F, -2.8F, props(1)),
+			new Traits().at(Traits.Where.HELD).doubleOres());
+	public static final Item TORCH_PICKAXE = add("torch_pickaxe", 1, 2,
+			new CPick(ComboMaterial.of(600, 6.0F, "iron", 14), 4.0F, -2.8F, props(1)),
+			new Traits().at(Traits.Where.HELD).torch());
+	public static final Item REDSTONE_DRILL = add("redstone_drill", 1, 2,
+			new CPick(ComboMaterial.of(3000, 16.0F, "diamond", 14), 4.0F, -2.8F, props(1)),
+			new Traits().at(Traits.Where.HELD).fx(StatusEffects.HASTE, 1));
+	public static final Item PAXEL = add("paxel", 1, 1,
+			new CPaxel(ComboMaterial.of(3000, 8.0F, "diamond", 14), 7.0F, -3.0F, props(1)),
+			null);
+	public static final Item MAGNETIC_PICKAXE = add("magnetic_pickaxe", 2, 1,
+			new CPick(ComboMaterial.of(2500, 9.0F, "diamond", 18), 5.0F, -2.8F, props(2)),
+			new Traits().at(Traits.Where.HELD).magnetDrops());
+	public static final Item MAGMA_EXCAVATOR = add("magma_excavator", 2, 2,
+			new CPick(ComboMaterial.of(6000, 7.0F, "netherite", 18), 7.0F, -3.0F, props(2)),
+			new Traits().at(Traits.Where.HELD).area(1, true).smelt());
+	public static final Item MOTHERLODE_PICKAXE = add("motherlode_pickaxe", 2, 2,
+			new CPick(ComboMaterial.of(4000, 9.0F, "netherite", 18), 6.0F, -2.8F, props(2)),
+			new Traits().at(Traits.Where.HELD).vein(96).doubleOres());
+	public static final Item TUNNEL_BORE = add("tunnel_bore", 2, 2,
+			new CPick(ComboMaterial.of(6000, 14.0F, "netherite", 18), 6.0F, -3.0F, props(2)),
+			new Traits().at(Traits.Where.HELD).area(1, false).fx(StatusEffects.HASTE, 1));
+	public static final Item WORLD_EATER = add("world_eater", 3, 4,
+			new CPaxel(ComboMaterial.of(12000, 12.0F, "netherite", 22), 9.0F, -3.0F, props(3)),
+			new Traits().at(Traits.Where.HELD).area(4, true).smelt().magnetDrops().doubleOres());
+	public static final Item LUMBER_AXE = add("lumber_axe", 1, 2,
+			new CAxe(ComboMaterial.of(3000, 8.0F, "diamond", 14), 9.0F, -3.0F, props(1)),
+			new Traits().at(Traits.Where.HELD).tree(160));
+	public static final Item EMBER_AXE = add("ember_axe", 1, 2,
+			new CAxe(ComboMaterial.of(1800, 8.0F, "diamond", 14), 9.0F, -3.0F, props(1)),
+			new Traits().at(Traits.Where.HELD).smelt().ignite(5));
+	public static final Item BATTLE_AXE = add("battle_axe", 1, 1,
+			new CAxe(ComboMaterial.of(2400, 8.0F, "diamond", 14), 12.0F, -3.1F, props(1)),
+			new Traits().at(Traits.Where.HELD).sweep(2.5f, 0.5f));
+	public static final Item EXECUTIONER_AXE = add("executioner_axe", 1, 2,
+			new CAxe(ComboMaterial.of(2000, 8.0F, "diamond", 14), 10.0F, -3.0F, props(1)),
+			new Traits().at(Traits.Where.HELD).heads(0.15f).bonusXp(3));
+	public static final Item DEFORESTER = add("deforester", 2, 2,
+			new CAxe(ComboMaterial.of(6000, 10.0F, "netherite", 18), 10.0F, -3.0F, props(2)),
+			new Traits().at(Traits.Where.HELD).tree(512).magnetDrops());
+	public static final Item WARLORD_AXE = add("warlord_axe", 2, 2,
+			new CAxe(ComboMaterial.of(5000, 9.0F, "netherite", 18), 15.0F, -3.0F, props(2)),
+			new Traits().at(Traits.Where.HELD).sweep(3.0f, 0.6f).heads(0.35f).bonusXp(6));
+	public static final Item TRENCH_SHOVEL = add("trench_shovel", 1, 2,
+			new CShovel(ComboMaterial.of(4000, 6.0F, "diamond", 14), 6.0F, -3.0F, props(1)),
+			new Traits().at(Traits.Where.HELD).area(1, true));
+	public static final Item KILN_SHOVEL = add("kiln_shovel", 1, 2,
+			new CShovel(ComboMaterial.of(2000, 8.0F, "diamond", 14), 5.5F, -3.0F, props(1)),
+			new Traits().at(Traits.Where.HELD).smelt());
+	public static final Item TERRAFORMER = add("terraformer", 2, 2,
+			new CPaxel(ComboMaterial.of(8000, 8.0F, "netherite", 18), 7.0F, -3.0F, props(2)),
+			new Traits().at(Traits.Where.HELD).area(1, true));
+	public static final Item HARVESTER_HOE = add("harvester_hoe", 1, 2,
+			new CHoe(ComboMaterial.of(2500, 8.0F, "diamond", 14), 1.0F, 0.0F, props(1)),
+			new Traits().at(Traits.Where.HELD).harvest(2));
+	public static final Item VERDANT_STAFF = add("verdant_staff", 1, 2,
+			new CItem(props(1).maxDamage(256)),
+			new Traits().at(Traits.Where.HOTBAR).bonemeal(1));
+	public static final Item FARMERS_SCYTHE = add("farmers_scythe", 2, 3,
+			new CHoe(ComboMaterial.of(5000, 10.0F, "netherite", 18), 6.0F, -2.0F, props(2)),
+			new Traits().at(Traits.Where.HELD).harvest(4).magnetDrops());
+	public static final Item BLAZING_SWORD = add("blazing_sword", 1, 1,
+			new CSword(ComboMaterial.of(1800, 1.0F, "diamond", 14), 8, -2.4F, props(1)),
+			new Traits().at(Traits.Where.HELD).ignite(6));
+	public static final Item FROST_BLADE = add("frost_blade", 1, 1,
+			new CSword(ComboMaterial.of(1800, 1.0F, "diamond", 14), 8, -2.4F, props(1)),
+			new Traits().at(Traits.Where.HELD).hit(StatusEffects.SLOWNESS, 100, 2).freeze());
+	public static final Item VENOM_BLADE = add("venom_blade", 1, 1,
+			new CSword(ComboMaterial.of(1800, 1.0F, "diamond", 14), 7, -2.4F, props(1)),
+			new Traits().at(Traits.Where.HELD).hit(StatusEffects.POISON, 120, 1));
+	public static final Item WITHERING_BLADE = add("withering_blade", 1, 1,
+			new CSword(ComboMaterial.of(1800, 1.0F, "diamond", 14), 8, -2.4F, props(1)),
+			new Traits().at(Traits.Where.HELD).hit(StatusEffects.WITHER, 120, 1));
+	public static final Item THUNDER_BLADE = add("thunder_blade", 1, 1,
+			new CSword(ComboMaterial.of(1800, 1.0F, "diamond", 14), 8, -2.4F, props(1)),
+			new Traits().at(Traits.Where.HELD).lightning(5.0f).strikeCooldown(40));
+	public static final Item VAMPIRE_BLADE = add("vampire_blade", 1, 1,
+			new CSword(ComboMaterial.of(1800, 1.0F, "diamond", 14), 7, -2.4F, props(1)),
+			new Traits().at(Traits.Where.HELD).lifesteal(0.25f));
+	public static final Item ENDER_BLADE = add("ender_blade", 1, 1,
+			new CSword(ComboMaterial.of(1800, 1.0F, "diamond", 14), 8, -2.4F, props(1)),
+			new Traits().at(Traits.Where.HELD).use(Use.BLINK).range(12).cooldown(40).cost(3));
+	public static final Item GREATSWORD = add("greatsword", 1, 2,
+			new CSword(ComboMaterial.of(3000, 1.0F, "diamond", 14), 12, -3.0F, props(1)),
+			new Traits().at(Traits.Where.HELD).sweep(3.0f, 0.5f));
+	public static final Item GALE_SABER = add("gale_saber", 1, 2,
+			new CSword(ComboMaterial.of(1800, 1.0F, "diamond", 14), 7, -2.0F, props(1)),
+			new Traits().at(Traits.Where.HELD).knockUp(0.9f));
+	public static final Item MIDAS_SWORD = add("midas_sword", 1, 2,
+			new CSword(ComboMaterial.of(1200, 1.0F, "diamond", 14), 7, -2.4F, props(1)),
+			new Traits().at(Traits.Where.HELD).nuggets(4).bonusXp(4));
+	public static final Item CREEPER_CLEAVER = add("creeper_cleaver", 1, 2,
+			new CSword(ComboMaterial.of(1800, 1.0F, "diamond", 14), 8, -2.6F, props(1)),
+			new Traits().at(Traits.Where.HELD).boomHit(3.0f).strikeCooldown(15));
+	public static final Item SLIME_BAT = add("slime_bat", 1, 1,
+			new CSword(ComboMaterial.of(400, 1.0F, "wooden", 14), 3, -2.4F, props(1)),
+			new Traits().at(Traits.Where.HELD).knockback(7.0f));
+	public static final Item FROSTFIRE_BLADE = add("frostfire_blade", 2, 2,
+			new CSword(ComboMaterial.of(4000, 1.0F, "netherite", 18), 10, -2.4F, props(2)),
+			new Traits().at(Traits.Where.HELD).ignite(8).hit(StatusEffects.SLOWNESS, 120, 3).freeze().magic(3.0f));
+	public static final Item PLAGUE_BLADE = add("plague_blade", 2, 1,
+			new CSword(ComboMaterial.of(4000, 1.0F, "netherite", 18), 9, -2.4F, props(2)),
+			new Traits().at(Traits.Where.HELD).hit(StatusEffects.POISON, 160, 2).hit(StatusEffects.WITHER, 160, 2).hit(StatusEffects.WEAKNESS, 160, 1));
+	public static final Item TEMPEST_BLADE = add("tempest_blade", 2, 3,
+			new CSword(ComboMaterial.of(4000, 1.0F, "netherite", 18), 10, -2.2F, props(2)),
+			new Traits().at(Traits.Where.HELD).lightning(8.0f).chain(10.0f, 6.0f).knockUp(0.8f).strikeCooldown(30));
+	public static final Item BLOODTHIRST_GREATSWORD = add("bloodthirst_greatsword", 2, 2,
+			new CSword(ComboMaterial.of(5000, 1.0F, "netherite", 18), 14, -3.0F, props(2)),
+			new Traits().at(Traits.Where.HELD).lifesteal(0.35f).sweep(3.0f, 0.6f));
+	public static final Item VOID_BLADE = add("void_blade", 2, 2,
+			new CSword(ComboMaterial.of(4000, 1.0F, "netherite", 18), 10, -2.4F, props(2)),
+			new Traits().at(Traits.Where.HELD).use(Use.BLINK).range(28).cooldown(20).cost(2).magic(4.0f));
+	public static final Item ELEMENTAL_BLADE = add("elemental_blade", 3, 3,
+			new CSword(ComboMaterial.of(9000, 1.0F, "netherite", 22), 14, -2.2F, props(3)),
+			new Traits().at(Traits.Where.HELD).ignite(8).hit(StatusEffects.SLOWNESS, 120, 3).freeze().lightning(8.0f).chain(12.0f, 8.0f).knockUp(0.6f).magic(4.0f).strikeCooldown(30).use(Use.BEAM).range(40).power(18.0f).cooldown(30));
+	public static final Item SOUL_REAVER = add("soul_reaver", 3, 3,
+			new CSword(ComboMaterial.of(9000, 1.0F, "netherite", 22), 17, -2.8F, props(3)),
+			new Traits().at(Traits.Where.HELD).hit(StatusEffects.POISON, 200, 2).hit(StatusEffects.WITHER, 200, 2).hit(StatusEffects.WEAKNESS, 200, 1).lifesteal(0.5f).sweep(3.5f, 0.7f));
+	public static final Item MAGNET = add("magnet", 1, 2,
+			new CItem(props(1).maxCount(1)),
+			new Traits().at(Traits.Where.HOTBAR).pull(7));
+	public static final Item FIRE_WAND = add("fire_wand", 1, 1,
+			new CItem(props(1).maxDamage(200)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.SMALL_FIREBALL).cooldown(12).cost(1));
+	public static final Item FROST_WAND = add("frost_wand", 1, 2,
+			new CItem(props(1).maxDamage(200)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.FROST_CONE).range(7).power(4.0f).cooldown(30).cost(1));
+	public static final Item STORM_STAFF = add("storm_staff", 1, 2,
+			new CItem(props(1).maxDamage(150)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.LIGHTNING).range(48).cooldown(40).cost(1));
+	public static final Item WARP_STAFF = add("warp_staff", 1, 2,
+			new CItem(props(1).maxDamage(250)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.BLINK).range(32).cooldown(20).cost(1));
+	public static final Item GUST_STAFF = add("gust_staff", 1, 2,
+			new CItem(props(1).maxDamage(300)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.LEAP).power(1.6f).cooldown(25).cost(1).noFall());
+	public static final Item HEALING_STAFF = add("healing_staff", 1, 2,
+			new CItem(props(1).maxDamage(64)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.HEAL).power(8.0f).cooldown(300).cost(1));
+	public static final Item RECALL_COMPASS = add("recall_compass", 1, 2,
+			new CItem(props(1).maxDamage(32)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.RECALL).cooldown(600).cost(1));
+	public static final Item DYNAMITE = add("dynamite", 1, 2,
+			new CItem(props(1).maxCount(16)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.DYNAMITE).power(1.2f).cooldown(15).consume());
+	public static final Item ENDER_POUCH = add("ender_pouch", 1, 2,
+			new CItem(props(1).maxCount(1)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.ENDER_POUCH));
+	public static final Item POCKET_WORKBENCH = add("pocket_workbench", 1, 2,
+			new CItem(props(1).maxCount(1)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.WORKBENCH));
+	public static final Item MENDING_CHARM = add("mending_charm", 1, 2,
+			new CItem(props(1).maxCount(1)),
+			new Traits().at(Traits.Where.HOTBAR).mend());
+	public static final Item FEATHER_CHARM = add("feather_charm", 1, 2,
+			new CItem(props(1).maxCount(1)),
+			new Traits().at(Traits.Where.HOTBAR).noFall());
+	public static final Item OBSIDIAN_CHARM = add("obsidian_charm", 1, 2,
+			new CItem(props(1).maxCount(1)),
+			new Traits().at(Traits.Where.HOTBAR).fx(StatusEffects.FIRE_RESISTANCE, 0));
+	public static final Item TIDE_CHARM = add("tide_charm", 1, 2,
+			new CItem(props(1).maxCount(1)),
+			new Traits().at(Traits.Where.HOTBAR).fx(StatusEffects.WATER_BREATHING, 0).fx(StatusEffects.DOLPHINS_GRACE, 0));
+	public static final Item HASTE_CHARM = add("haste_charm", 1, 2,
+			new CItem(props(1).maxCount(1)),
+			new Traits().at(Traits.Where.HOTBAR).fx(StatusEffects.HASTE, 1));
+	public static final Item SWIFT_CHARM = add("swift_charm", 1, 2,
+			new CItem(props(1).maxCount(1)),
+			new Traits().at(Traits.Where.HOTBAR).fx(StatusEffects.SPEED, 1));
+	public static final Item SEER_SPYGLASS = add("seer_spyglass", 1, 2,
+			new CItem(props(1).maxDamage(100)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.GLOW_SCAN).range(32).cooldown(100).cost(1));
+	public static final Item ETERNAL_TOTEM = add("eternal_totem", 1, 3,
+			new CItem(props(1).maxCount(1)),
+			new Traits().at(Traits.Where.HOTBAR).totem(6000));
+	public static final Item CHRONO_CLOCK = add("chrono_clock", 1, 2,
+			new CItem(props(1).maxDamage(64)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.TIME_DAY).sneakUse(Use.TIME_NIGHT, 200).cooldown(200).cost(1));
+	public static final Item EXPLORER_CHARM = add("explorer_charm", 2, 2,
+			new CItem(props(2).maxCount(1)),
+			new Traits().at(Traits.Where.HOTBAR).noFall().fx(StatusEffects.SPEED, 1).fx(StatusEffects.JUMP_BOOST, 1));
+	public static final Item ELEMENTAL_CHARM = add("elemental_charm", 2, 3,
+			new CItem(props(2).maxCount(1)),
+			new Traits().at(Traits.Where.HOTBAR).fx(StatusEffects.FIRE_RESISTANCE, 0).fx(StatusEffects.WATER_BREATHING, 0).fx(StatusEffects.DOLPHINS_GRACE, 0).fx(StatusEffects.RESISTANCE, 0));
+	public static final Item INFERNO_STAFF = add("inferno_staff", 2, 2,
+			new CItem(props(2).maxDamage(300)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.BIG_FIREBALL).power(4.0f).cooldown(30).cost(1));
+	public static final Item TEMPEST_STAFF = add("tempest_staff", 2, 3,
+			new CItem(props(2).maxDamage(400)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.LIGHTNING_STORM).range(64).cooldown(60).cost(1).sneakUse(Use.LEAP, 25).power(1.8f).noFall());
+	public static final Item RIFT_STAFF = add("rift_staff", 2, 2,
+			new CItem(props(2).maxDamage(500)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.BLINK).range(64).cooldown(15).cost(1).sneakUse(Use.RECALL, 300));
+	public static final Item ANCIENT_CHARM = add("ancient_charm", 3, 4,
+			new CItem(props(3).maxCount(1)),
+			new Traits().at(Traits.Where.HOTBAR).attr("generic.max_health", 20.0, 0).noFall().fx(StatusEffects.SPEED, 1).fx(StatusEffects.JUMP_BOOST, 1).fx(StatusEffects.HASTE, 1).fx(StatusEffects.NIGHT_VISION, 0).fx(StatusEffects.FIRE_RESISTANCE, 0).fx(StatusEffects.WATER_BREATHING, 0).fx(StatusEffects.DOLPHINS_GRACE, 0).fx(StatusEffects.RESISTANCE, 0));
+	public static final Item ARCHMAGE_STAFF = add("archmage_staff", 3, 3,
+			new CItem(props(3).maxDamage(1500)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.BIG_FIREBALL).power(6.0f).cooldown(20).cost(1).sneakUse(Use.METEOR_SHOWER, 80).range(96).noFall());
+	public static final Item ARMORED_ELYTRA = add("armored_elytra", 1, 2,
+			new CWings(armorMaterial("armored_elytra", 8, 2.0F, 0.0F, "diamond", true), props(1).maxDamage(900)),
+			null);
+	public static final Item ROCKET_ELYTRA = add("rocket_elytra", 2, 2,
+			new CWings(armorMaterial("rocket_elytra", 8, 2.0F, 0.0F, "diamond", true), props(2).maxDamage(1500)),
+			new Traits().at(Traits.Where.WORN).boost());
+	public static final Item SERAPH_WINGS = add("seraph_wings", 3, 2,
+			new CWings(armorMaterial("seraph_wings", 8, 3.0F, 0.1F, "netherite", true), props(3).maxDamage(4000)),
+			new Traits().at(Traits.Where.WORN).boost().flight());
+	public static final Item MINER_HELMET = add("miner_helmet", 1, 1,
+			new CArmor(armorMaterial("miner_helmet", 2, 0.0F, 0.0F, "iron", false), ArmorItem.Type.HELMET, props(1).maxDamage(240)),
+			new Traits().at(Traits.Where.WORN).fx(StatusEffects.NIGHT_VISION, 0));
+	public static final Item DIVING_HELMET = add("diving_helmet", 1, 1,
+			new CArmor(armorMaterial("diving_helmet", 2, 0.0F, 0.0F, "iron", false), ArmorItem.Type.HELMET, props(1).maxDamage(240)),
+			new Traits().at(Traits.Where.WORN).fx(StatusEffects.WATER_BREATHING, 0));
+	public static final Item MAGMA_CHESTPLATE = add("magma_chestplate", 1, 2,
+			new CArmor(armorMaterial("magma_chestplate", 8, 2.0F, 0.0F, "diamond", false), ArmorItem.Type.CHESTPLATE, props(1).maxDamage(600)),
+			new Traits().at(Traits.Where.WORN).fx(StatusEffects.FIRE_RESISTANCE, 0).thorns(0.0f, 5));
+	public static final Item CACTUS_CHESTPLATE = add("cactus_chestplate", 1, 1,
+			new CArmor(armorMaterial("cactus_chestplate", 6, 0.0F, 0.0F, "iron", false), ArmorItem.Type.CHESTPLATE, props(1).maxDamage(300)),
+			new Traits().at(Traits.Where.WORN).thorns(3.0f, 0));
+	public static final Item SWIFT_LEGGINGS = add("swift_leggings", 1, 1,
+			new CArmor(armorMaterial("swift_leggings", 6, 2.0F, 0.0F, "diamond", false), ArmorItem.Type.LEGGINGS, props(1).maxDamage(560)),
+			new Traits().at(Traits.Where.WORN).fx(StatusEffects.SPEED, 1));
+	public static final Item SPRING_BOOTS = add("spring_boots", 1, 2,
+			new CArmor(armorMaterial("spring_boots", 2, 0.0F, 0.0F, "iron", false), ArmorItem.Type.BOOTS, props(1).maxDamage(260)),
+			new Traits().at(Traits.Where.WORN).fx(StatusEffects.JUMP_BOOST, 2).noFall());
+	public static final Item SPELUNKER_HELMET = add("spelunker_helmet", 2, 2,
+			new CArmor(armorMaterial("spelunker_helmet", 3, 2.0F, 0.0F, "diamond", false), ArmorItem.Type.HELMET, props(2).maxDamage(500)),
+			new Traits().at(Traits.Where.WORN).fx(StatusEffects.NIGHT_VISION, 0).fx(StatusEffects.WATER_BREATHING, 0).fx(StatusEffects.HASTE, 0));
+	public static final Item INFERNO_THORNMAIL = add("inferno_thornmail", 2, 3,
+			new CArmor(armorMaterial("inferno_thornmail", 9, 3.0F, 0.1F, "netherite", false), ArmorItem.Type.CHESTPLATE, props(2).maxDamage(900)),
+			new Traits().at(Traits.Where.WORN).fx(StatusEffects.FIRE_RESISTANCE, 0).fx(StatusEffects.RESISTANCE, 0).thorns(6.0f, 8).thornsBoom(2.5f));
+	public static final Item HERMES_BOOTS = add("hermes_boots", 2, 2,
+			new CArmor(armorMaterial("hermes_boots", 3, 2.0F, 0.0F, "diamond", false), ArmorItem.Type.BOOTS, props(2).maxDamage(600)),
+			new Traits().at(Traits.Where.WORN).fx(StatusEffects.SPEED, 2).fx(StatusEffects.JUMP_BOOST, 2).noFall());
+	public static final Item GOLDEN_STEAK = add("golden_steak", 1, 1,
+			new CItem(props(1).maxCount(64).food(new FoodComponent.Builder().nutrition(10).saturationModifier(1.2F)
+					.statusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 1200, 0), 1.0F)
+					.statusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 100, 0), 1.0F).build())),
+			null);
+	public static final Item HONEY_TOAST = add("honey_toast", 1, 1,
+			new CItem(props(1).maxCount(64).food(new FoodComponent.Builder().nutrition(8).saturationModifier(0.8F)
+					.statusEffect(new StatusEffectInstance(StatusEffects.SPEED, 600, 0), 1.0F).build())),
+			null);
+	public static final Item MINERS_PIE = add("miners_pie", 1, 1,
+			new CItem(props(1).maxCount(64).food(new FoodComponent.Builder().nutrition(9).saturationModifier(0.6F)
+					.statusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 3600, 0), 1.0F)
+					.statusEffect(new StatusEffectInstance(StatusEffects.HASTE, 3600, 0), 1.0F).build())),
+			null);
+	public static final Item BLAZING_STEW = add("blazing_stew", 1, 2,
+			new CItem(props(1).maxCount(1).food(new FoodComponent.Builder().nutrition(8).saturationModifier(0.8F)
+					.statusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 3600, 0), 1.0F)
+					.statusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 900, 0), 1.0F).usingConvertsTo(Items.BOWL).build())),
+			null);
+	public static final Item GLOWING_CARROT = add("glowing_carrot", 1, 2,
+			new CItem(props(1).maxCount(64).food(new FoodComponent.Builder().nutrition(6).saturationModifier(1.2F)
+					.statusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 6000, 0), 1.0F).alwaysEdible().build())),
+			null);
+	public static final Item SUGAR_COOKIE = add("sugar_cookie", 1, 2,
+			new CItem(props(1).maxCount(64).food(new FoodComponent.Builder().nutrition(2).saturationModifier(0.2F)
+					.statusEffect(new StatusEffectInstance(StatusEffects.SPEED, 400, 1), 1.0F).alwaysEdible().snack().build())),
+			null);
+	public static final Item HERO_SANDWICH = add("hero_sandwich", 1, 1,
+			new CItem(props(1).maxCount(64).food(new FoodComponent.Builder().nutrition(14).saturationModifier(0.9F).build())),
+			null);
+	public static final Item KELP_ROLL = add("kelp_roll", 1, 2,
+			new CItem(props(1).maxCount(64).food(new FoodComponent.Builder().nutrition(9).saturationModifier(0.8F)
+					.statusEffect(new StatusEffectInstance(StatusEffects.WATER_BREATHING, 2400, 0), 1.0F)
+					.statusEffect(new StatusEffectInstance(StatusEffects.DOLPHINS_GRACE, 1200, 0), 1.0F).build())),
+			null);
+	public static final Item ROYAL_FEAST = add("royal_feast", 2, 2,
+			new CItem(props(2).maxCount(16).food(new FoodComponent.Builder().nutrition(20).saturationModifier(1.0F)
+					.statusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 2400, 1), 1.0F)
+					.statusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 200, 1), 1.0F)
+					.statusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 1200, 0), 1.0F).build())),
+			null);
+	public static final Item AMBROSIA = add("ambrosia", 3, 3,
+			new CItem(props(3).maxCount(16).food(new FoodComponent.Builder().nutrition(20).saturationModifier(1.5F)
+					.statusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 2400, 3), 1.0F)
+					.statusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 600, 1), 1.0F)
+					.statusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 2400, 1), 1.0F)
+					.statusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 6000, 0), 1.0F)
+					.statusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 6000, 0), 1.0F).alwaysEdible().build())),
+			null);
+	public static final Item TNT_PICKAXE = add("tnt_pickaxe", 2, 3,
+			new CPick(ComboMaterial.of(3000, 8.0F, "diamond", 18), 5.0F, -2.8F, props(2)),
+			new Traits().at(Traits.Where.HELD).mineBoom(3.5f));
+	public static final Item MINING_LASER = add("mining_laser", 2, 2,
+			new CItem(props(2).maxDamage(500)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.LASER_DRILL).range(48).cooldown(30).cost(1));
+	public static final Item EARTHSHAKER = add("earthshaker", 2, 3,
+			new CPick(ComboMaterial.of(5000, 6.0F, "netherite", 18), 8.0F, -3.0F, props(2)),
+			new Traits().at(Traits.Where.HELD).area(1, true).use(Use.QUAKE).cooldown(60).cost(5));
+	public static final Item HOME_RUN_BAT = add("home_run_bat", 2, 1,
+			new CSword(ComboMaterial.of(800, 1.0F, "wooden", 18), 4, -2.4F, props(2)),
+			new Traits().at(Traits.Where.HELD).knockback(30.0f).knockUp(1.6f));
+	public static final Item BEAM_SABER = add("beam_saber", 2, 3,
+			new CSword(ComboMaterial.of(2500, 1.0F, "diamond", 18), 9, -2.2F, props(2)),
+			new Traits().at(Traits.Where.HELD).ignite(4).use(Use.BEAM).range(40).power(18.0f).cooldown(25).cost(2));
+	public static final Item OMNI_BLADE = add("omni_blade", 3, 2,
+			new CSword(ComboMaterial.of(20000, 1.0F, "netherite", 22), 25, -2.0F, props(3)),
+			new Traits().at(Traits.Where.HELD).ignite(10).hit(StatusEffects.SLOWNESS, 200, 3).hit(StatusEffects.POISON, 200, 2).hit(StatusEffects.WITHER, 200, 2).hit(StatusEffects.WEAKNESS, 200, 1).freeze().lifesteal(0.5f).sweep(4.0f, 0.8f).lightning(10.0f).chain(12.0f, 10.0f).knockUp(0.6f).magic(6.0f).strikeCooldown(20).use(Use.BEAM).range(48).power(30.0f).cooldown(20));
+	public static final Item MEGA_DYNAMITE = add("mega_dynamite", 2, 3,
+			new CItem(props(2).maxCount(16)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.MEGA_BOMB).power(9.0f).cooldown(20).consume());
+	public static final Item NUKE = add("nuke", 3, 3,
+			new CItem(props(3).maxCount(16)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.NUKE).power(18.0f).cooldown(40).consume());
+	public static final Item DOOMSDAY_DEVICE = add("doomsday_device", 3, 2,
+			new CItem(props(3).maxCount(16)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.NUKE).power(32.0f).cooldown(200).consume());
+	public static final Item METEOR_STAFF = add("meteor_staff", 3, 2,
+			new CItem(props(3).maxDamage(300)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.METEOR).range(96).power(7.0f).cooldown(40).cost(1).sneakUse(Use.METEOR_SHOWER, 100));
+	public static final Item SINGULARITY = add("singularity", 3, 3,
+			new CItem(props(3).maxCount(16)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.BLACK_HOLE).range(48).cooldown(60).consume());
+	public static final Item OCEAN_ORB = add("ocean_orb", 2, 3,
+			new CItem(props(2).maxDamage(64)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.FLOOD).range(32).cooldown(20).cost(1).sneakUse(Use.DRAIN, 20));
+	public static final Item WINTER_GLOBE = add("winter_globe", 2, 3,
+			new CItem(props(2).maxDamage(64)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.FREEZE_AREA).range(14).cooldown(60).cost(1));
+	public static final Item ANVIL_STAFF = add("anvil_staff", 2, 1,
+			new CItem(props(2).maxDamage(100)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.ANVIL_STORM).range(64).cooldown(60).cost(1));
+	public static final Item POULTRY_STAFF = add("poultry_staff", 2, 2,
+			new CItem(props(2).maxDamage(100)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.CHICKEN_STORM).range(64).cooldown(40).cost(1));
+	public static final Item WITHER_WAND = add("wither_wand", 2, 1,
+			new CItem(props(2).maxDamage(200)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.WITHER_SKULL).cooldown(8).cost(1));
+	public static final Item ARROW_GATLING = add("arrow_gatling", 2, 2,
+			new CItem(props(2).maxDamage(1000)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.ARROW_BURST).power(10.0f).cooldown(4).cost(1));
+	public static final Item MIDAS_GLOVE = add("midas_glove", 3, 3,
+			new CItem(props(3).maxCount(1)),
+			new Traits().at(Traits.Where.HELD).midas());
+	public static final Item PHILOSOPHER_STONE = add("philosopher_stone", 3, 3,
+			new CItem(props(3).maxDamage(256)),
+			new Traits().at(Traits.Where.HELD).transmute());
+	public static final Item POLYMORPH_WAND = add("polymorph_wand", 2, 2,
+			new CItem(props(2).maxDamage(64)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.POLYMORPH).range(24).cooldown(20).cost(1));
+	public static final Item SIZE_RAY = add("size_ray", 2, 2,
+			new CItem(props(2).maxDamage(128)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.SHRINK).range(32).cooldown(10).cost(1).sneakUse(Use.GROW, 10));
+	public static final Item EAT_ME_CAKE = add("eat_me_cake", 2, 3,
+			new CItem(props(2).maxCount(16).food(new FoodComponent.Builder().nutrition(6).saturationModifier(0.6F).alwaysEdible().build())),
+			new Traits().at(Traits.Where.HELD).eatBuff(120).attr("generic.scale", 3.0, 2).attr("generic.max_health", 40.0, 0).attr("generic.attack_damage", 10.0, 0).attr("generic.step_height", 2.0, 0).attr("player.block_interaction_range", 8.0, 0).attr("player.entity_interaction_range", 8.0, 0));
+	public static final Item SHRINKING_MUSHROOM = add("shrinking_mushroom", 2, 3,
+			new CItem(props(2).maxCount(64).food(new FoodComponent.Builder().nutrition(2).saturationModifier(0.2F).alwaysEdible().snack().build())),
+			new Traits().at(Traits.Where.HELD).eatBuff(120).attr("generic.scale", -0.8, 2).attr("generic.safe_fall_distance", 20.0, 0).attr("generic.movement_speed", 0.5, 2));
+	public static final Item TIME_STOPPER = add("time_stopper", 3, 2,
+			new CItem(props(3).maxDamage(32)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.TIME_STOP).power(10.0f).cooldown(400).cost(1));
+	public static final Item MADNESS_BELL = add("madness_bell", 2, 2,
+			new CItem(props(2).maxDamage(64)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.MADNESS).range(24).cooldown(100).cost(1));
+	public static final Item GOLEM_HORN = add("golem_horn", 2, 2,
+			new CItem(props(2).maxDamage(16)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.SUMMON_GOLEMS).power(3.0f).cooldown(600).cost(1));
+	public static final Item GRAVITY_STAFF = add("gravity_staff", 2, 2,
+			new CItem(props(2).maxDamage(200)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.LIFT).range(16).cooldown(60).cost(1).sneakUse(Use.SLAM, 40));
+	public static final Item SWAP_STAFF = add("swap_staff", 2, 1,
+			new CItem(props(2).maxDamage(200)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.SWAP).range(48).cooldown(10).cost(1));
+	public static final Item GHOST_CLOAK = add("ghost_cloak", 3, 2,
+			new CItem(props(3).maxDamage(32)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.GHOST).power(8.0f).cooldown(400).cost(1));
+	public static final Item PORTABLE_HOLE = add("portable_hole", 2, 2,
+			new CItem(props(2).maxDamage(64)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.HOLE).range(12).cooldown(40).cost(1));
+	public static final Item BRIDGE_STAFF = add("bridge_staff", 1, 2,
+			new CItem(props(1).maxDamage(64)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.BRIDGE).range(32).cooldown(20).cost(1));
+	public static final Item HOUSE_BOX = add("house_box", 2, 2,
+			new CItem(props(2).maxCount(16)),
+			new Traits().at(Traits.Where.HELD).house());
+	public static final Item FOREST_STAFF = add("forest_staff", 2, 2,
+			new CItem(props(2).maxDamage(64)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.FOREST).range(32).cooldown(40).cost(1));
+	public static final Item ORE_DOWSER = add("ore_dowser", 2, 2,
+			new CItem(props(2).maxDamage(64)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.DOWSE).range(32).cooldown(40).cost(1));
+	public static final Item TITAN_BELT = add("titan_belt", 3, 3,
+			new CItem(props(3).maxCount(1)),
+			new Traits().at(Traits.Where.HOTBAR).attr("generic.scale", 1.5, 2).attr("generic.max_health", 40.0, 0).attr("generic.attack_damage", 8.0, 0).attr("generic.step_height", 1.5, 0).attr("player.block_interaction_range", 4.0, 0).attr("player.entity_interaction_range", 4.0, 0));
+	public static final Item LONG_ARM_GLOVE = add("long_arm_glove", 2, 2,
+			new CItem(props(2).maxCount(1)),
+			new Traits().at(Traits.Where.HOTBAR).attr("player.block_interaction_range", 28.0, 0).attr("player.entity_interaction_range", 29.0, 0));
+	public static final Item COLOSSUS_HEART = add("colossus_heart", 3, 2,
+			new CItem(props(3).maxCount(1)),
+			new Traits().at(Traits.Where.HOTBAR).attr("generic.max_health", 80.0, 0).fx(StatusEffects.REGENERATION, 1));
+	public static final Item MINER_GAUNTLET = add("miner_gauntlet", 3, 3,
+			new CItem(props(3).maxCount(1)),
+			new Traits().at(Traits.Where.HOTBAR).attr("player.block_break_speed", 9.0, 2).fx(StatusEffects.HASTE, 1));
+	public static final Item FIST_OF_DOOM = add("fist_of_doom", 3, 2,
+			new CItem(props(3).maxCount(1)),
+			new Traits().at(Traits.Where.HELD).instakill().knockback(8.0f));
+	public static final Item GODHOOD_CHARM = add("godhood_charm", 3, 3,
+			new CItem(props(3).maxCount(1)),
+			new Traits().at(Traits.Where.HOTBAR).flight().noFall().attr("generic.max_health", 80.0, 0).attr("player.block_interaction_range", 6.0, 0).attr("player.entity_interaction_range", 6.0, 0).attr("player.block_break_speed", 4.0, 2).fx(StatusEffects.SPEED, 1).fx(StatusEffects.JUMP_BOOST, 1).fx(StatusEffects.HASTE, 1).fx(StatusEffects.NIGHT_VISION, 0).fx(StatusEffects.FIRE_RESISTANCE, 0).fx(StatusEffects.WATER_BREATHING, 0).fx(StatusEffects.DOLPHINS_GRACE, 0).fx(StatusEffects.RESISTANCE, 1).fx(StatusEffects.REGENERATION, 1));
+	public static final Item MOON_BOOTS = add("moon_boots", 2, 2,
+			new CArmor(armorMaterial("moon_boots", 3, 2.0F, 0.0F, "diamond", false), ArmorItem.Type.BOOTS, props(2).maxDamage(600)),
+			new Traits().at(Traits.Where.WORN).fx(StatusEffects.JUMP_BOOST, 3).noFall().attr("generic.gravity", -0.85, 2));
+	public static final Item ROCKET_CHILI = add("rocket_chili", 2, 3,
+			new CItem(props(2).maxCount(64).food(new FoodComponent.Builder().nutrition(4).saturationModifier(0.4F)
+					.statusEffect(new StatusEffectInstance(StatusEffects.SLOW_FALLING, 600, 0), 1.0F)
+					.statusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 600, 0), 1.0F).alwaysEdible().build())),
+			new Traits().at(Traits.Where.HELD).eatLaunch(4.0f));
+	public static final Item XP_TOME = add("xp_tome", 3, 2,
+			new CItem(props(3).maxCount(1)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.XP).power(5.0f).cooldown(10));
+	public static final Item DUPE_MIRROR = add("dupe_mirror", 3, 2,
+			new CItem(props(3).maxCount(1)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.DUPE).cooldown(40));
+	public static final Item CHAOS_ORB = add("chaos_orb", 2, 3,
+			new CItem(props(2).maxCount(64)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.CHAOS).cooldown(10).consume());
+	public static final Item PANDORA_BOX = add("pandora_box", 3, 2,
+			new CItem(props(3).maxCount(16)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.PANDORA).cooldown(140).consume());
+
+	private ComboItems() {
+	}
+
+	/** Loads this class, which registers all items. */
+	public static void init() {
+	}
+
+	/** The abilities of an item, or null if it is not a combined item or has no abilities. */
+	public static Traits traits(Item item) {
+		return TRAITS.get(item);
+	}
+
+	/** How many tooltip lines an item has (lang keys item.combinator.ID.tip1, tip2, ...). */
+	public static int tipLines(Item item) {
+		Integer lines = TIP_LINES.get(item);
+		return lines == null ? 0 : lines;
+	}
+
+	/** 1, 2 or 3 for combined items (3 = the wildest), 0 for everything else. */
+	public static int rarity(Item item) {
+		Integer rarity = RARITIES.get(item);
+		return rarity == null ? 0 : rarity;
+	}
+
+	private static Item add(String id, int rarity, int tipLines, Item item, Traits traits) {
+		Registry.register(Registries.ITEM, ItemCombinator.id(id), item);
+		ALL.add(item);
+		TIP_LINES.put(item, tipLines);
+		RARITIES.put(item, rarity);
+		if (traits != null) {
+			TRAITS.put(item, traits);
+		}
+		return item;
+	}
+
+	/** Rarity 1 = yellow name, 2 = aqua, 3 = purple, glowing and fireproof. */
+	private static Item.Settings props(int rarity) {
+		Item.Settings settings = new Item.Settings().rarity(rarity <= 1 ? Rarity.UNCOMMON : rarity == 2 ? Rarity.RARE : Rarity.EPIC);
+		if (rarity >= 3) {
+			settings = settings.fireproof().component(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE, true);
+		}
+		return settings;
+	}
+
+	/** layer is the vanilla armor look that is shown when the piece is worn: "iron", "diamond" or "netherite". */
+	private static RegistryEntry<ArmorMaterial> armorMaterial(String id, int protection, float toughness, float knockbackResistance, String layer, boolean wings) {
+		EnumMap<ArmorItem.Type, Integer> defense = new EnumMap<>(ArmorItem.Type.class);
+		for (ArmorItem.Type type : ArmorItem.Type.values()) {
+			defense.put(type, protection);
+		}
+		ArmorMaterial material = new ArmorMaterial(
+				defense,
+				15,
+				wings ? SoundEvents.ITEM_ARMOR_EQUIP_ELYTRA : SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND,
+				() -> Ingredient.ofItems(Items.DIAMOND),
+				List.of(new ArmorMaterial.Layer(Identifier.ofVanilla(layer))),
+				toughness,
+				knockbackResistance);
+		return Registry.registerReference(Registries.ARMOR_MATERIAL, ItemCombinator.id(id), material);
+	}
+}
