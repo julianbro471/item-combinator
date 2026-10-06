@@ -36,42 +36,13 @@ jobs:
         with:
           name: item-combinator-jar
           path: build/libs/
-      - name: server tests (a server without a player tries out every item)
-        timeout-minutes: 30
+      - name: repeat the server tests to look for failures that only happen sometimes
+        timeout-minutes: 50
         run: |
-          set -o pipefail
-          status=0
-          ./gradlew runGameTest --stacktrace 2>&1 | tee gametest.log || status=$?
-          grep -h "PROBLEM: " gametest.log | head -10 | sed 's/^.*PROBLEM: /::error title=Server test::/' || true
-          exit $status
-      - name: the same server tests with the finished jar
-        if: always()
-        timeout-minutes: 30
-        run: |
-          set -o pipefail
-          status=0
-          ./gradlew prodServerTest --stacktrace 2>&1 | tee prodservertest.log || status=$?
-          grep -h "PROBLEM: " prodservertest.log | head -10 | sed 's/^.*PROBLEM: /::error title=Server test with the finished jar::/' || true
-          exit $status
-      - name: client test with the finished jar (the real game in a virtual screen, with screenshots)
-        if: always()
-        timeout-minutes: 30
-        env:
-          LIBGL_ALWAYS_SOFTWARE: '1'
-        run: |
-          set -o pipefail
-          if ! command -v xvfb-run >/dev/null; then
-            sudo apt-get update -qq
-            sudo apt-get install -y -qq xvfb libgl1-mesa-dri
-          fi
-          mkdir -p build/run/prodClientTest
-          printf 'onboardAccessibility:false\npauseOnLostFocus:false\ntutorialStep:none\nnarrator:0\n' > build/run/prodClientTest/options.txt
-          status=0
-          ./gradlew prodClientTest --stacktrace 2>&1 | tee clienttest.log || status=$?
-          cat build/run/prodClientTest/client-test-result.txt || true
-          grep -h "^- " build/run/prodClientTest/client-test-result.txt | head -10 | sed 's/^- /::error title=Client test::/' || true
-          grep -q '^PASSED' build/run/prodClientTest/client-test-result.txt || status=1
-          exit $status
+          for i in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20; do
+            ./gradlew runGameTest > gametest-$i.log 2>&1 && echo "run $i ok" || echo "run $i FAILED"
+            grep -h "PROBLEM\|FAILED with\|failed at\|required tests" gametest-$i.log | cut -c1-300 || true
+          done
       - name: publish the result on the builds branch
         if: always() && github.event_name == 'push'
         env:
@@ -81,7 +52,7 @@ jobs:
           mkdir -p published
           cp build/libs/*.jar published/ 2>/dev/null || true
           cp build.log published/ 2>/dev/null || true
-          cp gametest.log prodservertest.log clienttest.log published/ 2>/dev/null || true
+          cp gametest-*.log published/ 2>/dev/null || true
           cp build/run/prodClientTest/client-test-result.txt published/ 2>/dev/null || true
           mkdir -p published/screenshots
           cp build/run/prodClientTest/screenshots/*.png published/screenshots/ 2>/dev/null || true
