@@ -564,7 +564,7 @@ The tests are in `src/gametest`. They are not part of the mod .jar.
   was hurt, the tester moved, a screen opened, the item wore out, the cooldown started ...)
 - waits for the slow abilities and checks them too (nuke crater, black hole, meteors, anvils, chickens, the
   portable hole closes again, the time stop and the ghost cloak end by themselves)
-- runs every event of the Chaos Orb
+- runs every event of the Chaos Orb, and its random teleport also in the Nether
 
 **Client test** (`gradlew runClientTest`). The real game starts, makes a flat world, opens the Combiner Table with a
 right-click, puts two items in, takes the result, and takes screenshots of the table, of every item in the
@@ -577,7 +577,7 @@ runs like on a player's PC: with the .jar from `build/libs` and the Fabric API f
 On GitHub the logs and the screenshots of the last run are on the **`builds`** branch.
 
 What the tests do **not** check: flying with the wings, sounds and particles, how strong or fair an item feels,
-speed on a slow PC, multiplayer with real players, the Nether and the End, and other mods.
+speed on a slow PC, multiplayer with real players, most abilities in the Nether and the End, and other mods.
 
 ## Changing the mod
 
