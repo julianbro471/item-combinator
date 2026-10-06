@@ -25,6 +25,8 @@ import net.minecraft.client.util.ScreenshotRecorder;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemGroups;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.SwordItem;
@@ -266,15 +268,20 @@ public class ClientSmokeTest implements ClientModInitializer {
 		onServerDo(player -> player.changeGameMode(GameMode.SURVIVAL));
 		sleep(500L);
 		List<Item> all = ComboItems.ALL;
-		int pages = (all.size() + 35) / 36;
+		int perPage = 35;
+		int pages = (all.size() + perPage - 1) / perPage;
 		for (int page = 0; page < pages; page++) {
-			int from = page * 36;
+			int from = page * perPage;
 			onServerDo(player -> {
 				player.getInventory().clear();
 				// Slots 9-35 are the three upper rows, slots 0-8 the hotbar. Filling in this order keeps the items in reading order.
-				for (int i = 0; i < 36 && from + i < all.size(); i++) {
+				int next = from;
+				for (int i = 0; i < 36 && next < all.size(); i++) {
 					int slot = i < 27 ? 9 + i : i - 27;
-					player.getInventory().setStack(slot, new ItemStack(all.get(from + i)));
+					if (slot == 13) {
+						continue; // the mouse pointer rests on this slot; the tooltip of an item there would hide the others
+					}
+					player.getInventory().setStack(slot, new ItemStack(all.get(next++)));
 				}
 			});
 			sleep(1000L);
@@ -330,6 +337,17 @@ public class ClientSmokeTest implements ClientModInitializer {
 		sleep(1000L);
 		onClientDo(client -> client.options.setPerspective(Perspective.FIRST_PERSON));
 		screenshot("9_items_in_hand");
+
+		// The creative inventory tab of the mod lists the table and every item.
+		int inTab = onClient(client -> {
+			ItemGroup group = Registries.ITEM_GROUP.get(ItemCombinator.id("main"));
+			if (group == null) {
+				return -1;
+			}
+			ItemGroups.updateDisplayContext(client.player.networkHandler.getEnabledFeatures(), true, client.world.getRegistryManager());
+			return group.getDisplayStacks().size();
+		});
+		this.check(inTab == all.size() + 1, "the creative tab shows " + inTab + " items instead of " + (all.size() + 1));
 
 		this.check(ItemCombinator.ERRORS.isEmpty(), "the mod reported errors while the game was running: " + ItemCombinator.ERRORS);
 	}

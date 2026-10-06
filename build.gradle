@@ -41,12 +41,46 @@ loom {
 	}
 }
 
+// Tests with the finished .jar, started the way players start the game: with the real Fabric API file
+// and without the helpers of the development setup.
+//   gradlew prodServerTest  the server tests again, against the finished .jar
+//   gradlew prodClientTest  the client test again, against the finished .jar (on Linux it needs xvfb)
+tasks.register('gametestJar', Jar) {
+	from sourceSets.gametest.output
+	destinationDirectory = layout.buildDirectory.dir('devlibs')
+	archiveClassifier = 'tests-dev'
+}
+
+tasks.register('remapGametestJar', net.fabricmc.loom.task.RemapJarTask) {
+	dependsOn tasks.named('gametestJar')
+	inputFile = tasks.named('gametestJar').flatMap { it.archiveFile }
+	classpath.from sourceSets.gametest.compileClasspath
+	destinationDirectory = layout.buildDirectory.dir('testlibs')
+	archiveClassifier = 'tests'
+	addNestedDependencies = false
+}
+
+tasks.register('prodServerTest', net.fabricmc.loom.task.prod.ServerProductionRunTask) {
+	mods.from tasks.named('remapGametestJar')
+	jvmArgs.add '-Dfabric-api.gametest'
+	runDir = layout.buildDirectory.dir('run/prodServerTest')
+}
+
+tasks.register('prodClientTest', net.fabricmc.loom.task.prod.ClientProductionRunTask) {
+	mods.from tasks.named('remapGametestJar')
+	jvmArgs.add '-Dcombinator.clientTest=true'
+	programArgs.addAll '--width', '1280', '--height', '720'
+	runDir = layout.buildDirectory.dir('run/prodClientTest')
+}
+
 dependencies {
 	// To change the versions see the gradle.properties file
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+	// The Fabric API file that players install, for the tests that run the finished .jar.
+	productionRuntimeMods "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 }
 
 processResources {
