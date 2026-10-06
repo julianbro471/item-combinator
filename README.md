@@ -43,7 +43,7 @@ about 1 GB and takes several minutes. `build` also runs the server tests. To ski
 
 ## Installing
 
-Put `item-combinator-1.1.0.jar` and the Fabric API .jar into the `mods` folder of your Minecraft installation.
+Put `item-combinator-1.1.1.jar` and the Fabric API .jar into the `mods` folder of your Minecraft installation.
 Start the game with the Fabric profile.
 
 ## How the Combiner Table works

@@ -10,7 +10,7 @@ The number after the name is only the rarity, which sets the name colour in the 
 
 MOD_ID = "combinator"
 MOD_NAME = "Item Combinator"
-VERSION = "1.1.0"
+VERSION = "1.1.1"
 
 ITEMS = []      # custom items, in creative-tab / documentation order
 VANILLA = []    # recipes whose result is a vanilla item
