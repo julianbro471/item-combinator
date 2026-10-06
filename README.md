@@ -4,9 +4,9 @@ A Fabric mod for **Minecraft Java Edition 1.21.1**.
 
 It adds one block, the **Combiner Table**. You put two items into it and get one new item.
 
-- **177 combinations** in total.
-- 139 of them make one of **138 new items**: tools, weapons, armor, gadgets, food, bombs, cheats.
-- 38 of them make a vanilla item that you normally cannot craft (saddle, name tag, elytra, ...).
+- **237 combinations** in total.
+- 187 of them make one of **183 new items**: tools, weapons, armor, gadgets, food, bombs, cheats.
+- 50 of them make a vanilla item that you normally cannot craft (saddle, name tag, elytra, ...).
 - Two stackable items that have no combination give a **Chaos Orb**, which does something random.
 - There are no tiers and there is no balance. Some items are normal, many are absurd, a few can destroy your world.
 
@@ -43,7 +43,7 @@ about 1 GB and takes several minutes. `build` also runs the server tests. To ski
 
 ## Installing
 
-Put `item-combinator-1.1.1.jar` and the Fabric API .jar into the `mods` folder of your Minecraft installation.
+Put `item-combinator-1.2.0.jar` and the Fabric API .jar into the `mods` folder of your Minecraft installation.
 Start the game with the Fabric profile.
 
 ## How the Combiner Table works
@@ -209,6 +209,8 @@ Every new item has a description under its name. All new items are also in their
 | *Magma Chestplate* | *Cactus Chestplate* | **Inferno Thornmail** | Immune to fire. Resistance I. Attackers burn and explode. The explosion breaks no blocks. | 9 armor, 900 uses |
 | *Spring Boots* | *Swift Charm* | **Hermes Boots** | Speed III and Jump Boost III. No fall damage. | 3 armor, 600 uses |
 | *Spring Boots* | End Stone | **Moon Boots** | Low gravity and huge jumps. No fall damage. | 3 armor, 600 uses |
+| Leather Boots | White Wool | **Cloud Slippers** | No fall damage. | 1 armor, 120 uses |
+| Golden Helmet | Emerald | **Merchant's Crown** | Villagers give you better prices. | 2 armor, 150 uses |
 
 ### Food
 
@@ -225,6 +227,10 @@ Every new item has a description under its name. All new items are also in their
 | *Golden Steak* | *Hero Sandwich* | **Royal Feast** | Fills your whole hunger bar. Absorption II, Regeneration II, Resistance I. | 20 hunger |
 | *Royal Feast* | Enchanted Golden Apple | **Ambrosia** | Absorption IV, Regeneration II, Strength II. Resistance I and Fire Resistance. Can be eaten when full. | 20 hunger |
 | Firework Rocket | Beetroot | **Rocket Chili** | Launches you high into the sky. You float back down. Can be eaten when full. | 4 hunger |
+| Rotten Flesh | Sugar | **Cured Jerky** x2 | Rotten flesh, made safe to eat. Quick to eat. | 5 hunger |
+| Cooked Cod | Baked Potato | **Fish and Chips** | Very filling. Gives Luck for 2 minutes. | 12 hunger |
+| Cooked Salmon | Baked Potato | **Fish and Chips** | Second way to make it. | 12 hunger |
+| Apple | Sugar | **Candy Apple** | Speed II for 30 seconds. Can be eaten when full. | 4 hunger |
 
 ### Bombs and disasters
 
@@ -294,6 +300,78 @@ Every new item has a description under its name. All new items are also in their
 | Any stackable item | Any other stackable item, if the two have no combination | **Chaos Orb** | Comes out when you combine two stackable items that have no recipe. Right-click: something random happens. |  |
 | *Chaos Orb* | *Chaos Orb* | **Pandora's Box** | Right-click: six random things happen, one after another. |  |
 
+### Everyday tools
+
+| Item A | Item B | Result | What it does | Stats |
+|---|---|---|---|---|
+| Wooden Pickaxe | Flint | **Flint-Tipped Pickaxe** | Faster than an iron pickaxe. Mines only what stone can mine. | 3 damage, 180 uses |
+| Stone Pickaxe | Stone Pickaxe | **Stone Hammer** | Mines a 3x3 area. Sneak to mine one block. | 4 damage, 400 uses |
+| Iron Pickaxe | White Wool | **Gentle Pickaxe** | Blocks drop as themselves, like with Silk Touch. | 4 damage, 350 uses |
+| Golden Pickaxe | Iron Pickaxe | **Gilded Pickaxe** | As fast as gold, as tough as iron. Stone sometimes drops gold nuggets. | 4 damage, 320 uses |
+| Iron Pickaxe | Iron Axe | **Iron Multitool** | Pickaxe, axe, shovel and hoe in one. | 6 damage, 600 uses |
+| Iron Pickaxe | Iron Shovel | **Iron Multitool** | Second way to make it. | 6 damage, 600 uses |
+| Stone Axe | Stone Axe | **Timber Axe** | Chops down small trees whole. Sneak to chop one log. | 9 damage, 300 uses |
+| Stone Shovel | String | **Sifting Shovel** | Dirt, sand and gravel sometimes hide flint, nuggets, bones or even a gem. | 3.5 damage, 260 uses |
+| Golden Hoe | Golden Hoe | **Golden Sickle** | Right-click a ripe crop: harvests and replants a 3x3 area. | 1 damage, 150 uses |
+| Wooden Hoe | Wheat Seeds | **Planter's Hoe** | Right-click soil: tills a 3x3 patch and plants the seeds you carry. | 1 damage, 120 uses |
+
+### Everyday weapons
+
+| Item A | Item B | Result | What it does | Stats |
+|---|---|---|---|---|
+| Wooden Sword | Stick | **Quarterstaff** | Reaches 2 blocks further. Pushes enemies back. | 5 damage, 150 uses |
+| Stone Sword | Flint | **Jagged Blade** | Wounds keep bleeding for 6 seconds. | 6 damage, 220 uses |
+| Iron Sword | Iron Sword | **Dual Blades** | Strikes twice as fast as a sword. The second blade adds 1 damage. | 4 damage, 500 uses |
+| Iron Sword | Shield | **Bulwark Blade** | While held: +6 armor and you are hard to push around. | 7 damage, 600 uses |
+| Golden Sword | Emerald | **Looter's Blade** | Slain mobs drop their loot twice. | 6 damage, 250 uses |
+| Wooden Axe | Feather | **Boomerang** | Right-click: hits every mob in a line and brings back dropped items. | 200 uses |
+
+### Bows and rods
+
+| Item A | Item B | Result | What it does | Stats |
+|---|---|---|---|---|
+| Bow | Bow | **Volley Bow** | Right-click: shoots 5 arrows at once. Needs no arrows. | 300 uses |
+| Bow | Torch | **Torch Bow** | Right-click: puts a torch on the block you look at, up to 40 blocks away. | 256 uses |
+| Fishing Rod | Iron Ingot | **Grappling Hook** | Right-click a block: pulls you to it. No fall damage while you hold it. | 250 uses |
+| Fishing Rod | Lead | **Lasso** | Right-click a mob: pulls it to you. | 200 uses |
+| Fishing Rod | Fishing Rod | **Angler's Rod** | Right-click water: a catch at once. No waiting for a bite. | 64 uses |
+
+### Camp and travel
+
+| Item A | Item B | Result | What it does | Stats |
+|---|---|---|---|---|
+| Chest | Leather | **Backpack** | Right-click: opens 27 extra slots. The things stay inside the backpack. |  |
+| *Backpack* | *Backpack* | **Big Backpack** | Right-click: opens 54 extra slots. Keeps what was in the two small ones. |  |
+| Furnace | Flint And Steel | **Pocket Furnace** | Hold an item in the other hand. Right-click: smelts up to 8 of it. | 128 uses |
+| White Bed | Leather | **Bedroll** | Right-click: you respawn here from now on. Works anywhere, at any time. |  |
+| Red Bed | Leather | **Bedroll** | Second way to make it. |  |
+| Compass | Cobblestone | **Waystone** | Sneak + right-click: remembers this spot. Right-click: brings you back to it. |  |
+| Ladder | String | **Rope Ladder** | Right-click a wall or a ledge: ladders unroll down to the ground. | 32 uses |
+| Shears | Shears | **Hedge Shears** | Right-click: shears every sheep nearby and cuts leaves and grass loose. | 300 uses |
+| Gunpowder | White Wool | **Smoke Bomb** x2 | Right-click: you vanish in smoke. Mobs nearby lose track of you. |  |
+| Water Bucket | Bucket | **Endless Water Bucket** | Right-click a block: places water. It never runs dry. |  |
+
+### Animals and helpers
+
+| Item A | Item B | Result | What it does | Stats |
+|---|---|---|---|---|
+| Bone | Leather | **Wolf Whistle** | Right-click: a tame wolf appears. It is yours and follows you. | 3 uses |
+| Hay Block | Saddle | **Steed Horn** | Right-click: a tame, saddled, fast horse appears. The horn is used up. |  |
+| Emerald | Emerald | **Trader's Token** | Right-click: a wandering trader comes to you. |  |
+| Stick | Wheat | **Shepherd's Crook** | Right-click: farm animals nearby follow you for 20 seconds. | 100 uses |
+| Stick | String | **Mob Net** | Right-click a mob: it goes into the net. Right-click a block: it comes out again. | 64 uses |
+
+### Finds and luck
+
+| Item A | Item B | Result | What it does | Stats |
+|---|---|---|---|---|
+| Stick | Gold Ingot | **Divining Rod** | Right-click: ores within 8 blocks glow through the walls for 10 seconds. | 32 uses |
+| Book | Lapis Lazuli | **Tome of Chance** | Right-click: costs 3 levels and turns into a random enchanted book. |  |
+| Stick | Stick | **Hiking Staff** | While held: you step up full blocks without jumping. Short falls do not hurt. |  |
+| Feather | String | **Dreamcatcher** | Phantoms never come for you. Keep it in your hotbar or off hand. |  |
+| Iron Ingot | Iron Ingot | **Lucky Horseshoe** | Gives Luck: better fishing and loot. Keep it in your hotbar or off hand. |  |
+| Egg | Feather | **Emergency Chicken** | Hold it and you float down slowly. No fall damage. |  |
+
 ## All combinations that make vanilla items
 
 | Item A | Item B | Result |
@@ -336,6 +414,18 @@ Every new item has a description under its name. All new items are also in their
 | Redstone Dust | Blaze Powder | **Glowstone Dust** x2 |
 | Glowstone Dust | Ink Sac | **Glow Ink Sac** |
 | Yellow Wool | Slimeball | **Sponge** |
+| Lava Bucket | Water Bucket | **Obsidian** |
+| Compass | Bone | **Recovery Compass** |
+| Paper | Compass | **Map** |
+| Book | Feather | **Writable Book** |
+| Cobblestone | Cobblestone | **Gravel** x2 |
+| Gravel | Water Bucket | **Clay** |
+| Cobblestone | Oak Leaves | **Mossy Cobblestone** |
+| Cobblestone | Birch Leaves | **Mossy Cobblestone** |
+| Cobblestone | Spruce Leaves | **Mossy Cobblestone** |
+| String | String | **Lead** |
+| Snow Block | Water Bucket | **Ice** x2 |
+| Sugar | Egg | **Cake** |
 
 ## What the Chaos Orb can do
 
@@ -542,7 +632,21 @@ These items need three or more combining steps. Each list shows everything that 
 - The Size Ray change on a mob is permanent.
 - Worn armor from this mod looks like vanilla iron, diamond or netherite armor. Only the inventory picture is new.
 - Wings use the vanilla elytra look.
-- There are no new bows, crossbows, tridents or shields.
+- The Volley Bow and the Torch Bow are not drawn like a normal bow: one right-click is one shot.
+  There are no new crossbows, tridents or shields.
+- **Backpacks:** only the backpack in your hand opens. A backpack cannot go into a backpack or a shulker box, and
+  a shulker box cannot go into a backpack. If a backpack burns on the ground, the things inside fall out.
+- The Mob Net takes every mob except the Ender Dragon and the Wither. The mob keeps its health, name, trades and
+  what it carries. The net wears out when the mob comes out, so it never breaks with a mob inside.
+- A Waystone remembers one spot. It also brings you back from the Nether or the End.
+- The Bedroll sets your respawn point without a bed. If the spot is blocked when you die, you wake up at the world spawn.
+- The Planter's Hoe plants wheat seeds, carrots, potatoes or beetroot seeds from your inventory.
+- The Angler's Rod catches fish and junk, but no treasure. For treasure you need a normal fishing rod.
+- The Tome of Chance can give any enchantment, also Mending, also a curse. The books are weaker than the best
+  books of an enchanting table.
+- Bleeding from the Jagged Blade does not add up. A new hit only starts the 6 seconds again.
+- The Divining Rod shows at most 96 ore blocks at a time.
+- The Endless Water Bucket does not work in the Nether, like a normal water bucket.
 - Texts are in English only.
 
 ## Automatic tests
@@ -565,6 +669,11 @@ The tests are in `src/gametest`. They are not part of the mod .jar.
 - waits for the slow abilities and checks them too (nuke crater, black hole, meteors, anvils, chickens, the
   portable hole closes again, the time stop and the ghost cloak end by themselves)
 - runs every event of the Chaos Orb, and its random teleport also in the Nether
+- fills, closes, opens and merges backpacks, and tries to put a backpack and a shulker box into a backpack
+- remembers a spot with the Waystone and travels back to it
+- catches a pig with the Mob Net (sent the way a real game client sends a right-click) and lets it out again
+- kills a sheep with a normal sword and with the Looter's Blade and compares the wool
+- hits an iron golem twice with the Jagged Blade and measures the bleeding for 4 seconds
 
 **Client test** (`gradlew runClientTest`). The real game starts, makes a flat world, opens the Combiner Table with a
 right-click, puts two items in, takes the result, and takes screenshots of the table, of every item in the

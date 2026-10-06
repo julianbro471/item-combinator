@@ -16,6 +16,11 @@
     "combinator:world_eater",
     "combinator:terraformer",
     "combinator:tnt_pickaxe",
-    "combinator:earthshaker"
+    "combinator:earthshaker",
+    "combinator:flint_pickaxe",
+    "combinator:stone_hammer",
+    "combinator:gentle_pickaxe",
+    "combinator:gilded_pickaxe",
+    "combinator:iron_multitool"
   ]
 }

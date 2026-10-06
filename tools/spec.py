@@ -10,7 +10,7 @@ The number after the name is only the rarity, which sets the name colour in the 
 
 MOD_ID = "combinator"
 MOD_NAME = "Item Combinator"
-VERSION = "1.1.1"
+VERSION = "1.2.0"
 
 ITEMS = []      # custom items, in creative-tab / documentation order
 VANILLA = []    # recipes whose result is a vanilla item
@@ -659,6 +659,188 @@ it("pandora_box", "Pandora's Box", 3, "chaos_orb", "chaos_orb", "gadget",
    ".use(Use.PANDORA).cooldown(140).consume()", tex=("box", "void", "gold", "skull"), stack=16)
 
 # ---------------------------------------------------------------------------------------------
+# EVERYDAY ITEMS: made from wood, stone, gold, iron and other things of a normal playthrough
+# ---------------------------------------------------------------------------------------------
+section("Everyday tools")
+it("flint_pickaxe", "Flint-Tipped Pickaxe", 1, "wooden_pickaxe", "flint", "pick",
+   ["Faster than an iron pickaxe.", "Mines only what stone can mine."],
+   "", tex=("pickaxe", "flint", "wood", None),
+   dur=180, speed=7, dmg=3, aspd=-2.8, level="stone")
+it("stone_hammer", "Stone Hammer", 1, "stone_pickaxe", "stone_pickaxe", "pick",
+   ["Mines a 3x3 area.", "Sneak to mine one block."],
+   ".area(1, false)", tex=("hammer", "stone", "stone", None),
+   dur=400, speed=3.5, dmg=4, aspd=-3.0, level="stone")
+it("gentle_pickaxe", "Gentle Pickaxe", 1, "iron_pickaxe", "white_wool", "pick",
+   ["Blocks drop as themselves,", "like with Silk Touch."],
+   ".silk()", tex=("pickaxe", "iron", "bone", "wool"),
+   dur=350, speed=6, dmg=4, aspd=-2.8, level="iron")
+it("gilded_pickaxe", "Gilded Pickaxe", 1, "golden_pickaxe", "iron_pickaxe", "pick",
+   ["As fast as gold, as tough as iron.", "Stone sometimes drops gold nuggets."],
+   ".stoneNuggets(0.12f)", tex=("pickaxe", "gold", "iron", "gem"),
+   dur=320, speed=12, dmg=4, aspd=-2.8, level="iron")
+it("iron_multitool", "Iron Multitool", 1, "iron_pickaxe", "iron_axe", "paxel",
+   ["Pickaxe, axe, shovel and hoe in one."],
+   "", tex=("paxel", "iron", "iron", None), alt=[("iron_pickaxe", "iron_shovel")],
+   dur=600, speed=6, dmg=6, aspd=-3.0, level="iron")
+it("timber_axe", "Timber Axe", 1, "stone_axe", "stone_axe", "axe",
+   ["Chops down small trees whole.", "Sneak to chop one log."],
+   ".tree(40)", tex=("axe", "stone", "wood", None),
+   dur=300, speed=4, dmg=9, aspd=-3.2, level="stone")
+it("sifting_shovel", "Sifting Shovel", 1, "stone_shovel", "string", "shovel",
+   ["Dirt, sand and gravel sometimes hide", "flint, nuggets, bones or even a gem."],
+   ".sift()", tex=("shovel", "stone", "wheat", "gem"),
+   dur=260, speed=4, dmg=3.5, aspd=-3.0, level="stone")
+it("golden_sickle", "Golden Sickle", 1, "golden_hoe", "golden_hoe", "hoe",
+   ["Right-click a ripe crop: harvests", "and replants a 3x3 area."],
+   ".harvest(1)", tex=("sickle", "gold", "wood", None),
+   dur=150, speed=12, dmg=1, aspd=0.0, level="gold")
+it("planter_hoe", "Planter's Hoe", 1, "wooden_hoe", "wheat_seeds", "hoe",
+   ["Right-click soil: tills a 3x3 patch", "and plants the seeds you carry."],
+   ".sow()", tex=("hoe", "wood", "wheat", "seed"),
+   dur=120, speed=2, dmg=1, aspd=-1.0, level="wooden")
+
+section("Everyday weapons")
+it("quarterstaff", "Quarterstaff", 1, "wooden_sword", "stick", "sword",
+   ["Reaches 2 blocks further.", "Pushes enemies back."],
+   ".attr(\"player.entity_interaction_range\", 2.0, 0).knockback(1.5f)", tex=("pole", "wood", "iron", None),
+   dur=150, dmg=5, aspd=-2.2, level="wooden")
+it("jagged_blade", "Jagged Blade", 1, "stone_sword", "flint", "sword",
+   ["Wounds keep bleeding for 6 seconds."],
+   ".bleed(6)", tex=("jagged", "flint", "stone", None),
+   dur=220, dmg=6, aspd=-2.4, level="stone")
+it("dual_blades", "Dual Blades", 1, "iron_sword", "iron_sword", "sword",
+   ["Strikes twice as fast as a sword.", "The second blade adds 1 damage."],
+   ".magic(1.0f)", tex=("twin", "iron", "leather", None),
+   dur=500, dmg=4, aspd=-0.8, level="iron")
+it("bulwark_blade", "Bulwark Blade", 1, "iron_sword", "shield", "sword",
+   ["While held: +6 armor and you are", "hard to push around."],
+   ".attr(\"generic.armor\", 6.0, 0).attr(\"generic.knockback_resistance\", 0.6, 0)", tex=("sword", "iron", "wood", "shield"),
+   dur=600, dmg=7, aspd=-2.6, level="iron")
+it("looter_blade", "Looter's Blade", 1, "golden_sword", "emerald", "sword",
+   ["Slain mobs drop their loot twice."],
+   ".doubleLoot()", tex=("sword", "gold", "emerald", "gem"),
+   dur=250, dmg=6, aspd=-2.4, level="gold")
+it("boomerang", "Boomerang", 1, "wooden_axe", "feather", "gadget",
+   ["Right-click: hits every mob in a line", "and brings back dropped items."],
+   ".use(Use.BOOMERANG).range(18).power(5.0f).cooldown(16).cost(1)", tex=("boomerang", "wood", "bone", None),
+   dur=200, where="HELD")
+
+section("Bows and rods")
+it("volley_bow", "Volley Bow", 1, "bow", "bow", "gadget",
+   ["Right-click: shoots 5 arrows at once.", "Needs no arrows."],
+   ".use(Use.ARROW_BURST).power(5.0f).cooldown(24).cost(1)", tex=("bow", "wood", "iron", "arrows"),
+   dur=300, where="HELD")
+it("torch_bow", "Torch Bow", 1, "bow", "torch", "gadget",
+   ["Right-click: puts a torch on the block", "you look at, up to 40 blocks away."],
+   ".use(Use.TORCH_SHOT).range(40).cooldown(6).cost(1)", tex=("bow", "wood", "fire", "flame"),
+   dur=256, where="HELD")
+it("grappling_hook", "Grappling Hook", 1, "fishing_rod", "iron_ingot", "gadget",
+   ["Right-click a block: pulls you to it.", "No fall damage while you hold it."],
+   ".use(Use.GRAPPLE).range(40).cooldown(20).cost(1).noFall()", tex=("hook", "iron", "wood", None),
+   dur=250, where="HELD")
+it("lasso", "Lasso", 1, "fishing_rod", "lead", "gadget",
+   ["Right-click a mob: pulls it to you."],
+   ".use(Use.YANK).range(24).cooldown(15).cost(1)", tex=("lasso", "leather", "wheat", None),
+   dur=200, where="HELD")
+it("angler_rod", "Angler's Rod", 1, "fishing_rod", "fishing_rod", "gadget",
+   ["Right-click water: a catch at once.", "No waiting for a bite."],
+   ".use(Use.FISH).range(12).cooldown(100).cost(1)", tex=("rod", "wood", "gold", None),
+   dur=64, where="HELD")
+
+section("Camp and travel")
+it("backpack", "Backpack", 1, "chest", "leather", "gadget",
+   ["Right-click: opens 27 extra slots.", "The things stay inside the backpack."],
+   ".use(Use.BACKPACK).power(3.0f)", tex=("backpack", "leather", "wheat", None), where="HELD")
+it("big_backpack", "Big Backpack", 2, "backpack", "backpack", "gadget",
+   ["Right-click: opens 54 extra slots.", "Keeps what was in the two small ones."],
+   ".use(Use.BACKPACK).power(6.0f)", tex=("backpack", "blood", "gold", "star"), where="HELD")
+it("pocket_furnace", "Pocket Furnace", 1, "furnace", "flint_and_steel", "gadget",
+   ["Hold an item in the other hand.", "Right-click: smelts up to 8 of it."],
+   ".use(Use.SMELT_HAND).cooldown(20).cost(1)", tex=("furnace", "stone", "fire", None), dur=128)
+it("bedroll", "Bedroll", 1, "white_bed", "leather", "gadget",
+   ["Right-click: you respawn here from", "now on. Works anywhere, at any time."],
+   ".use(Use.SET_SPAWN).cooldown(40)", tex=("bedroll", "blood", "leather", None), alt=[("red_bed", "leather")])
+it("waystone", "Waystone", 1, "compass", "cobblestone", "gadget",
+   ["Sneak + right-click: remembers this spot.", "Right-click: brings you back to it."],
+   ".use(Use.WAYPOINT_GO).cooldown(200).sneakUse(Use.WAYPOINT_SET, 20)", tex=("waystone", "stone", "ender", None))
+it("rope_ladder", "Rope Ladder", 1, "ladder", "string", "gadget",
+   ["Right-click a wall or a ledge: ladders", "unroll down to the ground."],
+   ".ropeLadder()", tex=("ladder", "wood", "wheat", None), dur=32, where="HELD")
+it("hedge_shears", "Hedge Shears", 1, "shears", "shears", "gadget",
+   ["Right-click: shears every sheep nearby", "and cuts leaves and grass loose."],
+   ".use(Use.SHEAR_AREA).range(8).cooldown(20).cost(1)", tex=("bigshears", "iron", "redstone", None),
+   dur=300, where="HELD")
+it("smoke_bomb", "Smoke Bomb", 1, "gunpowder", "white_wool", "gadget",
+   ["Right-click: you vanish in smoke.", "Mobs nearby lose track of you."],
+   ".use(Use.SMOKE).cooldown(40).consume()", tex=("bomb", "wither", "bone", None), stack=16, count=2)
+it("endless_bucket", "Endless Water Bucket", 1, "water_bucket", "bucket", "gadget",
+   ["Right-click a block: places water.", "It never runs dry."],
+   ".endlessWater()", tex=("bucket", "iron", "ice", None), where="HELD")
+
+section("Animals and helpers")
+it("wolf_whistle", "Wolf Whistle", 1, "bone", "leather", "gadget",
+   ["Right-click: a tame wolf appears.", "It is yours and follows you."],
+   ".use(Use.SUMMON_WOLVES).power(1.0f).cooldown(1200).cost(1)", tex=("whistle", "bone", "leather", None), dur=3)
+it("steed_horn", "Steed Horn", 1, "hay_block", "saddle", "gadget",
+   ["Right-click: a tame, saddled, fast horse", "appears. The horn is used up."],
+   ".use(Use.SUMMON_HORSE).cooldown(100).consume()", tex=("horn", "leather", "gold", None))
+it("trader_token", "Trader's Token", 1, "emerald", "emerald", "gadget",
+   ["Right-click: a wandering trader", "comes to you."],
+   ".use(Use.SUMMON_TRADER).cooldown(100).consume()", tex=("coin", "emerald", "gold", None), stack=16)
+it("shepherd_crook", "Shepherd's Crook", 1, "stick", "wheat", "gadget",
+   ["Right-click: farm animals nearby", "follow you for 20 seconds."],
+   ".use(Use.LURE).range(20).cooldown(100).cost(1)", tex=("crook", "wood", "wheat", None),
+   dur=100, where="HELD")
+it("mob_net", "Mob Net", 2, "stick", "string", "gadget",
+   ["Right-click a mob: it goes into the net.", "Right-click a block: it comes out again."],
+   ".capture()", tex=("net", "wood", "bone", None), dur=64, where="HELD")
+
+section("Finds and luck")
+it("divining_rod", "Divining Rod", 1, "stick", "gold_ingot", "gadget",
+   ["Right-click: ores within 8 blocks glow", "through the walls for 10 seconds."],
+   ".use(Use.ORE_SIGHT).range(8).cooldown(240).cost(1)", tex=("fork", "wood", "gold", None),
+   dur=32, where="HELD")
+it("tome_of_chance", "Tome of Chance", 2, "book", "lapis_lazuli", "gadget",
+   ["Right-click: costs 3 levels and turns", "into a random enchanted book."],
+   ".use(Use.ENCHANT_BOOK).cooldown(10).consume()", tex=("book", "lapis", "gold", "question"), stack=16)
+it("hiking_staff", "Hiking Staff", 1, "stick", "stick", "gadget",
+   ["While held: you step up full blocks", "without jumping. Short falls do not hurt."],
+   ".attr(\"generic.step_height\", 0.5, 0).attr(\"generic.safe_fall_distance\", 3.0, 0)", tex=("cane", "wood", "gold", None), where="HELD")
+it("dreamcatcher", "Dreamcatcher", 1, "feather", "string", "gadget",
+   ["Phantoms never come for you.", "Keep it in your hotbar or off hand."],
+   ".noPhantoms()", tex=("dreamcatcher", "wood", "bone", None))
+it("lucky_horseshoe", "Lucky Horseshoe", 1, "iron_ingot", "iron_ingot", "gadget",
+   ["Gives Luck: better fishing and loot.", "Keep it in your hotbar or off hand."],
+   ".fx(StatusEffects.LUCK, 0)", tex=("horseshoe", "iron", "gold", None))
+it("emergency_chicken", "Emergency Chicken", 1, "egg", "feather", "gadget",
+   ["Hold it and you float down slowly.", "No fall damage."],
+   ".fx(StatusEffects.SLOW_FALLING, 0).noFall()", tex=("chicken", "bone", "wind", None), where="HELD")
+
+section("Armor")
+it("cloud_slippers", "Cloud Slippers", 1, "leather_boots", "white_wool", "armor",
+   ["No fall damage."],
+   ".noFall()", tex=("boots", "wind", "bone", None),
+   slot="BOOTS", prot=1, tough=0.0, kb=0.0, dur=120, layer="leather")
+it("merchant_crown", "Merchant's Crown", 1, "golden_helmet", "emerald", "armor",
+   ["Villagers give you better prices."],
+   ".fx(StatusEffects.HERO_OF_THE_VILLAGE, 0)", tex=("crown", "gold", "emerald", None),
+   slot="HELMET", prot=2, tough=0.0, kb=0.0, dur=150, layer="gold")
+
+section("Food")
+it("cured_jerky", "Cured Jerky", 1, "rotten_flesh", "sugar", "food",
+   ["Rotten flesh, made safe to eat.", "Quick to eat."],
+   "", tex=("steak", "leather", "meat", None), stack=64, snack=True, count=2,
+   nut=5, sat=0.6, fx=[])
+it("fish_and_chips", "Fish and Chips", 1, "cooked_cod", "baked_potato", "food",
+   ["Very filling.", "Gives Luck for 2 minutes."],
+   "", tex=("fishchips", "copper", "bone", None), alt=[("cooked_salmon", "baked_potato")],
+   nut=12, sat=0.8, fx=[("LUCK", 120, 0)])
+it("candy_apple", "Candy Apple", 1, "apple", "sugar", "food",
+   ["Speed II for 30 seconds.", "Can be eaten when full."],
+   "", tex=("candyapple", "redstone", "bone", None), always=True,
+   nut=4, sat=0.4, fx=[("SPEED", 30, 1)])
+
+# ---------------------------------------------------------------------------------------------
 # VANILLA RESULTS
 # ---------------------------------------------------------------------------------------------
 van("rotten_flesh", "rotten_flesh", "leather")
@@ -699,6 +881,18 @@ van("netherrack", "warped_fungus", "warped_nylium")
 van("redstone", "blaze_powder", "glowstone_dust", 2)
 van("glowstone_dust", "ink_sac", "glow_ink_sac")
 van("yellow_wool", "slime_ball", "sponge")
+van("lava_bucket", "water_bucket", "obsidian")
+van("compass", "bone", "recovery_compass")
+van("paper", "compass", "map")
+van("book", "feather", "writable_book")
+van("cobblestone", "cobblestone", "gravel", 2)
+van("gravel", "water_bucket", "clay")
+van("cobblestone", "oak_leaves", "mossy_cobblestone")
+van("cobblestone", "birch_leaves", "mossy_cobblestone")
+van("cobblestone", "spruce_leaves", "mossy_cobblestone")
+van("string", "string", "lead")
+van("snow_block", "water_bucket", "ice", 2)
+van("sugar", "egg", "cake")
 
 CUSTOM_IDS = {i["id"] for i in ITEMS}
 

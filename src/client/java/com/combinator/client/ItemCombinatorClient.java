@@ -3,6 +3,7 @@ package com.combinator.client;
 import com.combinator.ItemCombinator;
 import com.combinator.item.ComboItems;
 import com.combinator.item.Traits;
+import com.combinator.screen.BackpackScreenHandler;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
@@ -10,6 +11,8 @@ import net.fabricmc.fabric.api.client.rendering.v1.LivingEntityFeatureRendererRe
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.render.entity.PlayerEntityRenderer;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.ContainerComponent;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.text.Text;
@@ -33,6 +36,12 @@ public class ItemCombinatorClient implements ClientModInitializer {
 			for (int i = 0; i < count; i++) {
 				Text line = Text.translatable(key + ".tip" + (i + 1)).formatted(Formatting.GRAY);
 				lines.add(Math.min(lines.size(), 1 + i), line);
+			}
+			// Backpacks say how full they are.
+			ContainerComponent contents = stack.get(DataComponentTypes.CONTAINER);
+			if (contents != null && BackpackScreenHandler.isBackpack(stack)) {
+				long used = contents.streamNonEmpty().count();
+				lines.add(Math.min(lines.size(), 1 + count), Text.literal("Holds " + used + (used == 1 ? " stack" : " stacks")).formatted(Formatting.GOLD));
 			}
 		});
 

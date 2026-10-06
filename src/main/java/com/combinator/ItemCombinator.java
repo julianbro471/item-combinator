@@ -1,6 +1,8 @@
 package com.combinator;
 
+import com.combinator.ability.Capture;
 import com.combinator.ability.CombatAbilities;
+import com.combinator.ability.Gadgets;
 import com.combinator.ability.MiningAbilities;
 import com.combinator.ability.PassiveAbilities;
 import com.combinator.ability.Tasks;
@@ -95,6 +97,8 @@ public class ItemCombinator implements ModInitializer {
 		MiningAbilities.register();
 		CombatAbilities.register();
 		PassiveAbilities.register();
+		Gadgets.register();
+		Capture.register();
 
 		LOGGER.info("Item Combinator loaded: {} new items, {} combinations", ComboItems.ALL.size(), ComboRecipes.ALL.size());
 	}

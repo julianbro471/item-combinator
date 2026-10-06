@@ -30,6 +30,7 @@ import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.stat.Stats;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
@@ -163,6 +164,7 @@ public final class PassiveAbilities {
 
 		int[] pull = {0};
 		boolean[] mend = {false};
+		boolean[] rested = {false};
 		forEachActive(player, (stack, traits) -> {
 			if (effectsNow) {
 				for (Traits.Fx fx : traits.passive) {
@@ -173,8 +175,14 @@ public final class PassiveAbilities {
 			}
 			pull[0] = Math.max(pull[0], traits.pullRadius);
 			mend[0] |= traits.mend;
+			rested[0] |= traits.noPhantoms;
 			return false;
 		});
+
+		if (effectsNow && rested[0]) {
+			// Phantoms come for players who have not slept for three days. This makes the game think the player just slept.
+			player.resetStat(Stats.CUSTOM.getOrCreateStat(Stats.TIME_SINCE_REST));
+		}
 
 		if (pullNow && pull[0] > 0) {
 			pullItems(player, pull[0]);

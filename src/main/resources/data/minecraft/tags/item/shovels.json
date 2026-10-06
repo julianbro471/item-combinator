@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "combinator:trench_shovel",
-    "combinator:kiln_shovel"
+    "combinator:kiln_shovel",
+    "combinator:sifting_shovel"
   ]
 }

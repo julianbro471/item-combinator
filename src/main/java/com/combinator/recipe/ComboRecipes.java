@@ -2,12 +2,14 @@ package com.combinator.recipe;
 
 import com.combinator.ItemCombinator;
 import com.combinator.item.ComboItems;
+import com.combinator.screen.BackpackScreenHandler;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.ContainerComponent;
 import net.minecraft.component.type.ItemEnchantmentsComponent;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
@@ -101,7 +103,27 @@ public final class ComboRecipes {
 		}
 		ItemStack out = combo.createResult();
 		carryEnchantments(a, b, out);
+		carryContents(a, b, out);
 		return out;
+	}
+
+	/** A backpack made from backpacks keeps what was inside them. */
+	private static void carryContents(ItemStack a, ItemStack b, ItemStack out) {
+		if (!BackpackScreenHandler.isBackpack(out)) {
+			return;
+		}
+		List<ItemStack> kept = new ArrayList<>();
+		for (ItemStack in : new ItemStack[] {a, b}) {
+			ContainerComponent contents = in.get(DataComponentTypes.CONTAINER);
+			if (contents != null) {
+				for (ItemStack stack : contents.iterateNonEmptyCopy()) {
+					kept.add(stack);
+				}
+			}
+		}
+		if (!kept.isEmpty()) {
+			out.set(DataComponentTypes.CONTAINER, ContainerComponent.fromStacks(kept));
+		}
 	}
 
 	/**

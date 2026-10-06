@@ -2,6 +2,8 @@
   "replace": false,
   "values": [
     "combinator:harvester_hoe",
-    "combinator:farmers_scythe"
+    "combinator:farmers_scythe",
+    "combinator:golden_sickle",
+    "combinator:planter_hoe"
   ]
 }

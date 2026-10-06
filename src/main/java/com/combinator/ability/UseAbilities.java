@@ -6,11 +6,13 @@ import com.combinator.item.Traits;
 import com.combinator.item.Use;
 import com.combinator.screen.PocketCraftingScreenHandler;
 import java.util.List;
+import java.util.Map;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.CropBlock;
 import net.minecraft.block.Fertilizable;
+import net.minecraft.block.LadderBlock;
 import net.minecraft.block.NetherWartBlock;
 import net.minecraft.block.WallTorchBlock;
 import net.minecraft.entity.EntityType;
@@ -70,6 +72,21 @@ public final class UseAbilities {
 			return ActionResult.PASS;
 		}
 		try {
+			if (traits.capture) {
+				return Capture.release(context, player, stack);
+			}
+			if (traits.sow) {
+				ActionResult sown = sow(context, player, stack);
+				if (sown != ActionResult.PASS) {
+					return sown;
+				}
+			}
+			if (traits.ropeLadder) {
+				return ropeLadder(context, player, stack);
+			}
+			if (traits.endlessWater) {
+				return endlessWater(context, player, stack);
+			}
 			if (traits.torch) {
 				return placeTorch(context, player, stack);
 			}
@@ -209,6 +226,130 @@ public final class UseAbilities {
 			}
 		}
 		return ActionResult.success(world.isClient);
+	}
+
+	/** Seeds the Planter's Hoe knows, and the crop each one grows into. */
+	private static final Map<Item, Block> SEEDS = Map.of(
+			Items.WHEAT_SEEDS, Blocks.WHEAT, Items.CARROT, Blocks.CARROTS, Items.POTATO, Blocks.POTATOES, Items.BEETROOT_SEEDS, Blocks.BEETROOTS);
+
+	private static boolean isTillable(BlockState state) {
+		return state.isOf(Blocks.DIRT) || state.isOf(Blocks.GRASS_BLOCK) || state.isOf(Blocks.DIRT_PATH)
+				|| state.isOf(Blocks.COARSE_DIRT) || state.isOf(Blocks.ROOTED_DIRT);
+	}
+
+	/** The first stack of seeds (of any known kind) the player carries, or an empty stack if there is none. */
+	private static ItemStack findSeeds(PlayerEntity player) {
+		for (int i = 0; i < player.getInventory().size(); i++) {
+			ItemStack candidate = player.getInventory().getStack(i);
+			if (!candidate.isEmpty() && SEEDS.containsKey(candidate.getItem())) {
+				return candidate;
+			}
+		}
+		return ItemStack.EMPTY;
+	}
+
+	/** Planter's Hoe: turns a 3x3 patch into farmland and plants the seeds the player carries. */
+	private static ActionResult sow(ItemUsageContext context, PlayerEntity player, ItemStack stack) {
+		World world = context.getWorld();
+		if (context.getSide() == Direction.DOWN) {
+			return ActionResult.PASS;
+		}
+		BlockPos center = context.getBlockPos();
+		BlockState clicked = world.getBlockState(center);
+		if (!isTillable(clicked) && !clicked.isOf(Blocks.FARMLAND)) {
+			return ActionResult.PASS;
+		}
+		if (world.isClient) {
+			return ActionResult.SUCCESS;
+		}
+		int changed = 0;
+		for (int dx = -1; dx <= 1; dx++) {
+			for (int dz = -1; dz <= 1; dz++) {
+				BlockPos pos = center.add(dx, 0, dz);
+				BlockPos above = pos.up();
+				if (!world.getBlockState(above).isAir()) {
+					continue;
+				}
+				BlockState state = world.getBlockState(pos);
+				if (isTillable(state)) {
+					state = Blocks.FARMLAND.getDefaultState();
+					world.setBlockState(pos, state, Block.NOTIFY_ALL | Block.REDRAW_ON_MAIN_THREAD);
+					changed++;
+				}
+				if (state.isOf(Blocks.FARMLAND)) {
+					ItemStack seeds = findSeeds(player);
+					Block crop = SEEDS.get(seeds.getItem());
+					// canPlaceAt: crops need light. In a dark cave no seed is wasted.
+					if (crop != null && crop.getDefaultState().canPlaceAt(world, above)) {
+						world.setBlockState(above, crop.getDefaultState(), Block.NOTIFY_ALL);
+						seeds.decrementUnlessCreative(1, player);
+						changed++;
+					}
+				}
+			}
+		}
+		if (changed == 0) {
+			return ActionResult.PASS;
+		}
+		Fx.sound(world, Vec3d.ofCenter(center), SoundEvents.ITEM_HOE_TILL, 1.0F, 1.0F);
+		stack.damage(1, player, LivingEntity.getSlotForHand(context.getHand()));
+		return ActionResult.SUCCESS;
+	}
+
+	/** Rope Ladder: ladders unroll down the wall, starting next to the clicked block, until they reach the ground. */
+	private static ActionResult ropeLadder(ItemUsageContext context, PlayerEntity player, ItemStack stack) {
+		World world = context.getWorld();
+		Direction side = context.getSide();
+		Direction facing;
+		if (side.getAxis().isHorizontal()) {
+			facing = side;                              // clicked the wall itself
+		} else if (side == Direction.UP) {
+			facing = player.getHorizontalFacing();      // clicked the top of a ledge: the ladder hangs down in front of it
+		} else {
+			return ActionResult.PASS;
+		}
+		if (world.isClient) {
+			return ActionResult.SUCCESS;
+		}
+		BlockState ladder = Blocks.LADDER.getDefaultState().with(LadderBlock.FACING, facing);
+		BlockPos pos = context.getBlockPos().offset(facing);
+		int placed = 0;
+		while (placed < 24 && pos.getY() > world.getBottomY() && world.getBlockState(pos).isAir() && ladder.canPlaceAt(world, pos)) {
+			world.setBlockState(pos, ladder, Block.NOTIFY_ALL);
+			placed++;
+			pos = pos.down();
+		}
+		if (placed == 0) {
+			return ActionResult.PASS;
+		}
+		Fx.sound(world, Vec3d.ofCenter(context.getBlockPos()), SoundEvents.BLOCK_LADDER_PLACE, 1.0F, 1.0F);
+		stack.damage(1, player, LivingEntity.getSlotForHand(context.getHand()));
+		return ActionResult.SUCCESS;
+	}
+
+	/** Endless Water Bucket: puts a water source next to the clicked block. It never runs dry. */
+	private static ActionResult endlessWater(ItemUsageContext context, PlayerEntity player, ItemStack stack) {
+		World world = context.getWorld();
+		BlockPos pos = context.getBlockPos().offset(context.getSide());
+		BlockState there = world.getBlockState(pos);
+		if (!there.isAir() && !there.isReplaceable()) {
+			return ActionResult.PASS;
+		}
+		if (world.isClient) {
+			return ActionResult.SUCCESS;
+		}
+		if (world.getDimension().ultrawarm()) {
+			// The Nether is too hot for water, like with a normal bucket.
+			if (world instanceof ServerWorld serverWorld) {
+				Fx.particles(serverWorld, ParticleTypes.LARGE_SMOKE, Vec3d.ofCenter(pos), 8, 0.3, 0.0);
+			}
+			Fx.sound(world, Vec3d.ofCenter(pos), SoundEvents.BLOCK_FIRE_EXTINGUISH, 0.5F, 2.4F);
+		} else {
+			world.setBlockState(pos, Blocks.WATER.getDefaultState(), Block.NOTIFY_ALL | Block.REDRAW_ON_MAIN_THREAD);
+			Fx.sound(world, Vec3d.ofCenter(pos), SoundEvents.ITEM_BUCKET_EMPTY, 1.0F, 1.0F);
+		}
+		player.getItemCooldownManager().set(stack.getItem(), 4);
+		return ActionResult.SUCCESS;
 	}
 
 	// ------------------------------------------------------------------ right-click in the air
@@ -466,6 +607,44 @@ public final class UseAbilities {
 				return Chaos.one(world, player);
 			case PANDORA:
 				return Chaos.pandora(world, player);
+
+			// ---------------------------------------------------------- everyday gadgets
+			case BOOMERANG:
+				return Gadgets.boomerang(world, player, traits.range, traits.power);
+			case TORCH_SHOT:
+				return Gadgets.torchShot(world, player, traits.range);
+			case GRAPPLE:
+				return Gadgets.grapple(world, player, traits.range);
+			case YANK:
+				return Gadgets.yank(world, player, traits.range);
+			case FISH:
+				return Gadgets.fish(world, player, player.getStackInHand(hand), traits.range);
+			case BACKPACK:
+				return Gadgets.backpack(player, hand, Math.round(traits.power));
+			case SMELT_HAND:
+				return Gadgets.smeltHand(world, player, hand);
+			case SET_SPAWN:
+				return Gadgets.setSpawn(world, player);
+			case WAYPOINT_GO:
+				return Gadgets.waypointGo(world, player, player.getStackInHand(hand));
+			case WAYPOINT_SET:
+				return Gadgets.waypointSet(world, player, player.getStackInHand(hand));
+			case SHEAR_AREA:
+				return Gadgets.shearArea(world, player, traits.range);
+			case SMOKE:
+				return Gadgets.smoke(world, player);
+			case SUMMON_WOLVES:
+				return Gadgets.summonWolves(world, player, Math.round(traits.power));
+			case SUMMON_HORSE:
+				return Gadgets.summonHorse(world, player);
+			case SUMMON_TRADER:
+				return Gadgets.summonTrader(world, player);
+			case LURE:
+				return Gadgets.lure(world, player, traits.range);
+			case ORE_SIGHT:
+				return Gadgets.oreSight(world, player, traits.range);
+			case ENCHANT_BOOK:
+				return Gadgets.enchantBook(world, player);
 			default:
 				return false;
 		}

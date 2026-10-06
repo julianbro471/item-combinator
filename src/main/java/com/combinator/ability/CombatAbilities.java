@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ExperienceOrbEntity;
 import net.minecraft.entity.LightningEntity;
@@ -19,11 +20,16 @@ import net.minecraft.entity.damage.DamageTypes;
 import net.minecraft.entity.decoration.ArmorStandEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.loot.LootTable;
+import net.minecraft.loot.context.LootContextParameterSet;
+import net.minecraft.loot.context.LootContextParameters;
+import net.minecraft.loot.context.LootContextTypes;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
@@ -46,6 +52,8 @@ public final class CombatAbilities {
 	private static boolean dealingExtra = false;
 	/** World time of the last lightning or blast per player. */
 	private static final Map<UUID, Long> LAST_STRIKE = new HashMap<>();
+	/** Mobs that bleed right now, with how many seconds of bleeding each one has left. */
+	private static final Map<UUID, Integer> BLEEDING = new HashMap<>();
 
 	private CombatAbilities() {
 	}
@@ -67,6 +75,8 @@ public final class CombatAbilities {
 				ItemCombinator.error("Kill ability failed", t);
 			}
 		});
+		// Scheduled work is dropped when a world is closed, so the list of bleeding mobs has to be dropped too.
+		ServerLifecycleEvents.SERVER_STOPPED.register(server -> BLEEDING.clear());
 	}
 
 	/** Forgets when each player last used a lightning or explosion weapon. */
@@ -176,10 +186,53 @@ public final class CombatAbilities {
 		if (traits.magicDamage > 0) {
 			extraDamage(world, player, victim, traits.magicDamage);
 		}
+		if (traits.bleedSeconds > 0 && victim.isAlive()) {
+			bleed(world, player, victim, traits.bleedSeconds);
+		}
 		areaEffects(world, player, victim, traits, damage, true);
 		if (traits.instakill && victim.isAlive()) {
 			killBlow(world, player, victim);
 		}
+	}
+
+	/**
+	 * Bleeding: one point of damage per second. The player gets the credit if the target dies from it.
+	 * A new hit on a bleeding target starts the time again. It does not make the target bleed faster.
+	 */
+	private static void bleed(ServerWorld world, ServerPlayerEntity player, LivingEntity victim, int seconds) {
+		boolean alreadyBleeding = BLEEDING.put(victim.getUuid(), seconds) != null;
+		if (!alreadyBleeding) {
+			bleedStep(world, player, victim);
+		}
+	}
+
+	private static void bleedStep(ServerWorld world, ServerPlayerEntity player, LivingEntity victim) {
+		Tasks.later(20, () -> {
+			Integer left = BLEEDING.get(victim.getUuid());
+			if (left == null || left <= 0 || !victim.isAlive() || victim.getWorld() != world) {
+				BLEEDING.remove(victim.getUuid());
+				return;
+			}
+			BLEEDING.put(victim.getUuid(), left - 1);
+			extraDamage(world, player, victim, 1.0F);
+			Fx.particles(world, ParticleTypes.DAMAGE_INDICATOR, victim.getPos().add(0.0, victim.getHeight() * 0.6, 0.0), 3, 0.2, 0.0);
+			bleedStep(world, player, victim);
+		});
+	}
+
+	/** Rolls the loot of a killed mob once more and drops it. */
+	private static void extraLoot(ServerWorld world, ServerPlayerEntity player, LivingEntity victim, DamageSource source) {
+		LootTable table = world.getServer().getReloadableRegistries().getLootTable(victim.getLootTable());
+		LootContextParameterSet parameters = new LootContextParameterSet.Builder(world)
+				.add(LootContextParameters.THIS_ENTITY, victim)
+				.add(LootContextParameters.ORIGIN, victim.getPos())
+				.add(LootContextParameters.DAMAGE_SOURCE, source)
+				.addOptional(LootContextParameters.ATTACKING_ENTITY, source.getAttacker())
+				.addOptional(LootContextParameters.DIRECT_ATTACKING_ENTITY, source.getSource())
+				.add(LootContextParameters.LAST_DAMAGE_PLAYER, player)
+				.luck(player.getLuck())
+				.build(LootContextTypes.ENTITY);
+		table.generateLoot(parameters, victim.getLootTableSeed(), victim::dropStack);
 	}
 
 	/** Extra damage that ignores the short "just got hit" protection of the target. */
@@ -325,6 +378,9 @@ public final class CombatAbilities {
 		}
 		if (traits.lifesteal > 0) {
 			player.heal(2.0F);
+		}
+		if (traits.doubleLoot && victim instanceof MobEntity) {
+			extraLoot(world, player, victim, source);
 		}
 		if (traits.midas && melee && !dealingExtra) {
 			Spells.goldify(world, victim);

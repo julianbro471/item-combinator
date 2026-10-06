@@ -42,7 +42,7 @@ def f(x):
 TOOL_KINDS = ('pick', 'axe', 'shovel', 'hoe', 'sword', 'paxel')
 ENCH = {1: 14, 2: 18, 3: 22}
 DEFAULT_WHERE = {'gadget': 'HOTBAR', 'armor': 'WORN', 'wings': 'WORN'}
-HANDHELD_TEX = {'wand', 'staff', 'staff3', 'scythe', 'bat'}
+HANDHELD_TEX = {'wand', 'staff', 'staff3', 'scythe', 'bat', 'bow', 'hook', 'lasso', 'rod', 'crook', 'net', 'fork', 'cane', 'bigshears', 'boomerang'}
 
 # ------------------------------------------------------------------------------------------ Java
 
@@ -483,7 +483,21 @@ def gen_readme(rows, extra):
     A('- The Size Ray change on a mob is permanent.')
     A('- Worn armor from this mod looks like vanilla iron, diamond or netherite armor. Only the inventory picture is new.')
     A('- Wings use the vanilla elytra look.')
-    A('- There are no new bows, crossbows, tridents or shields.')
+    A('- The Volley Bow and the Torch Bow are not drawn like a normal bow: one right-click is one shot.')
+    A('  There are no new crossbows, tridents or shields.')
+    A('- **Backpacks:** only the backpack in your hand opens. A backpack cannot go into a backpack or a shulker box, and')
+    A('  a shulker box cannot go into a backpack. If a backpack burns on the ground, the things inside fall out.')
+    A('- The Mob Net takes every mob except the Ender Dragon and the Wither. The mob keeps its health, name, trades and')
+    A('  what it carries. The net wears out when the mob comes out, so it never breaks with a mob inside.')
+    A('- A Waystone remembers one spot. It also brings you back from the Nether or the End.')
+    A('- The Bedroll sets your respawn point without a bed. If the spot is blocked when you die, you wake up at the world spawn.')
+    A('- The Planter\'s Hoe plants wheat seeds, carrots, potatoes or beetroot seeds from your inventory.')
+    A('- The Angler\'s Rod catches fish and junk, but no treasure. For treasure you need a normal fishing rod.')
+    A('- The Tome of Chance can give any enchantment, also Mending, also a curse. The books are weaker than the best')
+    A('  books of an enchanting table.')
+    A('- Bleeding from the Jagged Blade does not add up. A new hit only starts the 6 seconds again.')
+    A('- The Divining Rod shows at most 96 ore blocks at a time.')
+    A('- The Endless Water Bucket does not work in the Nether, like a normal water bucket.')
     A('- Texts are in English only.\n')
     A('## Automatic tests\n')
     A('The tests are in `src/gametest`. They are not part of the mod .jar.\n')
@@ -501,7 +515,12 @@ def gen_readme(rows, extra):
     A('  was hurt, the tester moved, a screen opened, the item wore out, the cooldown started ...)')
     A('- waits for the slow abilities and checks them too (nuke crater, black hole, meteors, anvils, chickens, the')
     A('  portable hole closes again, the time stop and the ghost cloak end by themselves)')
-    A('- runs every event of the Chaos Orb, and its random teleport also in the Nether\n')
+    A('- runs every event of the Chaos Orb, and its random teleport also in the Nether')
+    A('- fills, closes, opens and merges backpacks, and tries to put a backpack and a shulker box into a backpack')
+    A('- remembers a spot with the Waystone and travels back to it')
+    A('- catches a pig with the Mob Net (sent the way a real game client sends a right-click) and lets it out again')
+    A('- kills a sheep with a normal sword and with the Looter\'s Blade and compares the wool')
+    A('- hits an iron golem twice with the Jagged Blade and measures the bleeding for 4 seconds\n')
     A('**Client test** (`gradlew runClientTest`). The real game starts, makes a flat world, opens the Combiner Table with a')
     A('right-click, puts two items in, takes the result, and takes screenshots of the table, of every item in the')
     A('inventory, and of armor and wings on the player. It checks that every item has a name, a description, a model')

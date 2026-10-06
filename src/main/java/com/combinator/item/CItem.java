@@ -1,10 +1,14 @@
 package com.combinator.item;
 
 import com.combinator.ability.UseAbilities;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.ContainerComponent;
+import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemUsage;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -30,6 +34,23 @@ public class CItem extends Item {
 		ItemStack result = super.finishUsing(stack, world, user);
 		UseAbilities.onEaten(eaten, world, user);
 		return result;
+	}
+
+	/** Backpacks do not go into shulker boxes or bundles. (They also do not go into each other.) */
+	@Override
+	public boolean canBeNested() {
+		Traits traits = ComboItems.traits(this);
+		return traits == null || traits.use != Use.BACKPACK;
+	}
+
+	/** A backpack that is destroyed on the ground (lava, cactus, fire) spills what was inside, like a shulker box. */
+	@Override
+	public void onItemEntityDestroyed(ItemEntity entity) {
+		ContainerComponent contents = entity.getStack().get(DataComponentTypes.CONTAINER);
+		if (contents != null) {
+			entity.getStack().set(DataComponentTypes.CONTAINER, ContainerComponent.DEFAULT);
+			ItemUsage.spawnItemContents(entity, contents.iterateNonEmptyCopy());
+		}
 	}
 
 	@Override

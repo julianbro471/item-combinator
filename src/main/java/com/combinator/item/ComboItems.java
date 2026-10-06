@@ -470,6 +470,143 @@ public final class ComboItems {
 	public static final Item PANDORA_BOX = add("pandora_box", 3, 2,
 			new CItem(props(3).maxCount(16)),
 			new Traits().at(Traits.Where.HOTBAR).use(Use.PANDORA).cooldown(140).consume());
+	public static final Item FLINT_PICKAXE = add("flint_pickaxe", 1, 2,
+			new CPick(ComboMaterial.of(180, 7.0F, "stone", 14), 3.0F, -2.8F, props(1)),
+			null);
+	public static final Item STONE_HAMMER = add("stone_hammer", 1, 2,
+			new CPick(ComboMaterial.of(400, 3.5F, "stone", 14), 4.0F, -3.0F, props(1)),
+			new Traits().at(Traits.Where.HELD).area(1, false));
+	public static final Item GENTLE_PICKAXE = add("gentle_pickaxe", 1, 2,
+			new CPick(ComboMaterial.of(350, 6.0F, "iron", 14), 4.0F, -2.8F, props(1)),
+			new Traits().at(Traits.Where.HELD).silk());
+	public static final Item GILDED_PICKAXE = add("gilded_pickaxe", 1, 2,
+			new CPick(ComboMaterial.of(320, 12.0F, "iron", 14), 4.0F, -2.8F, props(1)),
+			new Traits().at(Traits.Where.HELD).stoneNuggets(0.12f));
+	public static final Item IRON_MULTITOOL = add("iron_multitool", 1, 1,
+			new CPaxel(ComboMaterial.of(600, 6.0F, "iron", 14), 6.0F, -3.0F, props(1)),
+			null);
+	public static final Item TIMBER_AXE = add("timber_axe", 1, 2,
+			new CAxe(ComboMaterial.of(300, 4.0F, "stone", 14), 9.0F, -3.2F, props(1)),
+			new Traits().at(Traits.Where.HELD).tree(40));
+	public static final Item SIFTING_SHOVEL = add("sifting_shovel", 1, 2,
+			new CShovel(ComboMaterial.of(260, 4.0F, "stone", 14), 3.5F, -3.0F, props(1)),
+			new Traits().at(Traits.Where.HELD).sift());
+	public static final Item GOLDEN_SICKLE = add("golden_sickle", 1, 2,
+			new CHoe(ComboMaterial.of(150, 12.0F, "gold", 14), 1.0F, 0.0F, props(1)),
+			new Traits().at(Traits.Where.HELD).harvest(1));
+	public static final Item PLANTER_HOE = add("planter_hoe", 1, 2,
+			new CHoe(ComboMaterial.of(120, 2.0F, "wooden", 14), 1.0F, -1.0F, props(1)),
+			new Traits().at(Traits.Where.HELD).sow());
+	public static final Item QUARTERSTAFF = add("quarterstaff", 1, 2,
+			new CSword(ComboMaterial.of(150, 1.0F, "wooden", 14), 5, -2.2F, props(1)),
+			new Traits().at(Traits.Where.HELD).attr("player.entity_interaction_range", 2.0, 0).knockback(1.5f));
+	public static final Item JAGGED_BLADE = add("jagged_blade", 1, 1,
+			new CSword(ComboMaterial.of(220, 1.0F, "stone", 14), 6, -2.4F, props(1)),
+			new Traits().at(Traits.Where.HELD).bleed(6));
+	public static final Item DUAL_BLADES = add("dual_blades", 1, 2,
+			new CSword(ComboMaterial.of(500, 1.0F, "iron", 14), 4, -0.8F, props(1)),
+			new Traits().at(Traits.Where.HELD).magic(1.0f));
+	public static final Item BULWARK_BLADE = add("bulwark_blade", 1, 2,
+			new CSword(ComboMaterial.of(600, 1.0F, "iron", 14), 7, -2.6F, props(1)),
+			new Traits().at(Traits.Where.HELD).attr("generic.armor", 6.0, 0).attr("generic.knockback_resistance", 0.6, 0));
+	public static final Item LOOTER_BLADE = add("looter_blade", 1, 1,
+			new CSword(ComboMaterial.of(250, 1.0F, "gold", 14), 6, -2.4F, props(1)),
+			new Traits().at(Traits.Where.HELD).doubleLoot());
+	public static final Item BOOMERANG = add("boomerang", 1, 2,
+			new CItem(props(1).maxDamage(200)),
+			new Traits().at(Traits.Where.HELD).use(Use.BOOMERANG).range(18).power(5.0f).cooldown(16).cost(1));
+	public static final Item VOLLEY_BOW = add("volley_bow", 1, 2,
+			new CItem(props(1).maxDamage(300)),
+			new Traits().at(Traits.Where.HELD).use(Use.ARROW_BURST).power(5.0f).cooldown(24).cost(1));
+	public static final Item TORCH_BOW = add("torch_bow", 1, 2,
+			new CItem(props(1).maxDamage(256)),
+			new Traits().at(Traits.Where.HELD).use(Use.TORCH_SHOT).range(40).cooldown(6).cost(1));
+	public static final Item GRAPPLING_HOOK = add("grappling_hook", 1, 2,
+			new CItem(props(1).maxDamage(250)),
+			new Traits().at(Traits.Where.HELD).use(Use.GRAPPLE).range(40).cooldown(20).cost(1).noFall());
+	public static final Item LASSO = add("lasso", 1, 1,
+			new CItem(props(1).maxDamage(200)),
+			new Traits().at(Traits.Where.HELD).use(Use.YANK).range(24).cooldown(15).cost(1));
+	public static final Item ANGLER_ROD = add("angler_rod", 1, 2,
+			new CItem(props(1).maxDamage(64)),
+			new Traits().at(Traits.Where.HELD).use(Use.FISH).range(12).cooldown(100).cost(1));
+	public static final Item BACKPACK = add("backpack", 1, 2,
+			new CItem(props(1).maxCount(1)),
+			new Traits().at(Traits.Where.HELD).use(Use.BACKPACK).power(3.0f));
+	public static final Item BIG_BACKPACK = add("big_backpack", 2, 2,
+			new CItem(props(2).maxCount(1)),
+			new Traits().at(Traits.Where.HELD).use(Use.BACKPACK).power(6.0f));
+	public static final Item POCKET_FURNACE = add("pocket_furnace", 1, 2,
+			new CItem(props(1).maxDamage(128)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.SMELT_HAND).cooldown(20).cost(1));
+	public static final Item BEDROLL = add("bedroll", 1, 2,
+			new CItem(props(1).maxCount(1)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.SET_SPAWN).cooldown(40));
+	public static final Item WAYSTONE = add("waystone", 1, 2,
+			new CItem(props(1).maxCount(1)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.WAYPOINT_GO).cooldown(200).sneakUse(Use.WAYPOINT_SET, 20));
+	public static final Item ROPE_LADDER = add("rope_ladder", 1, 2,
+			new CItem(props(1).maxDamage(32)),
+			new Traits().at(Traits.Where.HELD).ropeLadder());
+	public static final Item HEDGE_SHEARS = add("hedge_shears", 1, 2,
+			new CItem(props(1).maxDamage(300)),
+			new Traits().at(Traits.Where.HELD).use(Use.SHEAR_AREA).range(8).cooldown(20).cost(1));
+	public static final Item SMOKE_BOMB = add("smoke_bomb", 1, 2,
+			new CItem(props(1).maxCount(16)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.SMOKE).cooldown(40).consume());
+	public static final Item ENDLESS_BUCKET = add("endless_bucket", 1, 2,
+			new CItem(props(1).maxCount(1)),
+			new Traits().at(Traits.Where.HELD).endlessWater());
+	public static final Item WOLF_WHISTLE = add("wolf_whistle", 1, 2,
+			new CItem(props(1).maxDamage(3)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.SUMMON_WOLVES).power(1.0f).cooldown(1200).cost(1));
+	public static final Item STEED_HORN = add("steed_horn", 1, 2,
+			new CItem(props(1).maxCount(1)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.SUMMON_HORSE).cooldown(100).consume());
+	public static final Item TRADER_TOKEN = add("trader_token", 1, 2,
+			new CItem(props(1).maxCount(16)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.SUMMON_TRADER).cooldown(100).consume());
+	public static final Item SHEPHERD_CROOK = add("shepherd_crook", 1, 2,
+			new CItem(props(1).maxDamage(100)),
+			new Traits().at(Traits.Where.HELD).use(Use.LURE).range(20).cooldown(100).cost(1));
+	public static final Item MOB_NET = add("mob_net", 2, 2,
+			new CItem(props(2).maxDamage(64)),
+			new Traits().at(Traits.Where.HELD).capture());
+	public static final Item DIVINING_ROD = add("divining_rod", 1, 2,
+			new CItem(props(1).maxDamage(32)),
+			new Traits().at(Traits.Where.HELD).use(Use.ORE_SIGHT).range(8).cooldown(240).cost(1));
+	public static final Item TOME_OF_CHANCE = add("tome_of_chance", 2, 2,
+			new CItem(props(2).maxCount(16)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.ENCHANT_BOOK).cooldown(10).consume());
+	public static final Item HIKING_STAFF = add("hiking_staff", 1, 2,
+			new CItem(props(1).maxCount(1)),
+			new Traits().at(Traits.Where.HELD).attr("generic.step_height", 0.5, 0).attr("generic.safe_fall_distance", 3.0, 0));
+	public static final Item DREAMCATCHER = add("dreamcatcher", 1, 2,
+			new CItem(props(1).maxCount(1)),
+			new Traits().at(Traits.Where.HOTBAR).noPhantoms());
+	public static final Item LUCKY_HORSESHOE = add("lucky_horseshoe", 1, 2,
+			new CItem(props(1).maxCount(1)),
+			new Traits().at(Traits.Where.HOTBAR).fx(StatusEffects.LUCK, 0));
+	public static final Item EMERGENCY_CHICKEN = add("emergency_chicken", 1, 2,
+			new CItem(props(1).maxCount(1)),
+			new Traits().at(Traits.Where.HELD).fx(StatusEffects.SLOW_FALLING, 0).noFall());
+	public static final Item CLOUD_SLIPPERS = add("cloud_slippers", 1, 1,
+			new CArmor(armorMaterial("cloud_slippers", 1, 0.0F, 0.0F, "leather", false), ArmorItem.Type.BOOTS, props(1).maxDamage(120)),
+			new Traits().at(Traits.Where.WORN).noFall());
+	public static final Item MERCHANT_CROWN = add("merchant_crown", 1, 1,
+			new CArmor(armorMaterial("merchant_crown", 2, 0.0F, 0.0F, "gold", false), ArmorItem.Type.HELMET, props(1).maxDamage(150)),
+			new Traits().at(Traits.Where.WORN).fx(StatusEffects.HERO_OF_THE_VILLAGE, 0));
+	public static final Item CURED_JERKY = add("cured_jerky", 1, 2,
+			new CItem(props(1).maxCount(64).food(new FoodComponent.Builder().nutrition(5).saturationModifier(0.6F).snack().build())),
+			null);
+	public static final Item FISH_AND_CHIPS = add("fish_and_chips", 1, 2,
+			new CItem(props(1).maxCount(64).food(new FoodComponent.Builder().nutrition(12).saturationModifier(0.8F)
+					.statusEffect(new StatusEffectInstance(StatusEffects.LUCK, 2400, 0), 1.0F).build())),
+			null);
+	public static final Item CANDY_APPLE = add("candy_apple", 1, 2,
+			new CItem(props(1).maxCount(64).food(new FoodComponent.Builder().nutrition(4).saturationModifier(0.4F)
+					.statusEffect(new StatusEffectInstance(StatusEffects.SPEED, 600, 1), 1.0F).alwaysEdible().build())),
+			null);
 
 	private ComboItems() {
 	}

@@ -22,6 +22,11 @@
     "combinator:soul_reaver",
     "combinator:home_run_bat",
     "combinator:beam_saber",
-    "combinator:omni_blade"
+    "combinator:omni_blade",
+    "combinator:quarterstaff",
+    "combinator:jagged_blade",
+    "combinator:dual_blades",
+    "combinator:bulwark_blade",
+    "combinator:looter_blade"
   ]
 }

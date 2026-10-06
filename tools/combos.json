@@ -2644,6 +2644,911 @@
       "stats": ""
     },
     {
+      "a": "wooden_pickaxe",
+      "b": "flint",
+      "a_name": "Wooden Pickaxe",
+      "b_name": "Flint",
+      "result": "flint_pickaxe",
+      "result_name": "Flint-Tipped Pickaxe",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "pick",
+      "tip": [
+        "Faster than an iron pickaxe.",
+        "Mines only what stone can mine."
+      ],
+      "cat": "Everyday tools",
+      "stats": "3 damage, 180 uses"
+    },
+    {
+      "a": "stone_pickaxe",
+      "b": "stone_pickaxe",
+      "a_name": "Stone Pickaxe",
+      "b_name": "Stone Pickaxe",
+      "result": "stone_hammer",
+      "result_name": "Stone Hammer",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "pick",
+      "tip": [
+        "Mines a 3x3 area.",
+        "Sneak to mine one block."
+      ],
+      "cat": "Everyday tools",
+      "stats": "4 damage, 400 uses"
+    },
+    {
+      "a": "iron_pickaxe",
+      "b": "white_wool",
+      "a_name": "Iron Pickaxe",
+      "b_name": "White Wool",
+      "result": "gentle_pickaxe",
+      "result_name": "Gentle Pickaxe",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "pick",
+      "tip": [
+        "Blocks drop as themselves,",
+        "like with Silk Touch."
+      ],
+      "cat": "Everyday tools",
+      "stats": "4 damage, 350 uses"
+    },
+    {
+      "a": "golden_pickaxe",
+      "b": "iron_pickaxe",
+      "a_name": "Golden Pickaxe",
+      "b_name": "Iron Pickaxe",
+      "result": "gilded_pickaxe",
+      "result_name": "Gilded Pickaxe",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "pick",
+      "tip": [
+        "As fast as gold, as tough as iron.",
+        "Stone sometimes drops gold nuggets."
+      ],
+      "cat": "Everyday tools",
+      "stats": "4 damage, 320 uses"
+    },
+    {
+      "a": "iron_pickaxe",
+      "b": "iron_axe",
+      "a_name": "Iron Pickaxe",
+      "b_name": "Iron Axe",
+      "result": "iron_multitool",
+      "result_name": "Iron Multitool",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "paxel",
+      "tip": [
+        "Pickaxe, axe, shovel and hoe in one."
+      ],
+      "cat": "Everyday tools",
+      "stats": "6 damage, 600 uses"
+    },
+    {
+      "a": "iron_pickaxe",
+      "b": "iron_shovel",
+      "a_name": "Iron Pickaxe",
+      "b_name": "Iron Shovel",
+      "result": "iron_multitool",
+      "result_name": "Iron Multitool",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "paxel",
+      "tip": [
+        "Pickaxe, axe, shovel and hoe in one."
+      ],
+      "cat": "Everyday tools",
+      "stats": "6 damage, 600 uses"
+    },
+    {
+      "a": "stone_axe",
+      "b": "stone_axe",
+      "a_name": "Stone Axe",
+      "b_name": "Stone Axe",
+      "result": "timber_axe",
+      "result_name": "Timber Axe",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "axe",
+      "tip": [
+        "Chops down small trees whole.",
+        "Sneak to chop one log."
+      ],
+      "cat": "Everyday tools",
+      "stats": "9 damage, 300 uses"
+    },
+    {
+      "a": "stone_shovel",
+      "b": "string",
+      "a_name": "Stone Shovel",
+      "b_name": "String",
+      "result": "sifting_shovel",
+      "result_name": "Sifting Shovel",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "shovel",
+      "tip": [
+        "Dirt, sand and gravel sometimes hide",
+        "flint, nuggets, bones or even a gem."
+      ],
+      "cat": "Everyday tools",
+      "stats": "3.5 damage, 260 uses"
+    },
+    {
+      "a": "golden_hoe",
+      "b": "golden_hoe",
+      "a_name": "Golden Hoe",
+      "b_name": "Golden Hoe",
+      "result": "golden_sickle",
+      "result_name": "Golden Sickle",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "hoe",
+      "tip": [
+        "Right-click a ripe crop: harvests",
+        "and replants a 3x3 area."
+      ],
+      "cat": "Everyday tools",
+      "stats": "1 damage, 150 uses"
+    },
+    {
+      "a": "wooden_hoe",
+      "b": "wheat_seeds",
+      "a_name": "Wooden Hoe",
+      "b_name": "Wheat Seeds",
+      "result": "planter_hoe",
+      "result_name": "Planter's Hoe",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "hoe",
+      "tip": [
+        "Right-click soil: tills a 3x3 patch",
+        "and plants the seeds you carry."
+      ],
+      "cat": "Everyday tools",
+      "stats": "1 damage, 120 uses"
+    },
+    {
+      "a": "wooden_sword",
+      "b": "stick",
+      "a_name": "Wooden Sword",
+      "b_name": "Stick",
+      "result": "quarterstaff",
+      "result_name": "Quarterstaff",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "sword",
+      "tip": [
+        "Reaches 2 blocks further.",
+        "Pushes enemies back."
+      ],
+      "cat": "Everyday weapons",
+      "stats": "5 damage, 150 uses"
+    },
+    {
+      "a": "stone_sword",
+      "b": "flint",
+      "a_name": "Stone Sword",
+      "b_name": "Flint",
+      "result": "jagged_blade",
+      "result_name": "Jagged Blade",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "sword",
+      "tip": [
+        "Wounds keep bleeding for 6 seconds."
+      ],
+      "cat": "Everyday weapons",
+      "stats": "6 damage, 220 uses"
+    },
+    {
+      "a": "iron_sword",
+      "b": "iron_sword",
+      "a_name": "Iron Sword",
+      "b_name": "Iron Sword",
+      "result": "dual_blades",
+      "result_name": "Dual Blades",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "sword",
+      "tip": [
+        "Strikes twice as fast as a sword.",
+        "The second blade adds 1 damage."
+      ],
+      "cat": "Everyday weapons",
+      "stats": "4 damage, 500 uses"
+    },
+    {
+      "a": "iron_sword",
+      "b": "shield",
+      "a_name": "Iron Sword",
+      "b_name": "Shield",
+      "result": "bulwark_blade",
+      "result_name": "Bulwark Blade",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "sword",
+      "tip": [
+        "While held: +6 armor and you are",
+        "hard to push around."
+      ],
+      "cat": "Everyday weapons",
+      "stats": "7 damage, 600 uses"
+    },
+    {
+      "a": "golden_sword",
+      "b": "emerald",
+      "a_name": "Golden Sword",
+      "b_name": "Emerald",
+      "result": "looter_blade",
+      "result_name": "Looter's Blade",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "sword",
+      "tip": [
+        "Slain mobs drop their loot twice."
+      ],
+      "cat": "Everyday weapons",
+      "stats": "6 damage, 250 uses"
+    },
+    {
+      "a": "wooden_axe",
+      "b": "feather",
+      "a_name": "Wooden Axe",
+      "b_name": "Feather",
+      "result": "boomerang",
+      "result_name": "Boomerang",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: hits every mob in a line",
+        "and brings back dropped items."
+      ],
+      "cat": "Everyday weapons",
+      "stats": "200 uses"
+    },
+    {
+      "a": "bow",
+      "b": "bow",
+      "a_name": "Bow",
+      "b_name": "Bow",
+      "result": "volley_bow",
+      "result_name": "Volley Bow",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: shoots 5 arrows at once.",
+        "Needs no arrows."
+      ],
+      "cat": "Bows and rods",
+      "stats": "300 uses"
+    },
+    {
+      "a": "bow",
+      "b": "torch",
+      "a_name": "Bow",
+      "b_name": "Torch",
+      "result": "torch_bow",
+      "result_name": "Torch Bow",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: puts a torch on the block",
+        "you look at, up to 40 blocks away."
+      ],
+      "cat": "Bows and rods",
+      "stats": "256 uses"
+    },
+    {
+      "a": "fishing_rod",
+      "b": "iron_ingot",
+      "a_name": "Fishing Rod",
+      "b_name": "Iron Ingot",
+      "result": "grappling_hook",
+      "result_name": "Grappling Hook",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click a block: pulls you to it.",
+        "No fall damage while you hold it."
+      ],
+      "cat": "Bows and rods",
+      "stats": "250 uses"
+    },
+    {
+      "a": "fishing_rod",
+      "b": "lead",
+      "a_name": "Fishing Rod",
+      "b_name": "Lead",
+      "result": "lasso",
+      "result_name": "Lasso",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click a mob: pulls it to you."
+      ],
+      "cat": "Bows and rods",
+      "stats": "200 uses"
+    },
+    {
+      "a": "fishing_rod",
+      "b": "fishing_rod",
+      "a_name": "Fishing Rod",
+      "b_name": "Fishing Rod",
+      "result": "angler_rod",
+      "result_name": "Angler's Rod",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click water: a catch at once.",
+        "No waiting for a bite."
+      ],
+      "cat": "Bows and rods",
+      "stats": "64 uses"
+    },
+    {
+      "a": "chest",
+      "b": "leather",
+      "a_name": "Chest",
+      "b_name": "Leather",
+      "result": "backpack",
+      "result_name": "Backpack",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: opens 27 extra slots.",
+        "The things stay inside the backpack."
+      ],
+      "cat": "Camp and travel",
+      "stats": ""
+    },
+    {
+      "a": "backpack",
+      "b": "backpack",
+      "a_name": "Backpack",
+      "b_name": "Backpack",
+      "result": "big_backpack",
+      "result_name": "Big Backpack",
+      "count": 1,
+      "rar": 2,
+      "a_custom": true,
+      "b_custom": true,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: opens 54 extra slots.",
+        "Keeps what was in the two small ones."
+      ],
+      "cat": "Camp and travel",
+      "stats": ""
+    },
+    {
+      "a": "furnace",
+      "b": "flint_and_steel",
+      "a_name": "Furnace",
+      "b_name": "Flint And Steel",
+      "result": "pocket_furnace",
+      "result_name": "Pocket Furnace",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Hold an item in the other hand.",
+        "Right-click: smelts up to 8 of it."
+      ],
+      "cat": "Camp and travel",
+      "stats": "128 uses"
+    },
+    {
+      "a": "white_bed",
+      "b": "leather",
+      "a_name": "White Bed",
+      "b_name": "Leather",
+      "result": "bedroll",
+      "result_name": "Bedroll",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: you respawn here from",
+        "now on. Works anywhere, at any time."
+      ],
+      "cat": "Camp and travel",
+      "stats": ""
+    },
+    {
+      "a": "red_bed",
+      "b": "leather",
+      "a_name": "Red Bed",
+      "b_name": "Leather",
+      "result": "bedroll",
+      "result_name": "Bedroll",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: you respawn here from",
+        "now on. Works anywhere, at any time."
+      ],
+      "cat": "Camp and travel",
+      "stats": ""
+    },
+    {
+      "a": "compass",
+      "b": "cobblestone",
+      "a_name": "Compass",
+      "b_name": "Cobblestone",
+      "result": "waystone",
+      "result_name": "Waystone",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Sneak + right-click: remembers this spot.",
+        "Right-click: brings you back to it."
+      ],
+      "cat": "Camp and travel",
+      "stats": ""
+    },
+    {
+      "a": "ladder",
+      "b": "string",
+      "a_name": "Ladder",
+      "b_name": "String",
+      "result": "rope_ladder",
+      "result_name": "Rope Ladder",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click a wall or a ledge: ladders",
+        "unroll down to the ground."
+      ],
+      "cat": "Camp and travel",
+      "stats": "32 uses"
+    },
+    {
+      "a": "shears",
+      "b": "shears",
+      "a_name": "Shears",
+      "b_name": "Shears",
+      "result": "hedge_shears",
+      "result_name": "Hedge Shears",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: shears every sheep nearby",
+        "and cuts leaves and grass loose."
+      ],
+      "cat": "Camp and travel",
+      "stats": "300 uses"
+    },
+    {
+      "a": "gunpowder",
+      "b": "white_wool",
+      "a_name": "Gunpowder",
+      "b_name": "White Wool",
+      "result": "smoke_bomb",
+      "result_name": "Smoke Bomb",
+      "count": 2,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: you vanish in smoke.",
+        "Mobs nearby lose track of you."
+      ],
+      "cat": "Camp and travel",
+      "stats": ""
+    },
+    {
+      "a": "water_bucket",
+      "b": "bucket",
+      "a_name": "Water Bucket",
+      "b_name": "Bucket",
+      "result": "endless_bucket",
+      "result_name": "Endless Water Bucket",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click a block: places water.",
+        "It never runs dry."
+      ],
+      "cat": "Camp and travel",
+      "stats": ""
+    },
+    {
+      "a": "bone",
+      "b": "leather",
+      "a_name": "Bone",
+      "b_name": "Leather",
+      "result": "wolf_whistle",
+      "result_name": "Wolf Whistle",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: a tame wolf appears.",
+        "It is yours and follows you."
+      ],
+      "cat": "Animals and helpers",
+      "stats": "3 uses"
+    },
+    {
+      "a": "hay_block",
+      "b": "saddle",
+      "a_name": "Hay Block",
+      "b_name": "Saddle",
+      "result": "steed_horn",
+      "result_name": "Steed Horn",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: a tame, saddled, fast horse",
+        "appears. The horn is used up."
+      ],
+      "cat": "Animals and helpers",
+      "stats": ""
+    },
+    {
+      "a": "emerald",
+      "b": "emerald",
+      "a_name": "Emerald",
+      "b_name": "Emerald",
+      "result": "trader_token",
+      "result_name": "Trader's Token",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: a wandering trader",
+        "comes to you."
+      ],
+      "cat": "Animals and helpers",
+      "stats": ""
+    },
+    {
+      "a": "stick",
+      "b": "wheat",
+      "a_name": "Stick",
+      "b_name": "Wheat",
+      "result": "shepherd_crook",
+      "result_name": "Shepherd's Crook",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: farm animals nearby",
+        "follow you for 20 seconds."
+      ],
+      "cat": "Animals and helpers",
+      "stats": "100 uses"
+    },
+    {
+      "a": "stick",
+      "b": "string",
+      "a_name": "Stick",
+      "b_name": "String",
+      "result": "mob_net",
+      "result_name": "Mob Net",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click a mob: it goes into the net.",
+        "Right-click a block: it comes out again."
+      ],
+      "cat": "Animals and helpers",
+      "stats": "64 uses"
+    },
+    {
+      "a": "stick",
+      "b": "gold_ingot",
+      "a_name": "Stick",
+      "b_name": "Gold Ingot",
+      "result": "divining_rod",
+      "result_name": "Divining Rod",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: ores within 8 blocks glow",
+        "through the walls for 10 seconds."
+      ],
+      "cat": "Finds and luck",
+      "stats": "32 uses"
+    },
+    {
+      "a": "book",
+      "b": "lapis_lazuli",
+      "a_name": "Book",
+      "b_name": "Lapis Lazuli",
+      "result": "tome_of_chance",
+      "result_name": "Tome of Chance",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: costs 3 levels and turns",
+        "into a random enchanted book."
+      ],
+      "cat": "Finds and luck",
+      "stats": ""
+    },
+    {
+      "a": "stick",
+      "b": "stick",
+      "a_name": "Stick",
+      "b_name": "Stick",
+      "result": "hiking_staff",
+      "result_name": "Hiking Staff",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "While held: you step up full blocks",
+        "without jumping. Short falls do not hurt."
+      ],
+      "cat": "Finds and luck",
+      "stats": ""
+    },
+    {
+      "a": "feather",
+      "b": "string",
+      "a_name": "Feather",
+      "b_name": "String",
+      "result": "dreamcatcher",
+      "result_name": "Dreamcatcher",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Phantoms never come for you.",
+        "Keep it in your hotbar or off hand."
+      ],
+      "cat": "Finds and luck",
+      "stats": ""
+    },
+    {
+      "a": "iron_ingot",
+      "b": "iron_ingot",
+      "a_name": "Iron Ingot",
+      "b_name": "Iron Ingot",
+      "result": "lucky_horseshoe",
+      "result_name": "Lucky Horseshoe",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Gives Luck: better fishing and loot.",
+        "Keep it in your hotbar or off hand."
+      ],
+      "cat": "Finds and luck",
+      "stats": ""
+    },
+    {
+      "a": "egg",
+      "b": "feather",
+      "a_name": "Egg",
+      "b_name": "Feather",
+      "result": "emergency_chicken",
+      "result_name": "Emergency Chicken",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Hold it and you float down slowly.",
+        "No fall damage."
+      ],
+      "cat": "Finds and luck",
+      "stats": ""
+    },
+    {
+      "a": "leather_boots",
+      "b": "white_wool",
+      "a_name": "Leather Boots",
+      "b_name": "White Wool",
+      "result": "cloud_slippers",
+      "result_name": "Cloud Slippers",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "armor",
+      "tip": [
+        "No fall damage."
+      ],
+      "cat": "Armor",
+      "stats": "1 armor, 120 uses"
+    },
+    {
+      "a": "golden_helmet",
+      "b": "emerald",
+      "a_name": "Golden Helmet",
+      "b_name": "Emerald",
+      "result": "merchant_crown",
+      "result_name": "Merchant's Crown",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "armor",
+      "tip": [
+        "Villagers give you better prices."
+      ],
+      "cat": "Armor",
+      "stats": "2 armor, 150 uses"
+    },
+    {
+      "a": "rotten_flesh",
+      "b": "sugar",
+      "a_name": "Rotten Flesh",
+      "b_name": "Sugar",
+      "result": "cured_jerky",
+      "result_name": "Cured Jerky",
+      "count": 2,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "food",
+      "tip": [
+        "Rotten flesh, made safe to eat.",
+        "Quick to eat."
+      ],
+      "cat": "Food",
+      "stats": "5 hunger"
+    },
+    {
+      "a": "cooked_cod",
+      "b": "baked_potato",
+      "a_name": "Cooked Cod",
+      "b_name": "Baked Potato",
+      "result": "fish_and_chips",
+      "result_name": "Fish and Chips",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "food",
+      "tip": [
+        "Very filling.",
+        "Gives Luck for 2 minutes."
+      ],
+      "cat": "Food",
+      "stats": "12 hunger"
+    },
+    {
+      "a": "cooked_salmon",
+      "b": "baked_potato",
+      "a_name": "Cooked Salmon",
+      "b_name": "Baked Potato",
+      "result": "fish_and_chips",
+      "result_name": "Fish and Chips",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "food",
+      "tip": [
+        "Very filling.",
+        "Gives Luck for 2 minutes."
+      ],
+      "cat": "Food",
+      "stats": "12 hunger"
+    },
+    {
+      "a": "apple",
+      "b": "sugar",
+      "a_name": "Apple",
+      "b_name": "Sugar",
+      "result": "candy_apple",
+      "result_name": "Candy Apple",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "food",
+      "tip": [
+        "Speed II for 30 seconds.",
+        "Can be eaten when full."
+      ],
+      "cat": "Food",
+      "stats": "4 hunger"
+    },
+    {
       "a": "rotten_flesh",
       "b": "rotten_flesh",
       "a_name": "Rotten Flesh",
@@ -3094,6 +3999,150 @@
       "b_name": "Slimeball",
       "result": "sponge",
       "result_name": "Sponge",
+      "count": 1,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "lava_bucket",
+      "b": "water_bucket",
+      "a_name": "Lava Bucket",
+      "b_name": "Water Bucket",
+      "result": "obsidian",
+      "result_name": "Obsidian",
+      "count": 1,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "compass",
+      "b": "bone",
+      "a_name": "Compass",
+      "b_name": "Bone",
+      "result": "recovery_compass",
+      "result_name": "Recovery Compass",
+      "count": 1,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "paper",
+      "b": "compass",
+      "a_name": "Paper",
+      "b_name": "Compass",
+      "result": "map",
+      "result_name": "Map",
+      "count": 1,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "book",
+      "b": "feather",
+      "a_name": "Book",
+      "b_name": "Feather",
+      "result": "writable_book",
+      "result_name": "Writable Book",
+      "count": 1,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "cobblestone",
+      "b": "cobblestone",
+      "a_name": "Cobblestone",
+      "b_name": "Cobblestone",
+      "result": "gravel",
+      "result_name": "Gravel",
+      "count": 2,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "gravel",
+      "b": "water_bucket",
+      "a_name": "Gravel",
+      "b_name": "Water Bucket",
+      "result": "clay",
+      "result_name": "Clay",
+      "count": 1,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "cobblestone",
+      "b": "oak_leaves",
+      "a_name": "Cobblestone",
+      "b_name": "Oak Leaves",
+      "result": "mossy_cobblestone",
+      "result_name": "Mossy Cobblestone",
+      "count": 1,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "cobblestone",
+      "b": "birch_leaves",
+      "a_name": "Cobblestone",
+      "b_name": "Birch Leaves",
+      "result": "mossy_cobblestone",
+      "result_name": "Mossy Cobblestone",
+      "count": 1,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "cobblestone",
+      "b": "spruce_leaves",
+      "a_name": "Cobblestone",
+      "b_name": "Spruce Leaves",
+      "result": "mossy_cobblestone",
+      "result_name": "Mossy Cobblestone",
+      "count": 1,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "string",
+      "b": "string",
+      "a_name": "String",
+      "b_name": "String",
+      "result": "lead",
+      "result_name": "Lead",
+      "count": 1,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "snow_block",
+      "b": "water_bucket",
+      "a_name": "Snow Block",
+      "b_name": "Water Bucket",
+      "result": "ice",
+      "result_name": "Ice",
+      "count": 2,
+      "rar": 0,
+      "a_custom": false,
+      "b_custom": false
+    },
+    {
+      "a": "sugar",
+      "b": "egg",
+      "a_name": "Sugar",
+      "b_name": "Egg",
+      "result": "cake",
+      "result_name": "Cake",
       "count": 1,
       "rar": 0,
       "a_custom": false,
@@ -5425,6 +6474,735 @@
         "one after another."
       ],
       "stats": {}
+    },
+    {
+      "id": "flint_pickaxe",
+      "name": "Flint-Tipped Pickaxe",
+      "rar": 1,
+      "kind": "pick",
+      "cat": "Everyday tools",
+      "a": "wooden_pickaxe",
+      "b": "flint",
+      "tip": [
+        "Faster than an iron pickaxe.",
+        "Mines only what stone can mine."
+      ],
+      "stats": {
+        "dur": 180,
+        "speed": 7,
+        "dmg": 3,
+        "aspd": -2.8
+      }
+    },
+    {
+      "id": "stone_hammer",
+      "name": "Stone Hammer",
+      "rar": 1,
+      "kind": "pick",
+      "cat": "Everyday tools",
+      "a": "stone_pickaxe",
+      "b": "stone_pickaxe",
+      "tip": [
+        "Mines a 3x3 area.",
+        "Sneak to mine one block."
+      ],
+      "stats": {
+        "dur": 400,
+        "speed": 3.5,
+        "dmg": 4,
+        "aspd": -3.0
+      }
+    },
+    {
+      "id": "gentle_pickaxe",
+      "name": "Gentle Pickaxe",
+      "rar": 1,
+      "kind": "pick",
+      "cat": "Everyday tools",
+      "a": "iron_pickaxe",
+      "b": "white_wool",
+      "tip": [
+        "Blocks drop as themselves,",
+        "like with Silk Touch."
+      ],
+      "stats": {
+        "dur": 350,
+        "speed": 6,
+        "dmg": 4,
+        "aspd": -2.8
+      }
+    },
+    {
+      "id": "gilded_pickaxe",
+      "name": "Gilded Pickaxe",
+      "rar": 1,
+      "kind": "pick",
+      "cat": "Everyday tools",
+      "a": "golden_pickaxe",
+      "b": "iron_pickaxe",
+      "tip": [
+        "As fast as gold, as tough as iron.",
+        "Stone sometimes drops gold nuggets."
+      ],
+      "stats": {
+        "dur": 320,
+        "speed": 12,
+        "dmg": 4,
+        "aspd": -2.8
+      }
+    },
+    {
+      "id": "iron_multitool",
+      "name": "Iron Multitool",
+      "rar": 1,
+      "kind": "paxel",
+      "cat": "Everyday tools",
+      "a": "iron_pickaxe",
+      "b": "iron_axe",
+      "tip": [
+        "Pickaxe, axe, shovel and hoe in one."
+      ],
+      "stats": {
+        "dur": 600,
+        "speed": 6,
+        "dmg": 6,
+        "aspd": -3.0
+      }
+    },
+    {
+      "id": "timber_axe",
+      "name": "Timber Axe",
+      "rar": 1,
+      "kind": "axe",
+      "cat": "Everyday tools",
+      "a": "stone_axe",
+      "b": "stone_axe",
+      "tip": [
+        "Chops down small trees whole.",
+        "Sneak to chop one log."
+      ],
+      "stats": {
+        "dur": 300,
+        "speed": 4,
+        "dmg": 9,
+        "aspd": -3.2
+      }
+    },
+    {
+      "id": "sifting_shovel",
+      "name": "Sifting Shovel",
+      "rar": 1,
+      "kind": "shovel",
+      "cat": "Everyday tools",
+      "a": "stone_shovel",
+      "b": "string",
+      "tip": [
+        "Dirt, sand and gravel sometimes hide",
+        "flint, nuggets, bones or even a gem."
+      ],
+      "stats": {
+        "dur": 260,
+        "speed": 4,
+        "dmg": 3.5,
+        "aspd": -3.0
+      }
+    },
+    {
+      "id": "golden_sickle",
+      "name": "Golden Sickle",
+      "rar": 1,
+      "kind": "hoe",
+      "cat": "Everyday tools",
+      "a": "golden_hoe",
+      "b": "golden_hoe",
+      "tip": [
+        "Right-click a ripe crop: harvests",
+        "and replants a 3x3 area."
+      ],
+      "stats": {
+        "dur": 150,
+        "speed": 12,
+        "dmg": 1,
+        "aspd": 0.0
+      }
+    },
+    {
+      "id": "planter_hoe",
+      "name": "Planter's Hoe",
+      "rar": 1,
+      "kind": "hoe",
+      "cat": "Everyday tools",
+      "a": "wooden_hoe",
+      "b": "wheat_seeds",
+      "tip": [
+        "Right-click soil: tills a 3x3 patch",
+        "and plants the seeds you carry."
+      ],
+      "stats": {
+        "dur": 120,
+        "speed": 2,
+        "dmg": 1,
+        "aspd": -1.0
+      }
+    },
+    {
+      "id": "quarterstaff",
+      "name": "Quarterstaff",
+      "rar": 1,
+      "kind": "sword",
+      "cat": "Everyday weapons",
+      "a": "wooden_sword",
+      "b": "stick",
+      "tip": [
+        "Reaches 2 blocks further.",
+        "Pushes enemies back."
+      ],
+      "stats": {
+        "dur": 150,
+        "dmg": 5,
+        "aspd": -2.2
+      }
+    },
+    {
+      "id": "jagged_blade",
+      "name": "Jagged Blade",
+      "rar": 1,
+      "kind": "sword",
+      "cat": "Everyday weapons",
+      "a": "stone_sword",
+      "b": "flint",
+      "tip": [
+        "Wounds keep bleeding for 6 seconds."
+      ],
+      "stats": {
+        "dur": 220,
+        "dmg": 6,
+        "aspd": -2.4
+      }
+    },
+    {
+      "id": "dual_blades",
+      "name": "Dual Blades",
+      "rar": 1,
+      "kind": "sword",
+      "cat": "Everyday weapons",
+      "a": "iron_sword",
+      "b": "iron_sword",
+      "tip": [
+        "Strikes twice as fast as a sword.",
+        "The second blade adds 1 damage."
+      ],
+      "stats": {
+        "dur": 500,
+        "dmg": 4,
+        "aspd": -0.8
+      }
+    },
+    {
+      "id": "bulwark_blade",
+      "name": "Bulwark Blade",
+      "rar": 1,
+      "kind": "sword",
+      "cat": "Everyday weapons",
+      "a": "iron_sword",
+      "b": "shield",
+      "tip": [
+        "While held: +6 armor and you are",
+        "hard to push around."
+      ],
+      "stats": {
+        "dur": 600,
+        "dmg": 7,
+        "aspd": -2.6
+      }
+    },
+    {
+      "id": "looter_blade",
+      "name": "Looter's Blade",
+      "rar": 1,
+      "kind": "sword",
+      "cat": "Everyday weapons",
+      "a": "golden_sword",
+      "b": "emerald",
+      "tip": [
+        "Slain mobs drop their loot twice."
+      ],
+      "stats": {
+        "dur": 250,
+        "dmg": 6,
+        "aspd": -2.4
+      }
+    },
+    {
+      "id": "boomerang",
+      "name": "Boomerang",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Everyday weapons",
+      "a": "wooden_axe",
+      "b": "feather",
+      "tip": [
+        "Right-click: hits every mob in a line",
+        "and brings back dropped items."
+      ],
+      "stats": {
+        "dur": 200
+      }
+    },
+    {
+      "id": "volley_bow",
+      "name": "Volley Bow",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Bows and rods",
+      "a": "bow",
+      "b": "bow",
+      "tip": [
+        "Right-click: shoots 5 arrows at once.",
+        "Needs no arrows."
+      ],
+      "stats": {
+        "dur": 300
+      }
+    },
+    {
+      "id": "torch_bow",
+      "name": "Torch Bow",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Bows and rods",
+      "a": "bow",
+      "b": "torch",
+      "tip": [
+        "Right-click: puts a torch on the block",
+        "you look at, up to 40 blocks away."
+      ],
+      "stats": {
+        "dur": 256
+      }
+    },
+    {
+      "id": "grappling_hook",
+      "name": "Grappling Hook",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Bows and rods",
+      "a": "fishing_rod",
+      "b": "iron_ingot",
+      "tip": [
+        "Right-click a block: pulls you to it.",
+        "No fall damage while you hold it."
+      ],
+      "stats": {
+        "dur": 250
+      }
+    },
+    {
+      "id": "lasso",
+      "name": "Lasso",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Bows and rods",
+      "a": "fishing_rod",
+      "b": "lead",
+      "tip": [
+        "Right-click a mob: pulls it to you."
+      ],
+      "stats": {
+        "dur": 200
+      }
+    },
+    {
+      "id": "angler_rod",
+      "name": "Angler's Rod",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Bows and rods",
+      "a": "fishing_rod",
+      "b": "fishing_rod",
+      "tip": [
+        "Right-click water: a catch at once.",
+        "No waiting for a bite."
+      ],
+      "stats": {
+        "dur": 64
+      }
+    },
+    {
+      "id": "backpack",
+      "name": "Backpack",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Camp and travel",
+      "a": "chest",
+      "b": "leather",
+      "tip": [
+        "Right-click: opens 27 extra slots.",
+        "The things stay inside the backpack."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "big_backpack",
+      "name": "Big Backpack",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Camp and travel",
+      "a": "backpack",
+      "b": "backpack",
+      "tip": [
+        "Right-click: opens 54 extra slots.",
+        "Keeps what was in the two small ones."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "pocket_furnace",
+      "name": "Pocket Furnace",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Camp and travel",
+      "a": "furnace",
+      "b": "flint_and_steel",
+      "tip": [
+        "Hold an item in the other hand.",
+        "Right-click: smelts up to 8 of it."
+      ],
+      "stats": {
+        "dur": 128
+      }
+    },
+    {
+      "id": "bedroll",
+      "name": "Bedroll",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Camp and travel",
+      "a": "white_bed",
+      "b": "leather",
+      "tip": [
+        "Right-click: you respawn here from",
+        "now on. Works anywhere, at any time."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "waystone",
+      "name": "Waystone",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Camp and travel",
+      "a": "compass",
+      "b": "cobblestone",
+      "tip": [
+        "Sneak + right-click: remembers this spot.",
+        "Right-click: brings you back to it."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "rope_ladder",
+      "name": "Rope Ladder",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Camp and travel",
+      "a": "ladder",
+      "b": "string",
+      "tip": [
+        "Right-click a wall or a ledge: ladders",
+        "unroll down to the ground."
+      ],
+      "stats": {
+        "dur": 32
+      }
+    },
+    {
+      "id": "hedge_shears",
+      "name": "Hedge Shears",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Camp and travel",
+      "a": "shears",
+      "b": "shears",
+      "tip": [
+        "Right-click: shears every sheep nearby",
+        "and cuts leaves and grass loose."
+      ],
+      "stats": {
+        "dur": 300
+      }
+    },
+    {
+      "id": "smoke_bomb",
+      "name": "Smoke Bomb",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Camp and travel",
+      "a": "gunpowder",
+      "b": "white_wool",
+      "tip": [
+        "Right-click: you vanish in smoke.",
+        "Mobs nearby lose track of you."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "endless_bucket",
+      "name": "Endless Water Bucket",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Camp and travel",
+      "a": "water_bucket",
+      "b": "bucket",
+      "tip": [
+        "Right-click a block: places water.",
+        "It never runs dry."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "wolf_whistle",
+      "name": "Wolf Whistle",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Animals and helpers",
+      "a": "bone",
+      "b": "leather",
+      "tip": [
+        "Right-click: a tame wolf appears.",
+        "It is yours and follows you."
+      ],
+      "stats": {
+        "dur": 3
+      }
+    },
+    {
+      "id": "steed_horn",
+      "name": "Steed Horn",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Animals and helpers",
+      "a": "hay_block",
+      "b": "saddle",
+      "tip": [
+        "Right-click: a tame, saddled, fast horse",
+        "appears. The horn is used up."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "trader_token",
+      "name": "Trader's Token",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Animals and helpers",
+      "a": "emerald",
+      "b": "emerald",
+      "tip": [
+        "Right-click: a wandering trader",
+        "comes to you."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "shepherd_crook",
+      "name": "Shepherd's Crook",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Animals and helpers",
+      "a": "stick",
+      "b": "wheat",
+      "tip": [
+        "Right-click: farm animals nearby",
+        "follow you for 20 seconds."
+      ],
+      "stats": {
+        "dur": 100
+      }
+    },
+    {
+      "id": "mob_net",
+      "name": "Mob Net",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Animals and helpers",
+      "a": "stick",
+      "b": "string",
+      "tip": [
+        "Right-click a mob: it goes into the net.",
+        "Right-click a block: it comes out again."
+      ],
+      "stats": {
+        "dur": 64
+      }
+    },
+    {
+      "id": "divining_rod",
+      "name": "Divining Rod",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Finds and luck",
+      "a": "stick",
+      "b": "gold_ingot",
+      "tip": [
+        "Right-click: ores within 8 blocks glow",
+        "through the walls for 10 seconds."
+      ],
+      "stats": {
+        "dur": 32
+      }
+    },
+    {
+      "id": "tome_of_chance",
+      "name": "Tome of Chance",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Finds and luck",
+      "a": "book",
+      "b": "lapis_lazuli",
+      "tip": [
+        "Right-click: costs 3 levels and turns",
+        "into a random enchanted book."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "hiking_staff",
+      "name": "Hiking Staff",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Finds and luck",
+      "a": "stick",
+      "b": "stick",
+      "tip": [
+        "While held: you step up full blocks",
+        "without jumping. Short falls do not hurt."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "dreamcatcher",
+      "name": "Dreamcatcher",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Finds and luck",
+      "a": "feather",
+      "b": "string",
+      "tip": [
+        "Phantoms never come for you.",
+        "Keep it in your hotbar or off hand."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "lucky_horseshoe",
+      "name": "Lucky Horseshoe",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Finds and luck",
+      "a": "iron_ingot",
+      "b": "iron_ingot",
+      "tip": [
+        "Gives Luck: better fishing and loot.",
+        "Keep it in your hotbar or off hand."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "emergency_chicken",
+      "name": "Emergency Chicken",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Finds and luck",
+      "a": "egg",
+      "b": "feather",
+      "tip": [
+        "Hold it and you float down slowly.",
+        "No fall damage."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "cloud_slippers",
+      "name": "Cloud Slippers",
+      "rar": 1,
+      "kind": "armor",
+      "cat": "Armor",
+      "a": "leather_boots",
+      "b": "white_wool",
+      "tip": [
+        "No fall damage."
+      ],
+      "stats": {
+        "dur": 120,
+        "prot": 1,
+        "tough": 0.0
+      }
+    },
+    {
+      "id": "merchant_crown",
+      "name": "Merchant's Crown",
+      "rar": 1,
+      "kind": "armor",
+      "cat": "Armor",
+      "a": "golden_helmet",
+      "b": "emerald",
+      "tip": [
+        "Villagers give you better prices."
+      ],
+      "stats": {
+        "dur": 150,
+        "prot": 2,
+        "tough": 0.0
+      }
+    },
+    {
+      "id": "cured_jerky",
+      "name": "Cured Jerky",
+      "rar": 1,
+      "kind": "food",
+      "cat": "Food",
+      "a": "rotten_flesh",
+      "b": "sugar",
+      "tip": [
+        "Rotten flesh, made safe to eat.",
+        "Quick to eat."
+      ],
+      "stats": {
+        "nut": 5
+      }
+    },
+    {
+      "id": "fish_and_chips",
+      "name": "Fish and Chips",
+      "rar": 1,
+      "kind": "food",
+      "cat": "Food",
+      "a": "cooked_cod",
+      "b": "baked_potato",
+      "tip": [
+        "Very filling.",
+        "Gives Luck for 2 minutes."
+      ],
+      "stats": {
+        "nut": 12
+      }
+    },
+    {
+      "id": "candy_apple",
+      "name": "Candy Apple",
+      "rar": 1,
+      "kind": "food",
+      "cat": "Food",
+      "a": "apple",
+      "b": "sugar",
+      "tip": [
+        "Speed II for 30 seconds.",
+        "Can be eaten when full."
+      ],
+      "stats": {
+        "nut": 4
+      }
     }
   ]
 }

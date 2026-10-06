@@ -35,6 +35,19 @@
     "combinator:portable_hole",
     "combinator:bridge_staff",
     "combinator:forest_staff",
-    "combinator:ore_dowser"
+    "combinator:ore_dowser",
+    "combinator:boomerang",
+    "combinator:volley_bow",
+    "combinator:torch_bow",
+    "combinator:grappling_hook",
+    "combinator:lasso",
+    "combinator:angler_rod",
+    "combinator:pocket_furnace",
+    "combinator:rope_ladder",
+    "combinator:hedge_shears",
+    "combinator:wolf_whistle",
+    "combinator:shepherd_crook",
+    "combinator:mob_net",
+    "combinator:divining_rod"
   ]
 }

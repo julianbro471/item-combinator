@@ -42,6 +42,12 @@ public final class Traits {
 	public boolean doubleOres;
 	/** Explosion power when a block is mined, 0 = none. */
 	public float mineBoom;
+	/** Blocks drop themselves, like with the Silk Touch enchantment. */
+	public boolean silk;
+	/** Dirt, sand and gravel sometimes hide small finds. */
+	public boolean sift;
+	/** Chance that a mined stone block also drops gold nuggets, 0 = never. */
+	public float stoneNuggets;
 
 	// --- right-click on a block ---
 	public boolean torch;
@@ -53,6 +59,14 @@ public final class Traits {
 	public boolean transmute;
 	/** Builds a house where it is used. */
 	public boolean house;
+	/** Tills a 3x3 patch and plants the seeds the player carries. */
+	public boolean sow;
+	/** Hangs ladders down a wall. */
+	public boolean ropeLadder;
+	/** Places water and never runs dry. */
+	public boolean endlessWater;
+	/** Catches a mob with a right-click and lets it out again on a block. */
+	public boolean capture;
 
 	// --- combat ---
 	public int igniteSeconds;
@@ -76,6 +90,10 @@ public final class Traits {
 	public float chainDamage;
 	/** Power of a real explosion on hit, 0 = none. */
 	public float boomHit;
+	/** The target keeps losing health for this many seconds. */
+	public int bleedSeconds;
+	/** Killed mobs drop their loot twice. */
+	public boolean doubleLoot;
 
 	// --- right-click in the air ---
 	public Use use = Use.NONE;
@@ -101,6 +119,8 @@ public final class Traits {
 	public boolean hasThorns;
 	/** Attackers get an explosion in the face (no block damage), 0 = none. */
 	public float thornsBoom;
+	/** Phantoms never come for this player. */
+	public boolean noPhantoms;
 	/** Changes to the player's body: size, health, reach and so on. */
 	public final List<Attr> attrs = new ArrayList<>();
 
@@ -133,6 +153,56 @@ public final class Traits {
 
 	public Traits magnetDrops() {
 		this.magnetDrops = true;
+		return this;
+	}
+
+	public Traits silk() {
+		this.silk = true;
+		return this;
+	}
+
+	public Traits sift() {
+		this.sift = true;
+		return this;
+	}
+
+	public Traits stoneNuggets(float chance) {
+		this.stoneNuggets = chance;
+		return this;
+	}
+
+	public Traits sow() {
+		this.sow = true;
+		return this;
+	}
+
+	public Traits ropeLadder() {
+		this.ropeLadder = true;
+		return this;
+	}
+
+	public Traits endlessWater() {
+		this.endlessWater = true;
+		return this;
+	}
+
+	public Traits capture() {
+		this.capture = true;
+		return this;
+	}
+
+	public Traits bleed(int seconds) {
+		this.bleedSeconds = seconds;
+		return this;
+	}
+
+	public Traits doubleLoot() {
+		this.doubleLoot = true;
+		return this;
+	}
+
+	public Traits noPhantoms() {
+		this.noPhantoms = true;
 		return this;
 	}
 
@@ -369,16 +439,17 @@ public final class Traits {
 	}
 
 	public boolean hasMining() {
-		return this.areaRadius > 0 || this.veinLimit > 0 || this.treeLimit > 0 || this.smelt || this.magnetDrops || this.doubleOres || this.mineBoom > 0;
+		return this.areaRadius > 0 || this.veinLimit > 0 || this.treeLimit > 0 || this.smelt || this.magnetDrops || this.doubleOres || this.mineBoom > 0
+				|| this.silk || this.sift || this.stoneNuggets > 0;
 	}
 
 	public boolean hasCombat() {
 		return this.igniteSeconds > 0 || !this.hitEffects.isEmpty() || this.freeze || this.lifesteal > 0 || this.lightningDamage > 0
 				|| this.blastRadius > 0 || this.sweepRadius > 0 || this.knockUp > 0 || this.knockback > 0 || this.magicDamage > 0
-				|| this.instakill || this.midas || this.chainRadius > 0 || this.boomHit > 0;
+				|| this.instakill || this.midas || this.chainRadius > 0 || this.boomHit > 0 || this.bleedSeconds > 0;
 	}
 
 	public boolean hasKillBonus() {
-		return this.headChance > 0 || this.nuggets > 0 || this.bonusXp > 0 || this.lifesteal > 0;
+		return this.headChance > 0 || this.nuggets > 0 || this.bonusXp > 0 || this.lifesteal > 0 || this.doubleLoot;
 	}
 }

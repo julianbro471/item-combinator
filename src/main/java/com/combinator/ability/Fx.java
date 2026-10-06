@@ -75,6 +75,14 @@ final class Fx {
 				RaycastContext.ShapeType.COLLIDER, RaycastContext.FluidHandling.NONE, player));
 	}
 
+	/** Like ray, but water and lava also stop the line of sight. */
+	static BlockHitResult rayWithFluids(PlayerEntity player, double range) {
+		Vec3d start = player.getEyePos();
+		Vec3d end = start.add(player.getRotationVec(1.0F).multiply(range));
+		return player.getWorld().raycast(new RaycastContext(start, end,
+				RaycastContext.ShapeType.COLLIDER, RaycastContext.FluidHandling.ANY, player));
+	}
+
 	/** The point the player looks at. If nothing is in range: the ground below the end of the line of sight. */
 	static Vec3d lookPoint(ServerWorld world, PlayerEntity player, double range) {
 		BlockHitResult hit = ray(player, range);
