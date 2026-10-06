@@ -342,7 +342,7 @@ Every new item has a description under its name. All new items are also in their
 |---|---|---|---|---|
 | Chest | Leather | **Backpack** | Right-click: opens 27 extra slots. The things stay inside the backpack. |  |
 | *Backpack* | *Backpack* | **Big Backpack** | Right-click: opens 54 extra slots. Keeps what was in the two small ones. |  |
-| Furnace | Flint And Steel | **Pocket Furnace** | Hold an item in the other hand. Right-click: smelts up to 8 of it. | 128 uses |
+| Furnace | Flint and Steel | **Pocket Furnace** | Hold an item in the other hand. Right-click: smelts up to 8 of it. | 128 uses |
 | White Bed | Leather | **Bedroll** | Right-click: you respawn here from now on. Works anywhere, at any time. |  |
 | Red Bed | Leather | **Bedroll** | Second way to make it. |  |
 | Compass | Cobblestone | **Waystone** | Sneak + right-click: remembers this spot. Right-click: brings you back to it. |  |
@@ -356,7 +356,7 @@ Every new item has a description under its name. All new items are also in their
 | Item A | Item B | Result | What it does | Stats |
 |---|---|---|---|---|
 | Bone | Leather | **Wolf Whistle** | Right-click: a tame wolf appears. It is yours and follows you. | 3 uses |
-| Hay Block | Saddle | **Steed Horn** | Right-click: a tame, saddled, fast horse appears. The horn is used up. |  |
+| Hay Bale | Saddle | **Steed Horn** | Right-click: a tame, saddled, fast horse appears. The horn is used up. |  |
 | Emerald | Emerald | **Trader's Token** | Right-click: a wandering trader comes to you. |  |
 | Stick | Wheat | **Shepherd's Crook** | Right-click: farm animals nearby follow you for 20 seconds. | 100 uses |
 | Stick | String | **Mob Net** | Right-click a mob: it goes into the net. Right-click a block: it comes out again. | 64 uses |
@@ -416,8 +416,8 @@ Every new item has a description under its name. All new items are also in their
 | Yellow Wool | Slimeball | **Sponge** |
 | Lava Bucket | Water Bucket | **Obsidian** |
 | Compass | Bone | **Recovery Compass** |
-| Paper | Compass | **Map** |
-| Book | Feather | **Writable Book** |
+| Paper | Compass | **Empty Map** |
+| Book | Feather | **Book and Quill** |
 | Cobblestone | Cobblestone | **Gravel** x2 |
 | Gravel | Water Bucket | **Clay** |
 | Cobblestone | Oak Leaves | **Mossy Cobblestone** |
