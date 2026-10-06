@@ -1647,6 +1647,20 @@ public class CombinatorGameTest implements FabricGameTest {
 		return count(world, from, to, block);
 	}
 
+	/**
+	 * Empties the chunk the tester looks at, from the bedrock to the sky, except the stage floor. Earlier tests leave
+	 * things above and below the stage (a beanstalk, a cloud, a flipped chunk), and the chunk tests move whole columns.
+	 */
+	private static void clearLookChunk(ServerWorld world, BlockPos center) {
+		ChunkPos chunk = new ChunkPos(center.add(0, 0, 4));
+		BlockState air = Blocks.AIR.getDefaultState();
+		for (BlockPos pos : BlockPos.iterate(chunk.getStartX(), world.getBottomY() + 1, chunk.getStartZ(), chunk.getEndX(), world.getTopY() - 1, chunk.getEndZ())) {
+			if (pos.getY() != center.getY() - 1 && !world.getBlockState(pos).isAir()) {
+				world.setBlockState(pos, air, Block.NOTIFY_LISTENERS | Block.FORCE_STATE);
+			}
+		}
+	}
+
 	/** A 3 x 3 x 3 cube of oak planks in front of the tester, for the termites. */
 	private static void termiteHouse(ServerWorld world, BlockPos center) {
 		fill(world, center.add(-1, 0, 3), center.add(1, 2, 5), Blocks.OAK_PLANKS.getDefaultState());
@@ -2070,12 +2084,14 @@ public class CombinatorGameTest implements FabricGameTest {
 				new Slow(Use.FAULT_LINE, 60, (w, c) -> count(w, c.add(-1, -1, 3), c.add(0, -1, 7), Blocks.GRASS_BLOCK) == 0
 						&& w.getBlockState(new BlockPos(c.getX(), w.getBottomY() + 1, c.getZ() + 3)).isOf(Blocks.LAVA) ? null : "no canyon down to the lava"),
 				new Slow(Use.CARPET_BOMB, 160, (w, c) -> floorLeft(w, c) < 500 ? null : "the carpet bombing left " + floorLeft(w, c) + " of 625 floor blocks"),
-				new Slow(Use.CHUNK_INVERT, 40, (w, c) -> chunkFloor(w, c, 0, Blocks.GRASS_BLOCK) == 0 ? null : "the chunk was not turned upside down"),
+				new Slow(Use.CHUNK_INVERT, 40, (w, c) -> chunkFloor(w, c, 0, Blocks.GRASS_BLOCK) == 0 ? null : "the chunk was not turned upside down",
+						(w, c) -> clearLookChunk(w, c)),
 				new Slow(Use.CHUNK_LAUNCH, 40, (w, c) -> chunkFloor(w, c, 0, Blocks.GRASS_BLOCK) == 0 && chunkFloor(w, c, 96, Blocks.GRASS_BLOCK) > 0
 						? null : "the chunk did not fly 96 blocks up: " + chunkFloor(w, c, 0, Blocks.GRASS_BLOCK) + " grass blocks still on the floor, "
 								+ chunkFloor(w, c, 96, Blocks.GRASS_BLOCK) + " up in the sky; in front of the tester the floor is "
 								+ w.getBlockState(c.add(0, -1, 4)) + ", 96 blocks higher " + w.getBlockState(c.add(0, 95, 4))
-								+ ", the chunk is " + new ChunkPos(c.add(0, 0, 4)) + " and the tester stands in " + new ChunkPos(c)),
+								+ ", the chunk is " + new ChunkPos(c.add(0, 0, 4)) + " and the tester stands in " + new ChunkPos(c),
+						(w, c) -> clearLookChunk(w, c)),
 				new Slow(Use.ANNIHILATE, 120, (w, c) -> w.getBlockState(c.add(0, -1, 4)).isAir() && w.getBlockState(new BlockPos(c.getX(), w.getBottomY(), c.getZ() + 4)).isAir()
 						? null : "the beam did not burn through to the void"),
 				new Slow(Use.EVENT_HORIZON, 440, (w, c) -> floorLeft(w, c) < 500 ? null : "the event horizon ate too little (" + floorLeft(w, c) + " of 625 left)"),
