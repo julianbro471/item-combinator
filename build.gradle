@@ -14,8 +14,9 @@ loom {
 	}
 }
 
-// Automatic tests (src/gametest). They start a server without a player and try out every item.
-// Run them with: gradlew runGameTest. They are not part of the mod .jar.
+// Automatic tests (src/gametest). They are not part of the mod .jar.
+//   gradlew runGameTest    starts a server without a player and tries out every item
+//   gradlew runClientTest  starts the real game, opens the Combiner Table and takes screenshots
 fabricApi {
 	configureTests {
 		createSourceSet = true
@@ -23,6 +24,20 @@ fabricApi {
 		enableGameTests = true
 		enableClientGameTests = false
 		eula = true
+	}
+}
+
+loom {
+	runs {
+		clientTest {
+			client()
+			name "Client Test"
+			source sourceSets.gametest
+			vmArg "-Dcombinator.clientTest=true"
+			programArgs "--width", "1280", "--height", "720"
+			runDir "build/run/clientTest"
+			ideConfigGenerated false
+		}
 	}
 }
 

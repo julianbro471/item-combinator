@@ -3,12 +3,15 @@
 	"id": "combinator_test",
 	"version": "1.0.0",
 	"name": "Item Combinator automatic tests",
-	"description": "Tests that run on a server without a player. They are not part of the mod file.",
+	"description": "Automatic tests for the Item Combinator. They are not part of the mod file.",
 	"license": "MIT",
 	"environment": "*",
 	"entrypoints": {
 		"fabric-gametest": [
 			"com.combinator.test.CombinatorGameTest"
+		],
+		"client": [
+			"com.combinator.test.ClientSmokeTest"
 		]
 	},
 	"depends": {

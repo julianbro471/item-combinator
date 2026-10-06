@@ -27,13 +27,22 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.ExperienceOrbEntity;
+import net.minecraft.entity.FallingBlockEntity;
 import net.minecraft.entity.ItemEntity;
+import net.minecraft.entity.LightningEntity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.TntEntity;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.MobEntity;
+import net.minecraft.entity.passive.ChickenEntity;
+import net.minecraft.entity.passive.IronGolemEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.projectile.ArrowEntity;
+import net.minecraft.entity.projectile.FireballEntity;
+import net.minecraft.entity.projectile.SmallFireballEntity;
+import net.minecraft.entity.projectile.WitherSkullEntity;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.AxeItem;
 import net.minecraft.item.HoeItem;
@@ -52,7 +61,6 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.tag.TagKey;
-import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.SlotActionType;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ConnectedClientData;
@@ -232,6 +240,9 @@ public class CombinatorGameTest implements FabricGameTest {
 		player.clearStatusEffects();
 		player.setHealth(player.getMaxHealth());
 		player.setFireTicks(0);
+		// Forget the last hit. For half a second after a hit the game ignores weaker hits.
+		player.timeUntilRegen = 0;
+		player.hurtTime = 0;
 		place(player, world, center);
 	}
 
@@ -809,6 +820,17 @@ public class CombinatorGameTest implements FabricGameTest {
 		ServerPlayerEntity player = newPlayer(world, center);
 
 		context.runAtTick(WARMUP, () -> {
+			// First without any item: the tester must be hurt by a zombie and by a fall.
+			// If this fails, the test itself is broken and the checks below would mean nothing.
+			resetPlayer(player, world, center);
+			player.setInvulnerable(false);
+			MobEntity control = spawnMob(world, EntityType.ZOMBIE, center.getX() + 0.5, center.getY(), center.getZ() + 2.5);
+			player.damage(world.getDamageSources().mobAttack(control), 2.0F);
+			report.check(player.getHealth() < player.getMaxHealth(), "test setup: a zombie hit did not hurt the tester");
+			resetPlayer(player, world, center);
+			player.damage(world.getDamageSources().fall(), 6.0F);
+			report.check(player.getHealth() < player.getMaxHealth(), "test setup: a fall did not hurt the tester");
+
 			int tested = 0;
 			for (Item item : ComboItems.ALL) {
 				Traits traits = ComboItems.traits(item);
@@ -825,7 +847,8 @@ public class CombinatorGameTest implements FabricGameTest {
 					// hit by a zombie
 					MobEntity zombie = spawnMob(world, EntityType.ZOMBIE, center.getX() + 0.5, center.getY(), center.getZ() + 2.5);
 					float zombieHealth = zombie.getHealth();
-					player.damage(world.getDamageSources().mobAttack(zombie), 2.0F);
+					boolean hit = player.damage(world.getDamageSources().mobAttack(zombie), 4.0F);
+					report.check(hit, id + ": the zombie hit did not count");
 					if (traits.hasThorns) {
 						if (traits.thornsDamage > 0 || traits.thornsBoom > 0) {
 							report.check(zombie.getHealth() < zombieHealth || !zombie.isAlive(), id + ": the attacker took no damage back");
@@ -834,7 +857,7 @@ public class CombinatorGameTest implements FabricGameTest {
 							report.check(zombie.isOnFire() || !zombie.isAlive(), id + ": the attacker does not burn");
 						}
 					}
-					report.check(player.isAlive(), id + ": the tester died from a 2 damage hit");
+					report.check(player.isAlive(), id + ": the tester died from a 4 damage hit");
 
 					// a long fall
 					player.setHealth(player.getMaxHealth());
@@ -1201,16 +1224,22 @@ public class CombinatorGameTest implements FabricGameTest {
 					p.setInvulnerable(true);
 					// a wall behind the target, a pig to aim at, and something to copy in the other hand
 					fill(world, center.add(-3, 0, 9), center.add(3, 4, 11), Blocks.STONE.getDefaultState());
-					spawnMob(world, EntityType.PIG, center.getX() + 0.5, center.getY(), center.getZ() + 3.5);
+					MobEntity pig = spawnMob(world, EntityType.PIG, center.getX() + 0.5, center.getY(), center.getZ() + 3.5);
+					Use use = traits == null ? Use.NONE : click.sneak() ? traits.sneakUse : traits.use;
+					if (use == Use.DRAIN) {
+						world.setBlockState(center.add(3, 0, 0), Blocks.WATER.getDefaultState(), Block.NOTIFY_LISTENERS | Block.FORCE_STATE);
+					}
 					ItemStack stack = new ItemStack(click.item());
 					hold(p, stack);
 					p.setStackInHand(Hand.OFF_HAND, new ItemStack(Items.DIAMOND));
 					p.getItemCooldownManager().remove(click.item());
 					p.setSneaking(click.sneak());
+					p.setHealth(10.0F);
+					p.setExperienceLevel(0);
+					Vec3d standing = p.getPos();
 					int countBefore = stack.getCount();
 					int damageBefore = stack.getDamage();
 					ActionResult result = p.interactionManager.interactItem(p, world, stack, Hand.MAIN_HAND);
-					Use use = traits == null ? Use.NONE : click.sneak() ? traits.sneakUse : traits.use;
 					if (use != Use.NONE) {
 						LOG.info("[right-click] {} -> {} : {}", id, use, result);
 						if (result == ActionResult.FAIL) {
@@ -1226,6 +1255,8 @@ public class CombinatorGameTest implements FabricGameTest {
 							} else if (traits.cost > 0 && stack.isDamageable()) {
 								report.check(stack.getDamage() == damageBefore + traits.cost, id + ": the item did not wear out by " + traits.cost);
 							}
+							String missing = missingEffect(use, world, p, center, pig, standing);
+							report.check(missing == null, id + " (" + use + "): " + missing);
 						}
 					}
 					p.clearActiveItem();
@@ -1257,6 +1288,226 @@ public class CombinatorGameTest implements FabricGameTest {
 			resetStage(world, center);
 			forceChunks(world, center, false);
 			report.finish(context);
+		});
+	}
+
+	private static <T extends Entity> boolean any(ServerWorld world, BlockPos center, Class<T> type) {
+		return !world.getEntitiesByClass(type, new Box(center).expand(90.0), e -> e.isAlive()).isEmpty();
+	}
+
+	private static int countLogs(ServerWorld world, BlockPos center) {
+		TagKey<Block> logs = TagKey.of(RegistryKeys.BLOCK, Identifier.ofVanilla("logs"));
+		int count = 0;
+		for (BlockPos pos : BlockPos.iterate(center.add(-16, 0, -8), center.add(16, 14, 24))) {
+			if (world.getBlockState(pos).isIn(logs)) {
+				count++;
+			}
+		}
+		return count;
+	}
+
+	/**
+	 * Looks whether a right-click ability left its mark right away. Returns null if it did, otherwise what is missing.
+	 * The scene: the tester stands on grass and looks at the floor 4 blocks ahead. A pig stands in the line of sight,
+	 * 3 blocks away. A stone wall is 9 blocks away. Abilities that take time are checked in the test "slowEffects".
+	 */
+	private static String missingEffect(Use use, ServerWorld world, ServerPlayerEntity p, BlockPos center, MobEntity pig, Vec3d standing) {
+		boolean pigHurt = !pig.isAlive() || pig.getHealth() < pig.getMaxHealth();
+		switch (use) {
+			case SMALL_FIREBALL:
+				return any(world, center, SmallFireballEntity.class) ? null : "no fireball appeared";
+			case BIG_FIREBALL:
+			case METEOR:
+				return any(world, center, FireballEntity.class) ? null : "no fireball appeared";
+			case WITHER_SKULL:
+				return any(world, center, WitherSkullEntity.class) ? null : "no wither skull appeared";
+			case ARROW_BURST:
+				return any(world, center, ArrowEntity.class) ? null : "no arrows appeared";
+			case DYNAMITE:
+			case MEGA_BOMB:
+			case NUKE:
+				return any(world, center, TntEntity.class) ? null : "no bomb was thrown";
+			case LIGHTNING:
+			case LIGHTNING_STORM:
+				return any(world, center, LightningEntity.class) ? null : "no lightning appeared";
+			case BEAM:
+				return pigHurt ? null : "the pig in the line of fire was not hurt";
+			case FROST_CONE:
+				return pigHurt || pig.hasStatusEffect(StatusEffects.SLOWNESS) ? null : "the pig in front was not hurt or slowed";
+			case QUAKE:
+				return any(world, center, FallingBlockEntity.class) ? null : "no blocks were thrown into the air";
+			case FLOOD:
+				return count(world, center.add(-8, -1, -4), center.add(8, 8, 14), Blocks.WATER) > 0 ? null : "no water appeared";
+			case DRAIN:
+				return world.getBlockState(center.add(3, 0, 0)).isOf(Blocks.WATER) ? "the water next to the tester is still there" : null;
+			case FREEZE_AREA:
+				return count(world, center.add(-6, 0, -6), center.add(6, 0, 6), Blocks.SNOW) > 0 ? null : "no snow appeared";
+			case BLINK:
+				return p.getPos().distanceTo(standing) > 2.0 ? null : "the tester did not move";
+			case LEAP:
+				return p.getVelocity().length() > 0.3 ? null : "the tester was not pushed";
+			case RECALL:
+				return p.getPos().distanceTo(standing) > 30.0 || p.getWorld() != world ? null : "the tester was not sent to the spawn point";
+			case SWAP:
+				return p.getPos().distanceTo(standing) > 2.0 && pig.getPos().distanceTo(standing) < 1.0 ? null : "tester and pig did not swap places";
+			case GHOST:
+				return p.interactionManager.getGameMode() == GameMode.SPECTATOR ? null : "the tester is not a ghost";
+			case POLYMORPH:
+				return pig.isRemoved() && !world.getEntitiesByClass(MobEntity.class, new Box(center).expand(8.0), e -> e != pig && e.isAlive()).isEmpty()
+						? null : "the pig was not turned into another animal";
+			case SHRINK:
+			case GROW: {
+				EntityAttributeInstance scale = pig.getAttributeInstance(Registries.ATTRIBUTE.getEntry(Identifier.ofVanilla("generic.scale")).orElseThrow());
+				return scale != null && scale.hasModifier(ItemCombinator.id("size_ray")) ? null : "the size of the pig did not change";
+			}
+			case SUMMON_GOLEMS:
+				return any(world, center, IronGolemEntity.class) ? null : "no iron golem appeared";
+			case LIFT:
+				return pig.hasStatusEffect(StatusEffects.LEVITATION) ? null : "the pig does not float";
+			case SLAM:
+				return pigHurt ? null : "the pig was not hurt";
+			case GLOW_SCAN:
+				return pig.hasStatusEffect(StatusEffects.GLOWING) ? null : "the pig does not glow";
+			case HEAL:
+				return p.getHealth() > 10.0F ? null : "the tester was not healed";
+			case ENDER_POUCH:
+			case WORKBENCH:
+				return p.currentScreenHandler != p.playerScreenHandler ? null : "no screen was opened";
+			case TIME_DAY:
+				return world.getServer().getOverworld().getTimeOfDay() % 24000L == 1000L ? null : "it is not morning";
+			case TIME_NIGHT:
+				return world.getServer().getOverworld().getTimeOfDay() % 24000L == 13000L ? null : "it is not night";
+			case TIME_STOP:
+				return world.getServer().getTickManager().isFrozen() ? null : "time is not frozen";
+			case XP:
+				return p.experienceLevel > 0 ? null : "no experience levels were given";
+			case DUPE:
+				return p.getInventory().count(Items.DIAMOND) >= 2 ? null : "the diamond in the other hand was not copied";
+			case BRIDGE:
+				return count(world, center.add(-1, -1, 13), center.add(1, -1, 16), Blocks.OAK_PLANKS) > 0 ? null : "no bridge was built past the edge of the floor";
+			case HOLE:
+				return count(world, center.add(-1, -1, 4), center.add(1, -1, 6), Blocks.GRASS_BLOCK) < 9 ? null : "no hole was opened in the floor";
+			case FOREST:
+				return countLogs(world, center) > 0 ? null : "no trees grew";
+			case LASER_DRILL:
+				return count(world, center.add(-3, 0, 9), center.add(3, 4, 11), Blocks.STONE) < 105 && p.getInventory().count(Items.COBBLESTONE) > 0
+						? null : "the wall was not drilled or the stone did not go into the inventory";
+			default:
+				return null;
+		}
+	}
+
+	// ------------------------------------------------------------------ 11. abilities that take time
+
+	/** An ability that needs time, how many ticks to wait, and how to see that it worked. */
+	private interface SlowCheck {
+		String missing(ServerWorld world, BlockPos center);
+	}
+
+	private record Slow(Use use, int ticks, SlowCheck check) {
+	}
+
+	private static int floorLeft(ServerWorld world, BlockPos center) {
+		return count(world, center.add(-12, -1, -12), center.add(12, -1, 12), Blocks.GRASS_BLOCK);
+	}
+
+	@GameTest(templateName = EMPTY_STRUCTURE, batchId = "combinator_slow", tickLimit = 3000)
+	public void slowEffects(TestContext context) {
+		Report report = new Report("slow effects");
+		ServerWorld world = context.getWorld();
+		BlockPos center = stageCenter(context);
+		forceChunks(world, center, true);
+		resetStage(world, center);
+		ServerPlayerEntity player = newPlayer(world, center);
+		TagKey<Block> anvils = TagKey.of(RegistryKeys.BLOCK, Identifier.ofVanilla("anvil"));
+
+		List<Slow> list = List.of(
+				new Slow(Use.MEGA_BOMB, 100, (w, c) -> floorLeft(w, c) < 600 ? null : "the floor is not damaged (" + floorLeft(w, c) + " of 625 blocks left)"),
+				new Slow(Use.NUKE, 170, (w, c) -> floorLeft(w, c) < 300 ? null : "the floor is still there (" + floorLeft(w, c) + " of 625 blocks left)"),
+				new Slow(Use.BLACK_HOLE, 220, (w, c) -> count(w, c.add(-2, -1, 1), c.add(2, -1, 6), Blocks.GRASS_BLOCK) < 30
+						? null : "the black hole ate no blocks"),
+				new Slow(Use.METEOR, 120, (w, c) -> floorLeft(w, c) < 625 ? null : "the meteor left no crater"),
+				new Slow(Use.METEOR_SHOWER, 200, (w, c) -> floorLeft(w, c) < 615 ? null : "the meteor shower left no craters (" + floorLeft(w, c) + " of 625 blocks left)"),
+				new Slow(Use.ANVIL_STORM, 120, (w, c) -> {
+					for (BlockPos pos : BlockPos.iterate(c.add(-12, 0, -12), c.add(12, 3, 16))) {
+						if (w.getBlockState(pos).isIn(anvils)) {
+							return null;
+						}
+					}
+					return "no anvil landed";
+				}),
+				new Slow(Use.CHICKEN_STORM, 40, (w, c) -> {
+					int chickens = w.getEntitiesByClass(ChickenEntity.class, new Box(c).expand(40.0), e -> e.isAlive()).size();
+					return chickens >= 10 ? null : "only " + chickens + " chickens appeared";
+				}),
+				new Slow(Use.HOLE, 190, (w, c) -> count(w, c.add(-1, -1, 4), c.add(1, -1, 6), Blocks.GRASS_BLOCK) == 9
+						? null : "the portable hole did not close again"));
+
+		int[] index = {0};
+		int[] waitUntil = {-1};
+		int[] tick = {0};
+		context.runAtEveryTick(() -> {
+			tick[0]++;
+			if (tick[0] <= WARMUP) {
+				return;
+			}
+			if (waitUntil[0] >= 0) {
+				if (tick[0] < waitUntil[0]) {
+					return;
+				}
+				Slow slow = list.get(index[0]);
+				try {
+					String missing = slow.check().missing(world, center);
+					report.check(missing == null, slow.use() + ": " + missing);
+					LOG.info("[slow effects] {} after {} ticks: {}", slow.use(), slow.ticks(), missing == null ? "ok" : missing);
+				} catch (Throwable t) {
+					report.problem(slow.use() + ": check crashed: " + t);
+				}
+				report.modErrors(slow.use().toString());
+				waitUntil[0] = -1;
+				index[0]++;
+				return;
+			}
+			if (index[0] >= list.size()) {
+				removePlayer(player);
+				resetStage(world, center);
+				forceChunks(world, center, false);
+				report.finish(context);
+				return;
+			}
+			Slow slow = list.get(index[0]);
+			try {
+				// find an item with this ability
+				Item item = null;
+				boolean sneak = false;
+				for (Item candidate : ComboItems.ALL) {
+					Traits traits = ComboItems.traits(candidate);
+					if (traits != null && (traits.use == slow.use() || traits.sneakUse == slow.use())) {
+						item = candidate;
+						sneak = traits.use != slow.use();
+						break;
+					}
+				}
+				if (item == null) {
+					report.problem("no item has the ability " + slow.use());
+					index[0]++;
+					return;
+				}
+				resetStage(world, center);
+				resetPlayer(player, world, center);
+				player.setInvulnerable(true);
+				ItemStack stack = new ItemStack(item);
+				hold(player, stack);
+				player.getItemCooldownManager().remove(item);
+				player.setSneaking(sneak);
+				ActionResult result = player.interactionManager.interactItem(player, world, stack, Hand.MAIN_HAND);
+				report.check(result.isAccepted(), slow.use() + ": right-click with " + name(item) + " gave " + result);
+				waitUntil[0] = tick[0] + slow.ticks();
+			} catch (Throwable t) {
+				report.problem(slow.use() + ": crashed: " + t);
+				LOG.error("slow effects test " + slow.use(), t);
+				index[0]++;
+			}
 		});
 	}
 }

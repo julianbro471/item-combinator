@@ -41,6 +41,22 @@ jobs:
         run: |
           set -o pipefail
           ./gradlew runGameTest --stacktrace 2>&1 | tee gametest.log
+      - name: client test (the real game in a virtual screen, with screenshots)
+        if: always()
+        timeout-minutes: 30
+        env:
+          LIBGL_ALWAYS_SOFTWARE: '1'
+        run: |
+          set -o pipefail
+          if ! command -v xvfb-run >/dev/null; then
+            sudo apt-get update -qq
+            sudo apt-get install -y -qq xvfb libgl1-mesa-dri
+          fi
+          mkdir -p build/run/clientTest
+          printf 'onboardAccessibility:false\npauseOnLostFocus:false\ntutorialStep:none\nnarrator:0\n' > build/run/clientTest/options.txt
+          xvfb-run -a -s "-screen 0 1280x720x24" ./gradlew runClientTest --stacktrace 2>&1 | tee clienttest.log
+          cat build/run/clientTest/client-test-result.txt
+          grep -q '^PASSED' build/run/clientTest/client-test-result.txt
       - name: publish the result on the builds branch
         if: always() && github.event_name == 'push'
         env:
@@ -51,6 +67,10 @@ jobs:
           cp build/libs/*.jar published/ 2>/dev/null || true
           cp build.log published/ 2>/dev/null || true
           cp gametest.log published/ 2>/dev/null || true
+          cp clienttest.log published/ 2>/dev/null || true
+          cp build/run/clientTest/client-test-result.txt published/ 2>/dev/null || true
+          mkdir -p published/screenshots
+          cp build/run/clientTest/screenshots/*.png published/screenshots/ 2>/dev/null || true
           echo "Built from commit ${GITHUB_SHA} on branch ${GITHUB_REF_NAME}" > published/README.txt
           cd published
           git init -q -b "${TARGET}"
