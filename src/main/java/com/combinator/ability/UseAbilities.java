@@ -75,6 +75,9 @@ public final class UseAbilities {
 			if (traits.capture) {
 				return Capture.release(context, player, stack);
 			}
+			if (traits.bedrockBreak) {
+				return Wonders.breakBedrock(context, player, stack);
+			}
 			if (traits.sow) {
 				ActionResult sown = sow(context, player, stack);
 				if (sown != ActionResult.PASS) {
@@ -777,6 +780,32 @@ public final class UseAbilities {
 				return Wild.cakeRain(world, player, 20);
 			case FORCE_FIELD:
 				return Mayhem.forceField(world, player, 200, traits.range);
+
+			// ---------------------------------------------------------- the second wave
+			case FANGS:
+				return Wonders.fangs(world, player, traits.range);
+			case FANG_RING:
+				return Wonders.fangRing(world, player);
+			case DRAGON_FIREBALL:
+				return Wonders.dragonFireball(world, player);
+			case TRIDENT_STORM:
+				return Wonders.tridentStorm(world, player, traits.range);
+			case HORDE:
+				return Wonders.horde(world, player);
+			case PAINT_BOMB:
+				return Wonders.paintBomb(world, player);
+			case WORLD_TREE:
+				return Wonders.worldTree(world, player, traits.range);
+			case COPY_PASTE:
+				return Wonders.paste(world, player, player.getStackInHand(hand), traits.range);
+			case COPY_CORNER:
+				return Wonders.copyCorner(world, player, player.getStackInHand(hand), traits.range);
+			case SHULKER_BULLETS:
+				return Wonders.shulkerBullets(world, player, traits.range);
+			case HOURGLASS:
+				return Wonders.hourglass(world, player, Math.round(traits.power));
+			case MONSTER_MAGNET:
+				return Wonders.monsterMagnet(world, player, traits.range);
 			default:
 				return false;
 		}

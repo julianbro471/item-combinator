@@ -81,6 +81,14 @@
     "combinator:musical_chairs",
     "combinator:party_cannon",
     "combinator:force_field",
-    "combinator:glacier_staff"
+    "combinator:glacier_staff",
+    "combinator:fang_staff",
+    "combinator:dragon_staff",
+    "combinator:poseidon_wrath",
+    "combinator:horde_horn",
+    "combinator:copy_wand",
+    "combinator:shulker_blaster",
+    "combinator:hourglass",
+    "combinator:monster_magnet"
   ]
 }

@@ -823,6 +823,39 @@ public final class ComboItems {
 	public static final Item COBWEB_GRENADE = add("cobweb_grenade", 1, 2,
 			new CItem(props(1).maxCount(16)),
 			new Traits().at(Traits.Where.HOTBAR).use(Use.COBWEB_BOMB).cooldown(30).consume());
+	public static final Item BEDROCK_BREAKER = add("bedrock_breaker", 3, 3,
+			new CPick(ComboMaterial.of(2000, 10.0F, "netherite", 22), 6.0F, -2.8F, props(3)),
+			new Traits().at(Traits.Where.HELD).bedrockBreak());
+	public static final Item FANG_STAFF = add("fang_staff", 2, 3,
+			new CItem(props(2).maxDamage(200)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.FANGS).range(16).cooldown(30).cost(1).sneakUse(Use.FANG_RING, 60));
+	public static final Item DRAGON_STAFF = add("dragon_staff", 3, 2,
+			new CItem(props(3).maxDamage(200)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.DRAGON_FIREBALL).cooldown(30).cost(1));
+	public static final Item POSEIDON_WRATH = add("poseidon_wrath", 3, 2,
+			new CItem(props(3).maxDamage(64)),
+			new Traits().at(Traits.Where.HELD).use(Use.TRIDENT_STORM).range(64).cooldown(100).cost(1));
+	public static final Item HORDE_HORN = add("horde_horn", 2, 3,
+			new CItem(props(2).maxDamage(8)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.HORDE).cooldown(200).cost(1));
+	public static final Item PAINT_BOMB = add("paint_bomb", 1, 2,
+			new CItem(props(1).maxCount(16)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.PAINT_BOMB).cooldown(30).consume());
+	public static final Item WORLD_TREE_SEED = add("world_tree_seed", 2, 3,
+			new CItem(props(2).maxCount(16)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.WORLD_TREE).range(32).cooldown(60).consume());
+	public static final Item COPY_WAND = add("copy_wand", 3, 3,
+			new CItem(props(3).maxDamage(200)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.COPY_PASTE).range(48).cooldown(20).cost(1).sneakUse(Use.COPY_CORNER, 5));
+	public static final Item SHULKER_BLASTER = add("shulker_blaster", 2, 2,
+			new CItem(props(2).maxDamage(200)),
+			new Traits().at(Traits.Where.HELD).use(Use.SHULKER_BULLETS).range(24).cooldown(30).cost(1));
+	public static final Item HOURGLASS = add("hourglass", 3, 3,
+			new CItem(props(3).maxDamage(16)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.HOURGLASS).power(10.0f).cooldown(600).cost(1));
+	public static final Item MONSTER_MAGNET = add("monster_magnet", 2, 2,
+			new CItem(props(2).maxDamage(64)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.MONSTER_MAGNET).range(32).cooldown(100).cost(1));
 
 	private ComboItems() {
 	}

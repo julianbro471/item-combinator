@@ -54,6 +54,7 @@ import net.minecraft.entity.attribute.EntityAttributeInstance;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.CreeperEntity;
+import net.minecraft.entity.mob.EvokerFangsEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.mob.ZombieEntity;
 import net.minecraft.entity.passive.AnimalEntity;
@@ -68,9 +69,12 @@ import net.minecraft.entity.passive.WanderingTraderEntity;
 import net.minecraft.entity.passive.WolfEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ArrowEntity;
+import net.minecraft.entity.projectile.DragonFireballEntity;
 import net.minecraft.entity.projectile.FireworkRocketEntity;
 import net.minecraft.entity.projectile.FireballEntity;
+import net.minecraft.entity.projectile.ShulkerBulletEntity;
 import net.minecraft.entity.projectile.SmallFireballEntity;
+import net.minecraft.entity.projectile.TridentEntity;
 import net.minecraft.entity.projectile.WitherSkullEntity;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.AxeItem;
@@ -113,6 +117,7 @@ import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.GameMode;
+import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -1159,6 +1164,12 @@ public class CombinatorGameTest implements FabricGameTest {
 						report.check(world.getBlockState(spot.up()).isOf(Blocks.WATER), id + ": no water was placed");
 						report.check(player.getMainHandStack().isOf(item), id + ": the bucket was used up");
 						special++;
+					} else if (traits != null && traits.bedrockBreak) {
+						world.setBlockState(target, Blocks.BEDROCK.getDefaultState());
+						player.interactionManager.interactBlock(player, world, stack, Hand.MAIN_HAND, hitTop(target));
+						report.check(world.getBlockState(target).isAir(), id + ": the bedrock was not broken");
+						report.check(have(world, player, center, Items.BEDROCK) == 1, id + ": the bedrock did not drop");
+						special++;
 					} else if (traits != null && traits.endlessLava) {
 						BlockPos spot = center.add(6, -1, 0);
 						player.interactionManager.interactBlock(player, world, stack, Hand.MAIN_HAND, hitTop(spot));
@@ -1803,7 +1814,28 @@ public class CombinatorGameTest implements FabricGameTest {
 			case SHEEP_BOMB:
 			case COBWEB_BOMB:
 			case HIVE_GRENADE:
+			case PAINT_BOMB:
 				return any(world, center, TntEntity.class) ? null : "no bomb was thrown";
+			case FANGS:
+			case FANG_RING:
+				return any(world, center, EvokerFangsEntity.class) ? null : "no evoker fangs";
+			case DRAGON_FIREBALL:
+				return any(world, center, DragonFireballEntity.class) ? null : "no dragon fireball";
+			case TRIDENT_STORM:
+				return any(world, center, TridentEntity.class) ? null : "no tridents";
+			case HORDE:
+				return any(world, center, ZombieEntity.class) ? null : "no horde";
+			case WORLD_TREE:
+				return count(world, center.add(-4, 0, 0), center.add(4, 2, 9), Blocks.OAK_LOG) > 0 ? null : "no giant tree started to grow";
+			case COPY_CORNER:
+				return p.getMainHandStack().getOrDefault(DataComponentTypes.CUSTOM_DATA, NbtComponent.DEFAULT).contains("combinator_copy")
+						? null : "the wand did not remember the corner";
+			case SHULKER_BULLETS:
+				return any(world, center, ShulkerBulletEntity.class) ? null : "no shulker bullets";
+			case HOURGLASS:
+				return world.getServer().getGameRules().getInt(GameRules.RANDOM_TICK_SPEED) > 3 ? null : "the world does not tick faster";
+			case MONSTER_MAGNET:
+				return pig.getVelocity().length() > 0.3 ? null : "the pig was not pulled";
 			case TERMITES:
 				return count(world, center.add(-1, 0, 3), center.add(1, 2, 5), Blocks.OAK_PLANKS) < 27 ? null : "the termites ate nothing";
 			case DEATH_RAY:
@@ -2012,6 +2044,10 @@ public class CombinatorGameTest implements FabricGameTest {
 						(w, c) -> fill(w, c.add(-2, -1, 1), c.add(2, -1, 9), Blocks.WATER.getDefaultState())),
 				new Slow(Use.CAKE_RAIN, 80, (w, c) -> count(w, c.add(-10, -1, -10), c.add(10, 3, 10), Blocks.CAKE) + onGround(w, c, Items.CAKE) > 0
 						? null : "no cake fell"),
+				new Slow(Use.PAINT_BOMB, 60, (w, c) -> floorLeft(w, c) < 615 ? null : "the paint bomb painted nothing"),
+				new Slow(Use.WORLD_TREE, 70, (w, c) -> count(w, c.add(-8, 0, -4), c.add(8, 45, 14), Blocks.OAK_LOG) > 150 ? null : "the giant tree did not grow"),
+				new Slow(Use.HOURGLASS, 230, (w, c) -> w.getServer().getGameRules().getInt(GameRules.RANDOM_TICK_SPEED) < 100
+						? null : "the world still ticks fast after the hourglass ran out"),
 				// last, because it destroys everything: the whole Armageddon, from the countdown to the final blast
 				new Slow(Use.ARMAGEDDON, Doom.TOTAL + 80, (w, c) -> floorLeft(w, c) < 300 ? null : "the world did not end (" + floorLeft(w, c) + " of 625 floor blocks left)"));
 
@@ -2147,6 +2183,23 @@ public class CombinatorGameTest implements FabricGameTest {
 						report.check(missing == null, "gremlin prank " + number + ": " + missing);
 					});
 				}
+				step(report, "copy-paste wand", () -> {
+					resetStage(world, center);
+					resetPlayer(player, world, center);
+					player.setInvulnerable(true);
+					ItemStack wand = new ItemStack(ComboItems.COPY_WAND);
+					hold(player, wand);
+					// the tester looks at the floor block 4 ahead: it becomes gold, is copied, and pasted on top of itself
+					world.setBlockState(center.add(0, -1, 4), Blocks.GOLD_BLOCK.getDefaultState(), Block.NOTIFY_LISTENERS | Block.FORCE_STATE);
+					player.setSneaking(true);
+					player.interactionManager.interactItem(player, world, wand, Hand.MAIN_HAND);
+					player.getItemCooldownManager().remove(wand.getItem());
+					player.interactionManager.interactItem(player, world, wand, Hand.MAIN_HAND);
+					player.getItemCooldownManager().remove(wand.getItem());
+					player.setSneaking(false);
+					player.interactionManager.interactItem(player, world, wand, Hand.MAIN_HAND);
+					report.check(world.getBlockState(center.add(0, 0, 4)).isOf(Blocks.GOLD_BLOCK), "the Copy-Paste Wand did not paste the gold block");
+				});
 				step(report, "hot potato", () -> {
 					resetStage(world, center);
 					resetPlayer(player, world, center);

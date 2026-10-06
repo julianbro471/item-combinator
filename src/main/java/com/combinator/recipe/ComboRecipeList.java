@@ -264,6 +264,17 @@ final class ComboRecipeList {
 		ComboRecipes.add("minecraft:blue_ice", "minecraft:blaze_rod", "combinator:glacier_staff", 1, 2);
 		ComboRecipes.add("combinator:dynamite", "minecraft:white_wool", "combinator:sheep_bomb", 2, 1);
 		ComboRecipes.add("combinator:dynamite", "minecraft:cobweb", "combinator:cobweb_grenade", 2, 1);
+		ComboRecipes.add("combinator:tnt_pickaxe", "minecraft:obsidian", "combinator:bedrock_breaker", 1, 3);
+		ComboRecipes.add("minecraft:stick", "minecraft:emerald_block", "combinator:fang_staff", 1, 2);
+		ComboRecipes.add("minecraft:blaze_rod", "minecraft:dragon_breath", "combinator:dragon_staff", 1, 3);
+		ComboRecipes.add("minecraft:trident", "minecraft:lightning_rod", "combinator:poseidon_wrath", 1, 3);
+		ComboRecipes.add("minecraft:goat_horn", "minecraft:rotten_flesh", "combinator:horde_horn", 1, 2);
+		ComboRecipes.add("combinator:dynamite", "minecraft:pink_dye", "combinator:paint_bomb", 2, 1);
+		ComboRecipes.add("minecraft:oak_sapling", "minecraft:bone_block", "combinator:world_tree_seed", 1, 2);
+		ComboRecipes.add("combinator:dupe_mirror", "minecraft:blaze_rod", "combinator:copy_wand", 1, 3);
+		ComboRecipes.add("minecraft:shulker_shell", "minecraft:crossbow", "combinator:shulker_blaster", 1, 2);
+		ComboRecipes.add("combinator:chrono_clock", "minecraft:bone_block", "combinator:hourglass", 1, 3);
+		ComboRecipes.add("combinator:magnet", "minecraft:rotten_flesh", "combinator:monster_magnet", 1, 2);
 
 		// --- vanilla items ---
 		ComboRecipes.add("minecraft:rotten_flesh", "minecraft:rotten_flesh", "minecraft:leather", 1, 0);

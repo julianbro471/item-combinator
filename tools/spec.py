@@ -1084,6 +1084,47 @@ it("cobweb_grenade", "Cobweb Grenade", 1, "dynamite", "cobweb", "gadget",
    ["Right-click to throw. Cobwebs everywhere", "near the blast. Mobs get stuck."],
    ".use(Use.COBWEB_BOMB).cooldown(30).consume()", tex=("bomb", "bone", "wither", None), count=2, stack=16)
 
+section("Mass destruction")
+it("bedrock_breaker", "Bedrock Breaker", 3, "tnt_pickaxe", "obsidian", "pick",
+   ["Right-click bedrock, barriers or anything else", "that cannot be mined: it breaks and drops.", "Mind the void."],
+   ".bedrockBreak()", tex=("pickaxe", "wither", "netherite", "skull"),
+   dur=2000, speed=10, dmg=6, aspd=-2.8, level="netherite")
+it("fang_staff", "Fang Staff", 2, "stick", "emerald_block", "gadget",
+   ["Right-click: a line of evoker fangs snaps", "towards where you look. Sneak + right-click:", "two rings of fangs around you."],
+   ".use(Use.FANGS).range(16).cooldown(30).cost(1).sneakUse(Use.FANG_RING, 60)", tex=("staff", "emerald", "bone", "skull"), dur=200)
+it("dragon_staff", "Dragon Staff", 3, "blaze_rod", "dragon_breath", "gadget",
+   ["Right-click: shoots a dragon fireball.", "It leaves a cloud of dragon breath."],
+   ".use(Use.DRAGON_FIREBALL).cooldown(30).cost(1)", tex=("staff3", "void", "pink", "flame"), dur=200)
+it("poseidon_wrath", "Poseidon's Wrath", 3, "trident", "lightning_rod", "gadget",
+   ["Right-click: 16 tridents and a few lightning", "bolts rain on the spot you look at."],
+   ".use(Use.TRIDENT_STORM).range(64).cooldown(100).cost(1)", tex=("fork", "prismarine", "thunder", "bolt"), dur=64, where="HELD")
+it("horde_horn", "Horde Horn", 2, "goat_horn", "rotten_flesh", "gadget",
+   ["Right-click: 12 zombies, 6 skeletons and", "4 creepers rise from the ground around you.", "They are not your friends."],
+   ".use(Use.HORDE).cooldown(200).cost(1)", tex=("horn", "venom", "bone", "skull"), dur=8)
+it("paint_bomb", "Rainbow Paint Bomb", 1, "dynamite", "pink_dye", "gadget",
+   ["Right-click to throw. Every block near the", "blast gets a random colour. Sheep too."],
+   ".use(Use.PAINT_BOMB).cooldown(30).consume()", tex=("bomb", "pink", "diamond", "star"), count=2, stack=16)
+
+section("Instant creation")
+it("world_tree_seed", "World Tree Seed", 2, "oak_sapling", "bone_block", "gadget",
+   ["Right-click the ground: a giant tree grows", "there. 40 blocks high, with roots, branches", "and a huge crown."],
+   ".use(Use.WORLD_TREE).range(32).cooldown(60).consume()", tex=("seed", "wood", "emerald", "leaf"), stack=16)
+it("copy_wand", "Copy-Paste Wand", 3, "dupe_mirror", "blaze_rod", "gadget",
+   ["Sneak + right-click two blocks: they are the", "corners of what to copy. Right-click a block:",
+    "the copy appears there. Up to 16384 blocks."],
+   ".use(Use.COPY_PASTE).range(48).cooldown(20).cost(1).sneakUse(Use.COPY_CORNER, 5)", tex=("wand", "diamond", "ice", "star"), dur=200)
+
+section("Pure chaos")
+it("shulker_blaster", "Shulker Blaster", 2, "shulker_shell", "crossbow", "gadget",
+   ["Right-click: homing shulker bullets fly at", "the four nearest mobs. They float away."],
+   ".use(Use.SHULKER_BULLETS).range(24).cooldown(30).cost(1)", tex=("raygun", "void", "pink", None), dur=200, where="HELD")
+it("hourglass", "Hourglass of Ages", 3, "chrono_clock", "bone_block", "gadget",
+   ["Right-click: for 10 seconds the whole world", "ticks 100 times faster. Crops grow, grass", "spreads, fire runs wild, leaves fall."],
+   ".use(Use.HOURGLASS).power(10.0f).cooldown(600).cost(1)", tex=("jar", "gold", "sand", None), dur=16)
+it("monster_magnet", "Monster Magnet", 2, "magnet", "rotten_flesh", "gadget",
+   ["Right-click: every mob within 32 blocks", "is pulled to you. Every single one."],
+   ".use(Use.MONSTER_MAGNET).range(32).cooldown(100).cost(1)", tex=("magnet", "venom", "iron", "skull"), dur=64)
+
 # ---------------------------------------------------------------------------------------------
 # VANILLA RESULTS
 # ---------------------------------------------------------------------------------------------

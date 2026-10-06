@@ -4920,6 +4920,221 @@
       "stats": ""
     },
     {
+      "a": "tnt_pickaxe",
+      "b": "obsidian",
+      "a_name": "Blast Pickaxe",
+      "b_name": "Obsidian",
+      "result": "bedrock_breaker",
+      "result_name": "Bedrock Breaker",
+      "count": 1,
+      "rar": 3,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "pick",
+      "tip": [
+        "Right-click bedrock, barriers or anything else",
+        "that cannot be mined: it breaks and drops.",
+        "Mind the void."
+      ],
+      "cat": "Mass destruction",
+      "stats": "6 damage, 2000 uses"
+    },
+    {
+      "a": "stick",
+      "b": "emerald_block",
+      "a_name": "Stick",
+      "b_name": "Block of Emerald",
+      "result": "fang_staff",
+      "result_name": "Fang Staff",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: a line of evoker fangs snaps",
+        "towards where you look. Sneak + right-click:",
+        "two rings of fangs around you."
+      ],
+      "cat": "Mass destruction",
+      "stats": "200 uses"
+    },
+    {
+      "a": "blaze_rod",
+      "b": "dragon_breath",
+      "a_name": "Blaze Rod",
+      "b_name": "Dragon's Breath",
+      "result": "dragon_staff",
+      "result_name": "Dragon Staff",
+      "count": 1,
+      "rar": 3,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: shoots a dragon fireball.",
+        "It leaves a cloud of dragon breath."
+      ],
+      "cat": "Mass destruction",
+      "stats": "200 uses"
+    },
+    {
+      "a": "trident",
+      "b": "lightning_rod",
+      "a_name": "Trident",
+      "b_name": "Lightning Rod",
+      "result": "poseidon_wrath",
+      "result_name": "Poseidon's Wrath",
+      "count": 1,
+      "rar": 3,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: 16 tridents and a few lightning",
+        "bolts rain on the spot you look at."
+      ],
+      "cat": "Mass destruction",
+      "stats": "64 uses"
+    },
+    {
+      "a": "goat_horn",
+      "b": "rotten_flesh",
+      "a_name": "Goat Horn",
+      "b_name": "Rotten Flesh",
+      "result": "horde_horn",
+      "result_name": "Horde Horn",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: 12 zombies, 6 skeletons and",
+        "4 creepers rise from the ground around you.",
+        "They are not your friends."
+      ],
+      "cat": "Mass destruction",
+      "stats": "8 uses"
+    },
+    {
+      "a": "dynamite",
+      "b": "pink_dye",
+      "a_name": "Dynamite",
+      "b_name": "Pink Dye",
+      "result": "paint_bomb",
+      "result_name": "Rainbow Paint Bomb",
+      "count": 2,
+      "rar": 1,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click to throw. Every block near the",
+        "blast gets a random colour. Sheep too."
+      ],
+      "cat": "Mass destruction",
+      "stats": ""
+    },
+    {
+      "a": "oak_sapling",
+      "b": "bone_block",
+      "a_name": "Oak Sapling",
+      "b_name": "Bone Block",
+      "result": "world_tree_seed",
+      "result_name": "World Tree Seed",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click the ground: a giant tree grows",
+        "there. 40 blocks high, with roots, branches",
+        "and a huge crown."
+      ],
+      "cat": "Instant creation",
+      "stats": ""
+    },
+    {
+      "a": "dupe_mirror",
+      "b": "blaze_rod",
+      "a_name": "Mirror of Duplication",
+      "b_name": "Blaze Rod",
+      "result": "copy_wand",
+      "result_name": "Copy-Paste Wand",
+      "count": 1,
+      "rar": 3,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Sneak + right-click two blocks: they are the",
+        "corners of what to copy. Right-click a block:",
+        "the copy appears there. Up to 16384 blocks."
+      ],
+      "cat": "Instant creation",
+      "stats": "200 uses"
+    },
+    {
+      "a": "shulker_shell",
+      "b": "crossbow",
+      "a_name": "Shulker Shell",
+      "b_name": "Crossbow",
+      "result": "shulker_blaster",
+      "result_name": "Shulker Blaster",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: homing shulker bullets fly at",
+        "the four nearest mobs. They float away."
+      ],
+      "cat": "Pure chaos",
+      "stats": "200 uses"
+    },
+    {
+      "a": "chrono_clock",
+      "b": "bone_block",
+      "a_name": "Chrono Clock",
+      "b_name": "Bone Block",
+      "result": "hourglass",
+      "result_name": "Hourglass of Ages",
+      "count": 1,
+      "rar": 3,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: for 10 seconds the whole world",
+        "ticks 100 times faster. Crops grow, grass",
+        "spreads, fire runs wild, leaves fall."
+      ],
+      "cat": "Pure chaos",
+      "stats": "16 uses"
+    },
+    {
+      "a": "magnet",
+      "b": "rotten_flesh",
+      "a_name": "Magnet",
+      "b_name": "Rotten Flesh",
+      "result": "monster_magnet",
+      "result_name": "Monster Magnet",
+      "count": 1,
+      "rar": 2,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: every mob within 32 blocks",
+        "is pulled to you. Every single one."
+      ],
+      "cat": "Pure chaos",
+      "stats": "64 uses"
+    },
+    {
       "a": "rotten_flesh",
       "b": "rotten_flesh",
       "a_name": "Rotten Flesh",
@@ -9695,6 +9910,187 @@
         "near the blast. Mobs get stuck."
       ],
       "stats": {}
+    },
+    {
+      "id": "bedrock_breaker",
+      "name": "Bedrock Breaker",
+      "rar": 3,
+      "kind": "pick",
+      "cat": "Mass destruction",
+      "a": "tnt_pickaxe",
+      "b": "obsidian",
+      "tip": [
+        "Right-click bedrock, barriers or anything else",
+        "that cannot be mined: it breaks and drops.",
+        "Mind the void."
+      ],
+      "stats": {
+        "dur": 2000,
+        "speed": 10,
+        "dmg": 6,
+        "aspd": -2.8
+      }
+    },
+    {
+      "id": "fang_staff",
+      "name": "Fang Staff",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Mass destruction",
+      "a": "stick",
+      "b": "emerald_block",
+      "tip": [
+        "Right-click: a line of evoker fangs snaps",
+        "towards where you look. Sneak + right-click:",
+        "two rings of fangs around you."
+      ],
+      "stats": {
+        "dur": 200
+      }
+    },
+    {
+      "id": "dragon_staff",
+      "name": "Dragon Staff",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Mass destruction",
+      "a": "blaze_rod",
+      "b": "dragon_breath",
+      "tip": [
+        "Right-click: shoots a dragon fireball.",
+        "It leaves a cloud of dragon breath."
+      ],
+      "stats": {
+        "dur": 200
+      }
+    },
+    {
+      "id": "poseidon_wrath",
+      "name": "Poseidon's Wrath",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Mass destruction",
+      "a": "trident",
+      "b": "lightning_rod",
+      "tip": [
+        "Right-click: 16 tridents and a few lightning",
+        "bolts rain on the spot you look at."
+      ],
+      "stats": {
+        "dur": 64
+      }
+    },
+    {
+      "id": "horde_horn",
+      "name": "Horde Horn",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Mass destruction",
+      "a": "goat_horn",
+      "b": "rotten_flesh",
+      "tip": [
+        "Right-click: 12 zombies, 6 skeletons and",
+        "4 creepers rise from the ground around you.",
+        "They are not your friends."
+      ],
+      "stats": {
+        "dur": 8
+      }
+    },
+    {
+      "id": "paint_bomb",
+      "name": "Rainbow Paint Bomb",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Mass destruction",
+      "a": "dynamite",
+      "b": "pink_dye",
+      "tip": [
+        "Right-click to throw. Every block near the",
+        "blast gets a random colour. Sheep too."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "world_tree_seed",
+      "name": "World Tree Seed",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Instant creation",
+      "a": "oak_sapling",
+      "b": "bone_block",
+      "tip": [
+        "Right-click the ground: a giant tree grows",
+        "there. 40 blocks high, with roots, branches",
+        "and a huge crown."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "copy_wand",
+      "name": "Copy-Paste Wand",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Instant creation",
+      "a": "dupe_mirror",
+      "b": "blaze_rod",
+      "tip": [
+        "Sneak + right-click two blocks: they are the",
+        "corners of what to copy. Right-click a block:",
+        "the copy appears there. Up to 16384 blocks."
+      ],
+      "stats": {
+        "dur": 200
+      }
+    },
+    {
+      "id": "shulker_blaster",
+      "name": "Shulker Blaster",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Pure chaos",
+      "a": "shulker_shell",
+      "b": "crossbow",
+      "tip": [
+        "Right-click: homing shulker bullets fly at",
+        "the four nearest mobs. They float away."
+      ],
+      "stats": {
+        "dur": 200
+      }
+    },
+    {
+      "id": "hourglass",
+      "name": "Hourglass of Ages",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Pure chaos",
+      "a": "chrono_clock",
+      "b": "bone_block",
+      "tip": [
+        "Right-click: for 10 seconds the whole world",
+        "ticks 100 times faster. Crops grow, grass",
+        "spreads, fire runs wild, leaves fall."
+      ],
+      "stats": {
+        "dur": 16
+      }
+    },
+    {
+      "id": "monster_magnet",
+      "name": "Monster Magnet",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Pure chaos",
+      "a": "magnet",
+      "b": "rotten_flesh",
+      "tip": [
+        "Right-click: every mob within 32 blocks",
+        "is pulled to you. Every single one."
+      ],
+      "stats": {
+        "dur": 64
+      }
     }
   ]
 }

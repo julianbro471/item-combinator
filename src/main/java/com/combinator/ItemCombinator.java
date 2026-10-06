@@ -11,6 +11,7 @@ import com.combinator.ability.Oddities;
 import com.combinator.ability.PassiveAbilities;
 import com.combinator.ability.Tasks;
 import com.combinator.ability.Wild;
+import com.combinator.ability.Wonders;
 import com.combinator.block.CombinerTableBlock;
 import com.combinator.item.ComboItems;
 import com.combinator.recipe.ComboRecipes;
@@ -109,6 +110,7 @@ public class ItemCombinator implements ModInitializer {
 		Doom.register();
 		Mayhem.register();
 		Wild.register();
+		Wonders.register();
 
 		LOGGER.info("Item Combinator loaded: {} new items, {} combinations", ComboItems.ALL.size(), ComboRecipes.ALL.size());
 	}

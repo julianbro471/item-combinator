@@ -159,6 +159,8 @@ public final class Traits {
 	public boolean endlessLava;
 	/** A gremlin plays pranks on the player now and then. */
 	public boolean gremlin;
+	/** Right-click breaks blocks that cannot be mined, such as bedrock. */
+	public boolean bedrockBreak;
 	/** Changes to the player's body: size, health, reach and so on. */
 	public final List<Attr> attrs = new ArrayList<>();
 
@@ -321,6 +323,11 @@ public final class Traits {
 
 	public Traits endlessLava() {
 		this.endlessLava = true;
+		return this;
+	}
+
+	public Traits bedrockBreak() {
+		this.bedrockBreak = true;
 		return this;
 	}
 

@@ -4,8 +4,8 @@ A Fabric mod for **Minecraft Java Edition 1.21.1**.
 
 It adds one block, the **Combiner Table**. You put two items into it and get one new item.
 
-- **307 combinations** in total.
-- 257 of them make one of **253 new items**: tools, weapons, armor, gadgets, food, bombs, cheats.
+- **318 combinations** in total.
+- 268 of them make one of **264 new items**: tools, weapons, armor, gadgets, food, bombs, cheats.
 - 50 of them make a vanilla item that you normally cannot craft (saddle, name tag, elytra, ...).
 - Two stackable items that have no combination give a **Chaos Orb**, which does something random.
 - There are no tiers and there is no balance. Some items are normal, many are absurd, a few can destroy your world.
@@ -20,7 +20,7 @@ every ability does its main job without an error. They do not prove that it is f
 slow PC, or that it works together with other mods. Expect smaller bugs.
 
 **Make a backup of your world before you use the bombs.** Nukes, black holes, meteors, the Blast Pickaxe, the
-World Eater, the Armageddon Clock, the Orbital Strike Remote, the Tornado, the Termite Jar and the Pocket Volcano
+World Eater, the Armageddon Clock, the Orbital Strike Remote, the Tornado, the Termite Jar, the Pocket Volcano and the Bedrock Breaker
 delete or change large parts of the world for good.
 
 ## What you need
@@ -439,6 +439,12 @@ Every new item has a description under its name. All new items are also in their
 | Golden Helmet | Lightning Rod | **Storm Crown** | While worn: every 3 seconds lightning strikes a monster near you. | 3 armor, 400 uses |
 | Leather Cap | Poisonous Potato | **Plague Mask** | While worn: everything alive within 6 blocks gets poisoned and withers. Tame pets are spared. | 1 armor, 200 uses |
 | Lava Bucket | Bucket | **Endless Lava Bucket** | Right-click a block: places lava. It never runs dry. |  |
+| *Blast Pickaxe* | Obsidian | **Bedrock Breaker** | Right-click bedrock, barriers or anything else that cannot be mined: it breaks and drops. Mind the void. | 6 damage, 2000 uses |
+| Stick | Block of Emerald | **Fang Staff** | Right-click: a line of evoker fangs snaps towards where you look. Sneak + right-click: two rings of fangs around you. | 200 uses |
+| Blaze Rod | Dragon's Breath | **Dragon Staff** | Right-click: shoots a dragon fireball. It leaves a cloud of dragon breath. | 200 uses |
+| Trident | Lightning Rod | **Poseidon's Wrath** | Right-click: 16 tridents and a few lightning bolts rain on the spot you look at. | 64 uses |
+| Goat Horn | Rotten Flesh | **Horde Horn** | Right-click: 12 zombies, 6 skeletons and 4 creepers rise from the ground around you. They are not your friends. | 8 uses |
+| *Dynamite* | Pink Dye | **Rainbow Paint Bomb** x2 | Right-click to throw. Every block near the blast gets a random colour. Sheep too. |  |
 
 ### Instant creation
 
@@ -457,6 +463,8 @@ Every new item has a description under its name. All new items are also in their
 | Goat Horn | Snow Block | **Snowman Horn** | Right-click: 8 snow golems appear around you and throw snowballs at monsters. | 16 uses |
 | Stick | Stone Bricks | **Fortress Staff** | Right-click: a stone wall rises in front of you. Sneak + right-click: a stone dome closes over you. | 128 uses |
 | Composter | Wheat Seeds | **Farm in a Box** | Right-click: a ripe 9x9 farm appears where you look: water, farmland, wheat, carrots, potatoes, beetroot and a scarecrow. |  |
+| Oak Sapling | Bone Block | **World Tree Seed** | Right-click the ground: a giant tree grows there. 40 blocks high, with roots, branches and a huge crown. |  |
+| *Mirror of Duplication* | Blaze Rod | **Copy-Paste Wand** | Sneak + right-click two blocks: they are the corners of what to copy. Right-click a block: the copy appears there. Up to 16384 blocks. | 200 uses |
 
 ### Pure chaos
 
@@ -472,6 +480,9 @@ Every new item has a description under its name. All new items are also in their
 | Blue Ice | Blaze Rod | **Glacier Staff** | Right-click: a line of ice spikes bursts out of the ground towards where you look. Mobs in the way are thrown up and frozen. | 128 uses |
 | *Dynamite* | White Wool | **Sheep Bomb** x2 | Right-click to throw. 16 sheep in every colour burst out. |  |
 | *Dynamite* | Cobweb | **Cobweb Grenade** x2 | Right-click to throw. Cobwebs everywhere near the blast. Mobs get stuck. |  |
+| Shulker Shell | Crossbow | **Shulker Blaster** | Right-click: homing shulker bullets fly at the four nearest mobs. They float away. | 200 uses |
+| *Chrono Clock* | Bone Block | **Hourglass of Ages** | Right-click: for 10 seconds the whole world ticks 100 times faster. Crops grow, grass spreads, fire runs wild, leaves fall. | 16 uses |
+| *Magnet* | Rotten Flesh | **Monster Magnet** | Right-click: every mob within 32 blocks is pulled to you. Every single one. | 64 uses |
 
 ## All combinations that make vanilla items
 
@@ -824,6 +835,13 @@ These items need three or more combining steps. Each list shows everything that 
   Slow Falling lasts 45 seconds, so the way back down is safe.
 - The Storm Crown's lightning only looks real: it never hits you, and it starts no fires.
 - The Plague Mask also makes villagers and other friendly animals sick. Only tame pets are spared.
+- The Bedrock Breaker breaks bedrock, barriers and other unbreakable blocks, but nothing that holds things
+  (no End portals, no command blocks). Breaking the bottom of the world opens the void. Each block costs 10 durability.
+- The Copy-Paste Wand copies blocks, but not chests or other blocks that hold things, and no mobs.
+  It copies what is there at the moment you paste, so you can copy a building that changed since you marked it.
+- The Hourglass of Ages changes the game rule randomTickSpeed for 10 seconds, for the whole world.
+  If the world is closed in the middle, the old value is put back first.
+- The Horde Horn and the Monster Magnet bring real monsters. Use them at night only if you are brave.
 - Texts are in English only.
 
 ## Automatic tests
@@ -857,6 +875,7 @@ The tests are in `src/gametest`. They are not part of the mod .jar.
 - runs the whole Armageddon from countdown to the final blast, and checks that the stage is gone
 - waits for every bomb, the tornado, the volcano, the tsunami, the termites, the castle, the pyramid, the island,
   the beanstalk, the mountain and the parted sea, and checks what each one left behind
+- copies a block with the Copy-Paste Wand and pastes it, breaks bedrock with the Bedrock Breaker
 - rolls every number of the Dice of Fate, plays every prank of the gremlin, carries the Hot Potato until it
   explodes, and wears the Storm Crown and the Plague Mask next to a zombie
 
