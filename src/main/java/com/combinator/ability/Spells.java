@@ -104,7 +104,7 @@ public final class Spells {
 	// ------------------------------------------------------------------ bombs
 
 	/** Throws a visible TNT block. After the fuse, the TNT is removed and "detonate" decides what happens there. */
-	private static void throwBomb(ServerWorld world, ServerPlayerEntity player, float speed, int fuse, Consumer<Vec3d> detonate) {
+	static void throwBomb(ServerWorld world, ServerPlayerEntity player, float speed, int fuse, Consumer<Vec3d> detonate) {
 		Vec3d look = player.getRotationVec(1.0F);
 		Vec3d eye = player.getEyePos();
 		TntEntity tnt = new TntEntity(world, eye.x + look.x, eye.y - 0.3, eye.z + look.z, player);

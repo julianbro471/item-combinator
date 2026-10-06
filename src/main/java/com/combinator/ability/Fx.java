@@ -6,8 +6,11 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ExperienceOrbEntity;
+import net.minecraft.entity.FallingBlockEntity;
 import net.minecraft.entity.ItemEntity;
+import net.minecraft.entity.LightningEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.damage.DamageSource;
@@ -26,6 +29,7 @@ import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.RaycastContext;
 import net.minecraft.world.World;
@@ -107,6 +111,89 @@ final class Fx {
 			return living;
 		}
 		return null;
+	}
+
+	/**
+	 * The first free block above the ground at x, z: where something standing on the ground would be.
+	 * Under the open sky this is the highest ground. Under a roof (the Nether) it is the ground near the given height.
+	 */
+	static BlockPos surface(ServerWorld world, double x, double z, double nearY) {
+		BlockPos column = BlockPos.ofFloored(x, nearY, z);
+		if (!world.getDimension().hasCeiling()) {
+			return world.getTopPosition(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, column);
+		}
+		for (int dy = 8; dy >= -16; dy--) {
+			BlockPos pos = column.up(dy);
+			if (pos.getY() <= world.getBottomY()) {
+				break;
+			}
+			if (world.getBlockState(pos).isAir() && !world.getBlockState(pos.down()).isAir()) {
+				return pos;
+			}
+		}
+		return column;
+	}
+
+	/** Like surface, but if the ground there is far above or below the given height, the given height is used. */
+	static BlockPos groundNear(ServerWorld world, double x, double z, double nearY, int maxStep) {
+		BlockPos top = surface(world, x, z, nearY);
+		if (Math.abs(top.getY() - nearY) > maxStep) {
+			return BlockPos.ofFloored(x, nearY, z);
+		}
+		return top;
+	}
+
+	/** True if a structure may put a block here: nothing is there, or only grass, flowers, snow, water and the like. */
+	static boolean canFill(BlockState state) {
+		return state.isAir() || state.isReplaceable();
+	}
+
+	/** True if a block can be torn loose and thrown around: not air, not a liquid, not too hard, no chest or furnace. */
+	static boolean loose(ServerWorld world, BlockPos pos, BlockState state) {
+		if (state.isAir() || !state.getFluidState().isEmpty() || state.hasBlockEntity()) {
+			return false;
+		}
+		float hardness = state.getHardness(world, pos);
+		return hardness >= 0.0F && hardness < 50.0F;
+	}
+
+	/** Turns a block into a falling block with the given speed. The block's place becomes empty. */
+	static FallingBlockEntity fling(ServerWorld world, BlockPos pos, BlockState state, double vx, double vy, double vz) {
+		FallingBlockEntity falling = FallingBlockEntity.spawnFromBlock(world, pos, state);
+		falling.setVelocity(vx, vy, vz);
+		falling.velocityModified = true;
+		return falling;
+	}
+
+	/** A lightning bolt that only looks and sounds real: it starts no fires and hurts nobody by itself. */
+	static void fakeBolt(ServerWorld world, Vec3d at) {
+		LightningEntity bolt = EntityType.LIGHTNING_BOLT.create(world);
+		if (bolt != null) {
+			bolt.refreshPositionAfterTeleport(at);
+			bolt.setCosmetic(true);
+			world.spawnEntity(bolt);
+		}
+	}
+
+	/** A random spot within the given distance where a player has room to stand, or null if none was found. */
+	static BlockPos standingSpot(ServerWorld world, Vec3d center, double distance) {
+		Random random = world.random;
+		for (int attempt = 0; attempt < 24; attempt++) {
+			double x = center.x + (random.nextDouble() - 0.5) * 2.0 * distance;
+			double z = center.z + (random.nextDouble() - 0.5) * 2.0 * distance;
+			BlockPos feet = surface(world, x, z, center.y);
+			if (feet.getY() > world.getBottomY() + 1 && hasRoom(world, feet)) {
+				return feet;
+			}
+		}
+		return null;
+	}
+
+	/** True if a player fits at this position: something solid below, and two blocks without walls or liquids. */
+	static boolean hasRoom(ServerWorld world, BlockPos feet) {
+		return world.getBlockState(feet.down()).isSolidBlock(world, feet.down())
+				&& world.getBlockState(feet).getCollisionShape(world, feet).isEmpty() && world.getFluidState(feet).isEmpty()
+				&& world.getBlockState(feet.up()).getCollisionShape(world, feet.up()).isEmpty() && world.getFluidState(feet.up()).isEmpty();
 	}
 
 	/** Looks up a game attribute such as "generic.scale". Returns null if the game does not have it. */

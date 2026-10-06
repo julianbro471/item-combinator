@@ -672,6 +672,157 @@ public final class ComboItems {
 					.statusEffect(new StatusEffectInstance(StatusEffects.JUMP_BOOST, 600, 1), 1.0F)
 					.statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 160, 0), 1.0F).alwaysEdible().usingConvertsTo(Items.GLASS_BOTTLE).build())),
 			null);
+	public static final Item ARMAGEDDON_CLOCK = add("armageddon_clock", 3, 5,
+			new CItem(props(3).maxDamage(8)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.ARMAGEDDON).cooldown(200).cost(1).sneakUse(Use.DOOM_CANCEL, 20));
+	public static final Item ORBITAL_REMOTE = add("orbital_remote", 3, 3,
+			new CItem(props(3).maxDamage(24)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.ORBITAL_STRIKE).range(128).cooldown(200).cost(1));
+	public static final Item CLUSTER_BOMB = add("cluster_bomb", 2, 2,
+			new CItem(props(2).maxCount(16)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.CLUSTER_BOMB).cooldown(30).consume());
+	public static final Item GRAVITY_GRENADE = add("gravity_grenade", 2, 3,
+			new CItem(props(2).maxCount(16)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.GRAVITY_GRENADE).cooldown(30).consume());
+	public static final Item SCATTER_BOMB = add("scatter_bomb", 2, 3,
+			new CItem(props(2).maxCount(16)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.SCATTER_BOMB).cooldown(30).consume());
+	public static final Item GOLD_BOMB = add("gold_bomb", 3, 3,
+			new CItem(props(3).maxCount(16)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.GOLD_BOMB).cooldown(40).consume());
+	public static final Item TERMITE_JAR = add("termite_jar", 2, 3,
+			new CItem(props(2).maxCount(16)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.TERMITES).range(8).cooldown(40).consume());
+	public static final Item DEATH_RAY = add("death_ray", 3, 3,
+			new CItem(props(3).maxDamage(64)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.DEATH_RAY).range(64).cooldown(80).cost(1));
+	public static final Item TSUNAMI_HORN = add("tsunami_horn", 3, 3,
+			new CItem(props(3).maxDamage(32)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.TSUNAMI).range(32).cooldown(100).cost(1));
+	public static final Item TORNADO_BOTTLE = add("tornado_bottle", 3, 3,
+			new CItem(props(3).maxDamage(16)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.TORNADO).range(32).cooldown(300).cost(1));
+	public static final Item SNAP_GAUNTLET = add("snap_gauntlet", 3, 3,
+			new CItem(props(3).maxDamage(6)),
+			new Traits().at(Traits.Where.HELD).use(Use.SNAP).range(64).cooldown(600).cost(1));
+	public static final Item CREEPER_CANNON = add("creeper_cannon", 2, 2,
+			new CItem(props(2).maxDamage(64)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.CREEPER_CANNON).cooldown(20).cost(1).sneakUse(Use.CHARGED_CREEPER, 60));
+	public static final Item HIVE_GRENADE = add("hive_grenade", 2, 3,
+			new CItem(props(2).maxCount(16)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.HIVE_GRENADE).cooldown(30).consume());
+	public static final Item HOT_POTATO = add("hot_potato", 2, 3,
+			new CItem(props(2).maxCount(16)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.HOT_POTATO).cooldown(10).consume().hotPotato());
+	public static final Item FLOOR_IS_LAVA = add("floor_is_lava", 2, 3,
+			new CItem(props(2).maxDamage(16)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.FLOOR_IS_LAVA).range(9).cooldown(300).cost(1));
+	public static final Item POCKET_VOLCANO = add("pocket_volcano", 3, 3,
+			new CItem(props(3).maxCount(16)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.VOLCANO).range(48).cooldown(400).consume());
+	public static final Item MJOLNIR = add("mjolnir", 3, 4,
+			new CSword(ComboMaterial.of(6000, 1.0F, "netherite", 22), 16, -3.0F, props(3)),
+			new Traits().at(Traits.Where.HELD).lightning(10.0f).chain(10.0f, 8.0f).knockUp(0.5f).strikeCooldown(20).use(Use.LIGHTNING_RING).range(10).power(10.0f).cooldown(80).cost(2));
+	public static final Item GLASS_CANNON = add("glass_cannon", 2, 2,
+			new CSword(ComboMaterial.of(1, 1.0F, "diamond", 18), 60, -2.4F, props(2)),
+			null);
+	public static final Item RAILGUN = add("railgun", 3, 3,
+			new CItem(props(3).maxDamage(128)),
+			new Traits().at(Traits.Where.HELD).use(Use.RAILGUN).range(128).power(30.0f).cooldown(60).cost(1));
+	public static final Item FLAMETHROWER = add("flamethrower", 2, 2,
+			new CItem(props(2).maxDamage(128)),
+			new Traits().at(Traits.Where.HELD).use(Use.FLAMETHROWER).cooldown(50).cost(1));
+	public static final Item BOOM_BOW = add("boom_bow", 2, 2,
+			new CItem(props(2).maxDamage(200)),
+			new Traits().at(Traits.Where.HELD).use(Use.DYNAMITE).power(2.4f).cooldown(16).cost(1).sneakUse(Use.CLUSTER_BOMB, 60));
+	public static final Item PIG_MISSILE = add("pig_missile", 2, 3,
+			new CItem(props(2).maxDamage(16)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.PIG_MISSILE).cooldown(100).cost(1));
+	public static final Item KAIJU_EGG = add("kaiju_egg", 3, 3,
+			new CItem(props(3).maxCount(16)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.KAIJU).cooldown(100).consume());
+	public static final Item RING_OF_FIRE = add("ring_of_fire", 2, 2,
+			new CItem(props(2).maxDamage(32)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.RING_OF_FIRE).range(5).cooldown(100).cost(1));
+	public static final Item STORM_CROWN = add("storm_crown", 3, 2,
+			new CArmor(armorMaterial("storm_crown", 3, 1.0F, 0.0F, "gold", false), ArmorItem.Type.HELMET, props(3).maxDamage(400)),
+			new Traits().at(Traits.Where.WORN).stormCrown());
+	public static final Item PLAGUE_MASK = add("plague_mask", 2, 3,
+			new CArmor(armorMaterial("plague_mask", 1, 0.0F, 0.0F, "leather", false), ArmorItem.Type.HELMET, props(2).maxDamage(200)),
+			new Traits().at(Traits.Where.WORN).plagueAura());
+	public static final Item ENDLESS_LAVA = add("endless_lava", 2, 2,
+			new CItem(props(2).maxCount(1)),
+			new Traits().at(Traits.Where.HELD).endlessLava());
+	public static final Item GENESIS_SEED = add("genesis_seed", 3, 3,
+			new CItem(props(3).maxCount(16)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.SKY_ISLAND).range(64).cooldown(60).consume());
+	public static final Item MAGIC_BEANS = add("magic_beans", 2, 3,
+			new CItem(props(2).maxCount(16)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.BEANSTALK).range(24).cooldown(60).consume());
+	public static final Item CASTLE_BOX = add("castle_box", 3, 3,
+			new CItem(props(3).maxCount(16)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.CASTLE).range(32).cooldown(60).consume());
+	public static final Item PHARAOH_SCARAB = add("pharaoh_scarab", 2, 3,
+			new CItem(props(2).maxCount(16)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.PYRAMID).range(32).cooldown(60).consume());
+	public static final Item TITAN_SPADE = add("titan_spade", 3, 3,
+			new CItem(props(3).maxDamage(64)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.MOUNTAIN).range(48).cooldown(100).cost(1).sneakUse(Use.CRATER, 60));
+	public static final Item BIFROST_STAFF = add("bifrost_staff", 2, 2,
+			new CItem(props(2).maxDamage(64)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.RAINBOW_BRIDGE).range(64).cooldown(40).cost(1));
+	public static final Item PORTAL_GUN = add("portal_gun", 3, 3,
+			new CItem(props(3).maxDamage(16)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.NETHER_PORTAL).range(32).cooldown(100).cost(1).sneakUse(Use.END_PORTAL, 200));
+	public static final Item MITOSIS_RAY = add("mitosis_ray", 3, 3,
+			new CItem(props(3).maxDamage(128)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.MITOSIS).range(32).cooldown(10).cost(1).sneakUse(Use.MITOSIS_BURST, 100));
+	public static final Item MENAGERIE_CANNON = add("menagerie_cannon", 2, 3,
+			new CItem(props(2).maxDamage(256)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.MENAGERIE).cooldown(8).cost(1));
+	public static final Item MOSES_STAFF = add("moses_staff", 3, 3,
+			new CItem(props(3).maxDamage(32)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.PART_SEA).range(48).cooldown(200).cost(1));
+	public static final Item SNOWMAN_HORN = add("snowman_horn", 1, 2,
+			new CItem(props(1).maxDamage(16)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.SNOW_ARMY).power(8.0f).cooldown(400).cost(1));
+	public static final Item FORTRESS_STAFF = add("fortress_staff", 1, 3,
+			new CItem(props(1).maxDamage(128)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.STONE_WALL).cooldown(20).cost(1).sneakUse(Use.STONE_DOME, 100));
+	public static final Item FARM_BOX = add("farm_box", 1, 3,
+			new CItem(props(1).maxCount(16)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.FARM).range(24).cooldown(20).consume());
+	public static final Item WILD_STAFF = add("wild_staff", 3, 3,
+			new CItem(props(3).maxDamage(100)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.WILD_MAGIC).range(48).cooldown(40).cost(1));
+	public static final Item DICE_OF_FATE = add("dice_of_fate", 2, 3,
+			new CItem(props(2).maxDamage(20)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.DICE).cooldown(100).cost(1));
+	public static final Item MUSICAL_CHAIRS = add("musical_chairs", 2, 3,
+			new CItem(props(2).maxDamage(32)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.MUSICAL_CHAIRS).range(32).cooldown(100).cost(1));
+	public static final Item PARTY_CANNON = add("party_cannon", 2, 2,
+			new CItem(props(2).maxDamage(128)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.PARTY).cooldown(30).cost(1).sneakUse(Use.CAKE_RAIN, 200));
+	public static final Item GREMLIN_JAR = add("gremlin_jar", 2, 3,
+			new CItem(props(2).maxCount(1)),
+			new Traits().at(Traits.Where.HOTBAR).gremlin());
+	public static final Item FORCE_FIELD = add("force_field", 2, 3,
+			new CItem(props(2).maxDamage(32)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.FORCE_FIELD).range(5).cooldown(400).cost(1));
+	public static final Item UPSIDE_DOWN_CAKE = add("upside_down_cake", 2, 3,
+			new CItem(props(2).maxCount(16).food(new FoodComponent.Builder().nutrition(6).saturationModifier(0.6F)
+					.statusEffect(new StatusEffectInstance(StatusEffects.SLOW_FALLING, 900, 0), 1.0F).alwaysEdible().build())),
+			new Traits().at(Traits.Where.HELD).eatBuff(6).attr("generic.gravity", -1.5, 2));
+	public static final Item GLACIER_STAFF = add("glacier_staff", 2, 3,
+			new CItem(props(2).maxDamage(128)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.ICE_SPIKES).range(24).cooldown(40).cost(1));
+	public static final Item SHEEP_BOMB = add("sheep_bomb", 1, 2,
+			new CItem(props(1).maxCount(16)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.SHEEP_BOMB).cooldown(30).consume());
+	public static final Item COBWEB_GRENADE = add("cobweb_grenade", 1, 2,
+			new CItem(props(1).maxCount(16)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.COBWEB_BOMB).cooldown(30).consume());
 
 	private ComboItems() {
 	}

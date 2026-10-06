@@ -10,7 +10,7 @@ The number after the name is only the rarity, which sets the name colour in the 
 
 MOD_ID = "combinator"
 MOD_NAME = "Item Combinator"
-VERSION = "1.3.0"
+VERSION = "1.4.0"
 
 ITEMS = []      # custom items, in creative-tab / documentation order
 VANILLA = []    # recipes whose result is a vanilla item
@@ -915,6 +915,174 @@ it("cactus_juice", "Cactus Juice", 1, "cactus", "glass_bottle", "food",
    ["Speed II and Jump Boost II for", "30 seconds. Makes you dizzy."],
    "", tex=("bottle", "glass", "cactus", None), stack=16, always=True, bottle=True,
    nut=2, sat=0.3, fx=[("SPEED", 30, 1), ("JUMP_BOOST", 30, 1), ("NAUSEA", 8, 0)])
+
+# ---------------------------------------------------------------------------------------------
+# MAYHEM (version 1.4): creation, destruction and chaos. No balance at all.
+# ---------------------------------------------------------------------------------------------
+section("Mass destruction")
+it("armageddon_clock", "Armageddon Clock", 3, "time_stopper", "doomsday_device", "gadget",
+   ["Right-click: the end of the world starts", "where you stand. 10 second countdown, then", "earthquake, fire rain, lightning, lava",
+    "geysers and a black hole. Sneak + right-click:", "call it off."],
+   ".use(Use.ARMAGEDDON).cooldown(200).cost(1).sneakUse(Use.DOOM_CANCEL, 20)",
+   tex=("clock", "blood", "void", "skull"), dur=8)
+it("orbital_remote", "Orbital Strike Remote", 3, "spyglass", "beacon", "gadget",
+   ["Right-click: a red light marks the spot you", "look at. 2 seconds later a beam from space", "burns a hole 40 blocks deep."],
+   ".use(Use.ORBITAL_STRIKE).range(128).cooldown(200).cost(1)", tex=("remote", "netherite", "redstone", "star"), dur=24)
+it("cluster_bomb", "Cluster Bomb", 2, "dynamite", "dynamite", "gadget",
+   ["Right-click to throw. It splits into", "8 lit TNT blocks that fly everywhere."],
+   ".use(Use.CLUSTER_BOMB).cooldown(30).consume()", tex=("bomb", "redstone", "thunder", "flame"), count=2, stack=16)
+it("gravity_grenade", "Gravity Grenade", 2, "dynamite", "shulker_shell", "gadget",
+   ["Right-click to throw. The ground where it", "lands flies into the sky and rains down", "somewhere else. Mobs fly too."],
+   ".use(Use.GRAVITY_GRENADE).cooldown(30).consume()", tex=("bomb", "void", "wind", "wing"), count=2, stack=16)
+it("scatter_bomb", "Scatter Bomb", 2, "dynamite", "ender_pearl", "gadget",
+   ["Right-click to throw. Every mob and item", "near the blast is teleported somewhere", "random. Players too."],
+   ".use(Use.SCATTER_BOMB).cooldown(30).consume()", tex=("bomb", "ender", "void", None), count=2, stack=16)
+it("gold_bomb", "Gold Bomb", 3, "dynamite", "gold_block", "gadget",
+   ["Right-click to throw. Everything near", "the blast turns into gold blocks.", "Mobs too."],
+   ".use(Use.GOLD_BOMB).cooldown(40).consume()", tex=("bomb", "gold", "thunder", "gem"), stack=16)
+it("termite_jar", "Termite Jar", 2, "glass_bottle", "spider_eye", "gadget",
+   ["Right-click something wooden: termites eat", "it and every wooden block it touches.", "Trees, houses, ships. Up to 1500 blocks."],
+   ".use(Use.TERMITES).range(8).cooldown(40).consume()", tex=("jar", "glass", "meat", None), stack=16)
+it("death_ray", "Solar Death Ray", 3, "magnifying_glass", "beacon", "gadget",
+   ["Right-click: a beam of sunlight for 3 seconds.", "Stone melts to lava, sand to glass, wood", "burns, water boils, mobs cook."],
+   ".use(Use.DEATH_RAY).range(64).cooldown(80).cost(1)", tex=("magnifier", "gold", "fire", "star"), dur=64)
+it("tsunami_horn", "Tsunami Horn", 3, "ocean_orb", "goat_horn", "gadget",
+   ["Right-click: a wall of water rolls away", "from you for 64 blocks. It sweeps mobs,", "flowers and torches away."],
+   ".use(Use.TSUNAMI).range(32).cooldown(100).cost(1)", tex=("horn", "prismarine", "ice", None), dur=32)
+it("tornado_bottle", "Tornado in a Bottle", 3, "dust_devil", "breeze_rod", "gadget",
+   ["Right-click: a tornado touches down where you", "look and wanders for 15 seconds. It rips up", "the ground and throws mobs (and you) around."],
+   ".use(Use.TORNADO).range(32).cooldown(300).cost(1)", tex=("tornado", "glass", "flint", None), dur=16)
+it("snap_gauntlet", "Snap Gauntlet", 3, "fist_of_doom", "amethyst_block", "gadget",
+   ["Right-click: half of all living things", "within 64 blocks turn to dust.", "Not players. Six snaps."],
+   ".use(Use.SNAP).range(64).cooldown(600).cost(1)", tex=("glove", "gold", "void", "gem"), dur=6, where="HELD")
+it("creeper_cannon", "Creeper Cannon", 2, "dispenser", "creeper_head", "gadget",
+   ["Right-click: fires a lit creeper.", "Sneak + right-click: a charged one."],
+   ".use(Use.CREEPER_CANNON).cooldown(20).cost(1).sneakUse(Use.CHARGED_CREEPER, 60)", tex=("cannon", "netherite", "slime", None), dur=64)
+it("hive_grenade", "Hive Grenade", 2, "beehive", "gunpowder", "gadget",
+   ["Right-click to throw. 10 angry bees burst out", "and sting the nearest living thing.", "That can be you."],
+   ".use(Use.HIVE_GRENADE).cooldown(30).consume()", tex=("bomb", "honey", "wood", None), count=2, stack=16)
+it("hot_potato", "Hot Potato", 2, "baked_potato", "tnt", "gadget",
+   ["Explodes 15 seconds after you pick it up.", "Right-click: throw it away. It goes off", "3 seconds later, unless someone catches it."],
+   ".use(Use.HOT_POTATO).cooldown(10).consume().hotPotato()", tex=("potato", "wheat", "fire", "flame"), stack=16)
+it("floor_is_lava", "The Floor Is Lava", 2, "magma_block", "note_block", "gadget",
+   ["Right-click: plays a song. For 8 seconds the", "ground around you is lava, except the block", "you stand on. Do not move."],
+   ".use(Use.FLOOR_IS_LAVA).range(9).cooldown(300).cost(1)", tex=("disc", "wither", "magma", "flame"), dur=16)
+it("pocket_volcano", "Pocket Volcano", 3, "magma_block", "fire_charge", "gadget",
+   ["Right-click: a volcano grows out of the ground", "where you look and erupts for 10 seconds:", "lava bombs, explosions and fire."],
+   ".use(Use.VOLCANO).range(48).cooldown(400).consume()", tex=("volcano", "netherite", "fire", None), stack=16)
+it("mjolnir", "Mjolnir", 3, "earthshaker", "tempest_blade", "sword",
+   ["Calls lightning on the enemy you hit.", "The lightning jumps to nearby enemies.",
+    "Right-click: a ring of 12 lightning bolts", "and a shock wave throws everything away."],
+   ".lightning(10.0f).chain(10.0f, 8.0f).knockUp(0.5f).strikeCooldown(20)"
+   ".use(Use.LIGHTNING_RING).range(10).power(10.0f).cooldown(80).cost(2)",
+   tex=("mjolnir", "iron", "leather", "bolt"), dur=6000, dmg=16, aspd=-3.0, level="netherite")
+it("glass_cannon", "Glass Cannon", 2, "diamond_sword", "glass", "sword",
+   ["60 damage.", "It shatters after one hit."],
+   "", tex=("sword", "glass", "diamond", "star"), dur=1, dmg=60, aspd=-2.4, level="diamond")
+it("railgun", "Railgun", 3, "crossbow", "end_rod", "gadget",
+   ["Right-click: a shot that goes straight through", "walls for 128 blocks. It drills a hole and", "hits every mob on the line for 30 damage."],
+   ".use(Use.RAILGUN).range(128).power(30.0f).cooldown(60).cost(1)", tex=("raygun", "iron", "thunder", "bolt"), dur=128, where="HELD")
+it("flamethrower", "Flamethrower", 2, "flint_and_steel", "blaze_rod", "gadget",
+   ["Right-click: 2 seconds of fire.", "Sets everything in front of you ablaze."],
+   ".use(Use.FLAMETHROWER).cooldown(50).cost(1)", tex=("cannon", "copper", "fire", "flame"), dur=128, where="HELD")
+it("boom_bow", "Boom Bow", 2, "bow", "tnt", "gadget",
+   ["Right-click: shoots lit TNT instead of arrows.", "Sneak + right-click: a cluster bomb."],
+   ".use(Use.DYNAMITE).power(2.4f).cooldown(16).cost(1).sneakUse(Use.CLUSTER_BOMB, 60)", tex=("bow", "wood", "redstone", "flame"),
+   dur=200, where="HELD")
+it("pig_missile", "Pig Missile", 2, "saddle", "firework_rocket", "gadget",
+   ["Right-click: you ride a rocket-powered pig.", "It flies where you look and explodes when it", "hits something. You get thrown clear."],
+   ".use(Use.PIG_MISSILE).cooldown(100).cost(1)", tex=("saddle", "pink", "fire", "flame"), dur=16)
+it("kaiju_egg", "Kaiju Egg", 3, "egg", "bone_block", "gadget",
+   ["Right-click: a random monster hatches 10", "blocks away. It is six times as big, has", "200 extra health and hunts you."],
+   ".use(Use.KAIJU).cooldown(100).consume()", tex=("seed", "bone", "venom", "skull"), stack=16)
+it("ring_of_fire", "Ring of Fire", 2, "flint_and_steel", "netherrack", "gadget",
+   ["Right-click: a ring of fire that never goes", "out closes around you."],
+   ".use(Use.RING_OF_FIRE).range(5).cooldown(100).cost(1)", tex=("charm", "magma", "fire", "flame"), dur=32)
+it("storm_crown", "Storm Crown", 3, "golden_helmet", "lightning_rod", "armor",
+   ["While worn: every 3 seconds lightning", "strikes a monster near you."],
+   ".stormCrown()", tex=("crown", "thunder", "copper", "bolt"),
+   slot="HELMET", prot=3, tough=1.0, kb=0.0, dur=400, layer="gold")
+it("plague_mask", "Plague Mask", 2, "leather_helmet", "poisonous_potato", "armor",
+   ["While worn: everything alive within", "6 blocks gets poisoned and withers.", "Tame pets are spared."],
+   ".plagueAura()", tex=("helmet", "leather", "venom", "skull"),
+   slot="HELMET", prot=1, tough=0.0, kb=0.0, dur=200, layer="leather")
+it("endless_lava", "Endless Lava Bucket", 2, "lava_bucket", "bucket", "gadget",
+   ["Right-click a block: places lava.", "It never runs dry."],
+   ".endlessLava()", tex=("bucket", "iron", "fire", "flame"), where="HELD")
+
+section("Instant creation")
+it("genesis_seed", "Genesis Seed", 3, "grass_block", "nether_star", "gadget",
+   ["Right-click: a floating island grows in the sky", "above the spot you look at. Trees, ores,", "a pond, a waterfall, flowers and sheep."],
+   ".use(Use.SKY_ISLAND).range(64).cooldown(60).consume()", tex=("seed", "emerald", "gold", "star"), stack=16)
+it("magic_beans", "Magic Beans", 2, "cocoa_beans", "emerald", "gadget",
+   ["Right-click the ground: a beanstalk grows 64", "blocks into the sky. Climb the vines. On the", "cloud at the top: a chest, and a sleeping giant."],
+   ".use(Use.BEANSTALK).range(24).cooldown(60).consume()", tex=("beans", "venom", "emerald", None), stack=16)
+it("castle_box", "Castle in a Box", 3, "house_box", "stone_bricks", "gadget",
+   ["Right-click: a stone castle builds itself", "where you look. Walls, four towers, a gate,", "a keep with a golden throne, two golem guards."],
+   ".use(Use.CASTLE).range(32).cooldown(60).consume()", tex=("box", "stone", "gold", "shield"), stack=16)
+it("pharaoh_scarab", "Pharaoh's Scarab", 2, "sandstone", "gold_block", "gadget",
+   ["Right-click: a pyramid rises where you look.", "Inside: a treasure chamber.", "Do not step on the pressure plate."],
+   ".use(Use.PYRAMID).range(32).cooldown(60).consume()", tex=("scarab", "gold", "lapis", None), stack=16)
+it("titan_spade", "Titan's Spade", 3, "diamond_shovel", "grass_block", "gadget",
+   ["Right-click: a mountain with a snowy peak", "rises where you look. Sneak + right-click:", "digs a crater and fills it with water."],
+   ".use(Use.MOUNTAIN).range(48).cooldown(100).cost(1).sneakUse(Use.CRATER, 60)", tex=("shovel", "emerald", "gold", "star"), dur=64)
+it("bifrost_staff", "Bifrost Staff", 2, "bridge_staff", "prismarine_crystals", "gadget",
+   ["Right-click: a rainbow bridge arcs to the", "spot you look at, up to 64 blocks away."],
+   ".use(Use.RAINBOW_BRIDGE).range(64).cooldown(40).cost(1)", tex=("staff3", "diamond", "pink", "star"), dur=64)
+it("portal_gun", "Portal Gun", 3, "crying_obsidian", "ender_eye", "gadget",
+   ["Right-click a block: a lit Nether portal", "appears there. Sneak + right-click the floor:", "a hole straight into the End."],
+   ".use(Use.NETHER_PORTAL).range(32).cooldown(100).cost(1).sneakUse(Use.END_PORTAL, 200)", tex=("raygun", "void", "ender", None), dur=16)
+it("mitosis_ray", "Mitosis Ray", 3, "size_ray", "slime_ball", "gadget",
+   ["Right-click a mob: it splits into two.", "Sneak + right-click: every mob within", "8 blocks splits. Also the Wither."],
+   ".use(Use.MITOSIS).range(32).cooldown(10).cost(1).sneakUse(Use.MITOSIS_BURST, 100)", tex=("raygun", "slime", "venom", None), dur=128)
+it("menagerie_cannon", "Menagerie Cannon", 2, "dispenser", "hay_block", "gadget",
+   ["Right-click: fires a random animal or", "monster. Anything from a bee to a ravager.", "Very rarely a warden."],
+   ".use(Use.MENAGERIE).cooldown(8).cost(1)", tex=("cannon", "wood", "wheat", "paw"), dur=256)
+it("moses_staff", "Staff of the Red Sea", 3, "ocean_orb", "stick", "gadget",
+   ["Right-click: the water in front of you parts,", "a path 5 wide and 48 long down to the sea floor.", "The sea comes back after 20 seconds."],
+   ".use(Use.PART_SEA).range(48).cooldown(200).cost(1)", tex=("staff", "wood", "prismarine", None), dur=32)
+it("snowman_horn", "Snowman Horn", 1, "goat_horn", "snow_block", "gadget",
+   ["Right-click: 8 snow golems appear around", "you and throw snowballs at monsters."],
+   ".use(Use.SNOW_ARMY).power(8.0f).cooldown(400).cost(1)", tex=("horn", "ice", "bone", None), dur=16)
+it("fortress_staff", "Fortress Staff", 1, "stick", "stone_bricks", "gadget",
+   ["Right-click: a stone wall rises in front", "of you. Sneak + right-click: a stone dome", "closes over you."],
+   ".use(Use.STONE_WALL).cooldown(20).cost(1).sneakUse(Use.STONE_DOME, 100)", tex=("staff", "stone", "iron", "shield"), dur=128)
+it("farm_box", "Farm in a Box", 1, "composter", "wheat_seeds", "gadget",
+   ["Right-click: a ripe 9x9 farm appears where", "you look: water, farmland, wheat, carrots,", "potatoes, beetroot and a scarecrow."],
+   ".use(Use.FARM).range(24).cooldown(20).consume()", tex=("box", "wood", "wheat", "seed"), stack=16)
+
+section("Pure chaos")
+it("wild_staff", "Staff of Wild Magic", 3, "blaze_rod", "chorus_fruit", "gadget",
+   ["Right-click: casts a random spell of this mod.", "From a fireball to a tornado to a nuke.", "Even the end of the world."],
+   ".use(Use.WILD_MAGIC).range(48).cooldown(40).cost(1)", tex=("staff3", "ender", "blood", "question"), dur=100)
+it("dice_of_fate", "Dice of Fate", 2, "bone_block", "emerald", "gadget",
+   ["Right-click: roll a 20-sided die.", "1: a Wither. 20: netherite, diamonds", "and 30 levels. Everything in between."],
+   ".use(Use.DICE).cooldown(100).cost(1)", tex=("dice", "bone", "blood", None), dur=20)
+it("musical_chairs", "Musical Chairs", 2, "note_block", "chorus_fruit", "gadget",
+   ["Right-click: every living thing within", "32 blocks swaps places with another one.", "You too."],
+   ".use(Use.MUSICAL_CHAIRS).range(32).cooldown(100).cost(1)", tex=("chair", "wood", "pink", None), dur=32)
+it("party_cannon", "Party Cannon", 2, "dispenser", "firework_rocket", "gadget",
+   ["Right-click: a volley of exploding fireworks.", "Sneak + right-click: it rains cake."],
+   ".use(Use.PARTY).cooldown(30).cost(1).sneakUse(Use.CAKE_RAIN, 200)", tex=("cannon", "pink", "thunder", "star"), dur=128)
+it("gremlin_jar", "Gremlin in a Jar", 2, "firefly_jar", "fermented_spider_eye", "gadget",
+   ["Keep it in your hotbar. Now and then the", "gremlin plays a prank: it swaps your items,", "opens doors, steals torches, makes you hiccup."],
+   ".gremlin()", tex=("jar", "glass", "venom", None))
+it("force_field", "Force Field", 2, "shield", "redstone_block", "gadget",
+   ["Right-click: for 10 seconds nothing gets", "closer than 5 blocks. Mobs are pushed", "away, arrows and fireballs vanish."],
+   ".use(Use.FORCE_FIELD).range(5).cooldown(400).cost(1)", tex=("orb", "diamond", "thunder", "bolt"), dur=32)
+it("upside_down_cake", "Upside-Down Cake", 2, "cake", "phantom_membrane", "food",
+   ["You fall upward for 6 seconds.", "Then you float back down.", "Can be eaten when full."],
+   ".eatBuff(6).attr(\"generic.gravity\", -1.5, 2)", tex=("cake", "void", "pink", None), stack=16, always=True,
+   nut=6, sat=0.6, fx=[("SLOW_FALLING", 45, 0)])
+it("glacier_staff", "Glacier Staff", 2, "blue_ice", "blaze_rod", "gadget",
+   ["Right-click: a line of ice spikes bursts out", "of the ground towards where you look.", "Mobs in the way are thrown up and frozen."],
+   ".use(Use.ICE_SPIKES).range(24).cooldown(40).cost(1)", tex=("staff", "ice", "diamond", None), dur=128)
+it("sheep_bomb", "Sheep Bomb", 1, "dynamite", "white_wool", "gadget",
+   ["Right-click to throw.", "16 sheep in every colour burst out."],
+   ".use(Use.SHEEP_BOMB).cooldown(30).consume()", tex=("bomb", "pink", "bone", "wool"), count=2, stack=16)
+it("cobweb_grenade", "Cobweb Grenade", 1, "dynamite", "cobweb", "gadget",
+   ["Right-click to throw. Cobwebs everywhere", "near the blast. Mobs get stuck."],
+   ".use(Use.COBWEB_BOMB).cooldown(30).consume()", tex=("bomb", "bone", "wither", None), count=2, stack=16)
 
 # ---------------------------------------------------------------------------------------------
 # VANILLA RESULTS

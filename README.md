@@ -4,8 +4,8 @@ A Fabric mod for **Minecraft Java Edition 1.21.1**.
 
 It adds one block, the **Combiner Table**. You put two items into it and get one new item.
 
-- **257 combinations** in total.
-- 207 of them make one of **203 new items**: tools, weapons, armor, gadgets, food, bombs, cheats.
+- **307 combinations** in total.
+- 257 of them make one of **253 new items**: tools, weapons, armor, gadgets, food, bombs, cheats.
 - 50 of them make a vanilla item that you normally cannot craft (saddle, name tag, elytra, ...).
 - Two stackable items that have no combination give a **Chaos Orb**, which does something random.
 - There are no tiers and there is no balance. Some items are normal, many are absurd, a few can destroy your world.
@@ -19,8 +19,9 @@ the finished .jar, started the same way a player starts it. See "Automatic tests
 every ability does its main job without an error. They do not prove that it is fun, that it runs well on a
 slow PC, or that it works together with other mods. Expect smaller bugs.
 
-**Make a backup of your world before you use the bombs.** Nukes, black holes, meteors, the Blast Pickaxe and the
-World Eater delete large parts of the world for good.
+**Make a backup of your world before you use the bombs.** Nukes, black holes, meteors, the Blast Pickaxe, the
+World Eater, the Armageddon Clock, the Orbital Strike Remote, the Tornado, the Termite Jar and the Pocket Volcano
+delete or change large parts of the world for good.
 
 ## What you need
 
@@ -43,7 +44,7 @@ about 1 GB and takes several minutes. `build` also runs the server tests. To ski
 
 ## Installing
 
-Put `item-combinator-1.3.0.jar` and the Fabric API .jar into the `mods` folder of your Minecraft installation.
+Put `item-combinator-1.4.0.jar` and the Fabric API .jar into the `mods` folder of your Minecraft installation.
 Start the game with the Fabric profile.
 
 ## How the Combiner Table works
@@ -407,6 +408,71 @@ Every new item has a description under its name. All new items are also in their
 | Glass Pane | Stick | **Magnifying Glass** | Right-click in sunlight: sets the mob or block you look at on fire. |  |
 | Saddle | Lead | **Rodeo Saddle** | Right-click any mob to ride it. You do not steer. Sneak to get off. | 32 uses |
 
+### Mass destruction
+
+| Item A | Item B | Result | What it does | Stats |
+|---|---|---|---|---|
+| *Time Stopper* | *Doomsday Device* | **Armageddon Clock** | Right-click: the end of the world starts where you stand. 10 second countdown, then earthquake, fire rain, lightning, lava geysers and a black hole. Sneak + right-click: call it off. | 8 uses |
+| Spyglass | Beacon | **Orbital Strike Remote** | Right-click: a red light marks the spot you look at. 2 seconds later a beam from space burns a hole 40 blocks deep. | 24 uses |
+| *Dynamite* | *Dynamite* | **Cluster Bomb** x2 | Right-click to throw. It splits into 8 lit TNT blocks that fly everywhere. |  |
+| *Dynamite* | Shulker Shell | **Gravity Grenade** x2 | Right-click to throw. The ground where it lands flies into the sky and rains down somewhere else. Mobs fly too. |  |
+| *Dynamite* | Ender Pearl | **Scatter Bomb** x2 | Right-click to throw. Every mob and item near the blast is teleported somewhere random. Players too. |  |
+| *Dynamite* | Block of Gold | **Gold Bomb** | Right-click to throw. Everything near the blast turns into gold blocks. Mobs too. |  |
+| Glass Bottle | Spider Eye | **Termite Jar** | Right-click something wooden: termites eat it and every wooden block it touches. Trees, houses, ships. Up to 1500 blocks. |  |
+| *Magnifying Glass* | Beacon | **Solar Death Ray** | Right-click: a beam of sunlight for 3 seconds. Stone melts to lava, sand to glass, wood burns, water boils, mobs cook. | 64 uses |
+| *Ocean Orb* | Goat Horn | **Tsunami Horn** | Right-click: a wall of water rolls away from you for 64 blocks. It sweeps mobs, flowers and torches away. | 32 uses |
+| *Bottled Dust Devil* | Breeze Rod | **Tornado in a Bottle** | Right-click: a tornado touches down where you look and wanders for 15 seconds. It rips up the ground and throws mobs (and you) around. | 16 uses |
+| *Fist of Doom* | Block of Amethyst | **Snap Gauntlet** | Right-click: half of all living things within 64 blocks turn to dust. Not players. Six snaps. | 6 uses |
+| Dispenser | Creeper Head | **Creeper Cannon** | Right-click: fires a lit creeper. Sneak + right-click: a charged one. | 64 uses |
+| Beehive | Gunpowder | **Hive Grenade** x2 | Right-click to throw. 10 angry bees burst out and sting the nearest living thing. That can be you. |  |
+| Baked Potato | TNT | **Hot Potato** | Explodes 15 seconds after you pick it up. Right-click: throw it away. It goes off 3 seconds later, unless someone catches it. |  |
+| Magma Block | Note Block | **The Floor Is Lava** | Right-click: plays a song. For 8 seconds the ground around you is lava, except the block you stand on. Do not move. | 16 uses |
+| Magma Block | Fire Charge | **Pocket Volcano** | Right-click: a volcano grows out of the ground where you look and erupts for 10 seconds: lava bombs, explosions and fire. |  |
+| *Earthshaker* | *Tempest Blade* | **Mjolnir** | Calls lightning on the enemy you hit. The lightning jumps to nearby enemies. Right-click: a ring of 12 lightning bolts and a shock wave throws everything away. | 16 damage, 6000 uses |
+| Diamond Sword | Glass | **Glass Cannon** | 60 damage. It shatters after one hit. | 60 damage, 1 uses |
+| Crossbow | End Rod | **Railgun** | Right-click: a shot that goes straight through walls for 128 blocks. It drills a hole and hits every mob on the line for 30 damage. | 128 uses |
+| Flint and Steel | Blaze Rod | **Flamethrower** | Right-click: 2 seconds of fire. Sets everything in front of you ablaze. | 128 uses |
+| Bow | TNT | **Boom Bow** | Right-click: shoots lit TNT instead of arrows. Sneak + right-click: a cluster bomb. | 200 uses |
+| Saddle | Firework Rocket | **Pig Missile** | Right-click: you ride a rocket-powered pig. It flies where you look and explodes when it hits something. You get thrown clear. | 16 uses |
+| Egg | Bone Block | **Kaiju Egg** | Right-click: a random monster hatches 10 blocks away. It is six times as big, has 200 extra health and hunts you. |  |
+| Flint and Steel | Netherrack | **Ring of Fire** | Right-click: a ring of fire that never goes out closes around you. | 32 uses |
+| Golden Helmet | Lightning Rod | **Storm Crown** | While worn: every 3 seconds lightning strikes a monster near you. | 3 armor, 400 uses |
+| Leather Cap | Poisonous Potato | **Plague Mask** | While worn: everything alive within 6 blocks gets poisoned and withers. Tame pets are spared. | 1 armor, 200 uses |
+| Lava Bucket | Bucket | **Endless Lava Bucket** | Right-click a block: places lava. It never runs dry. |  |
+
+### Instant creation
+
+| Item A | Item B | Result | What it does | Stats |
+|---|---|---|---|---|
+| Grass Block | Nether Star | **Genesis Seed** | Right-click: a floating island grows in the sky above the spot you look at. Trees, ores, a pond, a waterfall, flowers and sheep. |  |
+| Cocoa Beans | Emerald | **Magic Beans** | Right-click the ground: a beanstalk grows 64 blocks into the sky. Climb the vines. On the cloud at the top: a chest, and a sleeping giant. |  |
+| *House in a Box* | Stone Bricks | **Castle in a Box** | Right-click: a stone castle builds itself where you look. Walls, four towers, a gate, a keep with a golden throne, two golem guards. |  |
+| Sandstone | Block of Gold | **Pharaoh's Scarab** | Right-click: a pyramid rises where you look. Inside: a treasure chamber. Do not step on the pressure plate. |  |
+| Diamond Shovel | Grass Block | **Titan's Spade** | Right-click: a mountain with a snowy peak rises where you look. Sneak + right-click: digs a crater and fills it with water. | 64 uses |
+| *Bridge Staff* | Prismarine Crystals | **Bifrost Staff** | Right-click: a rainbow bridge arcs to the spot you look at, up to 64 blocks away. | 64 uses |
+| Crying Obsidian | Eye of Ender | **Portal Gun** | Right-click a block: a lit Nether portal appears there. Sneak + right-click the floor: a hole straight into the End. | 16 uses |
+| *Size Ray* | Slimeball | **Mitosis Ray** | Right-click a mob: it splits into two. Sneak + right-click: every mob within 8 blocks splits. Also the Wither. | 128 uses |
+| Dispenser | Hay Bale | **Menagerie Cannon** | Right-click: fires a random animal or monster. Anything from a bee to a ravager. Very rarely a warden. | 256 uses |
+| *Ocean Orb* | Stick | **Staff of the Red Sea** | Right-click: the water in front of you parts, a path 5 wide and 48 long down to the sea floor. The sea comes back after 20 seconds. | 32 uses |
+| Goat Horn | Snow Block | **Snowman Horn** | Right-click: 8 snow golems appear around you and throw snowballs at monsters. | 16 uses |
+| Stick | Stone Bricks | **Fortress Staff** | Right-click: a stone wall rises in front of you. Sneak + right-click: a stone dome closes over you. | 128 uses |
+| Composter | Wheat Seeds | **Farm in a Box** | Right-click: a ripe 9x9 farm appears where you look: water, farmland, wheat, carrots, potatoes, beetroot and a scarecrow. |  |
+
+### Pure chaos
+
+| Item A | Item B | Result | What it does | Stats |
+|---|---|---|---|---|
+| Blaze Rod | Chorus Fruit | **Staff of Wild Magic** | Right-click: casts a random spell of this mod. From a fireball to a tornado to a nuke. Even the end of the world. | 100 uses |
+| Bone Block | Emerald | **Dice of Fate** | Right-click: roll a 20-sided die. 1: a Wither. 20: netherite, diamonds and 30 levels. Everything in between. | 20 uses |
+| Note Block | Chorus Fruit | **Musical Chairs** | Right-click: every living thing within 32 blocks swaps places with another one. You too. | 32 uses |
+| Dispenser | Firework Rocket | **Party Cannon** | Right-click: a volley of exploding fireworks. Sneak + right-click: it rains cake. | 128 uses |
+| *Firefly Jar* | Fermented Spider Eye | **Gremlin in a Jar** | Keep it in your hotbar. Now and then the gremlin plays a prank: it swaps your items, opens doors, steals torches, makes you hiccup. |  |
+| Shield | Block of Redstone | **Force Field** | Right-click: for 10 seconds nothing gets closer than 5 blocks. Mobs are pushed away, arrows and fireballs vanish. | 32 uses |
+| Cake | Phantom Membrane | **Upside-Down Cake** | You fall upward for 6 seconds. Then you float back down. Can be eaten when full. | 6 hunger |
+| Blue Ice | Blaze Rod | **Glacier Staff** | Right-click: a line of ice spikes bursts out of the ground towards where you look. Mobs in the way are thrown up and frozen. | 128 uses |
+| *Dynamite* | White Wool | **Sheep Bomb** x2 | Right-click to throw. 16 sheep in every colour burst out. |  |
+| *Dynamite* | Cobweb | **Cobweb Grenade** x2 | Right-click to throw. Cobwebs everywhere near the blast. Mobs get stuck. |  |
+
 ## All combinations that make vanilla items
 
 | Item A | Item B | Result |
@@ -650,6 +716,38 @@ These items need three or more combining steps. Each list shows everything that 
     - Enchanted Golden Apple
     - Totem of Undying
 
+- **Armageddon Clock**
+  - **Time Stopper**
+    - **Chrono Clock**
+      - Clock
+      - Diamond
+    - Eye of Ender
+  - **Doomsday Device**
+    - **Pocket Nuke**
+      - **Mega Dynamite**
+        - **Dynamite**
+          - Gunpowder
+          - Paper
+        - TNT
+      - Nether Star
+    - **Singularity**
+      - Echo Shard
+      - Nether Star
+
+- **Mjolnir**
+  - **Earthshaker**
+    - **Excavator**
+      - Diamond Pickaxe
+      - Diamond Pickaxe
+    - TNT
+  - **Tempest Blade**
+    - **Thunder Blade**
+      - Diamond Sword
+      - Lightning Rod
+    - **Gale Saber**
+      - Diamond Sword
+      - Breeze Rod
+
 ## Things to know
 
 - **Sneak** while mining with an area tool, vein tool, lumber axe or the Blast Pickaxe to break only one block.
@@ -698,6 +796,34 @@ These items need three or more combining steps. Each list shows everything that 
 - The Pocket Mirror stops arrows, tridents, fireballs and other shots, one every 3 seconds. A ghast fireball still
   explodes next to you.
 - The Magnifying Glass needs the sun: daytime, no rain, open sky above you.
+- **Armageddon Clock:** it takes about 50 seconds from the right-click to the end. It happens around the spot where
+  you stood, not around you, so you can run. Only the player who started it can call it off (sneak + right-click
+  with the clock). If the world is closed in the middle, it stops. Everybody within 160 blocks sees the countdown.
+- The Orbital Strike, the Termite Jar, the Solar Death Ray, the Tornado and the Railgun do not drop the blocks they
+  destroy. Bedrock and other unbreakable blocks stay. Obsidian also stops the Railgun and the Death Ray.
+- The Termite Jar eats everything an axe mines fastest (logs, planks, doors, fences, crafting tables, pumpkins ...),
+  but no chests or other blocks that hold things. It stops after 1500 blocks.
+- The Tsunami Horn and the Staff of the Red Sea leave no water behind. The Red Sea comes back after 20 seconds,
+  also over anything you put in its place. In the Nether the tsunami boils away into steam.
+- The Tornado also throws you around if you get too close. You take fall damage when it lets you go.
+- The Floor Is Lava puts the ground back after 8 seconds. If the world is closed in the middle, the lava stays.
+- The Hot Potato counts down while it is anywhere in your inventory. Put it in a chest to stop the countdown.
+  A thrown potato that somebody picks up starts counting for them.
+- The Snap Gauntlet never takes players or the Ender Dragon. It does take the Wither, villagers and pets.
+- The Mitosis Ray copies everything about a mob: health, name, trades, what it holds. It also copies the Wither.
+- The Menagerie Cannon and the Kaiju Egg spawn real mobs. Some of them (a warden, a ghast, a ravager) can kill you.
+- The Portal Gun makes real portals. The End portal leads to the End from anywhere, and back home from the End.
+- Magic Beans: the beanstalk is 64 blocks high. Climb the vines on its sides.
+  The giant on the cloud does not move. Do not ask why.
+- The Pharaoh's Scarab trap is real: the pressure plate in the treasure chamber sets off TNT under the floor.
+- The Staff of Wild Magic picks from every right-click ability of this mod, the Armageddon Clock and the Pocket
+  Nuke included. It never picks an ability that needs a special item in your hand (backpack, waystone ...).
+- The Dice of Fate is fair: every number from 1 to 20 is equally likely. 1 spawns a real Wither.
+- The Gremlin in a Jar plays a prank about every 20 seconds while it is in your hotbar or off hand.
+- The Upside-Down Cake turns your gravity around for 6 seconds. Under a roof you stand on the ceiling.
+  Slow Falling lasts 45 seconds, so the way back down is safe.
+- The Storm Crown's lightning only looks real: it never hits you, and it starts no fires.
+- The Plague Mask also makes villagers and other friendly animals sick. Only tame pets are spared.
 - Texts are in English only.
 
 ## Automatic tests
@@ -728,6 +854,11 @@ The tests are in `src/gametest`. They are not part of the mod .jar.
 - wears, holds and carries the odd charms for 20 seconds: balloon, light, lunchbox, flower boots, lava boots,
   and goes 5 seconds back in time with the Rewind Watch
 - lets a skeleton arrow bounce off the Pocket Mirror, fills and empties the Piggy Bank, rides a cow
+- runs the whole Armageddon from countdown to the final blast, and checks that the stage is gone
+- waits for every bomb, the tornado, the volcano, the tsunami, the termites, the castle, the pyramid, the island,
+  the beanstalk, the mountain and the parted sea, and checks what each one left behind
+- rolls every number of the Dice of Fate, plays every prank of the gremlin, carries the Hot Potato until it
+  explodes, and wears the Storm Crown and the Plague Mask next to a zombie
 
 **Client test** (`gradlew runClientTest`). The real game starts, makes a flat world, opens the Combiner Table with a
 right-click, puts two items in, takes the result, and takes screenshots of the table, of every item in the

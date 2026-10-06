@@ -149,6 +149,16 @@ public final class Traits {
 	public boolean unlock;
 	/** Right-click on a block pushes it away, sneaking pulls it. */
 	public boolean push;
+	/** Explodes in the inventory of whoever carries it for too long. */
+	public boolean hotPotato;
+	/** While worn, lightning strikes monsters nearby. */
+	public boolean stormCrown;
+	/** While worn, everything alive nearby gets poisoned and withers. */
+	public boolean plagueAura;
+	/** Places lava and never runs dry. */
+	public boolean endlessLava;
+	/** A gremlin plays pranks on the player now and then. */
+	public boolean gremlin;
 	/** Changes to the player's body: size, health, reach and so on. */
 	public final List<Attr> attrs = new ArrayList<>();
 
@@ -291,6 +301,31 @@ public final class Traits {
 
 	public Traits unlock() {
 		this.unlock = true;
+		return this;
+	}
+
+	public Traits hotPotato() {
+		this.hotPotato = true;
+		return this;
+	}
+
+	public Traits stormCrown() {
+		this.stormCrown = true;
+		return this;
+	}
+
+	public Traits plagueAura() {
+		this.plagueAura = true;
+		return this;
+	}
+
+	public Traits endlessLava() {
+		this.endlessLava = true;
+		return this;
+	}
+
+	public Traits gremlin() {
+		this.gremlin = true;
 		return this;
 	}
 

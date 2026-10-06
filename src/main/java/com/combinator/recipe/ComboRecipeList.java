@@ -214,6 +214,56 @@ final class ComboRecipeList {
 		ComboRecipes.add("minecraft:saddle", "minecraft:lead", "combinator:rodeo_saddle", 1, 1);
 		ComboRecipes.add("minecraft:cobblestone", "minecraft:bowl", "combinator:stone_soup", 1, 1);
 		ComboRecipes.add("minecraft:cactus", "minecraft:glass_bottle", "combinator:cactus_juice", 1, 1);
+		ComboRecipes.add("combinator:time_stopper", "combinator:doomsday_device", "combinator:armageddon_clock", 1, 3);
+		ComboRecipes.add("minecraft:spyglass", "minecraft:beacon", "combinator:orbital_remote", 1, 3);
+		ComboRecipes.add("combinator:dynamite", "combinator:dynamite", "combinator:cluster_bomb", 2, 2);
+		ComboRecipes.add("combinator:dynamite", "minecraft:shulker_shell", "combinator:gravity_grenade", 2, 2);
+		ComboRecipes.add("combinator:dynamite", "minecraft:ender_pearl", "combinator:scatter_bomb", 2, 2);
+		ComboRecipes.add("combinator:dynamite", "minecraft:gold_block", "combinator:gold_bomb", 1, 3);
+		ComboRecipes.add("minecraft:glass_bottle", "minecraft:spider_eye", "combinator:termite_jar", 1, 2);
+		ComboRecipes.add("combinator:magnifying_glass", "minecraft:beacon", "combinator:death_ray", 1, 3);
+		ComboRecipes.add("combinator:ocean_orb", "minecraft:goat_horn", "combinator:tsunami_horn", 1, 3);
+		ComboRecipes.add("combinator:dust_devil", "minecraft:breeze_rod", "combinator:tornado_bottle", 1, 3);
+		ComboRecipes.add("combinator:fist_of_doom", "minecraft:amethyst_block", "combinator:snap_gauntlet", 1, 3);
+		ComboRecipes.add("minecraft:dispenser", "minecraft:creeper_head", "combinator:creeper_cannon", 1, 2);
+		ComboRecipes.add("minecraft:beehive", "minecraft:gunpowder", "combinator:hive_grenade", 2, 2);
+		ComboRecipes.add("minecraft:baked_potato", "minecraft:tnt", "combinator:hot_potato", 1, 2);
+		ComboRecipes.add("minecraft:magma_block", "minecraft:note_block", "combinator:floor_is_lava", 1, 2);
+		ComboRecipes.add("minecraft:magma_block", "minecraft:fire_charge", "combinator:pocket_volcano", 1, 3);
+		ComboRecipes.add("combinator:earthshaker", "combinator:tempest_blade", "combinator:mjolnir", 1, 3);
+		ComboRecipes.add("minecraft:diamond_sword", "minecraft:glass", "combinator:glass_cannon", 1, 2);
+		ComboRecipes.add("minecraft:crossbow", "minecraft:end_rod", "combinator:railgun", 1, 3);
+		ComboRecipes.add("minecraft:flint_and_steel", "minecraft:blaze_rod", "combinator:flamethrower", 1, 2);
+		ComboRecipes.add("minecraft:bow", "minecraft:tnt", "combinator:boom_bow", 1, 2);
+		ComboRecipes.add("minecraft:saddle", "minecraft:firework_rocket", "combinator:pig_missile", 1, 2);
+		ComboRecipes.add("minecraft:egg", "minecraft:bone_block", "combinator:kaiju_egg", 1, 3);
+		ComboRecipes.add("minecraft:flint_and_steel", "minecraft:netherrack", "combinator:ring_of_fire", 1, 2);
+		ComboRecipes.add("minecraft:golden_helmet", "minecraft:lightning_rod", "combinator:storm_crown", 1, 3);
+		ComboRecipes.add("minecraft:leather_helmet", "minecraft:poisonous_potato", "combinator:plague_mask", 1, 2);
+		ComboRecipes.add("minecraft:lava_bucket", "minecraft:bucket", "combinator:endless_lava", 1, 2);
+		ComboRecipes.add("minecraft:grass_block", "minecraft:nether_star", "combinator:genesis_seed", 1, 3);
+		ComboRecipes.add("minecraft:cocoa_beans", "minecraft:emerald", "combinator:magic_beans", 1, 2);
+		ComboRecipes.add("combinator:house_box", "minecraft:stone_bricks", "combinator:castle_box", 1, 3);
+		ComboRecipes.add("minecraft:sandstone", "minecraft:gold_block", "combinator:pharaoh_scarab", 1, 2);
+		ComboRecipes.add("minecraft:diamond_shovel", "minecraft:grass_block", "combinator:titan_spade", 1, 3);
+		ComboRecipes.add("combinator:bridge_staff", "minecraft:prismarine_crystals", "combinator:bifrost_staff", 1, 2);
+		ComboRecipes.add("minecraft:crying_obsidian", "minecraft:ender_eye", "combinator:portal_gun", 1, 3);
+		ComboRecipes.add("combinator:size_ray", "minecraft:slime_ball", "combinator:mitosis_ray", 1, 3);
+		ComboRecipes.add("minecraft:dispenser", "minecraft:hay_block", "combinator:menagerie_cannon", 1, 2);
+		ComboRecipes.add("combinator:ocean_orb", "minecraft:stick", "combinator:moses_staff", 1, 3);
+		ComboRecipes.add("minecraft:goat_horn", "minecraft:snow_block", "combinator:snowman_horn", 1, 1);
+		ComboRecipes.add("minecraft:stick", "minecraft:stone_bricks", "combinator:fortress_staff", 1, 1);
+		ComboRecipes.add("minecraft:composter", "minecraft:wheat_seeds", "combinator:farm_box", 1, 1);
+		ComboRecipes.add("minecraft:blaze_rod", "minecraft:chorus_fruit", "combinator:wild_staff", 1, 3);
+		ComboRecipes.add("minecraft:bone_block", "minecraft:emerald", "combinator:dice_of_fate", 1, 2);
+		ComboRecipes.add("minecraft:note_block", "minecraft:chorus_fruit", "combinator:musical_chairs", 1, 2);
+		ComboRecipes.add("minecraft:dispenser", "minecraft:firework_rocket", "combinator:party_cannon", 1, 2);
+		ComboRecipes.add("combinator:firefly_jar", "minecraft:fermented_spider_eye", "combinator:gremlin_jar", 1, 2);
+		ComboRecipes.add("minecraft:shield", "minecraft:redstone_block", "combinator:force_field", 1, 2);
+		ComboRecipes.add("minecraft:cake", "minecraft:phantom_membrane", "combinator:upside_down_cake", 1, 2);
+		ComboRecipes.add("minecraft:blue_ice", "minecraft:blaze_rod", "combinator:glacier_staff", 1, 2);
+		ComboRecipes.add("combinator:dynamite", "minecraft:white_wool", "combinator:sheep_bomb", 2, 1);
+		ComboRecipes.add("combinator:dynamite", "minecraft:cobweb", "combinator:cobweb_grenade", 2, 1);
 
 		// --- vanilla items ---
 		ComboRecipes.add("minecraft:rotten_flesh", "minecraft:rotten_flesh", "minecraft:leather", 1, 0);
@@ -310,6 +360,8 @@ final class ComboRecipeList {
 		ComboRecipes.add("minecraft:netherite_leggings", "minecraft:sugar", "combinator:swift_leggings", 1, 1);
 		ComboRecipes.add("minecraft:netherite_pickaxe", "minecraft:tnt", "combinator:tnt_pickaxe", 1, 2);
 		ComboRecipes.add("minecraft:netherite_sword", "minecraft:end_crystal", "combinator:beam_saber", 1, 2);
+		ComboRecipes.add("minecraft:netherite_sword", "minecraft:glass", "combinator:glass_cannon", 1, 2);
+		ComboRecipes.add("minecraft:netherite_shovel", "minecraft:grass_block", "combinator:titan_spade", 1, 3);
 		ComboRecipes.add("minecraft:netherite_sword", "minecraft:prismarine_shard", "minecraft:trident", 1, 0);
 	}
 }

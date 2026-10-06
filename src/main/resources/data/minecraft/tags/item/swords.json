@@ -27,6 +27,8 @@
     "combinator:jagged_blade",
     "combinator:dual_blades",
     "combinator:bulwark_blade",
-    "combinator:looter_blade"
+    "combinator:looter_blade",
+    "combinator:mjolnir",
+    "combinator:glass_cannon"
   ]
 }

@@ -5,7 +5,10 @@ import com.combinator.ability.Capture;
 import com.combinator.ability.Charms;
 import com.combinator.ability.Chaos;
 import com.combinator.ability.CombatAbilities;
+import com.combinator.ability.Doom;
+import com.combinator.ability.Mayhem;
 import com.combinator.ability.Oddities;
+import com.combinator.ability.Wild;
 import com.combinator.item.ComboItems;
 import com.combinator.item.Traits;
 import com.combinator.item.Use;
@@ -45,21 +48,27 @@ import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LightningEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.TntEntity;
+import net.minecraft.entity.boss.WitherEntity;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeInstance;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.CreeperEntity;
 import net.minecraft.entity.mob.MobEntity;
+import net.minecraft.entity.mob.ZombieEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.ChickenEntity;
+import net.minecraft.entity.passive.BeeEntity;
 import net.minecraft.entity.passive.HorseEntity;
 import net.minecraft.entity.passive.IronGolemEntity;
 import net.minecraft.entity.passive.PigEntity;
+import net.minecraft.entity.passive.SheepEntity;
+import net.minecraft.entity.passive.SnowGolemEntity;
 import net.minecraft.entity.passive.WanderingTraderEntity;
 import net.minecraft.entity.passive.WolfEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ArrowEntity;
+import net.minecraft.entity.projectile.FireworkRocketEntity;
 import net.minecraft.entity.projectile.FireballEntity;
 import net.minecraft.entity.projectile.SmallFireballEntity;
 import net.minecraft.entity.projectile.WitherSkullEntity;
@@ -305,6 +314,7 @@ public class CombinatorGameTest implements FabricGameTest {
 		}
 		player.clearActiveItem();
 		player.setSneaking(false);
+		player.stopRiding();
 		player.getInventory().clear();
 		player.clearStatusEffects();
 		player.setHealth(player.getMaxHealth());
@@ -1149,6 +1159,12 @@ public class CombinatorGameTest implements FabricGameTest {
 						report.check(world.getBlockState(spot.up()).isOf(Blocks.WATER), id + ": no water was placed");
 						report.check(player.getMainHandStack().isOf(item), id + ": the bucket was used up");
 						special++;
+					} else if (traits != null && traits.endlessLava) {
+						BlockPos spot = center.add(6, -1, 0);
+						player.interactionManager.interactBlock(player, world, stack, Hand.MAIN_HAND, hitTop(spot));
+						report.check(world.getBlockState(spot.up()).isOf(Blocks.LAVA), id + ": no lava was placed");
+						report.check(player.getMainHandStack().isOf(item), id + ": the bucket was used up");
+						special++;
 					} else if (traits != null && traits.unlock) {
 						// an iron door (two blocks high) and an iron trapdoor
 						BlockPos doorPos = center.add(6, 0, 3);
@@ -1518,6 +1534,18 @@ public class CombinatorGameTest implements FabricGameTest {
 						world.getServer().getOverworld().setWeather(6000, 0, false, false);
 						world.setTimeOfDay(6000L); // noon
 					}
+					if (use == Use.TERMITES) {
+						termiteHouse(world, center);
+					}
+					if (use == Use.PART_SEA) {
+						fill(world, center.add(-2, -1, 1), center.add(2, -1, 9), Blocks.WATER.getDefaultState());
+					}
+					if (use == Use.WILD_MAGIC) {
+						Wild.forceNextSpell(Use.SMALL_FIREBALL);
+					}
+					if (use == Use.DICE) {
+						Wild.forceNextRoll(12);
+					}
 					if (use == Use.ORE_SIGHT) {
 						world.setBlockState(center.add(4, 0, -3), Blocks.IRON_ORE.getDefaultState(), Block.NOTIFY_LISTENERS | Block.FORCE_STATE);
 						world.setBlockState(center.add(-4, 2, -3), Blocks.DIAMOND_ORE.getDefaultState(), Block.NOTIFY_LISTENERS | Block.FORCE_STATE);
@@ -1586,6 +1614,24 @@ public class CombinatorGameTest implements FabricGameTest {
 
 	private static <T extends Entity> boolean any(ServerWorld world, BlockPos center, Class<T> type) {
 		return !world.getEntitiesByClass(type, new Box(center).expand(90.0), e -> e.isAlive()).isEmpty();
+	}
+
+	private static int countAny(ServerWorld world, BlockPos from, BlockPos to, Block... blocks) {
+		int total = 0;
+		for (Block block : blocks) {
+			total += count(world, from, to, block);
+		}
+		return total;
+	}
+
+	/** A 3 x 3 x 3 cube of oak planks in front of the tester, for the termites. */
+	private static void termiteHouse(ServerWorld world, BlockPos center) {
+		fill(world, center.add(-1, 0, 3), center.add(1, 2, 5), Blocks.OAK_PLANKS.getDefaultState());
+	}
+
+	/** True while a pig stands within 2.5 blocks of the spot. */
+	private static boolean pigNear(ServerWorld world, Vec3d spot) {
+		return !world.getEntitiesByClass(PigEntity.class, Box.of(spot, 5.0, 5.0, 5.0), e -> e.isAlive() && e.getPos().distanceTo(spot) < 2.5).isEmpty();
 	}
 
 	private static int countLogs(ServerWorld world, BlockPos center) {
@@ -1746,6 +1792,99 @@ public class CombinatorGameTest implements FabricGameTest {
 			}
 			case SUNBURN:
 				return pig.isOnFire() ? null : "the pig in the sunlight does not burn";
+			case ARMAGEDDON:
+				return Doom.active(p) ? null : "the countdown did not start";
+			case DOOM_CANCEL:
+				return Doom.active(p) ? "the Armageddon is still running" : null;
+			case CLUSTER_BOMB:
+			case GRAVITY_GRENADE:
+			case SCATTER_BOMB:
+			case GOLD_BOMB:
+			case SHEEP_BOMB:
+			case COBWEB_BOMB:
+			case HIVE_GRENADE:
+				return any(world, center, TntEntity.class) ? null : "no bomb was thrown";
+			case TERMITES:
+				return count(world, center.add(-1, 0, 3), center.add(1, 2, 5), Blocks.OAK_PLANKS) < 27 ? null : "the termites ate nothing";
+			case DEATH_RAY:
+			case RAILGUN:
+				return pigHurt ? null : "the pig in the line of fire was not hurt";
+			case TSUNAMI:
+				return count(world, center.add(-6, 0, 1), center.add(6, 2, 3), Blocks.WATER) > 0 ? null : "no wave appeared";
+			case TORNADO:
+				return any(world, center, FallingBlockEntity.class) ? null : "the tornado tore up no ground";
+			case SNAP:
+				return pig.isRemoved() ? null : "the pig did not turn to dust";
+			case CREEPER_CANNON:
+			case CHARGED_CREEPER:
+				return any(world, center, CreeperEntity.class) ? null : "no creeper was fired";
+			case HOT_POTATO:
+				return onGround(world, center, ComboItems.HOT_POTATO) > 0 ? null : "no potato was thrown";
+			case FLOOR_IS_LAVA:
+				return count(world, center.add(-9, -1, -9), center.add(9, -1, 9), Blocks.LAVA) > 30 && world.getBlockState(center.down()).isOf(Blocks.GRASS_BLOCK)
+						? null : "the floor did not turn to lava, or the block under the tester did";
+			case VOLCANO:
+				return countAny(world, center.add(-9, 0, 3), center.add(9, 1, 21), Blocks.BASALT, Blocks.BLACKSTONE, Blocks.MAGMA_BLOCK) > 0
+						? null : "no volcano started to grow";
+			case LIGHTNING_RING:
+				return any(world, center, LightningEntity.class) && pigHurt ? null : "no lightning, or the pig was not hurt";
+			case FLAMETHROWER:
+				return any(world, center, SmallFireballEntity.class) ? null : "no fire came out";
+			case PIG_MISSILE:
+				return p.getVehicle() instanceof PigEntity ? null : "the tester does not ride the pig missile";
+			case KAIJU:
+				return !world.getEntitiesByClass(LivingEntity.class, new Box(center).expand(20.0), Mayhem::isKaiju).isEmpty()
+						? null : "no giant monster hatched";
+			case RING_OF_FIRE:
+				return count(world, center.add(-6, 0, -6), center.add(6, 2, 6), Blocks.FIRE) > 10 ? null : "no ring of fire";
+			case ICE_SPIKES:
+				return count(world, center.add(-2, 0, 2), center.add(2, 7, 4), Blocks.PACKED_ICE) > 0 && pigHurt ? null : "no ice spike, or the pig was not hurt";
+			case SKY_ISLAND:
+				return count(world, center.add(-10, 10, -6), center.add(10, 24, 16), Blocks.GRASS_BLOCK) > 0 ? null : "no island appeared in the sky";
+			case BEANSTALK:
+				return count(world, center.add(-4, 0, 0), center.add(5, 3, 11), Blocks.MOSS_BLOCK) > 0 ? null : "no beanstalk started to grow";
+			case CASTLE:
+				return countAny(world, center.add(-11, 0, 3), center.add(11, 1, 27), Blocks.STONE_BRICKS, Blocks.MOSSY_STONE_BRICKS, Blocks.CRACKED_STONE_BRICKS) > 0
+						? null : "no castle started to grow";
+			case PYRAMID:
+				return count(world, center.add(-11, 0, 3), center.add(11, 0, 27), Blocks.SMOOTH_SANDSTONE) > 0 ? null : "no pyramid started to grow";
+			case MOUNTAIN:
+				return count(world, center.add(-11, 0, -6), center.add(11, 0, 16), Blocks.STONE) > 0 ? null : "no mountain started to rise";
+			case CRATER:
+				return count(world, center.add(-3, -1, 2), center.add(3, -1, 8), Blocks.GRASS_BLOCK) < 20 ? null : "no crater was dug";
+			case RAINBOW_BRIDGE:
+				return countAny(world, center.add(-6, -1, -2), center.add(6, 10, 30), Blocks.RED_WOOL, Blocks.PURPLE_WOOL) > 0 ? null : "no rainbow bridge";
+			case NETHER_PORTAL:
+				return count(world, center.add(-4, -1, 0), center.add(4, 6, 10), Blocks.NETHER_PORTAL) == 6 ? null : "no lit Nether portal";
+			case END_PORTAL:
+				return count(world, center.add(-4, -1, 0), center.add(4, -1, 10), Blocks.END_PORTAL) == 9 ? null : "no End portal in the floor";
+			case MITOSIS:
+			case MITOSIS_BURST:
+				return world.getEntitiesByClass(PigEntity.class, new Box(center).expand(12.0), e -> e.isAlive()).size() >= 2 ? null : "the pig did not split";
+			case MENAGERIE:
+				return !world.getEntitiesByClass(MobEntity.class, new Box(center).expand(20.0), e -> e != pig && e.isAlive()).isEmpty()
+						? null : "no animal was fired";
+			case PART_SEA:
+				return count(world, center.add(-2, -1, 1), center.add(2, -1, 9), Blocks.WATER) < 45 ? null : "the water did not part";
+			case SNOW_ARMY:
+				return world.getEntitiesByClass(SnowGolemEntity.class, new Box(center).expand(12.0), e -> e.isAlive()).size() >= 4 ? null : "no snow golems";
+			case STONE_WALL:
+				return countAny(world, center.add(-4, 0, 3), center.add(4, 4, 3), Blocks.COBBLESTONE, Blocks.MOSSY_COBBLESTONE) > 0 ? null : "no wall rose";
+			case STONE_DOME:
+				return countAny(world, center.add(-6, -1, -6), center.add(6, 6, 6), Blocks.STONE_BRICKS, Blocks.GLASS) > 50 ? null : "no dome closed";
+			case FARM:
+				return countAny(world, center.add(-6, 0, -2), center.add(6, 0, 12), Blocks.WHEAT, Blocks.CARROTS, Blocks.POTATOES, Blocks.BEETROOTS) > 20
+						? null : "no farm appeared";
+			case WILD_MAGIC:
+				return any(world, center, SmallFireballEntity.class) ? null : "the wild spell (a fireball) was not cast";
+			case DICE:
+				return p.experienceLevel >= 5 ? null : "a roll of 12 should give 5 levels, the tester has " + p.experienceLevel;
+			case MUSICAL_CHAIRS:
+				return p.getPos().distanceTo(standing) > 2.0 && pig.getPos().distanceTo(standing) < 1.0 ? null : "tester and pig did not swap places";
+			case PARTY:
+				return any(world, center, FireworkRocketEntity.class) ? null : "no fireworks";
+			case FORCE_FIELD:
+				return pig.getVelocity().length() > 0.3 ? null : "the pig was not pushed away";
 			case ENCHANT_BOOK:
 				return p.getInventory().count(Items.ENCHANTED_BOOK) == 1 && p.experienceLevel == 2
 						? null : "5 levels should become an enchanted book and 2 levels, but there are "
@@ -1837,7 +1976,44 @@ public class CombinatorGameTest implements FabricGameTest {
 				}, (w, c) -> spawnMob(w, EntityType.COW, c.getX() + 2.5, c.getY(), c.getZ() + 2.5).setAiDisabled(false)),
 				// The glowing outlines have to go away by themselves after 10 seconds.
 				new Slow(Use.ORE_SIGHT, 230, (w, c) -> oreOutlines(w, c).isEmpty() ? null : "the ore outlines are still there: " + oreOutlines(w, c),
-						(w, c) -> w.setBlockState(c.add(4, 0, -3), Blocks.IRON_ORE.getDefaultState(), Block.NOTIFY_LISTENERS | Block.FORCE_STATE)));
+						(w, c) -> w.setBlockState(c.add(4, 0, -3), Blocks.IRON_ORE.getDefaultState(), Block.NOTIFY_LISTENERS | Block.FORCE_STATE)),
+				// ---- version 1.4: mass destruction, instant creation and pure chaos
+				new Slow(Use.ORBITAL_STRIKE, 100, (w, c) -> count(w, c.add(-2, -1, 2), c.add(2, -1, 7), Blocks.GRASS_BLOCK) < 10
+						? null : "the beam from space burned no hole"),
+				new Slow(Use.CLUSTER_BOMB, 140, (w, c) -> floorLeft(w, c) < 600 ? null : "the cluster bomb left " + floorLeft(w, c) + " of 625 floor blocks"),
+				new Slow(Use.GRAVITY_GRENADE, 120, (w, c) -> floorLeft(w, c) < 620 ? null : "the ground did not fly away (" + floorLeft(w, c) + " of 625 left)"),
+				new Slow(Use.SCATTER_BOMB, 60, (w, c) -> pigNear(w, Vec3d.ofBottomCenter(c.add(0, 0, 3))) ? "the pig was not teleported away" : null,
+						(w, c) -> spawnMob(w, EntityType.PIG, c.getX() + 0.5, c.getY(), c.getZ() + 3.5)),
+				new Slow(Use.GOLD_BOMB, 80, (w, c) -> count(w, c.add(-12, -2, -12), c.add(12, 8, 12), Blocks.GOLD_BLOCK) > 20 ? null : "too few gold blocks"),
+				new Slow(Use.SHEEP_BOMB, 60, (w, c) -> w.getEntitiesByClass(SheepEntity.class, new Box(c).expand(40.0), e -> e.isAlive()).size() >= 10
+						? null : "fewer than 10 sheep came out"),
+				new Slow(Use.COBWEB_BOMB, 60, (w, c) -> count(w, c.add(-12, 0, -12), c.add(12, 8, 12), Blocks.COBWEB) > 5 ? null : "too few cobwebs"),
+				new Slow(Use.HIVE_GRENADE, 60, (w, c) -> any(w, c, BeeEntity.class) ? null : "no bees came out"),
+				new Slow(Use.TERMITES, 100, (w, c) -> count(w, c.add(-1, 0, 3), c.add(1, 2, 5), Blocks.OAK_PLANKS) == 0
+						? null : count(w, c.add(-1, 0, 3), c.add(1, 2, 5), Blocks.OAK_PLANKS) + " of 27 planks are left", (w, c) -> termiteHouse(w, c)),
+				new Slow(Use.DEATH_RAY, 80, (w, c) -> count(w, c.add(-1, -1, 3), c.add(1, -1, 6), Blocks.GRASS_BLOCK) < 12 ? null : "the death ray melted nothing"),
+				// the wave carries a pig away (a pig that can think, so it can be moved)
+				new Slow(Use.TSUNAMI, 40, (w, c) -> pigNear(w, Vec3d.ofBottomCenter(c.add(0, 0, 6))) ? "the wave did not carry the pig away" : null,
+						(w, c) -> spawnMob(w, EntityType.PIG, c.getX() + 0.5, c.getY(), c.getZ() + 6.5).setAiDisabled(false)),
+				new Slow(Use.TORNADO, 100, (w, c) -> floorLeft(w, c) < 615 ? null : "the tornado tore up too little ground (" + floorLeft(w, c) + " of 625 left)"),
+				new Slow(Use.CREEPER_CANNON, 80, (w, c) -> floorLeft(w, c) < 625 ? null : "the creeper did not explode"),
+				new Slow(Use.FLOOR_IS_LAVA, 200, (w, c) -> count(w, c.add(-12, -1, -12), c.add(12, -1, 12), Blocks.LAVA) == 0 && floorLeft(w, c) == 625
+						? null : "the floor did not come back (" + floorLeft(w, c) + " of 625 grass blocks)"),
+				new Slow(Use.VOLCANO, 120, (w, c) -> countAny(w, c.add(-9, 0, 3), c.add(9, 12, 21), Blocks.BASALT, Blocks.BLACKSTONE, Blocks.MAGMA_BLOCK) > 40
+						? null : "no volcano"),
+				new Slow(Use.SKY_ISLAND, 60, (w, c) -> count(w, c.add(-10, 10, -6), c.add(10, 24, 16), Blocks.GRASS_BLOCK) > 50 ? null : "no island in the sky"),
+				new Slow(Use.BEANSTALK, 50, (w, c) -> count(w, c.add(-4, 0, 0), c.add(5, 64, 11), Blocks.MOSS_BLOCK) > 40 ? null : "the beanstalk did not grow"),
+				new Slow(Use.CASTLE, 40, (w, c) -> countAny(w, c.add(-11, 0, 3), c.add(11, 11, 27), Blocks.STONE_BRICKS, Blocks.MOSSY_STONE_BRICKS,
+						Blocks.CRACKED_STONE_BRICKS) > 300 ? null : "the castle is not finished"),
+				new Slow(Use.PYRAMID, 40, (w, c) -> countAny(w, c.add(-11, 0, 3), c.add(11, 11, 27), Blocks.SANDSTONE, Blocks.CUT_SANDSTONE,
+						Blocks.SMOOTH_SANDSTONE) > 300 ? null : "the pyramid is not finished"),
+				new Slow(Use.MOUNTAIN, 50, (w, c) -> count(w, c.add(-11, 0, -6), c.add(11, 17, 16), Blocks.STONE) > 200 ? null : "the mountain did not rise"),
+				new Slow(Use.PART_SEA, 440, (w, c) -> count(w, c.add(-2, -1, 1), c.add(2, -1, 9), Blocks.WATER) == 45 ? null : "the sea did not come back",
+						(w, c) -> fill(w, c.add(-2, -1, 1), c.add(2, -1, 9), Blocks.WATER.getDefaultState())),
+				new Slow(Use.CAKE_RAIN, 80, (w, c) -> count(w, c.add(-10, -1, -10), c.add(10, 3, 10), Blocks.CAKE) + onGround(w, c, Items.CAKE) > 0
+						? null : "no cake fell"),
+				// last, because it destroys everything: the whole Armageddon, from the countdown to the final blast
+				new Slow(Use.ARMAGEDDON, Doom.TOTAL + 80, (w, c) -> floorLeft(w, c) < 300 ? null : "the world did not end (" + floorLeft(w, c) + " of 625 floor blocks left)"));
 
 		int[] index = {0};
 		int[] waitUntil = {-1};
@@ -1903,6 +2079,116 @@ public class CombinatorGameTest implements FabricGameTest {
 				report.problem(slow.use() + ": crashed: " + t);
 				LOG.error("slow effects test " + slow.use(), t);
 				index[0]++;
+			}
+		});
+	}
+
+	// ------------------------------------------------------------------ 11b. dice, gremlin, hot potato, storm crown, plague mask
+
+	@GameTest(templateName = EMPTY_STRUCTURE, batchId = "combinator_mayhem", tickLimit = 20000)
+	public void mayhem(TestContext context) {
+		Report report = new Report("mayhem");
+		ServerWorld world = context.getWorld();
+		BlockPos center = stageCenter(context);
+		forceChunks(world, center, true);
+		resetStage(world, center);
+		ServerPlayerEntity player = newPlayer(world, center);
+		int potatoDone = 2 + Mayhem.POTATO_FUSE + 20;
+		int crownDone = potatoDone + 70;
+		int maskDone = crownDone + 30;
+		MobEntity[] zombie = {null};
+
+		everyTickWhenReady(context, world, center, tick -> {
+			if (tick == 1) {
+				for (int roll = 1; roll <= 20; roll++) {
+					int number = roll;
+					step(report, "dice roll " + number, () -> {
+						resetStage(world, center);
+						resetPlayer(player, world, center);
+						player.setInvulnerable(true);
+						player.setExperienceLevel(0);
+						hold(player, new ItemStack(ComboItems.DICE_OF_FATE));
+						player.getInventory().setStack(3, new ItemStack(Items.STICK));
+						String text = Wild.fate(world, player, number);
+						LOG.info("[mayhem] dice {}: {}", number, text);
+						String missing = switch (number) {
+							case 1 -> any(world, center, WitherEntity.class) ? null : "no Wither appeared";
+							case 5 -> player.getInventory().getStack(3).isEmpty() && onGround(world, center, Items.STICK) == 1 ? null : "the hotbar did not fall out";
+							case 8 -> any(world, center, ZombieEntity.class) ? null : "no zombies appeared";
+							case 12 -> player.experienceLevel == 5 ? null : "5 levels were expected, the tester has " + player.experienceLevel;
+							case 17 -> onGround(world, center, Items.DIAMOND) > 0 ? null : "no diamonds fell";
+							case 20 -> player.experienceLevel >= 30 && onGround(world, center, Items.NETHERITE_INGOT) > 0 ? null : "no jackpot";
+							default -> null;
+						};
+						report.check(missing == null, "dice roll " + number + ": " + missing);
+					});
+				}
+				for (int prank = 0; prank < Wild.PRANKS; prank++) {
+					int number = prank;
+					step(report, "gremlin prank " + number, () -> {
+						resetStage(world, center);
+						resetPlayer(player, world, center);
+						player.setInvulnerable(true);
+						hold(player, new ItemStack(ComboItems.GREMLIN_JAR));
+						player.getInventory().setStack(4, new ItemStack(Items.STICK));
+						world.setBlockState(center.add(2, 0, 2), Blocks.TORCH.getDefaultState(), Block.NOTIFY_LISTENERS | Block.FORCE_STATE);
+						world.setBlockState(center.add(-2, 0, 2), Blocks.OAK_TRAPDOOR.getDefaultState(), Block.NOTIFY_LISTENERS | Block.FORCE_STATE);
+						String text = Wild.prank(world, player, number);
+						LOG.info("[mayhem] prank {}: {}", number, text);
+						report.check(player.getInventory().count(ComboItems.GREMLIN_JAR) == 1 && player.getInventory().count(Items.STICK) == 1,
+								"gremlin prank " + number + ": an item was lost");
+						String missing = switch (number) {
+							case 2 -> any(world, center, ChickenEntity.class) ? null : "no chicken appeared";
+							case 3 -> player.getVelocity().y > 0.3 ? null : "no hiccup";
+							case 9 -> world.getBlockState(center.add(-2, 0, 2)).get(TrapdoorBlock.OPEN) ? null : "the trapdoor did not open";
+							case 10 -> world.getBlockState(center.add(2, 0, 2)).isAir() ? null : "the torch was not stolen";
+							default -> null;
+						};
+						report.check(missing == null, "gremlin prank " + number + ": " + missing);
+					});
+				}
+				step(report, "hot potato", () -> {
+					resetStage(world, center);
+					resetPlayer(player, world, center);
+					player.setInvulnerable(true);
+					player.getInventory().setStack(5, new ItemStack(ComboItems.HOT_POTATO));
+				});
+				return;
+			}
+			if (tick == potatoDone) {
+				step(report, "hot potato", () -> {
+					report.check(player.getInventory().count(ComboItems.HOT_POTATO) == 0, "the hot potato did not go off after "
+							+ Mayhem.POTATO_FUSE / 20 + " seconds");
+					report.check(floorLeft(world, center) < 625, "the hot potato left no crater");
+				});
+				step(report, "storm crown", () -> {
+					resetStage(world, center);
+					resetPlayer(player, world, center);
+					player.setInvulnerable(true);
+					equip(player, new ItemStack(ComboItems.STORM_CROWN));
+					zombie[0] = spawnMob(world, EntityType.ZOMBIE, center.getX() + 0.5, center.getY(), center.getZ() + 6.5);
+				});
+				return;
+			}
+			if (tick == crownDone) {
+				step(report, "storm crown", () -> report.check(zombie[0].getHealth() < zombie[0].getMaxHealth() || !zombie[0].isAlive(),
+						"the Storm Crown did not strike the zombie"));
+				step(report, "plague mask", () -> {
+					resetStage(world, center);
+					resetPlayer(player, world, center);
+					player.setInvulnerable(true);
+					equip(player, new ItemStack(ComboItems.PLAGUE_MASK));
+					zombie[0] = spawnMob(world, EntityType.ZOMBIE, center.getX() + 0.5, center.getY(), center.getZ() + 3.5);
+				});
+				return;
+			}
+			if (tick == maskDone) {
+				step(report, "plague mask", () -> report.check(zombie[0].hasStatusEffect(StatusEffects.WITHER), "the Plague Mask did not make the zombie wither"));
+				resetPlayer(player, world, center);
+				removePlayer(player);
+				resetStage(world, center);
+				forceChunks(world, center, false);
+				report.finish(context);
 			}
 		});
 	}

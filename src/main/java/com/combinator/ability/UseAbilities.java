@@ -85,7 +85,10 @@ public final class UseAbilities {
 				return ropeLadder(context, player, stack);
 			}
 			if (traits.endlessWater) {
-				return endlessWater(context, player, stack);
+				return endlessFluid(context, player, stack, false);
+			}
+			if (traits.endlessLava) {
+				return endlessFluid(context, player, stack, true);
 			}
 			if (traits.unlock) {
 				return Oddities.unlock(context, player, stack);
@@ -333,8 +336,8 @@ public final class UseAbilities {
 		return ActionResult.SUCCESS;
 	}
 
-	/** Endless Water Bucket: puts a water source next to the clicked block. It never runs dry. */
-	private static ActionResult endlessWater(ItemUsageContext context, PlayerEntity player, ItemStack stack) {
+	/** Endless Water Bucket and Endless Lava Bucket: put a source next to the clicked block. They never run dry. */
+	private static ActionResult endlessFluid(ItemUsageContext context, PlayerEntity player, ItemStack stack, boolean lava) {
 		World world = context.getWorld();
 		BlockPos pos = context.getBlockPos().offset(context.getSide());
 		BlockState there = world.getBlockState(pos);
@@ -344,7 +347,10 @@ public final class UseAbilities {
 		if (world.isClient) {
 			return ActionResult.SUCCESS;
 		}
-		if (world.getDimension().ultrawarm()) {
+		if (lava) {
+			world.setBlockState(pos, Blocks.LAVA.getDefaultState(), Block.NOTIFY_ALL | Block.REDRAW_ON_MAIN_THREAD);
+			Fx.sound(world, Vec3d.ofCenter(pos), SoundEvents.ITEM_BUCKET_EMPTY_LAVA, 1.0F, 1.0F);
+		} else if (world.getDimension().ultrawarm()) {
 			// The Nether is too hot for water, like with a normal bucket.
 			if (world instanceof ServerWorld serverWorld) {
 				Fx.particles(serverWorld, ParticleTypes.LARGE_SMOKE, Vec3d.ofCenter(pos), 8, 0.3, 0.0);
@@ -423,7 +429,7 @@ public final class UseAbilities {
 		}
 	}
 
-	private static boolean perform(Use action, ServerWorld world, ServerPlayerEntity player, Traits traits, Hand hand) {
+	static boolean perform(Use action, ServerWorld world, ServerPlayerEntity player, Traits traits, Hand hand) {
 		Vec3d look = player.getRotationVec(1.0F);
 		Vec3d eye = player.getEyePos();
 		switch (action) {
@@ -665,6 +671,112 @@ public final class UseAbilities {
 				return Oddities.weather(world, player);
 			case SUNBURN:
 				return Oddities.sunburn(world, player, traits.range);
+
+			// ---------------------------------------------------------- mass destruction
+			case ARMAGEDDON:
+				return Doom.start(world, player);
+			case DOOM_CANCEL:
+				return Doom.cancel(world, player);
+			case ORBITAL_STRIKE:
+				return Mayhem.orbitalStrike(world, player, traits.range);
+			case CLUSTER_BOMB:
+				return Mayhem.clusterBomb(world, player);
+			case GRAVITY_GRENADE:
+				return Mayhem.gravityGrenade(world, player);
+			case SCATTER_BOMB:
+				return Mayhem.scatterBomb(world, player);
+			case GOLD_BOMB:
+				return Mayhem.goldBomb(world, player);
+			case SHEEP_BOMB:
+				return Mayhem.sheepBomb(world, player);
+			case COBWEB_BOMB:
+				return Mayhem.cobwebBomb(world, player);
+			case TERMITES:
+				return Mayhem.termites(world, player, traits.range);
+			case DEATH_RAY:
+				return Mayhem.deathRay(world, player, traits.range, 60);
+			case TSUNAMI:
+				return Mayhem.tsunami(world, player, traits.range);
+			case TORNADO:
+				return Mayhem.tornado(world, player, traits.range);
+			case SNAP:
+				return Mayhem.snap(world, player, traits.range);
+			case CREEPER_CANNON:
+				return Mayhem.creeperCannon(world, player, false);
+			case CHARGED_CREEPER:
+				return Mayhem.creeperCannon(world, player, true);
+			case HIVE_GRENADE:
+				return Mayhem.hiveGrenade(world, player);
+			case HOT_POTATO:
+				return Mayhem.throwPotato(world, player);
+			case FLOOR_IS_LAVA:
+				return Mayhem.floorIsLava(world, player, traits.range, 160);
+			case VOLCANO:
+				return Mayhem.volcano(world, player, traits.range);
+			case LIGHTNING_RING:
+				return Mayhem.lightningRing(world, player, traits.range, traits.power);
+			case RAILGUN:
+				return Mayhem.railgun(world, player, traits.range, traits.power);
+			case FLAMETHROWER:
+				return Mayhem.flamethrower(world, player, 40);
+			case PIG_MISSILE:
+				return Mayhem.pigMissile(world, player, 80);
+			case KAIJU:
+				return Mayhem.kaiju(world, player);
+			case RING_OF_FIRE:
+				return Mayhem.ringOfFire(world, player, traits.range);
+			case ICE_SPIKES:
+				return Mayhem.iceSpikes(world, player, traits.range);
+
+			// ---------------------------------------------------------- instant creation
+			case SKY_ISLAND:
+				return Genesis.skyIsland(world, player, traits.range);
+			case BEANSTALK:
+				return Genesis.beanstalk(world, player, traits.range);
+			case CASTLE:
+				return Genesis.castle(world, player, traits.range);
+			case PYRAMID:
+				return Genesis.pyramid(world, player, traits.range);
+			case MOUNTAIN:
+				return Genesis.mountain(world, player, traits.range);
+			case CRATER:
+				return Genesis.crater(world, player, traits.range);
+			case RAINBOW_BRIDGE:
+				return Genesis.rainbowBridge(world, player, traits.range);
+			case NETHER_PORTAL:
+				return Genesis.netherPortal(world, player, traits.range);
+			case END_PORTAL:
+				return Genesis.endPortal(world, player, traits.range);
+			case MITOSIS:
+				return Genesis.mitosis(world, player, traits.range);
+			case MITOSIS_BURST:
+				return Genesis.mitosisBurst(world, player, 8);
+			case MENAGERIE:
+				return Genesis.menagerie(world, player);
+			case PART_SEA:
+				return Genesis.partSea(world, player, traits.range, 400);
+			case SNOW_ARMY:
+				return Genesis.snowArmy(world, player, Math.round(traits.power));
+			case STONE_WALL:
+				return Genesis.stoneWall(world, player);
+			case STONE_DOME:
+				return Genesis.stoneDome(world, player);
+			case FARM:
+				return Genesis.farm(world, player, traits.range);
+
+			// ---------------------------------------------------------- pure chaos
+			case WILD_MAGIC:
+				return Wild.wildMagic(world, player, hand);
+			case DICE:
+				return Wild.dice(world, player);
+			case MUSICAL_CHAIRS:
+				return Wild.musicalChairs(world, player, traits.range);
+			case PARTY:
+				return Wild.party(world, player);
+			case CAKE_RAIN:
+				return Wild.cakeRain(world, player, 20);
+			case FORCE_FIELD:
+				return Mayhem.forceField(world, player, 200, traits.range);
 			default:
 				return false;
 		}

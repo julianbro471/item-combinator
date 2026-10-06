@@ -3930,6 +3930,996 @@
       "stats": "2 hunger"
     },
     {
+      "a": "time_stopper",
+      "b": "doomsday_device",
+      "a_name": "Time Stopper",
+      "b_name": "Doomsday Device",
+      "result": "armageddon_clock",
+      "result_name": "Armageddon Clock",
+      "count": 1,
+      "rar": 3,
+      "a_custom": true,
+      "b_custom": true,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: the end of the world starts",
+        "where you stand. 10 second countdown, then",
+        "earthquake, fire rain, lightning, lava",
+        "geysers and a black hole. Sneak + right-click:",
+        "call it off."
+      ],
+      "cat": "Mass destruction",
+      "stats": "8 uses"
+    },
+    {
+      "a": "spyglass",
+      "b": "beacon",
+      "a_name": "Spyglass",
+      "b_name": "Beacon",
+      "result": "orbital_remote",
+      "result_name": "Orbital Strike Remote",
+      "count": 1,
+      "rar": 3,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: a red light marks the spot you",
+        "look at. 2 seconds later a beam from space",
+        "burns a hole 40 blocks deep."
+      ],
+      "cat": "Mass destruction",
+      "stats": "24 uses"
+    },
+    {
+      "a": "dynamite",
+      "b": "dynamite",
+      "a_name": "Dynamite",
+      "b_name": "Dynamite",
+      "result": "cluster_bomb",
+      "result_name": "Cluster Bomb",
+      "count": 2,
+      "rar": 2,
+      "a_custom": true,
+      "b_custom": true,
+      "kind": "gadget",
+      "tip": [
+        "Right-click to throw. It splits into",
+        "8 lit TNT blocks that fly everywhere."
+      ],
+      "cat": "Mass destruction",
+      "stats": ""
+    },
+    {
+      "a": "dynamite",
+      "b": "shulker_shell",
+      "a_name": "Dynamite",
+      "b_name": "Shulker Shell",
+      "result": "gravity_grenade",
+      "result_name": "Gravity Grenade",
+      "count": 2,
+      "rar": 2,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click to throw. The ground where it",
+        "lands flies into the sky and rains down",
+        "somewhere else. Mobs fly too."
+      ],
+      "cat": "Mass destruction",
+      "stats": ""
+    },
+    {
+      "a": "dynamite",
+      "b": "ender_pearl",
+      "a_name": "Dynamite",
+      "b_name": "Ender Pearl",
+      "result": "scatter_bomb",
+      "result_name": "Scatter Bomb",
+      "count": 2,
+      "rar": 2,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click to throw. Every mob and item",
+        "near the blast is teleported somewhere",
+        "random. Players too."
+      ],
+      "cat": "Mass destruction",
+      "stats": ""
+    },
+    {
+      "a": "dynamite",
+      "b": "gold_block",
+      "a_name": "Dynamite",
+      "b_name": "Block of Gold",
+      "result": "gold_bomb",
+      "result_name": "Gold Bomb",
+      "count": 1,
+      "rar": 3,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click to throw. Everything near",
+        "the blast turns into gold blocks.",
+        "Mobs too."
+      ],
+      "cat": "Mass destruction",
+      "stats": ""
+    },
+    {
+      "a": "glass_bottle",
+      "b": "spider_eye",
+      "a_name": "Glass Bottle",
+      "b_name": "Spider Eye",
+      "result": "termite_jar",
+      "result_name": "Termite Jar",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click something wooden: termites eat",
+        "it and every wooden block it touches.",
+        "Trees, houses, ships. Up to 1500 blocks."
+      ],
+      "cat": "Mass destruction",
+      "stats": ""
+    },
+    {
+      "a": "magnifying_glass",
+      "b": "beacon",
+      "a_name": "Magnifying Glass",
+      "b_name": "Beacon",
+      "result": "death_ray",
+      "result_name": "Solar Death Ray",
+      "count": 1,
+      "rar": 3,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: a beam of sunlight for 3 seconds.",
+        "Stone melts to lava, sand to glass, wood",
+        "burns, water boils, mobs cook."
+      ],
+      "cat": "Mass destruction",
+      "stats": "64 uses"
+    },
+    {
+      "a": "ocean_orb",
+      "b": "goat_horn",
+      "a_name": "Ocean Orb",
+      "b_name": "Goat Horn",
+      "result": "tsunami_horn",
+      "result_name": "Tsunami Horn",
+      "count": 1,
+      "rar": 3,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: a wall of water rolls away",
+        "from you for 64 blocks. It sweeps mobs,",
+        "flowers and torches away."
+      ],
+      "cat": "Mass destruction",
+      "stats": "32 uses"
+    },
+    {
+      "a": "dust_devil",
+      "b": "breeze_rod",
+      "a_name": "Bottled Dust Devil",
+      "b_name": "Breeze Rod",
+      "result": "tornado_bottle",
+      "result_name": "Tornado in a Bottle",
+      "count": 1,
+      "rar": 3,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: a tornado touches down where you",
+        "look and wanders for 15 seconds. It rips up",
+        "the ground and throws mobs (and you) around."
+      ],
+      "cat": "Mass destruction",
+      "stats": "16 uses"
+    },
+    {
+      "a": "fist_of_doom",
+      "b": "amethyst_block",
+      "a_name": "Fist of Doom",
+      "b_name": "Block of Amethyst",
+      "result": "snap_gauntlet",
+      "result_name": "Snap Gauntlet",
+      "count": 1,
+      "rar": 3,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: half of all living things",
+        "within 64 blocks turn to dust.",
+        "Not players. Six snaps."
+      ],
+      "cat": "Mass destruction",
+      "stats": "6 uses"
+    },
+    {
+      "a": "dispenser",
+      "b": "creeper_head",
+      "a_name": "Dispenser",
+      "b_name": "Creeper Head",
+      "result": "creeper_cannon",
+      "result_name": "Creeper Cannon",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: fires a lit creeper.",
+        "Sneak + right-click: a charged one."
+      ],
+      "cat": "Mass destruction",
+      "stats": "64 uses"
+    },
+    {
+      "a": "beehive",
+      "b": "gunpowder",
+      "a_name": "Beehive",
+      "b_name": "Gunpowder",
+      "result": "hive_grenade",
+      "result_name": "Hive Grenade",
+      "count": 2,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click to throw. 10 angry bees burst out",
+        "and sting the nearest living thing.",
+        "That can be you."
+      ],
+      "cat": "Mass destruction",
+      "stats": ""
+    },
+    {
+      "a": "baked_potato",
+      "b": "tnt",
+      "a_name": "Baked Potato",
+      "b_name": "TNT",
+      "result": "hot_potato",
+      "result_name": "Hot Potato",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Explodes 15 seconds after you pick it up.",
+        "Right-click: throw it away. It goes off",
+        "3 seconds later, unless someone catches it."
+      ],
+      "cat": "Mass destruction",
+      "stats": ""
+    },
+    {
+      "a": "magma_block",
+      "b": "note_block",
+      "a_name": "Magma Block",
+      "b_name": "Note Block",
+      "result": "floor_is_lava",
+      "result_name": "The Floor Is Lava",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: plays a song. For 8 seconds the",
+        "ground around you is lava, except the block",
+        "you stand on. Do not move."
+      ],
+      "cat": "Mass destruction",
+      "stats": "16 uses"
+    },
+    {
+      "a": "magma_block",
+      "b": "fire_charge",
+      "a_name": "Magma Block",
+      "b_name": "Fire Charge",
+      "result": "pocket_volcano",
+      "result_name": "Pocket Volcano",
+      "count": 1,
+      "rar": 3,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: a volcano grows out of the ground",
+        "where you look and erupts for 10 seconds:",
+        "lava bombs, explosions and fire."
+      ],
+      "cat": "Mass destruction",
+      "stats": ""
+    },
+    {
+      "a": "earthshaker",
+      "b": "tempest_blade",
+      "a_name": "Earthshaker",
+      "b_name": "Tempest Blade",
+      "result": "mjolnir",
+      "result_name": "Mjolnir",
+      "count": 1,
+      "rar": 3,
+      "a_custom": true,
+      "b_custom": true,
+      "kind": "sword",
+      "tip": [
+        "Calls lightning on the enemy you hit.",
+        "The lightning jumps to nearby enemies.",
+        "Right-click: a ring of 12 lightning bolts",
+        "and a shock wave throws everything away."
+      ],
+      "cat": "Mass destruction",
+      "stats": "16 damage, 6000 uses"
+    },
+    {
+      "a": "diamond_sword",
+      "b": "glass",
+      "a_name": "Diamond Sword",
+      "b_name": "Glass",
+      "result": "glass_cannon",
+      "result_name": "Glass Cannon",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "sword",
+      "tip": [
+        "60 damage.",
+        "It shatters after one hit."
+      ],
+      "cat": "Mass destruction",
+      "stats": "60 damage, 1 uses"
+    },
+    {
+      "a": "crossbow",
+      "b": "end_rod",
+      "a_name": "Crossbow",
+      "b_name": "End Rod",
+      "result": "railgun",
+      "result_name": "Railgun",
+      "count": 1,
+      "rar": 3,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: a shot that goes straight through",
+        "walls for 128 blocks. It drills a hole and",
+        "hits every mob on the line for 30 damage."
+      ],
+      "cat": "Mass destruction",
+      "stats": "128 uses"
+    },
+    {
+      "a": "flint_and_steel",
+      "b": "blaze_rod",
+      "a_name": "Flint and Steel",
+      "b_name": "Blaze Rod",
+      "result": "flamethrower",
+      "result_name": "Flamethrower",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: 2 seconds of fire.",
+        "Sets everything in front of you ablaze."
+      ],
+      "cat": "Mass destruction",
+      "stats": "128 uses"
+    },
+    {
+      "a": "bow",
+      "b": "tnt",
+      "a_name": "Bow",
+      "b_name": "TNT",
+      "result": "boom_bow",
+      "result_name": "Boom Bow",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: shoots lit TNT instead of arrows.",
+        "Sneak + right-click: a cluster bomb."
+      ],
+      "cat": "Mass destruction",
+      "stats": "200 uses"
+    },
+    {
+      "a": "saddle",
+      "b": "firework_rocket",
+      "a_name": "Saddle",
+      "b_name": "Firework Rocket",
+      "result": "pig_missile",
+      "result_name": "Pig Missile",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: you ride a rocket-powered pig.",
+        "It flies where you look and explodes when it",
+        "hits something. You get thrown clear."
+      ],
+      "cat": "Mass destruction",
+      "stats": "16 uses"
+    },
+    {
+      "a": "egg",
+      "b": "bone_block",
+      "a_name": "Egg",
+      "b_name": "Bone Block",
+      "result": "kaiju_egg",
+      "result_name": "Kaiju Egg",
+      "count": 1,
+      "rar": 3,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: a random monster hatches 10",
+        "blocks away. It is six times as big, has",
+        "200 extra health and hunts you."
+      ],
+      "cat": "Mass destruction",
+      "stats": ""
+    },
+    {
+      "a": "flint_and_steel",
+      "b": "netherrack",
+      "a_name": "Flint and Steel",
+      "b_name": "Netherrack",
+      "result": "ring_of_fire",
+      "result_name": "Ring of Fire",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: a ring of fire that never goes",
+        "out closes around you."
+      ],
+      "cat": "Mass destruction",
+      "stats": "32 uses"
+    },
+    {
+      "a": "golden_helmet",
+      "b": "lightning_rod",
+      "a_name": "Golden Helmet",
+      "b_name": "Lightning Rod",
+      "result": "storm_crown",
+      "result_name": "Storm Crown",
+      "count": 1,
+      "rar": 3,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "armor",
+      "tip": [
+        "While worn: every 3 seconds lightning",
+        "strikes a monster near you."
+      ],
+      "cat": "Mass destruction",
+      "stats": "3 armor, 400 uses"
+    },
+    {
+      "a": "leather_helmet",
+      "b": "poisonous_potato",
+      "a_name": "Leather Cap",
+      "b_name": "Poisonous Potato",
+      "result": "plague_mask",
+      "result_name": "Plague Mask",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "armor",
+      "tip": [
+        "While worn: everything alive within",
+        "6 blocks gets poisoned and withers.",
+        "Tame pets are spared."
+      ],
+      "cat": "Mass destruction",
+      "stats": "1 armor, 200 uses"
+    },
+    {
+      "a": "lava_bucket",
+      "b": "bucket",
+      "a_name": "Lava Bucket",
+      "b_name": "Bucket",
+      "result": "endless_lava",
+      "result_name": "Endless Lava Bucket",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click a block: places lava.",
+        "It never runs dry."
+      ],
+      "cat": "Mass destruction",
+      "stats": ""
+    },
+    {
+      "a": "grass_block",
+      "b": "nether_star",
+      "a_name": "Grass Block",
+      "b_name": "Nether Star",
+      "result": "genesis_seed",
+      "result_name": "Genesis Seed",
+      "count": 1,
+      "rar": 3,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: a floating island grows in the sky",
+        "above the spot you look at. Trees, ores,",
+        "a pond, a waterfall, flowers and sheep."
+      ],
+      "cat": "Instant creation",
+      "stats": ""
+    },
+    {
+      "a": "cocoa_beans",
+      "b": "emerald",
+      "a_name": "Cocoa Beans",
+      "b_name": "Emerald",
+      "result": "magic_beans",
+      "result_name": "Magic Beans",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click the ground: a beanstalk grows 64",
+        "blocks into the sky. Climb the vines. On the",
+        "cloud at the top: a chest, and a sleeping giant."
+      ],
+      "cat": "Instant creation",
+      "stats": ""
+    },
+    {
+      "a": "house_box",
+      "b": "stone_bricks",
+      "a_name": "House in a Box",
+      "b_name": "Stone Bricks",
+      "result": "castle_box",
+      "result_name": "Castle in a Box",
+      "count": 1,
+      "rar": 3,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: a stone castle builds itself",
+        "where you look. Walls, four towers, a gate,",
+        "a keep with a golden throne, two golem guards."
+      ],
+      "cat": "Instant creation",
+      "stats": ""
+    },
+    {
+      "a": "sandstone",
+      "b": "gold_block",
+      "a_name": "Sandstone",
+      "b_name": "Block of Gold",
+      "result": "pharaoh_scarab",
+      "result_name": "Pharaoh's Scarab",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: a pyramid rises where you look.",
+        "Inside: a treasure chamber.",
+        "Do not step on the pressure plate."
+      ],
+      "cat": "Instant creation",
+      "stats": ""
+    },
+    {
+      "a": "diamond_shovel",
+      "b": "grass_block",
+      "a_name": "Diamond Shovel",
+      "b_name": "Grass Block",
+      "result": "titan_spade",
+      "result_name": "Titan's Spade",
+      "count": 1,
+      "rar": 3,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: a mountain with a snowy peak",
+        "rises where you look. Sneak + right-click:",
+        "digs a crater and fills it with water."
+      ],
+      "cat": "Instant creation",
+      "stats": "64 uses"
+    },
+    {
+      "a": "bridge_staff",
+      "b": "prismarine_crystals",
+      "a_name": "Bridge Staff",
+      "b_name": "Prismarine Crystals",
+      "result": "bifrost_staff",
+      "result_name": "Bifrost Staff",
+      "count": 1,
+      "rar": 2,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: a rainbow bridge arcs to the",
+        "spot you look at, up to 64 blocks away."
+      ],
+      "cat": "Instant creation",
+      "stats": "64 uses"
+    },
+    {
+      "a": "crying_obsidian",
+      "b": "ender_eye",
+      "a_name": "Crying Obsidian",
+      "b_name": "Eye of Ender",
+      "result": "portal_gun",
+      "result_name": "Portal Gun",
+      "count": 1,
+      "rar": 3,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click a block: a lit Nether portal",
+        "appears there. Sneak + right-click the floor:",
+        "a hole straight into the End."
+      ],
+      "cat": "Instant creation",
+      "stats": "16 uses"
+    },
+    {
+      "a": "size_ray",
+      "b": "slime_ball",
+      "a_name": "Size Ray",
+      "b_name": "Slimeball",
+      "result": "mitosis_ray",
+      "result_name": "Mitosis Ray",
+      "count": 1,
+      "rar": 3,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click a mob: it splits into two.",
+        "Sneak + right-click: every mob within",
+        "8 blocks splits. Also the Wither."
+      ],
+      "cat": "Instant creation",
+      "stats": "128 uses"
+    },
+    {
+      "a": "dispenser",
+      "b": "hay_block",
+      "a_name": "Dispenser",
+      "b_name": "Hay Bale",
+      "result": "menagerie_cannon",
+      "result_name": "Menagerie Cannon",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: fires a random animal or",
+        "monster. Anything from a bee to a ravager.",
+        "Very rarely a warden."
+      ],
+      "cat": "Instant creation",
+      "stats": "256 uses"
+    },
+    {
+      "a": "ocean_orb",
+      "b": "stick",
+      "a_name": "Ocean Orb",
+      "b_name": "Stick",
+      "result": "moses_staff",
+      "result_name": "Staff of the Red Sea",
+      "count": 1,
+      "rar": 3,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: the water in front of you parts,",
+        "a path 5 wide and 48 long down to the sea floor.",
+        "The sea comes back after 20 seconds."
+      ],
+      "cat": "Instant creation",
+      "stats": "32 uses"
+    },
+    {
+      "a": "goat_horn",
+      "b": "snow_block",
+      "a_name": "Goat Horn",
+      "b_name": "Snow Block",
+      "result": "snowman_horn",
+      "result_name": "Snowman Horn",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: 8 snow golems appear around",
+        "you and throw snowballs at monsters."
+      ],
+      "cat": "Instant creation",
+      "stats": "16 uses"
+    },
+    {
+      "a": "stick",
+      "b": "stone_bricks",
+      "a_name": "Stick",
+      "b_name": "Stone Bricks",
+      "result": "fortress_staff",
+      "result_name": "Fortress Staff",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: a stone wall rises in front",
+        "of you. Sneak + right-click: a stone dome",
+        "closes over you."
+      ],
+      "cat": "Instant creation",
+      "stats": "128 uses"
+    },
+    {
+      "a": "composter",
+      "b": "wheat_seeds",
+      "a_name": "Composter",
+      "b_name": "Wheat Seeds",
+      "result": "farm_box",
+      "result_name": "Farm in a Box",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: a ripe 9x9 farm appears where",
+        "you look: water, farmland, wheat, carrots,",
+        "potatoes, beetroot and a scarecrow."
+      ],
+      "cat": "Instant creation",
+      "stats": ""
+    },
+    {
+      "a": "blaze_rod",
+      "b": "chorus_fruit",
+      "a_name": "Blaze Rod",
+      "b_name": "Chorus Fruit",
+      "result": "wild_staff",
+      "result_name": "Staff of Wild Magic",
+      "count": 1,
+      "rar": 3,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: casts a random spell of this mod.",
+        "From a fireball to a tornado to a nuke.",
+        "Even the end of the world."
+      ],
+      "cat": "Pure chaos",
+      "stats": "100 uses"
+    },
+    {
+      "a": "bone_block",
+      "b": "emerald",
+      "a_name": "Bone Block",
+      "b_name": "Emerald",
+      "result": "dice_of_fate",
+      "result_name": "Dice of Fate",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: roll a 20-sided die.",
+        "1: a Wither. 20: netherite, diamonds",
+        "and 30 levels. Everything in between."
+      ],
+      "cat": "Pure chaos",
+      "stats": "20 uses"
+    },
+    {
+      "a": "note_block",
+      "b": "chorus_fruit",
+      "a_name": "Note Block",
+      "b_name": "Chorus Fruit",
+      "result": "musical_chairs",
+      "result_name": "Musical Chairs",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: every living thing within",
+        "32 blocks swaps places with another one.",
+        "You too."
+      ],
+      "cat": "Pure chaos",
+      "stats": "32 uses"
+    },
+    {
+      "a": "dispenser",
+      "b": "firework_rocket",
+      "a_name": "Dispenser",
+      "b_name": "Firework Rocket",
+      "result": "party_cannon",
+      "result_name": "Party Cannon",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: a volley of exploding fireworks.",
+        "Sneak + right-click: it rains cake."
+      ],
+      "cat": "Pure chaos",
+      "stats": "128 uses"
+    },
+    {
+      "a": "firefly_jar",
+      "b": "fermented_spider_eye",
+      "a_name": "Firefly Jar",
+      "b_name": "Fermented Spider Eye",
+      "result": "gremlin_jar",
+      "result_name": "Gremlin in a Jar",
+      "count": 1,
+      "rar": 2,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Keep it in your hotbar. Now and then the",
+        "gremlin plays a prank: it swaps your items,",
+        "opens doors, steals torches, makes you hiccup."
+      ],
+      "cat": "Pure chaos",
+      "stats": ""
+    },
+    {
+      "a": "shield",
+      "b": "redstone_block",
+      "a_name": "Shield",
+      "b_name": "Block of Redstone",
+      "result": "force_field",
+      "result_name": "Force Field",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: for 10 seconds nothing gets",
+        "closer than 5 blocks. Mobs are pushed",
+        "away, arrows and fireballs vanish."
+      ],
+      "cat": "Pure chaos",
+      "stats": "32 uses"
+    },
+    {
+      "a": "cake",
+      "b": "phantom_membrane",
+      "a_name": "Cake",
+      "b_name": "Phantom Membrane",
+      "result": "upside_down_cake",
+      "result_name": "Upside-Down Cake",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "food",
+      "tip": [
+        "You fall upward for 6 seconds.",
+        "Then you float back down.",
+        "Can be eaten when full."
+      ],
+      "cat": "Pure chaos",
+      "stats": "6 hunger"
+    },
+    {
+      "a": "blue_ice",
+      "b": "blaze_rod",
+      "a_name": "Blue Ice",
+      "b_name": "Blaze Rod",
+      "result": "glacier_staff",
+      "result_name": "Glacier Staff",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: a line of ice spikes bursts out",
+        "of the ground towards where you look.",
+        "Mobs in the way are thrown up and frozen."
+      ],
+      "cat": "Pure chaos",
+      "stats": "128 uses"
+    },
+    {
+      "a": "dynamite",
+      "b": "white_wool",
+      "a_name": "Dynamite",
+      "b_name": "White Wool",
+      "result": "sheep_bomb",
+      "result_name": "Sheep Bomb",
+      "count": 2,
+      "rar": 1,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click to throw.",
+        "16 sheep in every colour burst out."
+      ],
+      "cat": "Pure chaos",
+      "stats": ""
+    },
+    {
+      "a": "dynamite",
+      "b": "cobweb",
+      "a_name": "Dynamite",
+      "b_name": "Cobweb",
+      "result": "cobweb_grenade",
+      "result_name": "Cobweb Grenade",
+      "count": 2,
+      "rar": 1,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click to throw. Cobwebs everywhere",
+        "near the blast. Mobs get stuck."
+      ],
+      "cat": "Pure chaos",
+      "stats": ""
+    },
+    {
       "a": "rotten_flesh",
       "b": "rotten_flesh",
       "a_name": "Rotten Flesh",
@@ -7893,6 +8883,818 @@
       "stats": {
         "nut": 2
       }
+    },
+    {
+      "id": "armageddon_clock",
+      "name": "Armageddon Clock",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Mass destruction",
+      "a": "time_stopper",
+      "b": "doomsday_device",
+      "tip": [
+        "Right-click: the end of the world starts",
+        "where you stand. 10 second countdown, then",
+        "earthquake, fire rain, lightning, lava",
+        "geysers and a black hole. Sneak + right-click:",
+        "call it off."
+      ],
+      "stats": {
+        "dur": 8
+      }
+    },
+    {
+      "id": "orbital_remote",
+      "name": "Orbital Strike Remote",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Mass destruction",
+      "a": "spyglass",
+      "b": "beacon",
+      "tip": [
+        "Right-click: a red light marks the spot you",
+        "look at. 2 seconds later a beam from space",
+        "burns a hole 40 blocks deep."
+      ],
+      "stats": {
+        "dur": 24
+      }
+    },
+    {
+      "id": "cluster_bomb",
+      "name": "Cluster Bomb",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Mass destruction",
+      "a": "dynamite",
+      "b": "dynamite",
+      "tip": [
+        "Right-click to throw. It splits into",
+        "8 lit TNT blocks that fly everywhere."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "gravity_grenade",
+      "name": "Gravity Grenade",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Mass destruction",
+      "a": "dynamite",
+      "b": "shulker_shell",
+      "tip": [
+        "Right-click to throw. The ground where it",
+        "lands flies into the sky and rains down",
+        "somewhere else. Mobs fly too."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "scatter_bomb",
+      "name": "Scatter Bomb",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Mass destruction",
+      "a": "dynamite",
+      "b": "ender_pearl",
+      "tip": [
+        "Right-click to throw. Every mob and item",
+        "near the blast is teleported somewhere",
+        "random. Players too."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "gold_bomb",
+      "name": "Gold Bomb",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Mass destruction",
+      "a": "dynamite",
+      "b": "gold_block",
+      "tip": [
+        "Right-click to throw. Everything near",
+        "the blast turns into gold blocks.",
+        "Mobs too."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "termite_jar",
+      "name": "Termite Jar",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Mass destruction",
+      "a": "glass_bottle",
+      "b": "spider_eye",
+      "tip": [
+        "Right-click something wooden: termites eat",
+        "it and every wooden block it touches.",
+        "Trees, houses, ships. Up to 1500 blocks."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "death_ray",
+      "name": "Solar Death Ray",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Mass destruction",
+      "a": "magnifying_glass",
+      "b": "beacon",
+      "tip": [
+        "Right-click: a beam of sunlight for 3 seconds.",
+        "Stone melts to lava, sand to glass, wood",
+        "burns, water boils, mobs cook."
+      ],
+      "stats": {
+        "dur": 64
+      }
+    },
+    {
+      "id": "tsunami_horn",
+      "name": "Tsunami Horn",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Mass destruction",
+      "a": "ocean_orb",
+      "b": "goat_horn",
+      "tip": [
+        "Right-click: a wall of water rolls away",
+        "from you for 64 blocks. It sweeps mobs,",
+        "flowers and torches away."
+      ],
+      "stats": {
+        "dur": 32
+      }
+    },
+    {
+      "id": "tornado_bottle",
+      "name": "Tornado in a Bottle",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Mass destruction",
+      "a": "dust_devil",
+      "b": "breeze_rod",
+      "tip": [
+        "Right-click: a tornado touches down where you",
+        "look and wanders for 15 seconds. It rips up",
+        "the ground and throws mobs (and you) around."
+      ],
+      "stats": {
+        "dur": 16
+      }
+    },
+    {
+      "id": "snap_gauntlet",
+      "name": "Snap Gauntlet",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Mass destruction",
+      "a": "fist_of_doom",
+      "b": "amethyst_block",
+      "tip": [
+        "Right-click: half of all living things",
+        "within 64 blocks turn to dust.",
+        "Not players. Six snaps."
+      ],
+      "stats": {
+        "dur": 6
+      }
+    },
+    {
+      "id": "creeper_cannon",
+      "name": "Creeper Cannon",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Mass destruction",
+      "a": "dispenser",
+      "b": "creeper_head",
+      "tip": [
+        "Right-click: fires a lit creeper.",
+        "Sneak + right-click: a charged one."
+      ],
+      "stats": {
+        "dur": 64
+      }
+    },
+    {
+      "id": "hive_grenade",
+      "name": "Hive Grenade",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Mass destruction",
+      "a": "beehive",
+      "b": "gunpowder",
+      "tip": [
+        "Right-click to throw. 10 angry bees burst out",
+        "and sting the nearest living thing.",
+        "That can be you."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "hot_potato",
+      "name": "Hot Potato",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Mass destruction",
+      "a": "baked_potato",
+      "b": "tnt",
+      "tip": [
+        "Explodes 15 seconds after you pick it up.",
+        "Right-click: throw it away. It goes off",
+        "3 seconds later, unless someone catches it."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "floor_is_lava",
+      "name": "The Floor Is Lava",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Mass destruction",
+      "a": "magma_block",
+      "b": "note_block",
+      "tip": [
+        "Right-click: plays a song. For 8 seconds the",
+        "ground around you is lava, except the block",
+        "you stand on. Do not move."
+      ],
+      "stats": {
+        "dur": 16
+      }
+    },
+    {
+      "id": "pocket_volcano",
+      "name": "Pocket Volcano",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Mass destruction",
+      "a": "magma_block",
+      "b": "fire_charge",
+      "tip": [
+        "Right-click: a volcano grows out of the ground",
+        "where you look and erupts for 10 seconds:",
+        "lava bombs, explosions and fire."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "mjolnir",
+      "name": "Mjolnir",
+      "rar": 3,
+      "kind": "sword",
+      "cat": "Mass destruction",
+      "a": "earthshaker",
+      "b": "tempest_blade",
+      "tip": [
+        "Calls lightning on the enemy you hit.",
+        "The lightning jumps to nearby enemies.",
+        "Right-click: a ring of 12 lightning bolts",
+        "and a shock wave throws everything away."
+      ],
+      "stats": {
+        "dur": 6000,
+        "dmg": 16,
+        "aspd": -3.0
+      }
+    },
+    {
+      "id": "glass_cannon",
+      "name": "Glass Cannon",
+      "rar": 2,
+      "kind": "sword",
+      "cat": "Mass destruction",
+      "a": "diamond_sword",
+      "b": "glass",
+      "tip": [
+        "60 damage.",
+        "It shatters after one hit."
+      ],
+      "stats": {
+        "dur": 1,
+        "dmg": 60,
+        "aspd": -2.4
+      }
+    },
+    {
+      "id": "railgun",
+      "name": "Railgun",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Mass destruction",
+      "a": "crossbow",
+      "b": "end_rod",
+      "tip": [
+        "Right-click: a shot that goes straight through",
+        "walls for 128 blocks. It drills a hole and",
+        "hits every mob on the line for 30 damage."
+      ],
+      "stats": {
+        "dur": 128
+      }
+    },
+    {
+      "id": "flamethrower",
+      "name": "Flamethrower",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Mass destruction",
+      "a": "flint_and_steel",
+      "b": "blaze_rod",
+      "tip": [
+        "Right-click: 2 seconds of fire.",
+        "Sets everything in front of you ablaze."
+      ],
+      "stats": {
+        "dur": 128
+      }
+    },
+    {
+      "id": "boom_bow",
+      "name": "Boom Bow",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Mass destruction",
+      "a": "bow",
+      "b": "tnt",
+      "tip": [
+        "Right-click: shoots lit TNT instead of arrows.",
+        "Sneak + right-click: a cluster bomb."
+      ],
+      "stats": {
+        "dur": 200
+      }
+    },
+    {
+      "id": "pig_missile",
+      "name": "Pig Missile",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Mass destruction",
+      "a": "saddle",
+      "b": "firework_rocket",
+      "tip": [
+        "Right-click: you ride a rocket-powered pig.",
+        "It flies where you look and explodes when it",
+        "hits something. You get thrown clear."
+      ],
+      "stats": {
+        "dur": 16
+      }
+    },
+    {
+      "id": "kaiju_egg",
+      "name": "Kaiju Egg",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Mass destruction",
+      "a": "egg",
+      "b": "bone_block",
+      "tip": [
+        "Right-click: a random monster hatches 10",
+        "blocks away. It is six times as big, has",
+        "200 extra health and hunts you."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "ring_of_fire",
+      "name": "Ring of Fire",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Mass destruction",
+      "a": "flint_and_steel",
+      "b": "netherrack",
+      "tip": [
+        "Right-click: a ring of fire that never goes",
+        "out closes around you."
+      ],
+      "stats": {
+        "dur": 32
+      }
+    },
+    {
+      "id": "storm_crown",
+      "name": "Storm Crown",
+      "rar": 3,
+      "kind": "armor",
+      "cat": "Mass destruction",
+      "a": "golden_helmet",
+      "b": "lightning_rod",
+      "tip": [
+        "While worn: every 3 seconds lightning",
+        "strikes a monster near you."
+      ],
+      "stats": {
+        "dur": 400,
+        "prot": 3,
+        "tough": 1.0
+      }
+    },
+    {
+      "id": "plague_mask",
+      "name": "Plague Mask",
+      "rar": 2,
+      "kind": "armor",
+      "cat": "Mass destruction",
+      "a": "leather_helmet",
+      "b": "poisonous_potato",
+      "tip": [
+        "While worn: everything alive within",
+        "6 blocks gets poisoned and withers.",
+        "Tame pets are spared."
+      ],
+      "stats": {
+        "dur": 200,
+        "prot": 1,
+        "tough": 0.0
+      }
+    },
+    {
+      "id": "endless_lava",
+      "name": "Endless Lava Bucket",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Mass destruction",
+      "a": "lava_bucket",
+      "b": "bucket",
+      "tip": [
+        "Right-click a block: places lava.",
+        "It never runs dry."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "genesis_seed",
+      "name": "Genesis Seed",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Instant creation",
+      "a": "grass_block",
+      "b": "nether_star",
+      "tip": [
+        "Right-click: a floating island grows in the sky",
+        "above the spot you look at. Trees, ores,",
+        "a pond, a waterfall, flowers and sheep."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "magic_beans",
+      "name": "Magic Beans",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Instant creation",
+      "a": "cocoa_beans",
+      "b": "emerald",
+      "tip": [
+        "Right-click the ground: a beanstalk grows 64",
+        "blocks into the sky. Climb the vines. On the",
+        "cloud at the top: a chest, and a sleeping giant."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "castle_box",
+      "name": "Castle in a Box",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Instant creation",
+      "a": "house_box",
+      "b": "stone_bricks",
+      "tip": [
+        "Right-click: a stone castle builds itself",
+        "where you look. Walls, four towers, a gate,",
+        "a keep with a golden throne, two golem guards."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "pharaoh_scarab",
+      "name": "Pharaoh's Scarab",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Instant creation",
+      "a": "sandstone",
+      "b": "gold_block",
+      "tip": [
+        "Right-click: a pyramid rises where you look.",
+        "Inside: a treasure chamber.",
+        "Do not step on the pressure plate."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "titan_spade",
+      "name": "Titan's Spade",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Instant creation",
+      "a": "diamond_shovel",
+      "b": "grass_block",
+      "tip": [
+        "Right-click: a mountain with a snowy peak",
+        "rises where you look. Sneak + right-click:",
+        "digs a crater and fills it with water."
+      ],
+      "stats": {
+        "dur": 64
+      }
+    },
+    {
+      "id": "bifrost_staff",
+      "name": "Bifrost Staff",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Instant creation",
+      "a": "bridge_staff",
+      "b": "prismarine_crystals",
+      "tip": [
+        "Right-click: a rainbow bridge arcs to the",
+        "spot you look at, up to 64 blocks away."
+      ],
+      "stats": {
+        "dur": 64
+      }
+    },
+    {
+      "id": "portal_gun",
+      "name": "Portal Gun",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Instant creation",
+      "a": "crying_obsidian",
+      "b": "ender_eye",
+      "tip": [
+        "Right-click a block: a lit Nether portal",
+        "appears there. Sneak + right-click the floor:",
+        "a hole straight into the End."
+      ],
+      "stats": {
+        "dur": 16
+      }
+    },
+    {
+      "id": "mitosis_ray",
+      "name": "Mitosis Ray",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Instant creation",
+      "a": "size_ray",
+      "b": "slime_ball",
+      "tip": [
+        "Right-click a mob: it splits into two.",
+        "Sneak + right-click: every mob within",
+        "8 blocks splits. Also the Wither."
+      ],
+      "stats": {
+        "dur": 128
+      }
+    },
+    {
+      "id": "menagerie_cannon",
+      "name": "Menagerie Cannon",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Instant creation",
+      "a": "dispenser",
+      "b": "hay_block",
+      "tip": [
+        "Right-click: fires a random animal or",
+        "monster. Anything from a bee to a ravager.",
+        "Very rarely a warden."
+      ],
+      "stats": {
+        "dur": 256
+      }
+    },
+    {
+      "id": "moses_staff",
+      "name": "Staff of the Red Sea",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Instant creation",
+      "a": "ocean_orb",
+      "b": "stick",
+      "tip": [
+        "Right-click: the water in front of you parts,",
+        "a path 5 wide and 48 long down to the sea floor.",
+        "The sea comes back after 20 seconds."
+      ],
+      "stats": {
+        "dur": 32
+      }
+    },
+    {
+      "id": "snowman_horn",
+      "name": "Snowman Horn",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Instant creation",
+      "a": "goat_horn",
+      "b": "snow_block",
+      "tip": [
+        "Right-click: 8 snow golems appear around",
+        "you and throw snowballs at monsters."
+      ],
+      "stats": {
+        "dur": 16
+      }
+    },
+    {
+      "id": "fortress_staff",
+      "name": "Fortress Staff",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Instant creation",
+      "a": "stick",
+      "b": "stone_bricks",
+      "tip": [
+        "Right-click: a stone wall rises in front",
+        "of you. Sneak + right-click: a stone dome",
+        "closes over you."
+      ],
+      "stats": {
+        "dur": 128
+      }
+    },
+    {
+      "id": "farm_box",
+      "name": "Farm in a Box",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Instant creation",
+      "a": "composter",
+      "b": "wheat_seeds",
+      "tip": [
+        "Right-click: a ripe 9x9 farm appears where",
+        "you look: water, farmland, wheat, carrots,",
+        "potatoes, beetroot and a scarecrow."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "wild_staff",
+      "name": "Staff of Wild Magic",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Pure chaos",
+      "a": "blaze_rod",
+      "b": "chorus_fruit",
+      "tip": [
+        "Right-click: casts a random spell of this mod.",
+        "From a fireball to a tornado to a nuke.",
+        "Even the end of the world."
+      ],
+      "stats": {
+        "dur": 100
+      }
+    },
+    {
+      "id": "dice_of_fate",
+      "name": "Dice of Fate",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Pure chaos",
+      "a": "bone_block",
+      "b": "emerald",
+      "tip": [
+        "Right-click: roll a 20-sided die.",
+        "1: a Wither. 20: netherite, diamonds",
+        "and 30 levels. Everything in between."
+      ],
+      "stats": {
+        "dur": 20
+      }
+    },
+    {
+      "id": "musical_chairs",
+      "name": "Musical Chairs",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Pure chaos",
+      "a": "note_block",
+      "b": "chorus_fruit",
+      "tip": [
+        "Right-click: every living thing within",
+        "32 blocks swaps places with another one.",
+        "You too."
+      ],
+      "stats": {
+        "dur": 32
+      }
+    },
+    {
+      "id": "party_cannon",
+      "name": "Party Cannon",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Pure chaos",
+      "a": "dispenser",
+      "b": "firework_rocket",
+      "tip": [
+        "Right-click: a volley of exploding fireworks.",
+        "Sneak + right-click: it rains cake."
+      ],
+      "stats": {
+        "dur": 128
+      }
+    },
+    {
+      "id": "gremlin_jar",
+      "name": "Gremlin in a Jar",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Pure chaos",
+      "a": "firefly_jar",
+      "b": "fermented_spider_eye",
+      "tip": [
+        "Keep it in your hotbar. Now and then the",
+        "gremlin plays a prank: it swaps your items,",
+        "opens doors, steals torches, makes you hiccup."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "force_field",
+      "name": "Force Field",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Pure chaos",
+      "a": "shield",
+      "b": "redstone_block",
+      "tip": [
+        "Right-click: for 10 seconds nothing gets",
+        "closer than 5 blocks. Mobs are pushed",
+        "away, arrows and fireballs vanish."
+      ],
+      "stats": {
+        "dur": 32
+      }
+    },
+    {
+      "id": "upside_down_cake",
+      "name": "Upside-Down Cake",
+      "rar": 2,
+      "kind": "food",
+      "cat": "Pure chaos",
+      "a": "cake",
+      "b": "phantom_membrane",
+      "tip": [
+        "You fall upward for 6 seconds.",
+        "Then you float back down.",
+        "Can be eaten when full."
+      ],
+      "stats": {
+        "nut": 6
+      }
+    },
+    {
+      "id": "glacier_staff",
+      "name": "Glacier Staff",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Pure chaos",
+      "a": "blue_ice",
+      "b": "blaze_rod",
+      "tip": [
+        "Right-click: a line of ice spikes bursts out",
+        "of the ground towards where you look.",
+        "Mobs in the way are thrown up and frozen."
+      ],
+      "stats": {
+        "dur": 128
+      }
+    },
+    {
+      "id": "sheep_bomb",
+      "name": "Sheep Bomb",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Pure chaos",
+      "a": "dynamite",
+      "b": "white_wool",
+      "tip": [
+        "Right-click to throw.",
+        "16 sheep in every colour burst out."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "cobweb_grenade",
+      "name": "Cobweb Grenade",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Pure chaos",
+      "a": "dynamite",
+      "b": "cobweb",
+      "tip": [
+        "Right-click to throw. Cobwebs everywhere",
+        "near the blast. Mobs get stuck."
+      ],
+      "stats": {}
     }
   ]
 }

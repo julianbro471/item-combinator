@@ -3,11 +3,14 @@ package com.combinator;
 import com.combinator.ability.Capture;
 import com.combinator.ability.Charms;
 import com.combinator.ability.CombatAbilities;
+import com.combinator.ability.Doom;
 import com.combinator.ability.Gadgets;
+import com.combinator.ability.Mayhem;
 import com.combinator.ability.MiningAbilities;
 import com.combinator.ability.Oddities;
 import com.combinator.ability.PassiveAbilities;
 import com.combinator.ability.Tasks;
+import com.combinator.ability.Wild;
 import com.combinator.block.CombinerTableBlock;
 import com.combinator.item.ComboItems;
 import com.combinator.recipe.ComboRecipes;
@@ -103,6 +106,9 @@ public class ItemCombinator implements ModInitializer {
 		Capture.register();
 		Charms.register();
 		Oddities.register();
+		Doom.register();
+		Mayhem.register();
+		Wild.register();
 
 		LOGGER.info("Item Combinator loaded: {} new items, {} combinations", ComboItems.ALL.size(), ComboRecipes.ALL.size());
 	}
