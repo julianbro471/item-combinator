@@ -42,7 +42,7 @@ def f(x):
 TOOL_KINDS = ('pick', 'axe', 'shovel', 'hoe', 'sword', 'paxel')
 ENCH = {1: 14, 2: 18, 3: 22}
 DEFAULT_WHERE = {'gadget': 'HOTBAR', 'armor': 'WORN', 'wings': 'WORN'}
-HANDHELD_TEX = {'wand', 'staff', 'staff3', 'scythe', 'bat', 'bow', 'hook', 'lasso', 'rod', 'crook', 'net', 'fork', 'cane', 'bigshears', 'boomerang'}
+HANDHELD_TEX = {'wand', 'staff', 'staff3', 'scythe', 'bat', 'bow', 'hook', 'lasso', 'rod', 'crook', 'net', 'fork', 'cane', 'bigshears', 'boomerang', 'key'}
 
 # ------------------------------------------------------------------------------------------ Java
 
@@ -67,6 +67,7 @@ def item_expr(it):
         if it.get('always'): b += '.alwaysEdible()'
         if it.get('snack'): b += '.snack()'
         if it.get('bowl'): b += '.usingConvertsTo(Items.BOWL)'
+        if it.get('bottle'): b += '.usingConvertsTo(Items.GLASS_BOTTLE)'
         return f'new CItem({props}.maxCount({it.get("stack", 64)}).food({b}.build()))'
     if k == 'armor':
         mat = f'armorMaterial("{it["id"]}", {it["prot"]}, {f(it["tough"])}, {f(it["kb"])}, "{it["layer"]}", false)'
@@ -498,6 +499,22 @@ def gen_readme(rows, extra):
     A('- Bleeding from the Jagged Blade does not add up. A new hit only starts the 6 seconds again.')
     A('- The Divining Rod shows at most 96 ore blocks at a time.')
     A('- The Endless Water Bucket does not work in the Nether, like a normal water bucket.')
+    A('- **Double jump, Pogo Stick and Sticky Boots** are worked out by your own game, not by the server (like all player')
+    A('  movement). They are made for single player. On a server without this mod they do nothing.')
+    A('- Sticky Boots: you only climb while you walk against the wall. Let go of the forward key and you fall.')
+    A('- The Firefly Jar uses the game\'s invisible light block. It moves with you and is removed when you put the jar away,')
+    A('  leave the world or die. If the game crashes, one invisible light can stay behind.')
+    A('- The Strider Boots only harden still lava (not flowing lava), and only while you stand on something. Jumping into')
+    A('  a lava lake from above still ends badly.')
+    A('- The Rewind Watch gives back health, not items. It does not undo anything you did to the world.')
+    A('- The Disco Ball does not work on the Wither and the Ender Dragon. A creeper that was about to explode calms down.')
+    A('- The Push Glove moves what a piston can move: no obsidian, no chests, no doors. A block with a window of its own')
+    A('  (crafting table, furnace) can only be pulled, because a normal right-click opens it.')
+    A('- The Rodeo Saddle lets you sit on a mob. The mob goes where it wants. Hostile mobs still attack you.')
+    A('- The Lunchbox never eats food with side effects: no golden apples, no rotten flesh, none of the special foods.')
+    A('- The Pocket Mirror stops arrows, tridents, fireballs and other shots, one every 3 seconds. A ghast fireball still')
+    A('  explodes next to you.')
+    A('- The Magnifying Glass needs the sun: daytime, no rain, open sky above you.')
     A('- Texts are in English only.\n')
     A('## Automatic tests\n')
     A('The tests are in `src/gametest`. They are not part of the mod .jar.\n')
@@ -520,11 +537,15 @@ def gen_readme(rows, extra):
     A('- remembers a spot with the Waystone and travels back to it')
     A('- catches a pig with the Mob Net (sent the way a real game client sends a right-click) and lets it out again')
     A('- kills a sheep with a normal sword and with the Looter\'s Blade and compares the wool')
-    A('- hits an iron golem twice with the Jagged Blade and measures the bleeding for 4 seconds\n')
+    A('- hits an iron golem twice with the Jagged Blade and measures the bleeding for 4 seconds')
+    A('- wears, holds and carries the odd charms for 20 seconds: balloon, light, lunchbox, flower boots, lava boots,')
+    A('  and goes 5 seconds back in time with the Rewind Watch')
+    A('- lets a skeleton arrow bounce off the Pocket Mirror, fills and empties the Piggy Bank, rides a cow\n')
     A('**Client test** (`gradlew runClientTest`). The real game starts, makes a flat world, opens the Combiner Table with a')
     A('right-click, puts two items in, takes the result, and takes screenshots of the table, of every item in the')
     A('inventory, and of armor and wings on the player. It checks that every item has a name, a description, a model')
-    A('and a texture.\n')
+    A('and a texture. It also presses the jump and forward keys (pretend key presses) and measures how high the')
+    A('player gets with the double jump, the Pogo Stick and the Sticky Boots.\n')
     A('**The same tests with the finished .jar** (`gradlew prodServerTest` and `gradlew prodClientTest`). Here the game')
     A('runs like on a player\'s PC: with the .jar from `build/libs` and the Fabric API file that players install.\n')
     A('On GitHub the logs and the screenshots of the last run are on the **`builds`** branch.\n')

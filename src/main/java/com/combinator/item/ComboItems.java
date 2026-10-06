@@ -607,6 +607,71 @@ public final class ComboItems {
 			new CItem(props(1).maxCount(64).food(new FoodComponent.Builder().nutrition(4).saturationModifier(0.4F)
 					.statusEffect(new StatusEffectInstance(StatusEffects.SPEED, 600, 1), 1.0F).alwaysEdible().build())),
 			null);
+	public static final Item DUST_DEVIL = add("dust_devil", 1, 2,
+			new CItem(props(1).maxCount(1)),
+			new Traits().at(Traits.Where.HOTBAR).airJumps(1));
+	public static final Item POGO_STICK = add("pogo_stick", 1, 2,
+			new CItem(props(1).maxCount(1)),
+			new Traits().at(Traits.Where.HELD).bounce().noFall());
+	public static final Item STICKY_BOOTS = add("sticky_boots", 1, 2,
+			new CArmor(armorMaterial("sticky_boots", 1, 0.0F, 0.0F, "leather", false), ArmorItem.Type.BOOTS, props(1).maxDamage(120)),
+			new Traits().at(Traits.Where.WORN).wallClimb());
+	public static final Item PUFFER_BALLOON = add("puffer_balloon", 1, 2,
+			new CItem(props(1).maxCount(1)),
+			new Traits().at(Traits.Where.HELD).balloon());
+	public static final Item FIREFLY_JAR = add("firefly_jar", 1, 2,
+			new CItem(props(1).maxCount(1)),
+			new Traits().at(Traits.Where.HOTBAR).lantern());
+	public static final Item POCKET_MIRROR = add("pocket_mirror", 1, 2,
+			new CItem(props(1).maxCount(1)),
+			new Traits().at(Traits.Where.HOTBAR).reflect(60));
+	public static final Item LUNCHBOX = add("lunchbox", 1, 2,
+			new CItem(props(1).maxCount(1)),
+			new Traits().at(Traits.Where.HOTBAR).autoEat());
+	public static final Item ALMANAC = add("almanac", 1, 2,
+			new CItem(props(1).maxCount(1)),
+			new Traits().at(Traits.Where.HELD).almanac());
+	public static final Item MEADOW_BOOTS = add("meadow_boots", 1, 2,
+			new CArmor(armorMaterial("meadow_boots", 1, 0.0F, 0.0F, "leather", false), ArmorItem.Type.BOOTS, props(1).maxDamage(120)),
+			new Traits().at(Traits.Where.WORN).meadow());
+	public static final Item STRIDER_BOOTS = add("strider_boots", 1, 2,
+			new CArmor(armorMaterial("strider_boots", 2, 0.0F, 0.0F, "leather", false), ArmorItem.Type.BOOTS, props(1).maxDamage(160)),
+			new Traits().at(Traits.Where.WORN).lavaWalk());
+	public static final Item REWIND_WATCH = add("rewind_watch", 2, 3,
+			new CItem(props(2).maxDamage(32)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.REWIND).cooldown(600).cost(1));
+	public static final Item SKELETON_KEY = add("skeleton_key", 1, 2,
+			new CItem(props(1).maxDamage(64)),
+			new Traits().at(Traits.Where.HELD).unlock());
+	public static final Item DISCO_BALL = add("disco_ball", 2, 2,
+			new CItem(props(2).maxDamage(16)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.DISCO).range(10).cooldown(600).cost(1));
+	public static final Item PIGGY_BANK = add("piggy_bank", 1, 2,
+			new CItem(props(1).maxCount(1)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.BANK_IN).cooldown(10).sneakUse(Use.BANK_OUT, 10));
+	public static final Item PUSH_GLOVE = add("push_glove", 1, 2,
+			new CItem(props(1).maxDamage(128)),
+			new Traits().at(Traits.Where.HELD).push());
+	public static final Item WEATHER_VANE = add("weather_vane", 2, 2,
+			new CItem(props(2).maxDamage(16)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.WEATHER).cooldown(200).cost(1));
+	public static final Item MAGNIFYING_GLASS = add("magnifying_glass", 1, 2,
+			new CItem(props(1).maxCount(1)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.SUNBURN).range(6).cooldown(30));
+	public static final Item RODEO_SADDLE = add("rodeo_saddle", 1, 2,
+			new CItem(props(1).maxDamage(32)),
+			new Traits().at(Traits.Where.HELD).mount());
+	public static final Item STONE_SOUP = add("stone_soup", 1, 2,
+			new CItem(props(1).maxCount(16).food(new FoodComponent.Builder().nutrition(10).saturationModifier(0.6F)
+					.statusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 1200, 0), 1.0F)
+					.statusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 600, 0), 1.0F).usingConvertsTo(Items.BOWL).build())),
+			null);
+	public static final Item CACTUS_JUICE = add("cactus_juice", 1, 2,
+			new CItem(props(1).maxCount(16).food(new FoodComponent.Builder().nutrition(2).saturationModifier(0.3F)
+					.statusEffect(new StatusEffectInstance(StatusEffects.SPEED, 600, 1), 1.0F)
+					.statusEffect(new StatusEffectInstance(StatusEffects.JUMP_BOOST, 600, 1), 1.0F)
+					.statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 160, 0), 1.0F).alwaysEdible().usingConvertsTo(Items.GLASS_BOTTLE).build())),
+			null);
 
 	private ComboItems() {
 	}

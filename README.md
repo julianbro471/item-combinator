@@ -4,8 +4,8 @@ A Fabric mod for **Minecraft Java Edition 1.21.1**.
 
 It adds one block, the **Combiner Table**. You put two items into it and get one new item.
 
-- **237 combinations** in total.
-- 187 of them make one of **183 new items**: tools, weapons, armor, gadgets, food, bombs, cheats.
+- **257 combinations** in total.
+- 207 of them make one of **203 new items**: tools, weapons, armor, gadgets, food, bombs, cheats.
 - 50 of them make a vanilla item that you normally cannot craft (saddle, name tag, elytra, ...).
 - Two stackable items that have no combination give a **Chaos Orb**, which does something random.
 - There are no tiers and there is no balance. Some items are normal, many are absurd, a few can destroy your world.
@@ -43,7 +43,7 @@ about 1 GB and takes several minutes. `build` also runs the server tests. To ski
 
 ## Installing
 
-Put `item-combinator-1.2.0.jar` and the Fabric API .jar into the `mods` folder of your Minecraft installation.
+Put `item-combinator-1.3.0.jar` and the Fabric API .jar into the `mods` folder of your Minecraft installation.
 Start the game with the Fabric profile.
 
 ## How the Combiner Table works
@@ -231,6 +231,8 @@ Every new item has a description under its name. All new items are also in their
 | Cooked Cod | Baked Potato | **Fish and Chips** | Very filling. Gives Luck for 2 minutes. | 12 hunger |
 | Cooked Salmon | Baked Potato | **Fish and Chips** | Second way to make it. | 12 hunger |
 | Apple | Sugar | **Candy Apple** | Speed II for 30 seconds. Can be eaten when full. | 4 hunger |
+| Cobblestone | Bowl | **Stone Soup** | Very filling. You feel like a rock: tough, but slow. | 10 hunger |
+| Cactus | Glass Bottle | **Cactus Juice** | Speed II and Jump Boost II for 30 seconds. Makes you dizzy. | 2 hunger |
 
 ### Bombs and disasters
 
@@ -371,6 +373,39 @@ Every new item has a description under its name. All new items are also in their
 | Feather | String | **Dreamcatcher** | Phantoms never come for you. Keep it in your hotbar or off hand. |  |
 | Iron Ingot | Iron Ingot | **Lucky Horseshoe** | Gives Luck: better fishing and loot. Keep it in your hotbar or off hand. |  |
 | Egg | Feather | **Emergency Chicken** | Hold it and you float down slowly. No fall damage. |  |
+
+### Movement tricks
+
+| Item A | Item B | Result | What it does | Stats |
+|---|---|---|---|---|
+| Sand | Glass | **Bottled Dust Devil** | Jump a second time in the air. Keep it in your hotbar or off hand. |  |
+| Stick | Slimeball | **Pogo Stick** | Hold it: every landing bounces you higher. Sneak to stop. No fall damage. |  |
+| Honeycomb | Leather Boots | **Sticky Boots** | Walk against a wall to climb it. Sneak to hold on. | 1 armor, 120 uses |
+| Lead | Pufferfish | **Puffer Balloon** | Hold it: you float up. Sneak to sink slowly. |  |
+
+### Odd charms
+
+| Item A | Item B | Result | What it does | Stats |
+|---|---|---|---|---|
+| Glass Bottle | Glowstone Dust | **Firefly Jar** | Lights up the place around you. Keep it in your hotbar or off hand. |  |
+| Glass Pane | Iron Ingot | **Pocket Mirror** | A shot that hits you hits the shooter instead. Works once every 3 seconds. |  |
+| Barrel | Bread | **Lunchbox** | Eats plain food from your inventory for you when you are hungry. Keep in hotbar. |  |
+| Compass | Clock | **Explorer's Almanac** | Hold it: shows your position, the biome, the time, the light and slime chunks. |  |
+| Leather Boots | Bone Meal | **Meadow Boots** | Flowers grow where you walk on grass. Crops near you grow faster. | 1 armor, 120 uses |
+| Magma Cream | Leather Boots | **Strider Boots** | Lava hardens under your feet. It melts again behind you. | 2 armor, 160 uses |
+
+### Odd gadgets
+
+| Item A | Item B | Result | What it does | Stats |
+|---|---|---|---|---|
+| Clock | Ender Pearl | **Rewind Watch** | Right-click: back to where you were 5 seconds ago, with the health of then. It has to be in your hotbar before. | 32 uses |
+| Tripwire Hook | Bone | **Skeleton Key** | Right-click an iron door or an iron trapdoor: it opens or closes. | 64 uses |
+| Glowstone | Note Block | **Disco Ball** | Right-click: every mob within 10 blocks stops and dances for 8 seconds. | 16 uses |
+| Clay Ball | Pink Dye | **Piggy Bank** | Right-click: puts your experience in. Sneak + right-click: takes it out. |  |
+| Piston | Leather | **Push Glove** | Right-click a block: pushes it away. Sneak + right-click: pulls it to you. | 128 uses |
+| Lightning Rod | Feather | **Weather Vane** | Right-click: changes the weather. Clear, then rain, then thunder. | 16 uses |
+| Glass Pane | Stick | **Magnifying Glass** | Right-click in sunlight: sets the mob or block you look at on fire. |  |
+| Saddle | Lead | **Rodeo Saddle** | Right-click any mob to ride it. You do not steer. Sneak to get off. | 32 uses |
 
 ## All combinations that make vanilla items
 
@@ -647,6 +682,22 @@ These items need three or more combining steps. Each list shows everything that 
 - Bleeding from the Jagged Blade does not add up. A new hit only starts the 6 seconds again.
 - The Divining Rod shows at most 96 ore blocks at a time.
 - The Endless Water Bucket does not work in the Nether, like a normal water bucket.
+- **Double jump, Pogo Stick and Sticky Boots** are worked out by your own game, not by the server (like all player
+  movement). They are made for single player. On a server without this mod they do nothing.
+- Sticky Boots: you only climb while you walk against the wall. Let go of the forward key and you fall.
+- The Firefly Jar uses the game's invisible light block. It moves with you and is removed when you put the jar away,
+  leave the world or die. If the game crashes, one invisible light can stay behind.
+- The Strider Boots only harden still lava (not flowing lava), and only while you stand on something. Jumping into
+  a lava lake from above still ends badly.
+- The Rewind Watch gives back health, not items. It does not undo anything you did to the world.
+- The Disco Ball does not work on the Wither and the Ender Dragon. A creeper that was about to explode calms down.
+- The Push Glove moves what a piston can move: no obsidian, no chests, no doors. A block with a window of its own
+  (crafting table, furnace) can only be pulled, because a normal right-click opens it.
+- The Rodeo Saddle lets you sit on a mob. The mob goes where it wants. Hostile mobs still attack you.
+- The Lunchbox never eats food with side effects: no golden apples, no rotten flesh, none of the special foods.
+- The Pocket Mirror stops arrows, tridents, fireballs and other shots, one every 3 seconds. A ghast fireball still
+  explodes next to you.
+- The Magnifying Glass needs the sun: daytime, no rain, open sky above you.
 - Texts are in English only.
 
 ## Automatic tests
@@ -674,11 +725,15 @@ The tests are in `src/gametest`. They are not part of the mod .jar.
 - catches a pig with the Mob Net (sent the way a real game client sends a right-click) and lets it out again
 - kills a sheep with a normal sword and with the Looter's Blade and compares the wool
 - hits an iron golem twice with the Jagged Blade and measures the bleeding for 4 seconds
+- wears, holds and carries the odd charms for 20 seconds: balloon, light, lunchbox, flower boots, lava boots,
+  and goes 5 seconds back in time with the Rewind Watch
+- lets a skeleton arrow bounce off the Pocket Mirror, fills and empties the Piggy Bank, rides a cow
 
 **Client test** (`gradlew runClientTest`). The real game starts, makes a flat world, opens the Combiner Table with a
 right-click, puts two items in, takes the result, and takes screenshots of the table, of every item in the
 inventory, and of armor and wings on the player. It checks that every item has a name, a description, a model
-and a texture.
+and a texture. It also presses the jump and forward keys (pretend key presses) and measures how high the
+player gets with the double jump, the Pogo Stick and the Sticky Boots.
 
 **The same tests with the finished .jar** (`gradlew prodServerTest` and `gradlew prodClientTest`). Here the game
 runs like on a player's PC: with the .jar from `build/libs` and the Fabric API file that players install.

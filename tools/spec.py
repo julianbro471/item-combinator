@@ -10,7 +10,7 @@ The number after the name is only the rarity, which sets the name colour in the 
 
 MOD_ID = "combinator"
 MOD_NAME = "Item Combinator"
-VERSION = "1.2.0"
+VERSION = "1.3.0"
 
 ITEMS = []      # custom items, in creative-tab / documentation order
 VANILLA = []    # recipes whose result is a vanilla item
@@ -839,6 +839,82 @@ it("candy_apple", "Candy Apple", 1, "apple", "sugar", "food",
    ["Speed II for 30 seconds.", "Can be eaten when full."],
    "", tex=("candyapple", "redstone", "bone", None), always=True,
    nut=4, sat=0.4, fx=[("SPEED", 30, 1)])
+
+# ---------------------------------------------------------------------------------------------
+# ODD ITEMS: surprising pairs that give an ability nobody expects from them
+# ---------------------------------------------------------------------------------------------
+section("Movement tricks")
+it("dust_devil", "Bottled Dust Devil", 1, "sand", "glass", "gadget",
+   ["Jump a second time in the air.", "Keep it in your hotbar or off hand."],
+   ".airJumps(1)", tex=("jar", "glass", "sand", None))
+it("pogo_stick", "Pogo Stick", 1, "stick", "slime_ball", "gadget",
+   ["Hold it: every landing bounces you", "higher. Sneak to stop. No fall damage."],
+   ".bounce().noFall()", tex=("pogo", "redstone", "slime", None), where="HELD")
+it("sticky_boots", "Sticky Boots", 1, "honeycomb", "leather_boots", "armor",
+   ["Walk against a wall to climb it.", "Sneak to hold on."],
+   ".wallClimb()", tex=("boots", "leather", "honey", None),
+   slot="BOOTS", prot=1, tough=0.0, kb=0.0, dur=120, layer="leather")
+it("puffer_balloon", "Puffer Balloon", 1, "lead", "pufferfish", "gadget",
+   ["Hold it: you float up.", "Sneak to sink slowly."],
+   ".balloon()", tex=("balloon", "thunder", "bone", None), where="HELD")
+
+section("Odd charms")
+it("firefly_jar", "Firefly Jar", 1, "glass_bottle", "glowstone_dust", "gadget",
+   ["Lights up the place around you.", "Keep it in your hotbar or off hand."],
+   ".lantern()", tex=("jar", "glass", "thunder", None))
+it("pocket_mirror", "Pocket Mirror", 1, "glass_pane", "iron_ingot", "gadget",
+   ["A shot that hits you hits the shooter", "instead. Works once every 3 seconds."],
+   ".reflect(60)", tex=("mirror", "gold", "wind", "arrows"))
+it("lunchbox", "Lunchbox", 1, "barrel", "bread", "gadget",
+   ["Eats plain food from your inventory for", "you when you are hungry. Keep in hotbar."],
+   ".autoEat()", tex=("lunchbox", "redstone", "bone", None))
+it("almanac", "Explorer's Almanac", 1, "compass", "clock", "gadget",
+   ["Hold it: shows your position, the biome,", "the time, the light and slime chunks."],
+   ".almanac()", tex=("book", "leather", "gold", "leaf"), where="HELD")
+it("meadow_boots", "Meadow Boots", 1, "leather_boots", "bone_meal", "armor",
+   ["Flowers grow where you walk on grass.", "Crops near you grow faster."],
+   ".meadow()", tex=("boots", "emerald", "wheat", "leaf"),
+   slot="BOOTS", prot=1, tough=0.0, kb=0.0, dur=120, layer="leather")
+it("strider_boots", "Strider Boots", 1, "magma_cream", "leather_boots", "armor",
+   ["Lava hardens under your feet.", "It melts again behind you."],
+   ".lavaWalk()", tex=("boots", "magma", "fire", "flame"),
+   slot="BOOTS", prot=2, tough=0.0, kb=0.0, dur=160, layer="leather")
+
+section("Odd gadgets")
+it("rewind_watch", "Rewind Watch", 2, "clock", "ender_pearl", "gadget",
+   ["Right-click: back to where you were", "5 seconds ago, with the health of then.", "It has to be in your hotbar before."],
+   ".use(Use.REWIND).cooldown(600).cost(1)", tex=("clock", "copper", "ender", None), dur=32)
+it("skeleton_key", "Skeleton Key", 1, "tripwire_hook", "bone", "gadget",
+   ["Right-click an iron door or an iron", "trapdoor: it opens or closes."],
+   ".unlock()", tex=("key", "bone", "iron", None), dur=64, where="HELD")
+it("disco_ball", "Disco Ball", 2, "glowstone", "note_block", "gadget",
+   ["Right-click: every mob within 10 blocks", "stops and dances for 8 seconds."],
+   ".use(Use.DISCO).range(10).cooldown(600).cost(1)", tex=("disco", "iron", "ice", None), dur=16)
+it("piggy_bank", "Piggy Bank", 1, "clay_ball", "pink_dye", "gadget",
+   ["Right-click: puts your experience in.", "Sneak + right-click: takes it out."],
+   ".use(Use.BANK_IN).cooldown(10).sneakUse(Use.BANK_OUT, 10)", tex=("piggy", "pink", "blood", None))
+it("push_glove", "Push Glove", 1, "piston", "leather", "gadget",
+   ["Right-click a block: pushes it away.", "Sneak + right-click: pulls it to you."],
+   ".push()", tex=("glove", "stone", "wood", None), dur=128, where="HELD")
+it("weather_vane", "Weather Vane", 2, "lightning_rod", "feather", "gadget",
+   ["Right-click: changes the weather.", "Clear, then rain, then thunder."],
+   ".use(Use.WEATHER).cooldown(200).cost(1)", tex=("vane", "copper", "bone", None), dur=16)
+it("magnifying_glass", "Magnifying Glass", 1, "glass_pane", "stick", "gadget",
+   ["Right-click in sunlight: sets the mob", "or block you look at on fire."],
+   ".use(Use.SUNBURN).range(6).cooldown(30)", tex=("magnifier", "gold", "glass", None))
+it("rodeo_saddle", "Rodeo Saddle", 1, "saddle", "lead", "gadget",
+   ["Right-click any mob to ride it.", "You do not steer. Sneak to get off."],
+   ".mount()", tex=("saddle", "leather", "wheat", "star"), dur=32, where="HELD")
+
+section("Food")
+it("stone_soup", "Stone Soup", 1, "cobblestone", "bowl", "food",
+   ["Very filling. You feel like a rock:", "tough, but slow."],
+   "", tex=("soup", "wood", "wheat", None), stack=16, bowl=True,
+   nut=10, sat=0.6, fx=[("RESISTANCE", 60, 0), ("SLOWNESS", 30, 0)])
+it("cactus_juice", "Cactus Juice", 1, "cactus", "glass_bottle", "food",
+   ["Speed II and Jump Boost II for", "30 seconds. Makes you dizzy."],
+   "", tex=("bottle", "glass", "cactus", None), stack=16, always=True, bottle=True,
+   nut=2, sat=0.3, fx=[("SPEED", 30, 1), ("JUMP_BOOST", 30, 1), ("NAUSEA", 8, 0)])
 
 # ---------------------------------------------------------------------------------------------
 # VANILLA RESULTS

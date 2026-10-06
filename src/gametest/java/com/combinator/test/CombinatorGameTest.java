@@ -2,8 +2,10 @@ package com.combinator.test;
 
 import com.combinator.ItemCombinator;
 import com.combinator.ability.Capture;
+import com.combinator.ability.Charms;
 import com.combinator.ability.Chaos;
 import com.combinator.ability.CombatAbilities;
+import com.combinator.ability.Oddities;
 import com.combinator.item.ComboItems;
 import com.combinator.item.Traits;
 import com.combinator.item.Use;
@@ -25,7 +27,10 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.CropBlock;
+import net.minecraft.block.DoorBlock;
 import net.minecraft.block.LeavesBlock;
+import net.minecraft.block.TrapdoorBlock;
+import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ContainerComponent;
 import net.minecraft.component.type.NbtComponent;
@@ -42,6 +47,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.TntEntity;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeInstance;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.CreeperEntity;
 import net.minecraft.entity.mob.MobEntity;
@@ -1143,6 +1149,61 @@ public class CombinatorGameTest implements FabricGameTest {
 						report.check(world.getBlockState(spot.up()).isOf(Blocks.WATER), id + ": no water was placed");
 						report.check(player.getMainHandStack().isOf(item), id + ": the bucket was used up");
 						special++;
+					} else if (traits != null && traits.unlock) {
+						// an iron door (two blocks high) and an iron trapdoor
+						BlockPos doorPos = center.add(6, 0, 3);
+						world.setBlockState(doorPos, Blocks.IRON_DOOR.getDefaultState().with(DoorBlock.HALF, DoubleBlockHalf.LOWER),
+								Block.NOTIFY_LISTENERS | Block.FORCE_STATE);
+						world.setBlockState(doorPos.up(), Blocks.IRON_DOOR.getDefaultState().with(DoorBlock.HALF, DoubleBlockHalf.UPPER),
+								Block.NOTIFY_LISTENERS | Block.FORCE_STATE);
+						BlockHitResult onDoor = new BlockHitResult(Vec3d.ofCenter(doorPos), Direction.NORTH, doorPos, false);
+						player.interactionManager.interactBlock(player, world, stack, Hand.MAIN_HAND, onDoor);
+						report.check(world.getBlockState(doorPos).isOf(Blocks.IRON_DOOR) && world.getBlockState(doorPos).get(DoorBlock.OPEN),
+								id + ": the iron door did not open");
+						report.check(world.getBlockState(doorPos.up()).isOf(Blocks.IRON_DOOR) && world.getBlockState(doorPos.up()).get(DoorBlock.OPEN),
+								id + ": the upper half of the iron door did not open");
+						player.interactionManager.interactBlock(player, world, stack, Hand.MAIN_HAND, onDoor);
+						report.check(world.getBlockState(doorPos).isOf(Blocks.IRON_DOOR) && !world.getBlockState(doorPos).get(DoorBlock.OPEN),
+								id + ": the iron door did not close again");
+						BlockPos hatch = center.add(6, 0, 0);
+						world.setBlockState(hatch, Blocks.IRON_TRAPDOOR.getDefaultState(), Block.NOTIFY_LISTENERS | Block.FORCE_STATE);
+						player.interactionManager.interactBlock(player, world, stack, Hand.MAIN_HAND, hitTop(hatch));
+						report.check(world.getBlockState(hatch).isOf(Blocks.IRON_TRAPDOOR) && world.getBlockState(hatch).get(TrapdoorBlock.OPEN),
+								id + ": the iron trapdoor did not open");
+						report.check(stack.getDamage() == 3, id + ": three uses should cost 3 durability, they cost " + stack.getDamage());
+						special++;
+					} else if (traits != null && traits.push) {
+						BlockPos block = center.add(0, 0, 3);
+						world.setBlockState(block, Blocks.STONE.getDefaultState());
+						// a click on the side that faces the tester pushes the block away
+						player.interactionManager.interactBlock(player, world, stack, Hand.MAIN_HAND,
+								new BlockHitResult(Vec3d.ofCenter(block), Direction.NORTH, block, false));
+						report.check(world.getBlockState(block).isAir() && world.getBlockState(block.south()).isOf(Blocks.STONE),
+								id + ": the stone block was not pushed one step away");
+						// sneaking pulls it back
+						player.getItemCooldownManager().remove(item);
+						player.setSneaking(true);
+						player.interactionManager.interactBlock(player, world, stack, Hand.MAIN_HAND,
+								new BlockHitResult(Vec3d.ofCenter(block.south()), Direction.NORTH, block.south(), false));
+						player.setSneaking(false);
+						report.check(world.getBlockState(block).isOf(Blocks.STONE) && world.getBlockState(block.south()).isAir(),
+								id + ": the stone block was not pulled back");
+						report.check(stack.getDamage() == 2, id + ": two moves should cost 2 durability, they cost " + stack.getDamage());
+						// what a piston cannot move stays: obsidian, and a chest (it holds things)
+						player.getItemCooldownManager().remove(item);
+						BlockPos heavy = center.add(3, 0, 3);
+						world.setBlockState(heavy, Blocks.OBSIDIAN.getDefaultState());
+						player.interactionManager.interactBlock(player, world, stack, Hand.MAIN_HAND,
+								new BlockHitResult(Vec3d.ofCenter(heavy), Direction.NORTH, heavy, false));
+						report.check(world.getBlockState(heavy).isOf(Blocks.OBSIDIAN) && world.getBlockState(heavy.south()).isAir(), id + ": obsidian was moved");
+						world.setBlockState(heavy, Blocks.CHEST.getDefaultState());
+						player.setSneaking(true); // without sneaking the click would open the chest
+						player.interactionManager.interactBlock(player, world, stack, Hand.MAIN_HAND,
+								new BlockHitResult(Vec3d.ofCenter(heavy), Direction.NORTH, heavy, false));
+						player.setSneaking(false);
+						report.check(world.getBlockState(heavy).isOf(Blocks.CHEST) && world.getBlockState(heavy.north()).isAir(), id + ": a chest was moved");
+						world.setBlockState(heavy, Blocks.AIR.getDefaultState());
+						special++;
 					} else if (traits != null && traits.torch) {
 						world.setBlockState(target, Blocks.STONE.getDefaultState());
 						player.interactionManager.interactBlock(player, world, stack, Hand.MAIN_HAND, hitTop(target));
@@ -1446,6 +1507,17 @@ public class CombinatorGameTest implements FabricGameTest {
 						world.setBlockState(center.add(-2, 0, 1), Blocks.OAK_LEAVES.getDefaultState().with(LeavesBlock.PERSISTENT, true),
 								Block.NOTIFY_LISTENERS | Block.FORCE_STATE);
 					}
+					if (use == Use.DISCO) {
+						// a cow that can think, so it has something to stop doing
+						spawnMob(world, EntityType.COW, center.getX() - 2.5, center.getY(), center.getZ() + 2.5).setAiDisabled(false);
+					}
+					if (use == Use.WEATHER) {
+						world.getServer().getOverworld().setWeather(6000, 0, false, false);
+					}
+					if (use == Use.SUNBURN) {
+						world.getServer().getOverworld().setWeather(6000, 0, false, false);
+						world.setTimeOfDay(6000L); // noon
+					}
 					if (use == Use.ORE_SIGHT) {
 						world.setBlockState(center.add(4, 0, -3), Blocks.IRON_ORE.getDefaultState(), Block.NOTIFY_LISTENERS | Block.FORCE_STATE);
 						world.setBlockState(center.add(-4, 2, -3), Blocks.DIAMOND_ORE.getDefaultState(), Block.NOTIFY_LISTENERS | Block.FORCE_STATE);
@@ -1456,7 +1528,7 @@ public class CombinatorGameTest implements FabricGameTest {
 					p.getItemCooldownManager().remove(click.item());
 					p.setSneaking(click.sneak());
 					p.setHealth(10.0F);
-					p.setExperienceLevel(use == Use.ENCHANT_BOOK ? 5 : 0);
+					p.setExperienceLevel(use == Use.ENCHANT_BOOK ? 5 : use == Use.BANK_IN ? 10 : 0);
 					Vec3d standing = p.getPos();
 					int countBefore = stack.getCount();
 					int damageBefore = stack.getDamage();
@@ -1659,6 +1731,21 @@ public class CombinatorGameTest implements FabricGameTest {
 				return shown.size() == 2 && shown.contains("minecraft:iron_ore") && shown.contains("minecraft:diamond_ore")
 						? null : "the glowing outlines show " + shown + " instead of the iron ore and the diamond ore";
 			}
+			case DISCO:
+				return !world.getEntitiesByClass(MobEntity.class, new Box(center).expand(12.0),
+						mob -> mob.isAlive() && mob.isAiDisabled() && mob.getCommandTags().contains(Oddities.DANCE_TAG)).isEmpty()
+						? null : "the cow next to the tester does not dance";
+			case BANK_IN:
+				return p.experienceLevel == 0 && Oddities.stored(p.getMainHandStack()) >= 160 && Oddities.stored(p.getMainHandStack()) < 177
+						? null : "10 levels are 160 points, but the tester has level " + p.experienceLevel + " and the bank holds "
+								+ Oddities.stored(p.getMainHandStack());
+			case WEATHER: {
+				boolean rain = world.getLevelProperties().isRaining();
+				world.getServer().getOverworld().setWeather(6000, 0, false, false);
+				return rain ? null : "it did not start to rain";
+			}
+			case SUNBURN:
+				return pig.isOnFire() ? null : "the pig in the sunlight does not burn";
 			case ENCHANT_BOOK:
 				return p.getInventory().count(Items.ENCHANTED_BOOK) == 1 && p.experienceLevel == 2
 						? null : "5 levels should become an enchanted book and 2 levels, but there are "
@@ -1735,6 +1822,19 @@ public class CombinatorGameTest implements FabricGameTest {
 							MobEntity cow = spawnMob(w, EntityType.COW, c.getX() + 0.5, c.getY(), c.getZ() + 9.5);
 							cow.setAiDisabled(false);
 						}),
+				// The dance lasts 8 seconds. After it the cow must be able to think again.
+				new Slow(Use.DISCO, 180, (w, c) -> {
+					List<MobEntity> cows = w.getEntitiesByClass(MobEntity.class, new Box(c).expand(30.0), e -> e.isAlive());
+					if (cows.isEmpty()) {
+						return "the cow is gone";
+					}
+					for (MobEntity cow : cows) {
+						if (cow.isAiDisabled() || cow.getCommandTags().contains(Oddities.DANCE_TAG)) {
+							return "the cow is still frozen after the dance";
+						}
+					}
+					return null;
+				}, (w, c) -> spawnMob(w, EntityType.COW, c.getX() + 2.5, c.getY(), c.getZ() + 2.5).setAiDisabled(false)),
 				// The glowing outlines have to go away by themselves after 10 seconds.
 				new Slow(Use.ORE_SIGHT, 230, (w, c) -> oreOutlines(w, c).isEmpty() ? null : "the ore outlines are still there: " + oreOutlines(w, c),
 						(w, c) -> w.setBlockState(c.add(4, 0, -3), Blocks.IRON_ORE.getDefaultState(), Block.NOTIFY_LISTENERS | Block.FORCE_STATE)));
@@ -2172,6 +2272,218 @@ public class CombinatorGameTest implements FabricGameTest {
 			removePlayer(player);
 			forceChunks(world, center, false);
 			report.finish(context);
+		});
+	}
+
+	// ------------------------------------------------------------------ 14. odd charms: things that work while carried, held or worn
+
+	private static void quickCharmChecks(Report report, ServerWorld world, ServerPlayerEntity p, BlockPos center) {
+		resetStage(world, center);
+		resetPlayer(p, world, center);
+
+		// Double jump: the game client reports the jump, the server forgets the fall height. Without the item it must not.
+		p.fallDistance = 5.0F;
+		Charms.trick(p, Charms.TRICK_DOUBLE_JUMP);
+		report.check(p.fallDistance == 5.0F, "a double jump was accepted from a player without the item");
+		hold(p, new ItemStack(find("double jump", t -> t.airJumps > 0)));
+		int seen = Charms.tricksSeen;
+		Charms.trick(p, Charms.TRICK_DOUBLE_JUMP);
+		report.check(p.fallDistance == 0.0F && Charms.tricksSeen == seen + 1, "the double jump did not reset the fall height");
+		p.fallDistance = 5.0F;
+		Charms.trick(p, Charms.TRICK_CLIMB);
+		report.check(p.fallDistance == 5.0F, "wall climbing was accepted from a player without the boots");
+		p.getInventory().clear();
+		p.equipStack(EquipmentSlot.FEET, new ItemStack(find("wall climbing", t -> t.wallClimb)));
+		Charms.trick(p, Charms.TRICK_CLIMB);
+		report.check(p.fallDistance == 0.0F, "wall climbing did not reset the fall height");
+		p.getInventory().clear();
+
+		// Pocket Mirror: an arrow shot by a skeleton hurts the skeleton, not the tester. Then the mirror needs a pause.
+		Item mirror = find("mirror", t -> t.reflectCooldown > 0);
+		hold(p, new ItemStack(mirror));
+		p.getItemCooldownManager().remove(mirror);
+		MobEntity skeleton = spawnMob(world, EntityType.SKELETON, center.getX() + 0.5, center.getY(), center.getZ() + 5.5);
+		ArrowEntity arrow = new ArrowEntity(world, skeleton, new ItemStack(Items.ARROW), null);
+		DamageSource shot = world.getDamageSources().arrow(arrow, skeleton);
+		float before = skeleton.getHealth();
+		boolean hurt = p.damage(shot, 4.0F);
+		report.check(!hurt && p.getHealth() == p.getMaxHealth(), "the arrow hurt the tester although the mirror was ready");
+		report.check(skeleton.getHealth() < before, "the arrow was not sent back to the skeleton");
+		report.check(p.getItemCooldownManager().isCoolingDown(mirror), "the mirror needs no pause after a shot");
+		p.timeUntilRegen = 0;
+		p.damage(shot, 4.0F);
+		report.check(p.getHealth() < p.getMaxHealth(), "the mirror also stopped a second arrow right after the first");
+		p.getItemCooldownManager().remove(mirror);
+		skeleton.discard();
+
+		// Piggy Bank: 10 levels in, 10 levels out.
+		resetPlayer(p, world, center);
+		Item bankItem = find("piggy bank", t -> t.use == Use.BANK_IN);
+		ItemStack bank = new ItemStack(bankItem);
+		hold(p, bank);
+		p.setExperienceLevel(10);
+		p.interactionManager.interactItem(p, world, bank, Hand.MAIN_HAND);
+		report.check(p.experienceLevel == 0 && Oddities.stored(bank) == 160, "10 levels did not go into the piggy bank as 160 points");
+		p.getItemCooldownManager().remove(bankItem);
+		p.setSneaking(true);
+		p.interactionManager.interactItem(p, world, bank, Hand.MAIN_HAND);
+		p.setSneaking(false);
+		int back = Oddities.points(p.experienceLevel, p.experienceProgress);
+		report.check(Oddities.stored(bank) == 0 && Math.abs(back - 160) <= 2, "the piggy bank gave back " + back + " of 160 points");
+		p.getItemCooldownManager().remove(bankItem);
+		p.setExperienceLevel(0);
+
+		// Rodeo Saddle: a right-click on a cow, sent the way the real game sends it.
+		resetPlayer(p, world, center);
+		ItemStack saddle = new ItemStack(find("riding any mob", t -> t.mount));
+		hold(p, saddle);
+		MobEntity cow = spawnMob(world, EntityType.COW, center.getX() + 0.5, center.getY(), center.getZ() + 2.5);
+		p.networkHandler.onPlayerInteractEntity(PlayerInteractEntityC2SPacket.interactAt(cow, false, Hand.MAIN_HAND, new Vec3d(0.0, 0.4, 0.0)));
+		report.check(p.getVehicle() == cow, "the tester does not sit on the cow after the right-click with the saddle");
+		report.check(saddle.getDamage() == 1, "mounting should cost 1 durability, it cost " + saddle.getDamage());
+		p.stopRiding();
+		cow.discard();
+
+		// Explorer's Almanac: the line it shows must name the position and the day.
+		String line = Charms.almanacText(world, p).getString();
+		BlockPos at = p.getBlockPos();
+		report.check(line.contains("X " + at.getX()) && line.contains("Y " + at.getY()) && line.contains("Z " + at.getZ()) && line.contains("Day "),
+				"the almanac shows a wrong line: " + line);
+		report.info("almanac: " + line);
+	}
+
+	@GameTest(templateName = EMPTY_STRUCTURE, batchId = "combinator_charms", tickLimit = 20000)
+	public void oddCharms(TestContext context) {
+		Report report = new Report("odd charms");
+		ServerWorld world = context.getWorld();
+		BlockPos center = stageCenter(context);
+		forceChunks(world, center, true);
+		resetStage(world, center);
+		ServerPlayerEntity player = newPlayer(world, center);
+		CropBlock wheat = (CropBlock) Blocks.WHEAT;
+		Item watch = find("rewind", t -> t.use == Use.REWIND);
+		// The walk for the flower boots: 23 steps along a row of grass, away from everything else.
+		int walkStart = 220;
+		int walkSteps = 23;
+		int walkEnd = walkStart + walkSteps * 4;
+		// The lava pool for the lava boots: 3x3 blocks in the floor, in front of the tester.
+		BlockPos poolFrom = center.add(-1, -1, 1);
+		BlockPos poolTo = center.add(1, -1, 3);
+
+		everyTickWhenReady(context, world, center, tick -> {
+			if (tick == 1) {
+				step(report, "quick checks", () -> quickCharmChecks(report, world, player, center));
+				step(report, "handing out the charms", () -> {
+					resetStage(world, center);
+					resetPlayer(player, world, center);
+					// young wheat on all 24 blocks around the tester
+					for (BlockPos pos : BlockPos.iterate(center.add(-2, -1, -2), center.add(2, -1, 2))) {
+						if (pos.getX() != center.getX() || pos.getZ() != center.getZ()) {
+							world.setBlockState(pos.toImmutable(), Blocks.FARMLAND.getDefaultState(), Block.NOTIFY_LISTENERS | Block.FORCE_STATE);
+							world.setBlockState(pos.up(), wheat.withAge(0), Block.NOTIFY_LISTENERS | Block.FORCE_STATE);
+						}
+					}
+					hold(player, new ItemStack(find("balloon", t -> t.balloon)));
+					player.getInventory().setStack(1, new ItemStack(watch));
+					player.getInventory().setStack(2, new ItemStack(find("light", t -> t.lantern)));
+					player.getInventory().setStack(3, new ItemStack(find("lunchbox", t -> t.autoEat)));
+					player.getInventory().setStack(10, new ItemStack(Items.BREAD, 3));
+					player.getInventory().setStack(11, new ItemStack(Items.GOLDEN_APPLE));
+					player.equipStack(EquipmentSlot.FEET, new ItemStack(find("flower boots", t -> t.meadow)));
+					player.getHungerManager().setFoodLevel(5);
+				});
+			} else if (tick == 14) {
+				step(report, "balloon and light", () -> {
+					report.check(player.hasStatusEffect(StatusEffects.LEVITATION), "holding the balloon does not lift the tester");
+					report.check(world.getBlockState(center.up()).isOf(Blocks.LIGHT), "there is no light at the tester's head");
+					player.setSneaking(true);
+				});
+			} else if (tick == 24) {
+				step(report, "balloon while sneaking", () -> {
+					report.check(!player.hasStatusEffect(StatusEffects.LEVITATION), "sneaking with the balloon still lifts the tester");
+					report.check(player.hasStatusEffect(StatusEffects.SLOW_FALLING), "sneaking with the balloon gives no soft fall");
+					player.setSneaking(false);
+				});
+			} else if (tick == 50) {
+				step(report, "lunchbox", () -> {
+					int food = player.getHungerManager().getFoodLevel();
+					report.check(food > 5 && player.getInventory().count(Items.BREAD) < 3,
+							"the lunchbox did not feed the tester (hunger " + food + " of 20, " + player.getInventory().count(Items.BREAD) + " of 3 bread left)");
+					report.check(player.getInventory().count(Items.GOLDEN_APPLE) == 1, "the lunchbox ate the golden apple");
+				});
+			} else if (tick == 118) {
+				step(report, "rewind watch", () -> {
+					// The tester stood on the same spot with full health for more than 5 seconds. Now move away, get hurt, and rewind.
+					Vec3d home = player.getPos();
+					player.teleport(world, home.x + 7.0, home.y, home.z - 6.0, 90.0F, 0.0F);
+					player.setHealth(6.0F);
+					player.getInventory().selectedSlot = 1;
+					ItemStack stack = player.getMainHandStack();
+					ActionResult result = player.interactionManager.interactItem(player, world, stack, Hand.MAIN_HAND);
+					double off = player.getPos().distanceTo(home);
+					report.check(result.isAccepted() && off < 0.1, "the watch (" + result + ") left the tester " + off + " blocks away from the old spot");
+					report.check(player.getHealth() == player.getMaxHealth(), "the watch did not bring back the old health, it is " + player.getHealth());
+					report.check(player.getItemCooldownManager().isCoolingDown(watch), "the watch has no cooldown");
+					report.check(stack.getDamage() == 1, "the watch did not wear out by 1");
+					player.getInventory().selectedSlot = 0;
+				});
+			} else if (tick == walkStart - 4) {
+				step(report, "crops near the flower boots", () -> {
+					int grown = 0;
+					for (BlockPos pos : BlockPos.iterate(center.add(-2, 0, -2), center.add(2, 0, 2))) {
+						BlockState state = world.getBlockState(pos);
+						if (state.isOf(Blocks.WHEAT) && wheat.getAge(state) > 0) {
+							grown++;
+						}
+					}
+					report.info("flower boots: " + grown + " of 24 wheat plants grew in 10 seconds");
+					report.check(grown > 0, "no wheat plant near the flower boots grew in 10 seconds");
+				});
+			} else if (tick >= walkStart && tick < walkEnd && (tick - walkStart) % 4 == 0) {
+				int stepNumber = (tick - walkStart) / 4;
+				BlockPos spot = center.add(-11 + stepNumber, 0, -7);
+				player.teleport(world, spot.getX() + 0.5, spot.getY(), spot.getZ() + 0.5, 0.0F, 0.0F);
+			} else if (tick == walkEnd + 4) {
+				step(report, "flowers behind the flower boots, and the light that follows", () -> {
+					int flowers = 0;
+					for (BlockPos pos : BlockPos.iterate(center.add(-11, 0, -7), center.add(11, 0, -7))) {
+						if (!world.getBlockState(pos).isAir()) {
+							flowers++;
+						}
+					}
+					report.info("flower boots: " + flowers + " flowers on a walk of " + walkSteps + " blocks");
+					report.check(flowers > 0, "no flower grew on a walk of " + walkSteps + " blocks over grass");
+					int lights = count(world, center.add(-14, 0, -14), center.add(14, 4, 14), Blocks.LIGHT);
+					report.check(lights == 1 && world.getBlockState(player.getBlockPos().up()).isOf(Blocks.LIGHT),
+							"the light should be one block at the tester's head, but there are " + lights + " light blocks");
+					// Now the lava boots: everything else goes away.
+					player.getInventory().clear();
+					place(player, world, center);
+					fill(world, center.add(-2, 0, -2), center.add(2, 0, 2), Blocks.AIR.getDefaultState()); // the wheat goes away
+					fill(world, center.add(-1, -2, 1), center.add(1, -2, 3), Blocks.STONE.getDefaultState());
+					fill(world, poolFrom, poolTo, Blocks.LAVA.getDefaultState());
+					player.equipStack(EquipmentSlot.FEET, new ItemStack(find("lava boots", t -> t.lavaWalk)));
+				});
+			} else if (tick == walkEnd + 10) {
+				step(report, "lava boots", () -> {
+					report.check(count(world, center.add(-14, 0, -14), center.add(14, 4, 14), Blocks.LIGHT) == 0,
+							"the light is still there although the jar is gone");
+					int hard = count(world, poolFrom, poolTo, Blocks.SMOOTH_BASALT);
+					int lava = count(world, poolFrom, poolTo, Blocks.LAVA);
+					report.check(hard == 6 && lava == 3, "next to the lava boots " + hard + " lava blocks hardened and " + lava
+							+ " stayed lava, expected 6 and 3");
+					player.getInventory().clear();
+				});
+			} else if (tick == walkEnd + 100) {
+				step(report, "the lava melts again", () -> {
+					int lava = count(world, poolFrom, poolTo, Blocks.LAVA);
+					report.check(lava == 9, "after the lava boots are gone only " + lava + " of 9 blocks are lava again");
+				});
+				resetStage(world, center);
+				removePlayer(player);
+				forceChunks(world, center, false);
+				report.finish(context);
+			}
 		});
 	}
 }

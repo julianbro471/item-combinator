@@ -194,6 +194,26 @@ final class ComboRecipeList {
 		ComboRecipes.add("minecraft:cooked_cod", "minecraft:baked_potato", "combinator:fish_and_chips", 1, 1);
 		ComboRecipes.add("minecraft:cooked_salmon", "minecraft:baked_potato", "combinator:fish_and_chips", 1, 1);
 		ComboRecipes.add("minecraft:apple", "minecraft:sugar", "combinator:candy_apple", 1, 1);
+		ComboRecipes.add("minecraft:sand", "minecraft:glass", "combinator:dust_devil", 1, 1);
+		ComboRecipes.add("minecraft:stick", "minecraft:slime_ball", "combinator:pogo_stick", 1, 1);
+		ComboRecipes.add("minecraft:honeycomb", "minecraft:leather_boots", "combinator:sticky_boots", 1, 1);
+		ComboRecipes.add("minecraft:lead", "minecraft:pufferfish", "combinator:puffer_balloon", 1, 1);
+		ComboRecipes.add("minecraft:glass_bottle", "minecraft:glowstone_dust", "combinator:firefly_jar", 1, 1);
+		ComboRecipes.add("minecraft:glass_pane", "minecraft:iron_ingot", "combinator:pocket_mirror", 1, 1);
+		ComboRecipes.add("minecraft:barrel", "minecraft:bread", "combinator:lunchbox", 1, 1);
+		ComboRecipes.add("minecraft:compass", "minecraft:clock", "combinator:almanac", 1, 1);
+		ComboRecipes.add("minecraft:leather_boots", "minecraft:bone_meal", "combinator:meadow_boots", 1, 1);
+		ComboRecipes.add("minecraft:magma_cream", "minecraft:leather_boots", "combinator:strider_boots", 1, 1);
+		ComboRecipes.add("minecraft:clock", "minecraft:ender_pearl", "combinator:rewind_watch", 1, 2);
+		ComboRecipes.add("minecraft:tripwire_hook", "minecraft:bone", "combinator:skeleton_key", 1, 1);
+		ComboRecipes.add("minecraft:glowstone", "minecraft:note_block", "combinator:disco_ball", 1, 2);
+		ComboRecipes.add("minecraft:clay_ball", "minecraft:pink_dye", "combinator:piggy_bank", 1, 1);
+		ComboRecipes.add("minecraft:piston", "minecraft:leather", "combinator:push_glove", 1, 1);
+		ComboRecipes.add("minecraft:lightning_rod", "minecraft:feather", "combinator:weather_vane", 1, 2);
+		ComboRecipes.add("minecraft:glass_pane", "minecraft:stick", "combinator:magnifying_glass", 1, 1);
+		ComboRecipes.add("minecraft:saddle", "minecraft:lead", "combinator:rodeo_saddle", 1, 1);
+		ComboRecipes.add("minecraft:cobblestone", "minecraft:bowl", "combinator:stone_soup", 1, 1);
+		ComboRecipes.add("minecraft:cactus", "minecraft:glass_bottle", "combinator:cactus_juice", 1, 1);
 
 		// --- vanilla items ---
 		ComboRecipes.add("minecraft:rotten_flesh", "minecraft:rotten_flesh", "minecraft:leather", 1, 0);

@@ -87,6 +87,12 @@ public final class UseAbilities {
 			if (traits.endlessWater) {
 				return endlessWater(context, player, stack);
 			}
+			if (traits.unlock) {
+				return Oddities.unlock(context, player, stack);
+			}
+			if (traits.push) {
+				return Oddities.push(context, player, stack);
+			}
 			if (traits.torch) {
 				return placeTorch(context, player, stack);
 			}
@@ -645,6 +651,20 @@ public final class UseAbilities {
 				return Gadgets.oreSight(world, player, traits.range);
 			case ENCHANT_BOOK:
 				return Gadgets.enchantBook(world, player);
+
+			// ---------------------------------------------------------- odd gadgets
+			case REWIND:
+				return Charms.rewind(world, player);
+			case DISCO:
+				return Oddities.disco(world, player, traits.range);
+			case BANK_IN:
+				return Oddities.bankIn(world, player, player.getStackInHand(hand));
+			case BANK_OUT:
+				return Oddities.bankOut(world, player, player.getStackInHand(hand));
+			case WEATHER:
+				return Oddities.weather(world, player);
+			case SUNBURN:
+				return Oddities.sunburn(world, player, traits.range);
 			default:
 				return false;
 		}

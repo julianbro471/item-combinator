@@ -3549,6 +3549,387 @@
       "stats": "4 hunger"
     },
     {
+      "a": "sand",
+      "b": "glass",
+      "a_name": "Sand",
+      "b_name": "Glass",
+      "result": "dust_devil",
+      "result_name": "Bottled Dust Devil",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Jump a second time in the air.",
+        "Keep it in your hotbar or off hand."
+      ],
+      "cat": "Movement tricks",
+      "stats": ""
+    },
+    {
+      "a": "stick",
+      "b": "slime_ball",
+      "a_name": "Stick",
+      "b_name": "Slimeball",
+      "result": "pogo_stick",
+      "result_name": "Pogo Stick",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Hold it: every landing bounces you",
+        "higher. Sneak to stop. No fall damage."
+      ],
+      "cat": "Movement tricks",
+      "stats": ""
+    },
+    {
+      "a": "honeycomb",
+      "b": "leather_boots",
+      "a_name": "Honeycomb",
+      "b_name": "Leather Boots",
+      "result": "sticky_boots",
+      "result_name": "Sticky Boots",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "armor",
+      "tip": [
+        "Walk against a wall to climb it.",
+        "Sneak to hold on."
+      ],
+      "cat": "Movement tricks",
+      "stats": "1 armor, 120 uses"
+    },
+    {
+      "a": "lead",
+      "b": "pufferfish",
+      "a_name": "Lead",
+      "b_name": "Pufferfish",
+      "result": "puffer_balloon",
+      "result_name": "Puffer Balloon",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Hold it: you float up.",
+        "Sneak to sink slowly."
+      ],
+      "cat": "Movement tricks",
+      "stats": ""
+    },
+    {
+      "a": "glass_bottle",
+      "b": "glowstone_dust",
+      "a_name": "Glass Bottle",
+      "b_name": "Glowstone Dust",
+      "result": "firefly_jar",
+      "result_name": "Firefly Jar",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Lights up the place around you.",
+        "Keep it in your hotbar or off hand."
+      ],
+      "cat": "Odd charms",
+      "stats": ""
+    },
+    {
+      "a": "glass_pane",
+      "b": "iron_ingot",
+      "a_name": "Glass Pane",
+      "b_name": "Iron Ingot",
+      "result": "pocket_mirror",
+      "result_name": "Pocket Mirror",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "A shot that hits you hits the shooter",
+        "instead. Works once every 3 seconds."
+      ],
+      "cat": "Odd charms",
+      "stats": ""
+    },
+    {
+      "a": "barrel",
+      "b": "bread",
+      "a_name": "Barrel",
+      "b_name": "Bread",
+      "result": "lunchbox",
+      "result_name": "Lunchbox",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Eats plain food from your inventory for",
+        "you when you are hungry. Keep in hotbar."
+      ],
+      "cat": "Odd charms",
+      "stats": ""
+    },
+    {
+      "a": "compass",
+      "b": "clock",
+      "a_name": "Compass",
+      "b_name": "Clock",
+      "result": "almanac",
+      "result_name": "Explorer's Almanac",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Hold it: shows your position, the biome,",
+        "the time, the light and slime chunks."
+      ],
+      "cat": "Odd charms",
+      "stats": ""
+    },
+    {
+      "a": "leather_boots",
+      "b": "bone_meal",
+      "a_name": "Leather Boots",
+      "b_name": "Bone Meal",
+      "result": "meadow_boots",
+      "result_name": "Meadow Boots",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "armor",
+      "tip": [
+        "Flowers grow where you walk on grass.",
+        "Crops near you grow faster."
+      ],
+      "cat": "Odd charms",
+      "stats": "1 armor, 120 uses"
+    },
+    {
+      "a": "magma_cream",
+      "b": "leather_boots",
+      "a_name": "Magma Cream",
+      "b_name": "Leather Boots",
+      "result": "strider_boots",
+      "result_name": "Strider Boots",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "armor",
+      "tip": [
+        "Lava hardens under your feet.",
+        "It melts again behind you."
+      ],
+      "cat": "Odd charms",
+      "stats": "2 armor, 160 uses"
+    },
+    {
+      "a": "clock",
+      "b": "ender_pearl",
+      "a_name": "Clock",
+      "b_name": "Ender Pearl",
+      "result": "rewind_watch",
+      "result_name": "Rewind Watch",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: back to where you were",
+        "5 seconds ago, with the health of then.",
+        "It has to be in your hotbar before."
+      ],
+      "cat": "Odd gadgets",
+      "stats": "32 uses"
+    },
+    {
+      "a": "tripwire_hook",
+      "b": "bone",
+      "a_name": "Tripwire Hook",
+      "b_name": "Bone",
+      "result": "skeleton_key",
+      "result_name": "Skeleton Key",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click an iron door or an iron",
+        "trapdoor: it opens or closes."
+      ],
+      "cat": "Odd gadgets",
+      "stats": "64 uses"
+    },
+    {
+      "a": "glowstone",
+      "b": "note_block",
+      "a_name": "Glowstone",
+      "b_name": "Note Block",
+      "result": "disco_ball",
+      "result_name": "Disco Ball",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: every mob within 10 blocks",
+        "stops and dances for 8 seconds."
+      ],
+      "cat": "Odd gadgets",
+      "stats": "16 uses"
+    },
+    {
+      "a": "clay_ball",
+      "b": "pink_dye",
+      "a_name": "Clay Ball",
+      "b_name": "Pink Dye",
+      "result": "piggy_bank",
+      "result_name": "Piggy Bank",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: puts your experience in.",
+        "Sneak + right-click: takes it out."
+      ],
+      "cat": "Odd gadgets",
+      "stats": ""
+    },
+    {
+      "a": "piston",
+      "b": "leather",
+      "a_name": "Piston",
+      "b_name": "Leather",
+      "result": "push_glove",
+      "result_name": "Push Glove",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click a block: pushes it away.",
+        "Sneak + right-click: pulls it to you."
+      ],
+      "cat": "Odd gadgets",
+      "stats": "128 uses"
+    },
+    {
+      "a": "lightning_rod",
+      "b": "feather",
+      "a_name": "Lightning Rod",
+      "b_name": "Feather",
+      "result": "weather_vane",
+      "result_name": "Weather Vane",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: changes the weather.",
+        "Clear, then rain, then thunder."
+      ],
+      "cat": "Odd gadgets",
+      "stats": "16 uses"
+    },
+    {
+      "a": "glass_pane",
+      "b": "stick",
+      "a_name": "Glass Pane",
+      "b_name": "Stick",
+      "result": "magnifying_glass",
+      "result_name": "Magnifying Glass",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click in sunlight: sets the mob",
+        "or block you look at on fire."
+      ],
+      "cat": "Odd gadgets",
+      "stats": ""
+    },
+    {
+      "a": "saddle",
+      "b": "lead",
+      "a_name": "Saddle",
+      "b_name": "Lead",
+      "result": "rodeo_saddle",
+      "result_name": "Rodeo Saddle",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click any mob to ride it.",
+        "You do not steer. Sneak to get off."
+      ],
+      "cat": "Odd gadgets",
+      "stats": "32 uses"
+    },
+    {
+      "a": "cobblestone",
+      "b": "bowl",
+      "a_name": "Cobblestone",
+      "b_name": "Bowl",
+      "result": "stone_soup",
+      "result_name": "Stone Soup",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "food",
+      "tip": [
+        "Very filling. You feel like a rock:",
+        "tough, but slow."
+      ],
+      "cat": "Food",
+      "stats": "10 hunger"
+    },
+    {
+      "a": "cactus",
+      "b": "glass_bottle",
+      "a_name": "Cactus",
+      "b_name": "Glass Bottle",
+      "result": "cactus_juice",
+      "result_name": "Cactus Juice",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "food",
+      "tip": [
+        "Speed II and Jump Boost II for",
+        "30 seconds. Makes you dizzy."
+      ],
+      "cat": "Food",
+      "stats": "2 hunger"
+    },
+    {
       "a": "rotten_flesh",
       "b": "rotten_flesh",
       "a_name": "Rotten Flesh",
@@ -7202,6 +7583,315 @@
       ],
       "stats": {
         "nut": 4
+      }
+    },
+    {
+      "id": "dust_devil",
+      "name": "Bottled Dust Devil",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Movement tricks",
+      "a": "sand",
+      "b": "glass",
+      "tip": [
+        "Jump a second time in the air.",
+        "Keep it in your hotbar or off hand."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "pogo_stick",
+      "name": "Pogo Stick",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Movement tricks",
+      "a": "stick",
+      "b": "slime_ball",
+      "tip": [
+        "Hold it: every landing bounces you",
+        "higher. Sneak to stop. No fall damage."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "sticky_boots",
+      "name": "Sticky Boots",
+      "rar": 1,
+      "kind": "armor",
+      "cat": "Movement tricks",
+      "a": "honeycomb",
+      "b": "leather_boots",
+      "tip": [
+        "Walk against a wall to climb it.",
+        "Sneak to hold on."
+      ],
+      "stats": {
+        "dur": 120,
+        "prot": 1,
+        "tough": 0.0
+      }
+    },
+    {
+      "id": "puffer_balloon",
+      "name": "Puffer Balloon",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Movement tricks",
+      "a": "lead",
+      "b": "pufferfish",
+      "tip": [
+        "Hold it: you float up.",
+        "Sneak to sink slowly."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "firefly_jar",
+      "name": "Firefly Jar",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Odd charms",
+      "a": "glass_bottle",
+      "b": "glowstone_dust",
+      "tip": [
+        "Lights up the place around you.",
+        "Keep it in your hotbar or off hand."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "pocket_mirror",
+      "name": "Pocket Mirror",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Odd charms",
+      "a": "glass_pane",
+      "b": "iron_ingot",
+      "tip": [
+        "A shot that hits you hits the shooter",
+        "instead. Works once every 3 seconds."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "lunchbox",
+      "name": "Lunchbox",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Odd charms",
+      "a": "barrel",
+      "b": "bread",
+      "tip": [
+        "Eats plain food from your inventory for",
+        "you when you are hungry. Keep in hotbar."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "almanac",
+      "name": "Explorer's Almanac",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Odd charms",
+      "a": "compass",
+      "b": "clock",
+      "tip": [
+        "Hold it: shows your position, the biome,",
+        "the time, the light and slime chunks."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "meadow_boots",
+      "name": "Meadow Boots",
+      "rar": 1,
+      "kind": "armor",
+      "cat": "Odd charms",
+      "a": "leather_boots",
+      "b": "bone_meal",
+      "tip": [
+        "Flowers grow where you walk on grass.",
+        "Crops near you grow faster."
+      ],
+      "stats": {
+        "dur": 120,
+        "prot": 1,
+        "tough": 0.0
+      }
+    },
+    {
+      "id": "strider_boots",
+      "name": "Strider Boots",
+      "rar": 1,
+      "kind": "armor",
+      "cat": "Odd charms",
+      "a": "magma_cream",
+      "b": "leather_boots",
+      "tip": [
+        "Lava hardens under your feet.",
+        "It melts again behind you."
+      ],
+      "stats": {
+        "dur": 160,
+        "prot": 2,
+        "tough": 0.0
+      }
+    },
+    {
+      "id": "rewind_watch",
+      "name": "Rewind Watch",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Odd gadgets",
+      "a": "clock",
+      "b": "ender_pearl",
+      "tip": [
+        "Right-click: back to where you were",
+        "5 seconds ago, with the health of then.",
+        "It has to be in your hotbar before."
+      ],
+      "stats": {
+        "dur": 32
+      }
+    },
+    {
+      "id": "skeleton_key",
+      "name": "Skeleton Key",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Odd gadgets",
+      "a": "tripwire_hook",
+      "b": "bone",
+      "tip": [
+        "Right-click an iron door or an iron",
+        "trapdoor: it opens or closes."
+      ],
+      "stats": {
+        "dur": 64
+      }
+    },
+    {
+      "id": "disco_ball",
+      "name": "Disco Ball",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Odd gadgets",
+      "a": "glowstone",
+      "b": "note_block",
+      "tip": [
+        "Right-click: every mob within 10 blocks",
+        "stops and dances for 8 seconds."
+      ],
+      "stats": {
+        "dur": 16
+      }
+    },
+    {
+      "id": "piggy_bank",
+      "name": "Piggy Bank",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Odd gadgets",
+      "a": "clay_ball",
+      "b": "pink_dye",
+      "tip": [
+        "Right-click: puts your experience in.",
+        "Sneak + right-click: takes it out."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "push_glove",
+      "name": "Push Glove",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Odd gadgets",
+      "a": "piston",
+      "b": "leather",
+      "tip": [
+        "Right-click a block: pushes it away.",
+        "Sneak + right-click: pulls it to you."
+      ],
+      "stats": {
+        "dur": 128
+      }
+    },
+    {
+      "id": "weather_vane",
+      "name": "Weather Vane",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Odd gadgets",
+      "a": "lightning_rod",
+      "b": "feather",
+      "tip": [
+        "Right-click: changes the weather.",
+        "Clear, then rain, then thunder."
+      ],
+      "stats": {
+        "dur": 16
+      }
+    },
+    {
+      "id": "magnifying_glass",
+      "name": "Magnifying Glass",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Odd gadgets",
+      "a": "glass_pane",
+      "b": "stick",
+      "tip": [
+        "Right-click in sunlight: sets the mob",
+        "or block you look at on fire."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "rodeo_saddle",
+      "name": "Rodeo Saddle",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Odd gadgets",
+      "a": "saddle",
+      "b": "lead",
+      "tip": [
+        "Right-click any mob to ride it.",
+        "You do not steer. Sneak to get off."
+      ],
+      "stats": {
+        "dur": 32
+      }
+    },
+    {
+      "id": "stone_soup",
+      "name": "Stone Soup",
+      "rar": 1,
+      "kind": "food",
+      "cat": "Food",
+      "a": "cobblestone",
+      "b": "bowl",
+      "tip": [
+        "Very filling. You feel like a rock:",
+        "tough, but slow."
+      ],
+      "stats": {
+        "nut": 10
+      }
+    },
+    {
+      "id": "cactus_juice",
+      "name": "Cactus Juice",
+      "rar": 1,
+      "kind": "food",
+      "cat": "Food",
+      "a": "cactus",
+      "b": "glass_bottle",
+      "tip": [
+        "Speed II and Jump Boost II for",
+        "30 seconds. Makes you dizzy."
+      ],
+      "stats": {
+        "nut": 2
       }
     }
   ]

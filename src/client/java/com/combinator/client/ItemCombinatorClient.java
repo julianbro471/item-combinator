@@ -52,6 +52,9 @@ public class ItemCombinatorClient implements ClientModInitializer {
 			}
 		});
 
+		// Double jump, pogo bounce and wall climbing.
+		ClientTickEvents.END_CLIENT_TICK.register(MovementTricks::tick);
+
 		// Rocket Elytra and Seraph Wings: hold sneak while gliding to speed up.
 		// Player movement is decided on the client, so the push is applied here.
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {

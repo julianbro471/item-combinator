@@ -1,6 +1,7 @@
 package com.combinator.test;
 
 import com.combinator.ItemCombinator;
+import com.combinator.ability.Charms;
 import com.combinator.client.CombinerScreen;
 import com.combinator.item.CWings;
 import com.combinator.item.ComboItems;
@@ -13,9 +14,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.IntConsumer;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ingame.InventoryScreen;
 import net.minecraft.client.option.Perspective;
@@ -67,11 +71,30 @@ public class ClientSmokeTest implements ClientModInitializer {
 	private static final Logger LOG = LoggerFactory.getLogger("combinator-client-test");
 	private final List<String> problems = new ArrayList<>();
 
+	/**
+	 * Pretend key presses. While "tick" is 0 or more, the plan is asked once per game tick which keys are down,
+	 * and the highest point the player reaches is remembered. Counting game ticks (not seconds) keeps this exact
+	 * even when the test computer is slow.
+	 */
+	private static volatile int flightTick = -1;
+	private static volatile IntConsumer flightPlan;
+	private static volatile double flightStartY;
+	private static volatile double flightMaxRise;
+
 	@Override
 	public void onInitializeClient() {
 		if (System.getProperty("combinator.clientTest") == null) {
 			return;
 		}
+		ClientTickEvents.END_CLIENT_TICK.register(client -> {
+			int tick = flightTick;
+			if (tick < 0 || client.player == null) {
+				return;
+			}
+			flightPlan.accept(tick);
+			flightMaxRise = Math.max(flightMaxRise, client.player.getY() - flightStartY);
+			flightTick = tick + 1;
+		});
 		Thread thread = new Thread(() -> {
 			try {
 				this.run();
@@ -292,6 +315,8 @@ public class ClientSmokeTest implements ClientModInitializer {
 			sleep(300L);
 		}
 
+		this.movementTricks();
+
 		// Armor and a weapon, seen from the front.
 		onServerDo(player -> {
 			player.getInventory().clear();
@@ -350,6 +375,103 @@ public class ClientSmokeTest implements ClientModInitializer {
 		this.check(inTab == all.size() + 1, "the creative tab shows " + inTab + " items instead of " + (all.size() + 1));
 
 		this.check(ItemCombinator.ERRORS.isEmpty(), "the mod reported errors while the game was running: " + ItemCombinator.ERRORS);
+	}
+
+	/** Runs the key plan for the given number of game ticks and returns how high the player got above the start. */
+	private static double fly(int ticks, IntConsumer plan) {
+		onClientDo(client -> {
+			flightStartY = client.player.getY();
+			flightMaxRise = 0.0;
+			flightPlan = plan;
+			flightTick = 0;
+		});
+		long end = System.currentTimeMillis() + 60000L;
+		while (flightTick < ticks && System.currentTimeMillis() < end) {
+			sleep(50L);
+		}
+		boolean finished = flightTick >= ticks;
+		onClientDo(client -> {
+			flightTick = -1;
+			client.options.jumpKey.setPressed(false);
+			client.options.forwardKey.setPressed(false);
+		});
+		if (!finished) {
+			throw new RuntimeException("the game did not run " + ticks + " ticks in a minute");
+		}
+		return flightMaxRise;
+	}
+
+	/** Puts the player on a free, flat spot, looking along +Z, with exactly these items. */
+	private static void standReady(ItemStack mainHand, ItemStack boots) {
+		onServerDo(player -> {
+			ServerWorld world = player.getServerWorld();
+			player.getInventory().clear();
+			player.getInventory().selectedSlot = 0;
+			player.getInventory().setStack(0, mainHand);
+			player.equipStack(EquipmentSlot.FEET, boots);
+			player.setHealth(player.getMaxHealth());
+			int y = world.getTopY(Heightmap.Type.MOTION_BLOCKING, 0, -8);
+			player.teleport(world, 0.5, y, -7.5, 0.0F, 0.0F);
+		});
+		sleep(1500L); // the items and the new place have to reach the game client
+	}
+
+	/**
+	 * Double jump, pogo stick and wall climbing. The player's own computer works these out, so the server tests
+	 * cannot see them. Here the real game gets pretend key presses and the test measures how high the player gets.
+	 */
+	private void movementTricks() {
+		// First without any item. A normal jump is 1.25 blocks high. If this fails, the pretend keys do not work.
+		standReady(ItemStack.EMPTY, ItemStack.EMPTY);
+		double plain = fly(30, tick -> MinecraftClient.getInstance().options.jumpKey.setPressed(tick < 2));
+		LOG.info("Movement: a normal jump went {} blocks up", plain);
+		this.check(plain > 1.0 && plain < 1.5, "test setup: a normal jump went " + plain + " blocks up, expected about 1.25");
+
+		// Double jump: jump, let go, and press jump again at the top.
+		standReady(new ItemStack(ComboItems.DUST_DEVIL), ItemStack.EMPTY);
+		int seenBefore = Charms.tricksSeen;
+		double doubled = fly(45, tick -> MinecraftClient.getInstance().options.jumpKey.setPressed(tick < 2 || (tick >= 7 && tick < 9)));
+		sleep(500L);
+		LOG.info("Movement: a double jump went {} blocks up", doubled);
+		this.check(doubled > 2.0, "the Bottled Dust Devil gave no second jump: the player got " + doubled + " blocks up (a normal jump is 1.25)");
+		this.check(Charms.tricksSeen > seenBefore, "the server was not told about the double jump");
+
+		// Pogo stick: one jump, then it bounces by itself, higher each time.
+		standReady(new ItemStack(ComboItems.POGO_STICK), ItemStack.EMPTY);
+		double bounced = fly(90, tick -> MinecraftClient.getInstance().options.jumpKey.setPressed(tick < 2));
+		LOG.info("Movement: the pogo stick went {} blocks up", bounced);
+		this.check(bounced > 1.8, "the Pogo Stick did not bounce higher than a normal jump: " + bounced + " blocks");
+		float healthAfterPogo = onServer(player -> player.getHealth() / player.getMaxHealth());
+		this.check(healthAfterPogo >= 1.0F, "bouncing on the Pogo Stick hurt the player");
+
+		// Wall climbing: a stone wall right in front of the player, and the forward key held down.
+		standReady(ItemStack.EMPTY, new ItemStack(ComboItems.STICKY_BOOTS));
+		onServerDo(player -> {
+			ServerWorld world = player.getServerWorld();
+			BlockPos feet = player.getBlockPos();
+			for (BlockPos pos : BlockPos.iterate(feet.add(-1, 0, 1), feet.add(1, 8, 1))) {
+				world.setBlockState(pos.toImmutable(), Blocks.STONE.getDefaultState());
+			}
+		});
+		sleep(1000L);
+		int climbSeenBefore = Charms.tricksSeen;
+		double climbed = fly(35, tick -> MinecraftClient.getInstance().options.forwardKey.setPressed(true));
+		LOG.info("Movement: the sticky boots went {} blocks up the wall", climbed);
+		this.check(climbed > 2.5, "the Sticky Boots did not climb the wall: the player got " + climbed + " blocks up");
+		this.check(Charms.tricksSeen > climbSeenBefore, "the server was not told about the climbing");
+		onServerDo(player -> {
+			ServerWorld world = player.getServerWorld();
+			BlockPos base = new BlockPos(0, world.getTopY(Heightmap.Type.MOTION_BLOCKING, 0, -9), -7);
+			for (BlockPos pos : BlockPos.iterate(base.add(-1, -1, 0), base.add(1, 12, 2))) {
+				if (world.getBlockState(pos).isOf(Blocks.STONE) && pos.getY() >= base.getY()) {
+					world.setBlockState(pos.toImmutable(), Blocks.AIR.getDefaultState());
+				}
+			}
+			player.getInventory().clear();
+			player.teleport(world, 0.5, base.getY(), -7.5, 0.0F, 0.0F);
+			player.setHealth(player.getMaxHealth());
+		});
+		sleep(1000L);
 	}
 
 	/** Every item needs a name and its description lines in the language file. */

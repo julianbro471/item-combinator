@@ -121,6 +121,34 @@ public final class Traits {
 	public float thornsBoom;
 	/** Phantoms never come for this player. */
 	public boolean noPhantoms;
+
+	// --- movement tricks and odd charms ---
+	/** How many extra jumps the player has in the air. */
+	public int airJumps;
+	/** Pogo stick: every landing throws the player up again. */
+	public boolean bounce;
+	/** The player climbs walls by walking against them. */
+	public boolean wallClimb;
+	/** The player floats up while holding the item. */
+	public boolean balloon;
+	/** A light follows the player. */
+	public boolean lantern;
+	/** A shot that hits the player hits the shooter instead. The number is the pause between two such shots, in ticks. */
+	public int reflectCooldown;
+	/** Flowers grow where the player walks, crops nearby grow faster. */
+	public boolean meadow;
+	/** Lava hardens under the player's feet for a moment. */
+	public boolean lavaWalk;
+	/** Right-click a mob to ride it. */
+	public boolean mount;
+	/** Eats food from the inventory when the player is hungry. */
+	public boolean autoEat;
+	/** Shows position, biome and time while held. */
+	public boolean almanac;
+	/** Right-click on a door or trapdoor opens it, also an iron one. */
+	public boolean unlock;
+	/** Right-click on a block pushes it away, sneaking pulls it. */
+	public boolean push;
 	/** Changes to the player's body: size, health, reach and so on. */
 	public final List<Attr> attrs = new ArrayList<>();
 
@@ -203,6 +231,71 @@ public final class Traits {
 
 	public Traits noPhantoms() {
 		this.noPhantoms = true;
+		return this;
+	}
+
+	public Traits airJumps(int jumps) {
+		this.airJumps = jumps;
+		return this;
+	}
+
+	public Traits bounce() {
+		this.bounce = true;
+		return this;
+	}
+
+	public Traits wallClimb() {
+		this.wallClimb = true;
+		return this;
+	}
+
+	public Traits balloon() {
+		this.balloon = true;
+		return this;
+	}
+
+	public Traits lantern() {
+		this.lantern = true;
+		return this;
+	}
+
+	public Traits reflect(int cooldownTicks) {
+		this.reflectCooldown = cooldownTicks;
+		return this;
+	}
+
+	public Traits meadow() {
+		this.meadow = true;
+		return this;
+	}
+
+	public Traits lavaWalk() {
+		this.lavaWalk = true;
+		return this;
+	}
+
+	public Traits mount() {
+		this.mount = true;
+		return this;
+	}
+
+	public Traits autoEat() {
+		this.autoEat = true;
+		return this;
+	}
+
+	public Traits almanac() {
+		this.almanac = true;
+		return this;
+	}
+
+	public Traits unlock() {
+		this.unlock = true;
+		return this;
+	}
+
+	public Traits push() {
+		this.push = true;
 		return this;
 	}
 

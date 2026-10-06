@@ -74,5 +74,12 @@ public enum Use {
 	SUMMON_TRADER,
 	LURE,
 	ORE_SIGHT,
-	ENCHANT_BOOK
+	ENCHANT_BOOK,
+	// --- odd gadgets
+	REWIND,
+	DISCO,
+	BANK_IN,
+	BANK_OUT,
+	WEATHER,
+	SUNBURN
 }

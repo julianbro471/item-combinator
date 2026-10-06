@@ -48,6 +48,12 @@
     "combinator:wolf_whistle",
     "combinator:shepherd_crook",
     "combinator:mob_net",
-    "combinator:divining_rod"
+    "combinator:divining_rod",
+    "combinator:rewind_watch",
+    "combinator:skeleton_key",
+    "combinator:disco_ball",
+    "combinator:push_glove",
+    "combinator:weather_vane",
+    "combinator:rodeo_saddle"
   ]
 }
