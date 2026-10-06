@@ -23,7 +23,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 
 /**
- * All combined items. GENERATED from gen/spec.py - change the table there, not this file.
+ * All combined items. GENERATED from tools/spec.py - change the table there, not this file.
  * Each line: id, rarity (1-3, sets the name colour), number of tooltip lines, the item itself, its abilities.
  */
 public final class ComboItems {

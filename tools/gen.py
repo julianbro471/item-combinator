@@ -111,7 +111,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 
 /**
- * All combined items. GENERATED from gen/spec.py - change the table there, not this file.
+ * All combined items. GENERATED from tools/spec.py - change the table there, not this file.
  * Each line: id, rarity (1-3, sets the name colour), number of tooltip lines, the item itself, its abilities.
  */
 public final class ComboItems {
@@ -222,7 +222,7 @@ def gen_recipes_java():
     rows, extra = all_recipes()
     out = ['''package com.combinator.recipe;
 
-/** The list of all combinations. GENERATED from gen/spec.py - change the table there, not this file. */
+/** The list of all combinations. GENERATED from tools/spec.py - change the table there, not this file. */
 final class ComboRecipeList {
 	private ComboRecipeList() {
 	}
@@ -379,10 +379,11 @@ def gen_readme(rows, extra):
     A('- Two stackable items that have no combination give a **Chaos Orb**, which does something random.')
     A('- There are no tiers and there is no balance. Some items are normal, many are absurd, a few can destroy your world.\n')
     A('## Status: read this first\n')
-    A('The mod **compiles**: GitHub builds the .jar from this project without errors.')
-    A('It has **not been played in the game yet**. Compiling only proves that the code is valid Java and that every')
-    A('game function it calls exists. It does not prove that each item does what its description says.')
-    A('Expect bugs in the first version.\n')
+    A('The mod **compiles and passes its automatic tests**. GitHub runs the tests after every change, also against')
+    A('the finished .jar, started the same way a player starts it. See "Automatic tests" near the end of this page.\n')
+    A('**No person has played it yet.** The tests prove that the game starts, that every combination works, and that')
+    A('every ability does its main job without an error. They do not prove that it is fun, that it runs well on a')
+    A('slow PC, or that it works together with other mods. Expect smaller bugs.\n')
     A('**Make a backup of your world before you use the bombs.** Nukes, black holes, meteors, the Blast Pickaxe and the')
     A('World Eater delete large parts of the world for good.\n')
     A('## What you need\n')
@@ -397,7 +398,7 @@ def gen_readme(rows, extra):
     A('and download **item-combinator-jar** at the bottom of the page.\n')
     A('**On your own PC:** install a Java JDK, version 25 (the version the official Fabric template builds with). Then run `gradlew.bat build` (Windows) or')
     A('`./gradlew build` (Linux, Mac) in this folder. The .jar appears in `build/libs/`. The first build downloads')
-    A('about 1 GB and takes several minutes.\n')
+    A('about 1 GB and takes several minutes. `build` also runs the server tests. To skip them: `gradlew build -x runGameTest`.\n')
     A('## Installing\n')
     A(f'Put `item-combinator-{spec.VERSION}.jar` and the Fabric API .jar into the `mods` folder of your Minecraft installation.')
     A('Start the game with the Fabric profile.\n')
@@ -484,6 +485,32 @@ def gen_readme(rows, extra):
     A('- Wings use the vanilla elytra look.')
     A('- There are no new bows, crossbows, tridents or shields.')
     A('- Texts are in English only.\n')
+    A('## Automatic tests\n')
+    A('The tests are in `src/gametest`. They are not part of the mod .jar.\n')
+    A('**Server tests** (`gradlew runGameTest`). A server starts without a window. A fake player in survival mode then:\n')
+    A('- makes every combination, in both orders, and checks the result')
+    A('- uses the Combiner Table: one click, shift-click, closing with items inside')
+    A('- mines with every tool and counts the broken blocks and the drops (area, vein, tree, smelting, double ores, magnet)')
+    A('- hits and kills zombies with every item and checks fire, effects, life steal, area damage, instant kill and loot')
+    A('- wears every armor piece and takes a zombie hit and a fall (thorns, fall protection), and takes a deadly hit')
+    A('  while holding the totem')
+    A('- eats every food and checks hunger, size change and launch')
+    A('- holds or wears every item with a passive ability and checks effects, body changes, flying and repair,')
+    A('  then takes the item away and checks that everything goes back to normal')
+    A('- right-clicks with every item, normal and sneaking, and checks what happened (a fireball exists, the pig in front')
+    A('  was hurt, the tester moved, a screen opened, the item wore out, the cooldown started ...)')
+    A('- waits for the slow abilities and checks them too (nuke crater, black hole, meteors, anvils, chickens, the')
+    A('  portable hole closes again, the time stop and the ghost cloak end by themselves)')
+    A('- runs every event of the Chaos Orb\n')
+    A('**Client test** (`gradlew runClientTest`). The real game starts, makes a flat world, opens the Combiner Table with a')
+    A('right-click, puts two items in, takes the result, and takes screenshots of the table, of every item in the')
+    A('inventory, and of armor and wings on the player. It checks that every item has a name, a description, a model')
+    A('and a texture.\n')
+    A('**The same tests with the finished .jar** (`gradlew prodServerTest` and `gradlew prodClientTest`). Here the game')
+    A('runs like on a player\'s PC: with the .jar from `build/libs` and the Fabric API file that players install.\n')
+    A('On GitHub the logs and the screenshots of the last run are on the **`builds`** branch.\n')
+    A('What the tests do **not** check: flying with the wings, sounds and particles, how strong or fair an item feels,')
+    A('speed on a slow PC, multiplayer with real players, the Nether and the End, and other mods.\n')
     A('## Changing the mod\n')
     A('Everything about the items and recipes is in one table: `tools/spec.py`. After changing it, run')
     A('`python tools/gen.py` and `python tools/textures.py` (needs Python 3 and the Pillow package). They rewrite the')

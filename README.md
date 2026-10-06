@@ -12,10 +12,12 @@ It adds one block, the **Combiner Table**. You put two items into it and get one
 
 ## Status: read this first
 
-The mod **compiles**: GitHub builds the .jar from this project without errors.
-It has **not been played in the game yet**. Compiling only proves that the code is valid Java and that every
-game function it calls exists. It does not prove that each item does what its description says.
-Expect bugs in the first version.
+The mod **compiles and passes its automatic tests**. GitHub runs the tests after every change, also against
+the finished .jar, started the same way a player starts it. See "Automatic tests" near the end of this page.
+
+**No person has played it yet.** The tests prove that the game starts, that every combination works, and that
+every ability does its main job without an error. They do not prove that it is fun, that it runs well on a
+slow PC, or that it works together with other mods. Expect smaller bugs.
 
 **Make a backup of your world before you use the bombs.** Nukes, black holes, meteors, the Blast Pickaxe and the
 World Eater delete large parts of the world for good.
@@ -37,7 +39,7 @@ and download **item-combinator-jar** at the bottom of the page.
 
 **On your own PC:** install a Java JDK, version 25 (the version the official Fabric template builds with). Then run `gradlew.bat build` (Windows) or
 `./gradlew build` (Linux, Mac) in this folder. The .jar appears in `build/libs/`. The first build downloads
-about 1 GB and takes several minutes.
+about 1 GB and takes several minutes. `build` also runs the server tests. To skip them: `gradlew build -x runGameTest`.
 
 ## Installing
 
@@ -542,6 +544,40 @@ These items need three or more combining steps. Each list shows everything that 
 - Wings use the vanilla elytra look.
 - There are no new bows, crossbows, tridents or shields.
 - Texts are in English only.
+
+## Automatic tests
+
+The tests are in `src/gametest`. They are not part of the mod .jar.
+
+**Server tests** (`gradlew runGameTest`). A server starts without a window. A fake player in survival mode then:
+
+- makes every combination, in both orders, and checks the result
+- uses the Combiner Table: one click, shift-click, closing with items inside
+- mines with every tool and counts the broken blocks and the drops (area, vein, tree, smelting, double ores, magnet)
+- hits and kills zombies with every item and checks fire, effects, life steal, area damage, instant kill and loot
+- wears every armor piece and takes a zombie hit and a fall (thorns, fall protection), and takes a deadly hit
+  while holding the totem
+- eats every food and checks hunger, size change and launch
+- holds or wears every item with a passive ability and checks effects, body changes, flying and repair,
+  then takes the item away and checks that everything goes back to normal
+- right-clicks with every item, normal and sneaking, and checks what happened (a fireball exists, the pig in front
+  was hurt, the tester moved, a screen opened, the item wore out, the cooldown started ...)
+- waits for the slow abilities and checks them too (nuke crater, black hole, meteors, anvils, chickens, the
+  portable hole closes again, the time stop and the ghost cloak end by themselves)
+- runs every event of the Chaos Orb
+
+**Client test** (`gradlew runClientTest`). The real game starts, makes a flat world, opens the Combiner Table with a
+right-click, puts two items in, takes the result, and takes screenshots of the table, of every item in the
+inventory, and of armor and wings on the player. It checks that every item has a name, a description, a model
+and a texture.
+
+**The same tests with the finished .jar** (`gradlew prodServerTest` and `gradlew prodClientTest`). Here the game
+runs like on a player's PC: with the .jar from `build/libs` and the Fabric API file that players install.
+
+On GitHub the logs and the screenshots of the last run are on the **`builds`** branch.
+
+What the tests do **not** check: flying with the wings, sounds and particles, how strong or fair an item feels,
+speed on a slow PC, multiplayer with real players, the Nether and the End, and other mods.
 
 ## Changing the mod
 

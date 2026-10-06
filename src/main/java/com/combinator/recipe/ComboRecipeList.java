@@ -1,6 +1,6 @@
 package com.combinator.recipe;
 
-/** The list of all combinations. GENERATED from gen/spec.py - change the table there, not this file. */
+/** The list of all combinations. GENERATED from tools/spec.py - change the table there, not this file. */
 final class ComboRecipeList {
 	private ComboRecipeList() {
 	}
