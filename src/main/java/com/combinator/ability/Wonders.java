@@ -66,8 +66,8 @@ public final class Wonders {
 
 	/** The random tick speed before the Hourglass of Ages changed it, or -1 while no hourglass runs. */
 	private static int savedTickSpeed = -1;
-	/** The server tick at which the current hourglass ends. */
-	private static int hourglassEnd = 0;
+	/** Counts the uses of the hourglass. Only the timer of the newest use puts the tick speed back. */
+	private static int hourglassUses = 0;
 
 	private record Copied(BlockPos offset, BlockState state) {
 	}
@@ -432,10 +432,9 @@ public final class Wonders {
 			savedTickSpeed = rule.get();
 		}
 		rule.set(Math.max(savedTickSpeed, 3) * 100, server);
-		int ticks = seconds * 20;
-		hourglassEnd = server.getTicks() + ticks;
-		Tasks.later(ticks, () -> {
-			if (server.getTicks() >= hourglassEnd) {
+		int use = ++hourglassUses;
+		Tasks.later(seconds * 20, () -> {
+			if (use == hourglassUses) {
 				restoreTickSpeed(server);
 			}
 		});
