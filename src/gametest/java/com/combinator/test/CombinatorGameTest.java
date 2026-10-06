@@ -1,6 +1,7 @@
 package com.combinator.test;
 
 import com.combinator.ItemCombinator;
+import com.combinator.ability.Chaos;
 import com.combinator.ability.CombatAbilities;
 import com.combinator.item.ComboItems;
 import com.combinator.item.Traits;
@@ -35,6 +36,7 @@ import net.minecraft.entity.TntEntity;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeInstance;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.mob.CreeperEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.ChickenEntity;
 import net.minecraft.entity.passive.IronGolemEntity;
@@ -1508,6 +1510,121 @@ public class CombinatorGameTest implements FabricGameTest {
 				LOG.error("slow effects test " + slow.use(), t);
 				index[0]++;
 			}
+		});
+	}
+
+	// ------------------------------------------------------------------ 12. every event of the Chaos Orb
+
+	private static String missingChaos(int number, ServerWorld world, ServerPlayerEntity p, BlockPos center, MobEntity pig, Vec3d standing, long timeBefore) {
+		switch (number) {
+			case 0:
+				return onGround(world, center, Items.DIAMOND) > 0 ? null : "no diamonds fell";
+			case 1:
+				return onGround(world, center, Items.GOLD_INGOT) > 0 ? null : "no gold fell";
+			case 2:
+				return p.hasStatusEffect(StatusEffects.ABSORPTION) ? null : "no absorption effect";
+			case 3:
+				return p.experienceLevel >= 10 ? null : "no experience levels";
+			case 4:
+				return !p.getInventory().isEmpty() || !world.getEntitiesByClass(ItemEntity.class, new Box(center).expand(8.0), e -> e.isAlive()).isEmpty()
+						? null : "no prize item";
+			case 6:
+				return p.getVelocity().y > 3.0 ? null : "the tester was not launched";
+			case 7:
+				return any(world, center, LightningEntity.class) ? null : "no lightning";
+			case 8:
+				return pig.isRemoved() ? null : "the pig was not changed";
+			case 10:
+				return pig.hasStatusEffect(StatusEffects.LEVITATION) ? null : "the pig does not float";
+			case 11:
+				return world.getServer().getOverworld().getTimeOfDay() == timeBefore + 12000L ? null : "the time did not jump half a day";
+			case 12:
+				return p.getPos().distanceTo(standing) > 1.0 ? null : "the tester was not moved";
+			case 13:
+				return any(world, center, IronGolemEntity.class) ? null : "no iron golems";
+			case 14:
+				return floorLeft(world, center) < 625 ? null : "the explosion left no crater";
+			case 15:
+				return any(world, center, CreeperEntity.class) ? null : "no creepers";
+			case 16:
+				return any(world, center, TntEntity.class) ? null : "no TNT";
+			case 17:
+				return p.hasStatusEffect(StatusEffects.NAUSEA) ? null : "no nausea";
+			case 19: {
+				EntityAttributeInstance scale = p.getAttributeInstance(Registries.ATTRIBUTE.getEntry(Identifier.ofVanilla("generic.scale")).orElseThrow());
+				return scale != null && scale.getValue() > 1.5 ? null : "the tester did not grow";
+			}
+			case 20:
+				return onGround(world, center, Items.GOLDEN_APPLE) > 0 ? null : "no golden apples fell";
+			case 21:
+				return count(world, center.add(-6, 0, -6), center.add(6, 0, 6), Blocks.SNOW) > 0 ? null : "no snow";
+			case 22:
+				return world.getBlockState(center.down()).isOf(Blocks.GOLD_BLOCK) ? null : "the ground did not turn to gold";
+			case 23:
+				return world.getServer().getTickManager().isFrozen() ? null : "time is not frozen";
+			default:
+				return null; // 5 chickens, 9 anvils and 18 black hole take time and are covered by the test "slow effects"
+		}
+	}
+
+	@GameTest(templateName = EMPTY_STRUCTURE, batchId = "combinator_chaos", tickLimit = 2000)
+	public void chaos(TestContext context) {
+		Report report = new Report("chaos");
+		ServerWorld world = context.getWorld();
+		MinecraftServer server = world.getServer();
+		BlockPos center = stageCenter(context);
+		forceChunks(world, center, true);
+		resetStage(world, center);
+		ServerPlayerEntity player = newPlayer(world, center);
+
+		int[] next = {0};
+		int[] tick = {0};
+		int[] doneAt = {-1};
+		context.runAtEveryTick(() -> {
+			tick[0]++;
+			if (tick[0] <= WARMUP) {
+				return;
+			}
+			if (next[0] < Chaos.EVENTS) {
+				int number = next[0]++;
+				try {
+					if (server.getTickManager().isFrozen()) {
+						server.getTickManager().setFrozen(false);
+					}
+					resetStage(world, center);
+					resetPlayer(player, world, center);
+					player.setInvulnerable(true);
+					player.setExperienceLevel(0);
+					MobEntity pig = spawnMob(world, EntityType.PIG, center.getX() + 0.5, center.getY(), center.getZ() + 3.5);
+					Vec3d standing = player.getPos();
+					long timeBefore = server.getOverworld().getTimeOfDay();
+					boolean done = Chaos.event(world, player, number);
+					report.check(done, "chaos event " + number + " did nothing");
+					String missing = missingChaos(number, world, player, center, pig, standing, timeBefore);
+					report.check(missing == null, "chaos event " + number + ": " + missing);
+					LOG.info("[chaos] event {}: {}", number, missing == null ? "ok" : missing);
+				} catch (Throwable t) {
+					report.problem("chaos event " + number + " crashed: " + t);
+					LOG.error("chaos test " + number, t);
+				}
+				report.modErrors("chaos event " + number);
+				if (next[0] == Chaos.EVENTS) {
+					doneAt[0] = tick[0];
+				}
+				return;
+			}
+			// The last event is the time stop (5 seconds). Wait until everything is over.
+			if (tick[0] - doneAt[0] < 300) {
+				return;
+			}
+			report.check(!server.getTickManager().isFrozen(), "time is still frozen long after the chaos time stop");
+			if (server.getTickManager().isFrozen()) {
+				server.getTickManager().setFrozen(false);
+			}
+			removePlayer(player);
+			resetStage(world, center);
+			forceChunks(world, center, false);
+			report.finish(context);
 		});
 	}
 }

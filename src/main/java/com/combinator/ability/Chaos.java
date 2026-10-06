@@ -24,7 +24,8 @@ import net.minecraft.world.Heightmap;
 
 /** The random events of the Chaos Orb and Pandora's Box. Some are good, some are silly, some are bad. */
 public final class Chaos {
-	private static final int EVENTS = 24;
+	/** How many different events there are. */
+	public static final int EVENTS = 24;
 
 	private Chaos() {
 	}
@@ -41,10 +42,15 @@ public final class Chaos {
 
 	/** Chaos Orb: one random event. */
 	static boolean one(ServerWorld world, ServerPlayerEntity player) {
+		return event(world, player, world.random.nextInt(EVENTS));
+	}
+
+	/** Runs the event with the given number (0 to EVENTS - 1). The automatic tests use this to try every event. */
+	public static boolean event(ServerWorld world, ServerPlayerEntity player, int number) {
 		Random random = world.random;
 		Vec3d here = player.getPos();
 		String name;
-		switch (random.nextInt(EVENTS)) {
+		switch (number) {
 			case 0 -> {
 				name = "It rains diamonds";
 				rain(world, here, Items.DIAMOND, 6);
@@ -105,10 +111,14 @@ public final class Chaos {
 				overworld.setTimeOfDay(overworld.getTimeOfDay() + 12000L);
 			}
 			case 12 -> {
-				name = "Somewhere else";
-				Vec3d spot = groundNear(world, here, 80.0);
-				player.requestTeleport(spot.x, spot.y + 0.5, spot.z);
-				player.fallDistance = 0.0F;
+				Vec3d spot = standingSpotNear(world, player, 80.0);
+				if (spot != null) {
+					name = "Somewhere else";
+					player.requestTeleport(spot.x, spot.y, spot.z);
+					player.fallDistance = 0.0F;
+				} else {
+					name = "Nothing happens. Lucky you";
+				}
 			}
 			case 13 -> {
 				name = "Iron friends";
@@ -178,6 +188,42 @@ public final class Chaos {
 			world.spawnEntity(new ItemEntity(world, center.x + (random.nextDouble() - 0.5) * 6.0, center.y + 8.0 + random.nextDouble() * 4.0,
 					center.z + (random.nextDouble() - 0.5) * 6.0, new ItemStack(item)));
 		}
+	}
+
+	/**
+	 * A random spot within the given distance where the player has room to stand, or null if none was found.
+	 * Under the open sky this is the surface. In the Nether and in other places with a roof it is a spot
+	 * at about the player's own height, so nobody ends up on top of the bedrock roof.
+	 */
+	private static Vec3d standingSpotNear(ServerWorld world, ServerPlayerEntity player, double distance) {
+		Random random = world.random;
+		Vec3d center = player.getPos();
+		boolean roofed = world.getDimension().hasCeiling();
+		for (int attempt = 0; attempt < 24; attempt++) {
+			int x = (int) Math.floor(center.x + (random.nextDouble() - 0.5) * 2.0 * distance);
+			int z = (int) Math.floor(center.z + (random.nextDouble() - 0.5) * 2.0 * distance);
+			if (!roofed) {
+				BlockPos top = world.getTopPosition(Heightmap.Type.MOTION_BLOCKING, new BlockPos(x, 0, z));
+				if (top.getY() > world.getBottomY() && hasRoom(world, top)) {
+					return Vec3d.ofBottomCenter(top);
+				}
+				continue;
+			}
+			for (int dy = 12; dy >= -12; dy--) {
+				BlockPos feet = new BlockPos(x, (int) Math.floor(center.y) + dy, z);
+				if (feet.getY() > world.getBottomY() + 1 && feet.getY() < world.getTopY() - 2 && hasRoom(world, feet)) {
+					return Vec3d.ofBottomCenter(feet);
+				}
+			}
+		}
+		return null;
+	}
+
+	/** True if a player fits at this position: something solid below, and two blocks without walls or liquids. */
+	private static boolean hasRoom(ServerWorld world, BlockPos feet) {
+		return world.getBlockState(feet.down()).isSolidBlock(world, feet.down())
+				&& world.getBlockState(feet).getCollisionShape(world, feet).isEmpty() && world.getFluidState(feet).isEmpty()
+				&& world.getBlockState(feet.up()).getCollisionShape(world, feet.up()).isEmpty() && world.getFluidState(feet.up()).isEmpty();
 	}
 
 	/** A random spot on the surface within the given distance. */
