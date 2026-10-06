@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
+import java.util.function.IntConsumer;
 import net.fabricmc.fabric.api.gametest.v1.FabricGameTest;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -167,6 +168,49 @@ public class CombinatorGameTest implements FabricGameTest {
 				world.setChunkForced(middle.x + dx, middle.z + dz, forced);
 			}
 		}
+	}
+
+	/** True when the stage is loaded so far that mobs and dropped items in it take part in the game. */
+	private static boolean stageReady(ServerWorld world, BlockPos center) {
+		for (int dx = -1; dx <= 1; dx++) {
+			for (int dz = -1; dz <= 1; dz++) {
+				if (!world.shouldTickEntity(center.add(dx * 16, 0, dz * 16))) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+
+	/**
+	 * Calls the body once per tick, starting when the warm-up time is over and the stage is fully loaded.
+	 * The body gets 1 on its first call, 2 on the second, and so on.
+	 */
+	private static void everyTickWhenReady(TestContext context, ServerWorld world, BlockPos center, IntConsumer body) {
+		int[] waited = {0};
+		int[] running = {0};
+		context.runAtEveryTick(() -> {
+			if (running[0] == 0) {
+				waited[0]++;
+				if (waited[0] < WARMUP || !stageReady(world, center)) {
+					if (waited[0] > 10000) {
+						throw new GameTestException("test setup: the test area did not finish loading");
+					}
+					return;
+				}
+			}
+			running[0]++;
+			body.accept(running[0]);
+		});
+	}
+
+	/** Runs the action once, when the warm-up time is over and the stage is fully loaded. */
+	private static void whenReady(TestContext context, ServerWorld world, BlockPos center, Runnable action) {
+		everyTickWhenReady(context, world, center, tick -> {
+			if (tick == 1) {
+				action.run();
+			}
+		});
 	}
 
 	/** Removes blocks, mobs and items around the stage and builds a fresh grass floor. */
@@ -324,7 +368,7 @@ public class CombinatorGameTest implements FabricGameTest {
 
 	// ------------------------------------------------------------------ 1. combinations
 
-	@GameTest(templateName = EMPTY_STRUCTURE, batchId = "combinator_recipes", tickLimit = 200)
+	@GameTest(templateName = EMPTY_STRUCTURE, batchId = "combinator_recipes", tickLimit = 20000)
 	public void recipes(TestContext context) {
 		Report report = new Report("recipes");
 		report.info(ComboItems.ALL.size() + " items, " + ComboRecipes.ALL.size() + " combinations (with alternates)");
@@ -400,7 +444,7 @@ public class CombinatorGameTest implements FabricGameTest {
 
 	// ------------------------------------------------------------------ 2. data files
 
-	@GameTest(templateName = EMPTY_STRUCTURE, batchId = "combinator_data", tickLimit = 200)
+	@GameTest(templateName = EMPTY_STRUCTURE, batchId = "combinator_data", tickLimit = 20000)
 	public void dataFiles(TestContext context) {
 		Report report = new Report("data");
 		ServerWorld world = context.getWorld();
@@ -461,7 +505,7 @@ public class CombinatorGameTest implements FabricGameTest {
 
 	// ------------------------------------------------------------------ 3. the Combiner Table
 
-	@GameTest(templateName = EMPTY_STRUCTURE, batchId = "combinator_table", tickLimit = 400)
+	@GameTest(templateName = EMPTY_STRUCTURE, batchId = "combinator_table", tickLimit = 20000)
 	public void combinerTable(TestContext context) {
 		Report report = new Report("table");
 		ServerWorld world = context.getWorld();
@@ -470,7 +514,7 @@ public class CombinatorGameTest implements FabricGameTest {
 		resetStage(world, center);
 		ServerPlayerEntity player = newPlayer(world, center);
 
-		context.runAtTick(WARMUP, () -> {
+		whenReady(context, world, center, () -> {
 			try {
 				BlockPos tablePos = center.add(0, 0, 2);
 				world.setBlockState(tablePos, ItemCombinator.COMBINER_TABLE.getDefaultState());
@@ -547,7 +591,7 @@ public class CombinatorGameTest implements FabricGameTest {
 
 	// ------------------------------------------------------------------ 4. mining
 
-	@GameTest(templateName = EMPTY_STRUCTURE, batchId = "combinator_mining", tickLimit = 600)
+	@GameTest(templateName = EMPTY_STRUCTURE, batchId = "combinator_mining", tickLimit = 20000)
 	public void mining(TestContext context) {
 		Report report = new Report("mining");
 		ServerWorld world = context.getWorld();
@@ -556,7 +600,7 @@ public class CombinatorGameTest implements FabricGameTest {
 		resetStage(world, center);
 		ServerPlayerEntity player = newPlayer(world, center);
 
-		context.runAtTick(WARMUP, () -> {
+		whenReady(context, world, center, () -> {
 			int tested = 0;
 			for (Item item : ComboItems.ALL) {
 				Traits traits = ComboItems.traits(item);
@@ -688,7 +732,7 @@ public class CombinatorGameTest implements FabricGameTest {
 
 	// ------------------------------------------------------------------ 5. fighting
 
-	@GameTest(templateName = EMPTY_STRUCTURE, batchId = "combinator_combat", tickLimit = 600)
+	@GameTest(templateName = EMPTY_STRUCTURE, batchId = "combinator_combat", tickLimit = 20000)
 	public void combat(TestContext context) {
 		Report report = new Report("combat");
 		ServerWorld world = context.getWorld();
@@ -697,7 +741,7 @@ public class CombinatorGameTest implements FabricGameTest {
 		resetStage(world, center);
 		ServerPlayerEntity player = newPlayer(world, center);
 
-		context.runAtTick(WARMUP, () -> {
+		whenReady(context, world, center, () -> {
 			int tested = 0;
 			for (Item item : ComboItems.ALL) {
 				try {
@@ -812,7 +856,7 @@ public class CombinatorGameTest implements FabricGameTest {
 
 	// ------------------------------------------------------------------ 6. armor, totem and fall protection
 
-	@GameTest(templateName = EMPTY_STRUCTURE, batchId = "combinator_defense", tickLimit = 600)
+	@GameTest(templateName = EMPTY_STRUCTURE, batchId = "combinator_defense", tickLimit = 20000)
 	public void defense(TestContext context) {
 		Report report = new Report("defense");
 		ServerWorld world = context.getWorld();
@@ -821,7 +865,7 @@ public class CombinatorGameTest implements FabricGameTest {
 		resetStage(world, center);
 		ServerPlayerEntity player = newPlayer(world, center);
 
-		context.runAtTick(WARMUP, () -> {
+		whenReady(context, world, center, () -> {
 			// First without any item: the tester must be hurt by a zombie and by a fall.
 			// If this fails, the test itself is broken and the checks below would mean nothing.
 			resetPlayer(player, world, center);
@@ -899,7 +943,7 @@ public class CombinatorGameTest implements FabricGameTest {
 
 	// ------------------------------------------------------------------ 7. right-click on a block
 
-	@GameTest(templateName = EMPTY_STRUCTURE, batchId = "combinator_blockuse", tickLimit = 600)
+	@GameTest(templateName = EMPTY_STRUCTURE, batchId = "combinator_blockuse", tickLimit = 20000)
 	public void blockUse(TestContext context) {
 		Report report = new Report("block use");
 		ServerWorld world = context.getWorld();
@@ -908,7 +952,7 @@ public class CombinatorGameTest implements FabricGameTest {
 		resetStage(world, center);
 		ServerPlayerEntity player = newPlayer(world, center);
 
-		context.runAtTick(WARMUP, () -> {
+		whenReady(context, world, center, () -> {
 			int special = 0;
 			for (Item item : ComboItems.ALL) {
 				Traits traits = ComboItems.traits(item);
@@ -977,8 +1021,11 @@ public class CombinatorGameTest implements FabricGameTest {
 						// Nothing special: it only must not crash.
 						world.setBlockState(target, Blocks.GRASS_BLOCK.getDefaultState());
 						player.interactionManager.interactBlock(player, world, stack, Hand.MAIN_HAND, hitTop(target));
-						world.setBlockState(target.up(), Blocks.OAK_LOG.getDefaultState());
-						player.interactionManager.interactBlock(player, world, player.getMainHandStack(), Hand.MAIN_HAND, hitTop(target.up()));
+						// The log stands away from the spot where the crops of the other items grow. A solid block there would
+						// leave a shadow for a moment (light is worked out in the background), and crops break in the dark.
+						BlockPos log = target.add(6, 1, 0);
+						world.setBlockState(log, Blocks.OAK_LOG.getDefaultState());
+						player.interactionManager.interactBlock(player, world, player.getMainHandStack(), Hand.MAIN_HAND, hitTop(log));
 					}
 				} catch (Throwable t) {
 					report.problem(id + ": right-click on a block crashed: " + t);
@@ -997,7 +1044,7 @@ public class CombinatorGameTest implements FabricGameTest {
 
 	// ------------------------------------------------------------------ 8. food
 
-	@GameTest(templateName = EMPTY_STRUCTURE, batchId = "combinator_food", tickLimit = 600)
+	@GameTest(templateName = EMPTY_STRUCTURE, batchId = "combinator_food", tickLimit = 20000)
 	public void food(TestContext context) {
 		Report report = new Report("food");
 		ServerWorld world = context.getWorld();
@@ -1006,7 +1053,7 @@ public class CombinatorGameTest implements FabricGameTest {
 		resetStage(world, center);
 		ServerPlayerEntity player = newPlayer(world, center);
 
-		context.runAtTick(WARMUP, () -> {
+		whenReady(context, world, center, () -> {
 			int eaten = 0;
 			for (Item item : ComboItems.ALL) {
 				ItemStack stack = new ItemStack(item);
@@ -1057,7 +1104,7 @@ public class CombinatorGameTest implements FabricGameTest {
 
 	// ------------------------------------------------------------------ 9. abilities that work without clicking
 
-	@GameTest(templateName = EMPTY_STRUCTURE, batchId = "combinator_passive", tickLimit = 800)
+	@GameTest(templateName = EMPTY_STRUCTURE, batchId = "combinator_passive", tickLimit = 20000)
 	public void passive(TestContext context) {
 		Report report = new Report("passive");
 		ServerWorld world = context.getWorld();
@@ -1082,7 +1129,7 @@ public class CombinatorGameTest implements FabricGameTest {
 		report.info(items.size() + " items with passive abilities");
 		report.check(items.size() >= 10, "only " + items.size() + " items with passive abilities were found");
 
-		context.runAtTick(WARMUP, () -> {
+		Runnable giveItems = () -> {
 			for (Item item : items) {
 				ServerPlayerEntity player = newPlayer(world, center);
 				players.add(player);
@@ -1095,9 +1142,9 @@ public class CombinatorGameTest implements FabricGameTest {
 				}
 			}
 			world.spawnEntity(new ItemEntity(world, center.getX() + 3.5, center.getY() + 0.2, center.getZ() + 0.5, new ItemStack(Items.DIAMOND)));
-		});
+		};
 
-		context.runAtTick(WARMUP + 50, () -> {
+		Runnable checkWithItems = () -> {
 			report.modErrors("passive abilities while the items are active");
 			for (int n = 0; n < items.size(); n++) {
 				Item item = items.get(n);
@@ -1127,9 +1174,9 @@ public class CombinatorGameTest implements FabricGameTest {
 					LOG.error("passive test " + id, t);
 				}
 			}
-		});
+		};
 
-		context.runAtTick(WARMUP + 75, () -> {
+		Runnable checkWithoutItems = () -> {
 			report.modErrors("passive abilities after the items were removed");
 			for (int n = 0; n < items.size(); n++) {
 				Item item = items.get(n);
@@ -1154,6 +1201,17 @@ public class CombinatorGameTest implements FabricGameTest {
 			resetStage(world, center);
 			forceChunks(world, center, false);
 			report.finish(context);
+		};
+
+		// Effects are given once a second, body changes twice a second, repair every two seconds: 50 ticks cover all of them.
+		everyTickWhenReady(context, world, center, tick -> {
+			if (tick == 1) {
+				giveItems.run();
+			} else if (tick == 51) {
+				checkWithItems.run();
+			} else if (tick == 76) {
+				checkWithoutItems.run();
+			}
 		});
 	}
 
@@ -1163,7 +1221,7 @@ public class CombinatorGameTest implements FabricGameTest {
 	private record Click(Item item, boolean sneak) {
 	}
 
-	@GameTest(templateName = EMPTY_STRUCTURE, batchId = "combinator_use", tickLimit = 3000)
+	@GameTest(templateName = EMPTY_STRUCTURE, batchId = "combinator_use", tickLimit = 20000)
 	public void rightClick(TestContext context) {
 		Report report = new Report("right-click");
 		ServerWorld world = context.getWorld();
@@ -1203,11 +1261,8 @@ public class CombinatorGameTest implements FabricGameTest {
 		List<String> noEffect = new ArrayList<>();
 		String[] last = {"start"};
 
-		context.runAtEveryTick(() -> {
-			tick[0]++;
-			if (tick[0] <= WARMUP) {
-				return;
-			}
+		everyTickWhenReady(context, world, center, now -> {
+			tick[0] = now;
 			report.modErrors("after " + last[0]);
 			if (next[0] < clicks.size()) {
 				Click click = clicks.get(next[0]++);
@@ -1413,7 +1468,7 @@ public class CombinatorGameTest implements FabricGameTest {
 		return count(world, center.add(-12, -1, -12), center.add(12, -1, 12), Blocks.GRASS_BLOCK);
 	}
 
-	@GameTest(templateName = EMPTY_STRUCTURE, batchId = "combinator_slow", tickLimit = 3000)
+	@GameTest(templateName = EMPTY_STRUCTURE, batchId = "combinator_slow", tickLimit = 20000)
 	public void slowEffects(TestContext context) {
 		Report report = new Report("slow effects");
 		ServerWorld world = context.getWorld();
@@ -1448,11 +1503,8 @@ public class CombinatorGameTest implements FabricGameTest {
 		int[] index = {0};
 		int[] waitUntil = {-1};
 		int[] tick = {0};
-		context.runAtEveryTick(() -> {
-			tick[0]++;
-			if (tick[0] <= WARMUP) {
-				return;
-			}
+		everyTickWhenReady(context, world, center, now -> {
+			tick[0] = now;
 			if (waitUntil[0] >= 0) {
 				if (tick[0] < waitUntil[0]) {
 					return;
@@ -1567,7 +1619,7 @@ public class CombinatorGameTest implements FabricGameTest {
 		}
 	}
 
-	@GameTest(templateName = EMPTY_STRUCTURE, batchId = "combinator_chaos", tickLimit = 2000)
+	@GameTest(templateName = EMPTY_STRUCTURE, batchId = "combinator_chaos", tickLimit = 20000)
 	public void chaos(TestContext context) {
 		Report report = new Report("chaos");
 		ServerWorld world = context.getWorld();
@@ -1580,11 +1632,8 @@ public class CombinatorGameTest implements FabricGameTest {
 		int[] next = {0};
 		int[] tick = {0};
 		int[] doneAt = {-1};
-		context.runAtEveryTick(() -> {
-			tick[0]++;
-			if (tick[0] <= WARMUP) {
-				return;
-			}
+		everyTickWhenReady(context, world, center, now -> {
+			tick[0] = now;
 			if (next[0] < Chaos.EVENTS) {
 				int number = next[0]++;
 				try {

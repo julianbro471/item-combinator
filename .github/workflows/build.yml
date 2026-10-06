@@ -40,13 +40,19 @@ jobs:
         timeout-minutes: 30
         run: |
           set -o pipefail
-          ./gradlew runGameTest --stacktrace 2>&1 | tee gametest.log
+          status=0
+          ./gradlew runGameTest --stacktrace 2>&1 | tee gametest.log || status=$?
+          grep -h "PROBLEM: " gametest.log | head -10 | sed 's/^.*PROBLEM: /::error title=Server test::/' || true
+          exit $status
       - name: the same server tests with the finished jar
         if: always()
         timeout-minutes: 30
         run: |
           set -o pipefail
-          ./gradlew prodServerTest --stacktrace 2>&1 | tee prodservertest.log
+          status=0
+          ./gradlew prodServerTest --stacktrace 2>&1 | tee prodservertest.log || status=$?
+          grep -h "PROBLEM: " prodservertest.log | head -10 | sed 's/^.*PROBLEM: /::error title=Server test with the finished jar::/' || true
+          exit $status
       - name: client test with the finished jar (the real game in a virtual screen, with screenshots)
         if: always()
         timeout-minutes: 30
@@ -60,9 +66,12 @@ jobs:
           fi
           mkdir -p build/run/prodClientTest
           printf 'onboardAccessibility:false\npauseOnLostFocus:false\ntutorialStep:none\nnarrator:0\n' > build/run/prodClientTest/options.txt
-          ./gradlew prodClientTest --stacktrace 2>&1 | tee clienttest.log
-          cat build/run/prodClientTest/client-test-result.txt
-          grep -q '^PASSED' build/run/prodClientTest/client-test-result.txt
+          status=0
+          ./gradlew prodClientTest --stacktrace 2>&1 | tee clienttest.log || status=$?
+          cat build/run/prodClientTest/client-test-result.txt || true
+          grep -h "^- " build/run/prodClientTest/client-test-result.txt | head -10 | sed 's/^- /::error title=Client test::/' || true
+          grep -q '^PASSED' build/run/prodClientTest/client-test-result.txt || status=1
+          exit $status
       - name: publish the result on the builds branch
         if: always() && github.event_name == 'push'
         env:
