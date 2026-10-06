@@ -665,7 +665,8 @@ public final class Mayhem {
 				drift[0] = new Vec3d(d.x * Math.cos(turn) - d.z * Math.sin(turn), 0.0, d.x * Math.sin(turn) + d.z * Math.cos(turn));
 			}
 			Vec3d next = at[0].add(drift[0]);
-			BlockPos ground = Fx.groundNear(world, next.x, next.z, next.y + 1.0, 5);
+			// Over a hole (often one it tore itself) the tornado keeps its height. It must never creep upwards.
+			BlockPos ground = Fx.groundNear(world, next.x, next.z, next.y, 5);
 			Vec3d c = new Vec3d(next.x, ground.getY(), next.z);
 			at[0] = c;
 			// the funnel: wider at the top
