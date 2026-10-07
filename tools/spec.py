@@ -400,7 +400,7 @@ it("spring_boots", "Spring Boots", 1, "iron_boots", "slime_block", "armor",
    slot="BOOTS", prot=2, tough=0.0, kb=0.0, dur=260, layer="iron")
 
 it("spelunker_helmet", "Spelunker's Helmet", 2, "miner_helmet", "diving_helmet", "armor",
-   ["Night Vision, Haste I and", "underwater breathing while worn."],
+   ["Night Vision, Haste I and", "underwater breathing while worn.", "Also gives you air on the Moon."],
    ".fx(StatusEffects.NIGHT_VISION, 0).fx(StatusEffects.WATER_BREATHING, 0).fx(StatusEffects.HASTE, 0)",
    tex=("helmet", "diamond", "thunder", "lamp"),
    slot="HELMET", prot=3, tough=2.0, kb=0.0, dur=500, layer="diamond")

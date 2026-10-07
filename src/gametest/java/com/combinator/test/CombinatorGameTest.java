@@ -2533,6 +2533,25 @@ public class CombinatorGameTest implements FabricGameTest {
 			report.check(seen.size() == worlds && player.getWorld() == world, "the Dimension Hopper saw " + seen.size() + " of " + worlds
 					+ " worlds and ended in " + where(player));
 		}));
+		// ---- a Smiler that shows up outside the Backrooms fades away
+		EndermanEntity[] smiler = {null};
+		steps.add(new Timed("smiler outside the backrooms", 3, () -> {
+			resetStage(world, center);
+			resetPlayer(player, world, center);
+			// the tag has to be there before the Smiler enters the world, as it is when a Mob Net lets one out
+			smiler[0] = EntityType.ENDERMAN.create(world);
+			smiler[0].refreshPositionAndAngles(center.getX() + 4.5, center.getY(), center.getZ() + 4.5, 0.0F, 0.0F);
+			smiler[0].setAiDisabled(true);
+			smiler[0].addCommandTag(Worlds.SMILER_TAG);
+			world.spawnEntity(smiler[0]);
+			MobEntity plain = spawnMob(world, EntityType.ENDERMAN, center.getX() - 4.5, center.getY(), center.getZ() + 4.5);
+			plain.addCommandTag("combinator_plain_enderman");
+		}));
+		steps.add(new Timed("smiler outside the backrooms, later", 3, () -> {
+			report.check(smiler[0].isRemoved(), "a Smiler in the Overworld did not fade away");
+			report.check(!world.getEntitiesByClass(EndermanEntity.class, new Box(center).expand(12.0),
+					e -> e.getCommandTags().contains("combinator_plain_enderman")).isEmpty(), "a normal enderman faded away too");
+		}));
 		// ---- the Wormhole Gun and the Pet Whistle
 		steps.add(new Timed("wormhole", 5, () -> {
 			resetStage(world, center);

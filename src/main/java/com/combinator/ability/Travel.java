@@ -166,6 +166,9 @@ public final class Travel {
 							|| e instanceof ExperienceOrbEntity || e instanceof AbstractMinecartEntity
 							|| e instanceof net.minecraft.entity.FallingBlockEntity || e instanceof net.minecraft.entity.TntEntity));
 					for (Entity entity : entering) {
+						if (Worlds.isSmiler(entity) && exitWorld != world) {
+							continue; // Smilers stay in the Backrooms
+						}
 						through(entity, exitWorld, to);
 					}
 				}

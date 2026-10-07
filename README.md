@@ -207,7 +207,7 @@ Every new item has a description under its name. All new items are also in their
 | Iron Chestplate | Cactus | **Cactus Chestplate** | Hurts anything that attacks you. | 6 armor, 300 uses |
 | Diamond Leggings | Sugar | **Swift Leggings** | Speed II while worn. | 6 armor, 560 uses |
 | Iron Boots | Slime Block | **Spring Boots** | Jump Boost III while worn. No fall damage. | 2 armor, 260 uses |
-| *Miner's Helmet* | *Oxygen Helmet* | **Spelunker's Helmet** | Night Vision, Haste I and underwater breathing while worn. | 3 armor, 500 uses |
+| *Miner's Helmet* | *Oxygen Helmet* | **Spelunker's Helmet** | Night Vision, Haste I and underwater breathing while worn. Also gives you air on the Moon. | 3 armor, 500 uses |
 | *Magma Chestplate* | *Cactus Chestplate* | **Inferno Thornmail** | Immune to fire. Resistance I. Attackers burn and explode. The explosion breaks no blocks. | 9 armor, 900 uses |
 | *Spring Boots* | *Swift Charm* | **Hermes Boots** | Speed III and Jump Boost III. No fall damage. | 3 armor, 600 uses |
 | *Spring Boots* | End Stone | **Moon Boots** | Low gravity and huge jumps. No fall damage. | 3 armor, 600 uses |
@@ -964,10 +964,12 @@ These items need three or more combining steps. Each list shows everything that 
   Backrooms, the thrown pearl brings you both home. The pearl is never used up.
 - The Backrooms have no end. The rooms are made as you walk. A lodestone under a green light, about one in 40 rooms,
   is a way out. Smilers are invisible endermen: only their eyes can be seen. Looking at them makes them angry.
+  Smilers never leave the Backrooms: a thrown Noclip Pearl, the Pocket Dimension Cube and wormholes do not take them
+  along, and one that shows up in another world (out of a Mob Net, say) fades away.
 - Who falls off the Sky Realm falls into their own world from high up, with Slow Falling.
 - On the Moon everything alive weighs a sixth, so you jump about 5 blocks high, and falls do not hurt.
-  There is no air: without an Oxygen Helmet (the old Diving Helmet) on your head, the air bubbles go down as under
-  water, and then it hurts until you die or fly home. Creative mode needs no helmet.
+  There is no air: without an Oxygen Helmet (the old Diving Helmet) or a Spelunker's Helmet on your head, the air
+  bubbles go down as under water, and then it hurts until you die or fly home. Creative mode needs no helmet.
   Some craters have a meteorite: iron, gold, diamonds, emeralds or ancient debris inside.
 - The Other Side is a second copy of the land of the world: the same seed, so the same mountains, caves, villages
   and treasure. Nothing you change in your world changes there. The sun stays at dusk, so monsters come out.

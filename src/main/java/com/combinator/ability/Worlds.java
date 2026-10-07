@@ -10,6 +10,7 @@ import net.fabricmc.fabric.api.attachment.v1.AttachmentRegistry;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentTarget;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentType;
 import net.fabricmc.fabric.api.entity.event.v1.ServerEntityWorldChangeEvents;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.block.BedBlock;
 import net.minecraft.block.Block;
@@ -84,7 +85,8 @@ public final class Worlds {
 	private static final RegistryKey<DamageType> VACUUM = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, ItemCombinator.id("vacuum"));
 	/** A block at height 0 in the corner of a chunk of the Backrooms or the Moon: this chunk was furnished already. */
 	private static final BlockState DONE_MARK = Blocks.REINFORCED_DEEPSLATE.getDefaultState();
-	private static final String SMILER_TAG = "combinator_smiler";
+	/** Every Smiler carries this tag. Smilers belong to the Backrooms and never leave them. */
+	public static final String SMILER_TAG = "combinator_smiler";
 
 	/** Pocket rooms: floor height and half size (the room is 17 x 17 blocks with the walls). */
 	private static final int ROOM_Y = 64;
@@ -114,6 +116,22 @@ public final class Worlds {
 				lowGravity(living, destination.getRegistryKey() == MOON);
 			}
 		});
+		// Smilers stay in the Backrooms. One that shows up anywhere else (out of a Mob Net, say) fades away at once.
+		// It goes on the next tick: removing an entity while the game is still adding it is not safe.
+		ServerEntityEvents.ENTITY_LOAD.register((entity, world) -> {
+			if (isSmiler(entity) && world.getRegistryKey() != BACKROOMS) {
+				Tasks.later(1, () -> {
+					if (!entity.isRemoved() && entity.getWorld() == world) {
+						Fx.particles(world, ParticleTypes.SMOKE, entity.getPos().add(0.0, 1.5, 0.0), 30, 0.4, 0.02);
+						entity.discard();
+					}
+				});
+			}
+		});
+	}
+
+	public static boolean isSmiler(Entity entity) {
+		return entity.getCommandTags().contains(SMILER_TAG);
 	}
 
 	public static boolean isModWorld(World world) {
@@ -300,7 +318,7 @@ public final class Worlds {
 		List<Entity> company = new ArrayList<>();
 		if (group) {
 			for (Entity entity : world.getOtherEntities(player, player.getBoundingBox().expand(4.0),
-					e -> e.isAlive() && (e instanceof LivingEntity || e instanceof ItemEntity) && !e.hasVehicle())) {
+					e -> e.isAlive() && (e instanceof LivingEntity || e instanceof ItemEntity) && !e.hasVehicle() && !isSmiler(e))) {
 				company.add(entity);
 			}
 		}
@@ -444,7 +462,10 @@ public final class Worlds {
 		ServerWorld world = (ServerWorld) pearl.getWorld();
 		Fx.particles(world, ParticleTypes.REVERSE_PORTAL, pearl.getPos(), 40, 0.4, 0.2);
 		LivingEntity target = hit instanceof LivingEntity living && living != owner && living.isAlive() && !(living instanceof EnderDragonEntity)
-				? living : null;
+				&& !isSmiler(living) ? living : null;
+		if (hit != null && isSmiler(hit)) {
+			owner.sendMessage(Text.literal("The Smiler stays in the Backrooms. It is still smiling.").formatted(Formatting.YELLOW), true);
+		}
 		if (target instanceof ServerPlayerEntity other) {
 			rememberHome(other);
 		}
@@ -813,9 +834,10 @@ public final class Worlds {
 		}
 	}
 
-	/** True if the player can breathe on the Moon: an Oxygen Helmet on the head, or creative or spectator mode. */
+	/** True if the player can breathe on the Moon: an Oxygen Helmet or a Spelunker's Helmet on the head, or creative or spectator mode. */
 	public static boolean hasAir(ServerPlayerEntity player) {
-		return player.isCreative() || player.isSpectator() || player.getEquippedStack(EquipmentSlot.HEAD).isOf(ComboItems.DIVING_HELMET);
+		ItemStack head = player.getEquippedStack(EquipmentSlot.HEAD);
+		return player.isCreative() || player.isSpectator() || head.isOf(ComboItems.DIVING_HELMET) || head.isOf(ComboItems.SPELUNKER_HELMET);
 	}
 
 	/**

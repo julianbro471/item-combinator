@@ -272,7 +272,7 @@ public final class ComboItems {
 	public static final Item SPRING_BOOTS = add("spring_boots", 1, 2,
 			new CArmor(armorMaterial("spring_boots", 2, 0.0F, 0.0F, "iron", false), ArmorItem.Type.BOOTS, props(1).maxDamage(260)),
 			new Traits().at(Traits.Where.WORN).fx(StatusEffects.JUMP_BOOST, 2).noFall());
-	public static final Item SPELUNKER_HELMET = add("spelunker_helmet", 2, 2,
+	public static final Item SPELUNKER_HELMET = add("spelunker_helmet", 2, 3,
 			new CArmor(armorMaterial("spelunker_helmet", 3, 2.0F, 0.0F, "diamond", false), ArmorItem.Type.HELMET, props(2).maxDamage(500)),
 			new Traits().at(Traits.Where.WORN).fx(StatusEffects.NIGHT_VISION, 0).fx(StatusEffects.WATER_BREATHING, 0).fx(StatusEffects.HASTE, 0));
 	public static final Item INFERNO_THORNMAIL = add("inferno_thornmail", 2, 3,

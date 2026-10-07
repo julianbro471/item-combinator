@@ -1546,7 +1546,8 @@
       "kind": "armor",
       "tip": [
         "Night Vision, Haste I and",
-        "underwater breathing while worn."
+        "underwater breathing while worn.",
+        "Also gives you air on the Moon."
       ],
       "cat": "Armor",
       "stats": "3 armor, 500 uses"
@@ -7787,7 +7788,8 @@
       "b": "diving_helmet",
       "tip": [
         "Night Vision, Haste I and",
-        "underwater breathing while worn."
+        "underwater breathing while worn.",
+        "Also gives you air on the Moon."
       ],
       "stats": {
         "dur": 500,

@@ -575,6 +575,10 @@ public class ClientSmokeTest implements ClientModInitializer {
 		sleep(2500L);
 		int airWith = onServer(player -> player.getAir());
 		this.check(airWith == 300, "with the Oxygen Helmet the air did not come back (" + airWith + " of 300)");
+		onServerDo(player -> player.equipStack(EquipmentSlot.HEAD, new ItemStack(ComboItems.SPELUNKER_HELMET)));
+		sleep(1500L);
+		int airSpelunker = onServer(player -> player.getAir());
+		this.check(airSpelunker == 300, "with the Spelunker's Helmet the air went down on the Moon (" + airSpelunker + " of 300)");
 		screenshot("13_world_moon");
 		double moonJump = fly(100, tick -> MinecraftClient.getInstance().options.jumpKey.setPressed(tick < 2));
 		LOG.info("Movement: a jump on the Moon went {} blocks up", moonJump);
