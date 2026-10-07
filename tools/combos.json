@@ -1445,14 +1445,15 @@
       "a_name": "Iron Helmet",
       "b_name": "Glass",
       "result": "diving_helmet",
-      "result_name": "Diving Helmet",
+      "result_name": "Oxygen Helmet",
       "count": 1,
       "rar": 1,
       "a_custom": false,
       "b_custom": false,
       "kind": "armor",
       "tip": [
-        "Breathe underwater while worn."
+        "Breathe underwater while worn.",
+        "Also gives you air on the Moon."
       ],
       "cat": "Armor",
       "stats": "2 armor, 240 uses"
@@ -1535,7 +1536,7 @@
       "a": "miner_helmet",
       "b": "diving_helmet",
       "a_name": "Miner's Helmet",
-      "b_name": "Diving Helmet",
+      "b_name": "Oxygen Helmet",
       "result": "spelunker_helmet",
       "result_name": "Spelunker's Helmet",
       "count": 1,
@@ -5350,8 +5351,10 @@
       "tip": [
         "Right-click: you clip through the floor of",
         "reality into the Backrooms. Endless yellow",
-        "rooms, humming lamps. Do not look at the",
-        "eyes. Right-click there, or step on the",
+        "rooms, humming lamps. Do not look at the eyes.",
+        "Sneak + right-click: throw it. You go where",
+        "it lands, and a mob or player it hits comes",
+        "along. Right-click there, or step on the",
         "lodestone under a green light: back."
       ],
       "cat": "Other worlds",
@@ -5394,7 +5397,8 @@
         "Right-click: lift-off. You land softly on",
         "the Moon: grey dust, craters, meteorites,",
         "a black sky. You weigh a sixth, so you jump",
-        "very high. Right-click there: fly home."
+        "very high. There is no air: wear an Oxygen",
+        "Helmet. Right-click there: fly home."
       ],
       "cat": "Other worlds",
       "stats": ""
@@ -7687,14 +7691,15 @@
     },
     {
       "id": "diving_helmet",
-      "name": "Diving Helmet",
+      "name": "Oxygen Helmet",
       "rar": 1,
       "kind": "armor",
       "cat": "Armor",
       "a": "iron_helmet",
       "b": "glass",
       "tip": [
-        "Breathe underwater while worn."
+        "Breathe underwater while worn.",
+        "Also gives you air on the Moon."
       ],
       "stats": {
         "dur": 240,
@@ -10918,8 +10923,10 @@
       "tip": [
         "Right-click: you clip through the floor of",
         "reality into the Backrooms. Endless yellow",
-        "rooms, humming lamps. Do not look at the",
-        "eyes. Right-click there, or step on the",
+        "rooms, humming lamps. Do not look at the eyes.",
+        "Sneak + right-click: throw it. You go where",
+        "it lands, and a mob or player it hits comes",
+        "along. Right-click there, or step on the",
         "lodestone under a green light: back."
       ],
       "stats": {}
@@ -10952,7 +10959,8 @@
         "Right-click: lift-off. You land softly on",
         "the Moon: grey dust, craters, meteorites,",
         "a black sky. You weigh a sixth, so you jump",
-        "very high. Right-click there: fly home."
+        "very high. There is no air: wear an Oxygen",
+        "Helmet. Right-click there: fly home."
       ],
       "stats": {}
     },

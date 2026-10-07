@@ -251,6 +251,8 @@ def gen_resources():
         'itemGroup.combinator.main': spec.MOD_NAME,
         'gui.combinator.hints': 'Combines with:',
         'gui.combinator.hint_none': 'No combinations',
+        'death.attack.combinator.vacuum': '%1$s ran out of air on the Moon',
+        'death.attack.combinator.vacuum.player': '%1$s ran out of air on the Moon while fighting %2$s',
     }
     for it in spec.ITEMS:
         lang[f'item.combinator.{it["id"]}'] = it['name']
@@ -570,10 +572,14 @@ def gen_readme(rows, extra):
     A('- Every player has their own room in the Pocket Dimension. It is built the first time, then it stays as you left it.')
     A('  Sneaking takes along everything alive and every dropped item within 4 blocks, other players too.')
     A('  The lodestone in the corner of the room is a way out. Who falls out of the room lands back in it.')
+    A('- A thrown Noclip Pearl takes you where it lands. A mob or player it hits comes along, without asking. Used in the')
+    A('  Backrooms, the thrown pearl brings you both home. The pearl is never used up.')
     A('- The Backrooms have no end. The rooms are made as you walk. A lodestone under a green light, about one in 40 rooms,')
     A('  is a way out. Smilers are invisible endermen: only their eyes can be seen. Looking at them makes them angry.')
     A('- Who falls off the Sky Realm falls into their own world from high up, with Slow Falling.')
-    A('- On the Moon everything alive weighs a sixth, so you jump about 7 blocks high, and falls do not hurt.')
+    A('- On the Moon everything alive weighs a sixth, so you jump about 5 blocks high, and falls do not hurt.')
+    A('  There is no air: without an Oxygen Helmet (the old Diving Helmet) on your head, the air bubbles go down as under')
+    A('  water, and then it hurts until you die or fly home. Creative mode needs no helmet.')
     A('  Some craters have a meteorite: iron, gold, diamonds, emeralds or ancient debris inside.')
     A('- The Other Side is a second copy of the land of the world: the same seed, so the same mountains, caves, villages')
     A('  and treasure. Nothing you change in your world changes there. The sun stays at dusk, so monsters come out.')

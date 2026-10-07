@@ -257,7 +257,7 @@ public final class ComboItems {
 	public static final Item MINER_HELMET = add("miner_helmet", 1, 1,
 			new CArmor(armorMaterial("miner_helmet", 2, 0.0F, 0.0F, "iron", false), ArmorItem.Type.HELMET, props(1).maxDamage(240)),
 			new Traits().at(Traits.Where.WORN).fx(StatusEffects.NIGHT_VISION, 0));
-	public static final Item DIVING_HELMET = add("diving_helmet", 1, 1,
+	public static final Item DIVING_HELMET = add("diving_helmet", 1, 2,
 			new CArmor(armorMaterial("diving_helmet", 2, 0.0F, 0.0F, "iron", false), ArmorItem.Type.HELMET, props(1).maxDamage(240)),
 			new Traits().at(Traits.Where.WORN).fx(StatusEffects.WATER_BREATHING, 0));
 	public static final Item MAGMA_CHESTPLATE = add("magma_chestplate", 1, 2,
@@ -886,13 +886,13 @@ public final class ComboItems {
 	public static final Item POCKET_CUBE = add("pocket_cube", 3, 4,
 			new CItem(props(3).maxCount(1)),
 			new Traits().at(Traits.Where.HOTBAR).use(Use.POCKET_DIMENSION).cooldown(40).sneakUse(Use.POCKET_GROUP, 40));
-	public static final Item NOCLIP_PEARL = add("noclip_pearl", 3, 5,
+	public static final Item NOCLIP_PEARL = add("noclip_pearl", 3, 7,
 			new CItem(props(3).maxCount(1)),
-			new Traits().at(Traits.Where.HOTBAR).use(Use.BACKROOMS).cooldown(40));
+			new Traits().at(Traits.Where.HOTBAR).use(Use.BACKROOMS).cooldown(40).sneakUse(Use.NOCLIP_THROW, 40));
 	public static final Item CLOUD_KEY = add("cloud_key", 3, 4,
 			new CItem(props(3).maxCount(1)),
 			new Traits().at(Traits.Where.HOTBAR).use(Use.SKY_REALM).cooldown(40));
-	public static final Item MOON_ROCKET = add("moon_rocket", 3, 4,
+	public static final Item MOON_ROCKET = add("moon_rocket", 3, 5,
 			new CItem(props(3).maxCount(1)),
 			new Traits().at(Traits.Where.HOTBAR).use(Use.MOON).cooldown(60));
 	public static final Item LOOKING_GLASS = add("looking_glass", 3, 5,

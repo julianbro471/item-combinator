@@ -2300,6 +2300,25 @@ T('envelope', '''
 ................
 ''')
 
+T('dome', '''
+................
+.....PPPPPP.....
+...PPNNPPPPPP...
+..PPNNPPPPPPPP..
+..PNNPPPPPPPPP..
+.PPNPPPPPPPPPPP.
+.PPPPPPPPPPPPPP.
+.PPPPPPPPPPPPPP.
+.PPPPPPPPPPPPPP.
+.PPPPPPPPPPPPPP.
+..PPPPPPPPPPPP..
+.AAAAAAAAAAAAAA.
+.AYAAAAAAAAAAYA.
+.AAAAAAAAAAAAAA.
+..AAAAAAAAAAAA..
+................
+''')
+
 def GL(name, art, pal):
     G[name] = ([r for r in art.strip('\n').split('\n')], {k: hx(v) for k, v in pal.items()})
 GL('flame', '''

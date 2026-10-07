@@ -9,6 +9,7 @@ import com.combinator.ability.Doom;
 import com.combinator.ability.Builders;
 import com.combinator.ability.Mayhem;
 import com.combinator.ability.Oddities;
+import com.combinator.ability.ThrownNoclipPearl;
 import com.combinator.ability.Travel;
 import com.combinator.ability.Utility;
 import com.combinator.ability.Wild;
@@ -57,6 +58,7 @@ import net.minecraft.entity.boss.WitherEntity;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeInstance;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.damage.DamageType;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.CreeperEntity;
 import net.minecraft.entity.mob.EndermanEntity;
@@ -103,6 +105,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.registry.tag.DamageTypeTags;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.screen.slot.SlotActionType;
 import net.minecraft.server.MinecraftServer;
@@ -575,6 +578,10 @@ public class CombinatorGameTest implements FabricGameTest {
 		report.check(Blocks.STONE.getDefaultState().isIn(paxel) && Blocks.DIRT.getDefaultState().isIn(paxel)
 				&& Blocks.OAK_LOG.getDefaultState().isIn(paxel), "the paxel block list (tag combinator:mineable/paxel) is incomplete");
 		report.check(ItemCombinator.COMBINER_TABLE.getDefaultState().isIn(axe), "the Combiner Table is not mined faster with an axe");
+		Optional<RegistryEntry.Reference<DamageType>> vacuum = world.getRegistryManager().get(RegistryKeys.DAMAGE_TYPE)
+				.getEntry(RegistryKey.of(RegistryKeys.DAMAGE_TYPE, ItemCombinator.id("vacuum")));
+		report.check(vacuum.isPresent() && vacuum.get().isIn(DamageTypeTags.BYPASSES_ARMOR),
+				"the damage of running out of air on the Moon did not load, or armor would block it");
 
 		TagKey<Item> durability = itemTag("enchantable/durability");
 		for (Item item : ComboItems.ALL) {
@@ -2017,6 +2024,8 @@ public class CombinatorGameTest implements FabricGameTest {
 			case BACKROOMS:
 				return p.getWorld().getRegistryKey() == Worlds.BACKROOMS && p.getBlockY() == 4 ? null
 						: "the tester is not on the floor of the Backrooms (in " + p.getWorld().getRegistryKey().getValue() + " at " + p.getBlockPos() + ")";
+			case NOCLIP_THROW:
+				return any(world, center, ThrownNoclipPearl.class) ? null : "no Noclip Pearl was thrown";
 			case SKY_REALM:
 				return p.getWorld().getRegistryKey() == Worlds.SKY_REALM ? null : "the tester is not in the Sky Realm";
 			case MOON:

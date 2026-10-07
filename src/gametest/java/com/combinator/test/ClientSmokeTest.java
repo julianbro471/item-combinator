@@ -402,11 +402,18 @@ public class ClientSmokeTest implements ClientModInitializer {
 
 	/** Right-clicks with the item, on the game's server side, the way a real right-click does. Runs on the server thread. */
 	private static ActionResult useNow(ServerPlayerEntity player, Item item) {
+		return useNow(player, item, false);
+	}
+
+	private static ActionResult useNow(ServerPlayerEntity player, Item item, boolean sneak) {
 		ItemStack stack = new ItemStack(item);
 		player.getInventory().selectedSlot = 0;
 		player.getInventory().setStack(0, stack);
 		player.getItemCooldownManager().remove(item);
-		return player.interactionManager.interactItem(player, player.getServerWorld(), stack, Hand.MAIN_HAND);
+		player.setSneaking(sneak);
+		ActionResult result = player.interactionManager.interactItem(player, player.getServerWorld(), stack, Hand.MAIN_HAND);
+		player.setSneaking(false);
+		return result;
 	}
 
 	private static String use(Item item) {
@@ -511,6 +518,33 @@ public class ClientSmokeTest implements ClientModInitializer {
 		use(ComboItems.NOCLIP_PEARL);
 		arriveIn(World.OVERWORLD);
 
+		// ---- a thrown Noclip Pearl: it hits a pig, and the pig comes along into the Backrooms
+		onServerDo(player -> {
+			ServerWorld world = player.getServerWorld();
+			player.teleport(world, player.getX(), player.getY(), player.getZ(), 0.0F, 20.0F);
+			for (Entity other : world.getOtherEntities(player, player.getBoundingBox().expand(12.0), e -> e instanceof LivingEntity)) {
+				other.discard();
+			}
+			PigEntity pig = EntityType.PIG.create(world);
+			if (pig != null) {
+				pig.refreshPositionAndAngles(player.getX(), player.getY(), player.getZ() + 3.0, 180.0F, 0.0F);
+				pig.setAiDisabled(true);
+				pig.addCommandTag("combinator_thrown_at");
+				world.spawnEntity(pig);
+			}
+			useNow(player, ComboItems.NOCLIP_PEARL, true);
+		});
+		arriveIn(Worlds.BACKROOMS);
+		String along = onServer(player -> {
+			List<PigEntity> pigs = player.getServerWorld().getEntitiesByClass(PigEntity.class, player.getBoundingBox().expand(3.0),
+					e -> e.getCommandTags().contains("combinator_thrown_at"));
+			return pigs.isEmpty() ? "the pig hit by the thrown Noclip Pearl did not come along into the Backrooms (the player is in "
+					+ player.getWorld().getRegistryKey().getValue() + " at " + player.getBlockPos().toShortString() + ")" : null;
+		});
+		this.check(along == null, String.valueOf(along));
+		use(ComboItems.NOCLIP_PEARL);
+		arriveIn(World.OVERWORLD);
+
 		// ---- the Sky Realm: an island to stand on, and falling off it
 		use(ComboItems.CLOUD_KEY);
 		arriveIn(Worlds.SKY_REALM);
@@ -534,6 +568,13 @@ public class ClientSmokeTest implements ClientModInitializer {
 		this.check(onServer(Worlds::hasLowGravity), "the player is not lighter on the Moon");
 		waitFor("landing on the Moon", 60, client -> client.player.isOnGround());
 		sleep(500L);
+		// no air without a helmet; with the Oxygen Helmet the air comes back
+		int airWithout = onServer(player -> player.getAir());
+		this.check(airWithout < 250, "without a helmet the air on the Moon did not go down (" + airWithout + " of 300 left)");
+		onServerDo(player -> player.equipStack(EquipmentSlot.HEAD, new ItemStack(ComboItems.DIVING_HELMET)));
+		sleep(2500L);
+		int airWith = onServer(player -> player.getAir());
+		this.check(airWith == 300, "with the Oxygen Helmet the air did not come back (" + airWith + " of 300)");
 		screenshot("13_world_moon");
 		double moonJump = fly(100, tick -> MinecraftClient.getInstance().options.jumpKey.setPressed(tick < 2));
 		LOG.info("Movement: a jump on the Moon went {} blocks up", moonJump);

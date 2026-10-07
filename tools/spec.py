@@ -378,9 +378,9 @@ it("miner_helmet", "Miner's Helmet", 1, "iron_helmet", "lantern", "armor",
    ["Night Vision while worn."],
    ".fx(StatusEffects.NIGHT_VISION, 0)", tex=("helmet", "iron", "thunder", "lamp"),
    slot="HELMET", prot=2, tough=0.0, kb=0.0, dur=240, layer="iron")
-it("diving_helmet", "Diving Helmet", 1, "iron_helmet", "glass", "armor",
-   ["Breathe underwater while worn."],
-   ".fx(StatusEffects.WATER_BREATHING, 0)", tex=("helmet", "copper", "ice", "visor"),
+it("diving_helmet", "Oxygen Helmet", 1, "iron_helmet", "glass", "armor",
+   ["Breathe underwater while worn.", "Also gives you air on the Moon."],
+   ".fx(StatusEffects.WATER_BREATHING, 0)", tex=("dome", "glass", "iron", None),
    slot="HELMET", prot=2, tough=0.0, kb=0.0, dur=240, layer="iron")
 it("magma_chestplate", "Magma Chestplate", 1, "diamond_chestplate", "magma_block", "armor",
    ["Immune to fire while worn.", "Sets attackers on fire."],
@@ -1167,16 +1167,18 @@ it("pocket_cube", "Pocket Dimension Cube", 3, "backpack", "ender_eye", "gadget",
    ".use(Use.POCKET_DIMENSION).cooldown(40).sneakUse(Use.POCKET_GROUP, 40)", tex=("cube", "pink", "void", "star"))
 it("noclip_pearl", "Noclip Pearl", 3, "ender_pearl", "yellow_wool", "gadget",
    ["Right-click: you clip through the floor of", "reality into the Backrooms. Endless yellow",
-    "rooms, humming lamps. Do not look at the", "eyes. Right-click there, or step on the",
+    "rooms, humming lamps. Do not look at the eyes.", "Sneak + right-click: throw it. You go where",
+    "it lands, and a mob or player it hits comes", "along. Right-click there, or step on the",
     "lodestone under a green light: back."],
-   ".use(Use.BACKROOMS).cooldown(40)", tex=("orb", "honey", "sand", "question"))
+   ".use(Use.BACKROOMS).cooldown(40).sneakUse(Use.NOCLIP_THROW, 40)", tex=("orb", "honey", "sand", "question"))
 it("cloud_key", "Cloud Key", 3, "skeleton_key", "phantom_membrane", "gadget",
    ["Right-click: up to the Sky Realm, a world", "of floating islands with nothing below.",
     "Fall off and you drop back into your world", "from the clouds. Right-click there: back."],
    ".use(Use.SKY_REALM).cooldown(40)", tex=("key", "wind", "ice", "wing"))
 it("moon_rocket", "Moon Rocket", 3, "firework_rocket", "end_stone", "gadget",
    ["Right-click: lift-off. You land softly on", "the Moon: grey dust, craters, meteorites,",
-    "a black sky. You weigh a sixth, so you jump", "very high. Right-click there: fly home."],
+    "a black sky. You weigh a sixth, so you jump", "very high. There is no air: wear an Oxygen",
+    "Helmet. Right-click there: fly home."],
    ".use(Use.MOON).cooldown(60)", tex=("rocket", "iron", "redstone", None))
 it("looking_glass", "Looking Glass", 3, "pocket_mirror", "ender_eye", "gadget",
    ["Right-click: you step through to the Other", "Side: the same land as your world, the same",

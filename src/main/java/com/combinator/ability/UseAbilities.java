@@ -847,6 +847,8 @@ public final class UseAbilities {
 				return Worlds.pocket(world, player, true);
 			case BACKROOMS:
 				return Worlds.backrooms(world, player);
+			case NOCLIP_THROW:
+				return Worlds.throwPearl(world, player);
 			case SKY_REALM:
 				return Worlds.skyRealm(world, player);
 			case MOON:

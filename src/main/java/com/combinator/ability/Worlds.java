@@ -19,15 +19,20 @@ import net.minecraft.block.RedstoneLampBlock;
 import net.minecraft.block.enums.BedPart;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeInstance;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
+import net.minecraft.entity.boss.dragon.EnderDragonEntity;
+import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.damage.DamageType;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.EndermanEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.RegistryKey;
@@ -75,6 +80,8 @@ public final class Worlds {
 			.buildAndRegister(ItemCombinator.id("return_point"));
 
 	private static final Identifier MOON_GRAVITY = ItemCombinator.id("moon_gravity");
+	/** The damage of running out of air on the Moon. Defined in data/combinator/damage_type/vacuum.json. */
+	private static final RegistryKey<DamageType> VACUUM = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, ItemCombinator.id("vacuum"));
 	/** A block at height 0 in the corner of a chunk of the Backrooms or the Moon: this chunk was furnished already. */
 	private static final BlockState DONE_MARK = Blocks.REINFORCED_DEEPSLATE.getDefaultState();
 	private static final String SMILER_TAG = "combinator_smiler";
@@ -416,6 +423,43 @@ public final class Worlds {
 		return entered;
 	}
 
+	/** Noclip Pearl, sneaking: the pearl is thrown. Where it lands, the thrower clips through, and what it hit comes along. */
+	static boolean throwPearl(ServerWorld world, ServerPlayerEntity player) {
+		ThrownNoclipPearl pearl = new ThrownNoclipPearl(world, player);
+		pearl.setItem(new ItemStack(ComboItems.NOCLIP_PEARL));
+		pearl.setVelocity(player, player.getPitch(), player.getYaw(), 0.0F, 1.5F, 1.0F);
+		world.spawnEntity(pearl);
+		Fx.sound(world, player.getPos(), SoundEvents.ENTITY_ENDER_PEARL_THROW, 1.0F, 0.6F);
+		return true;
+	}
+
+	/**
+	 * The thrown pearl landed. The thrower goes to the Backrooms (or home, if they are in the Backrooms already), and the mob or
+	 * player it hit is taken along. Nothing happens if the thrower is gone or went to another world in the meantime.
+	 */
+	static void pearlLanded(ProjectileEntity pearl, Entity hit) {
+		if (!(pearl.getOwner() instanceof ServerPlayerEntity owner) || !owner.isAlive() || owner.getWorld() != pearl.getWorld()) {
+			return;
+		}
+		ServerWorld world = (ServerWorld) pearl.getWorld();
+		Fx.particles(world, ParticleTypes.REVERSE_PORTAL, pearl.getPos(), 40, 0.4, 0.2);
+		LivingEntity target = hit instanceof LivingEntity living && living != owner && living.isAlive() && !(living instanceof EnderDragonEntity)
+				? living : null;
+		if (target instanceof ServerPlayerEntity other) {
+			rememberHome(other);
+		}
+		if (!backrooms(world, owner)) {
+			return;
+		}
+		if (target != null) {
+			ServerWorld there = (ServerWorld) owner.getWorld();
+			Entity moved = move(target, there, owner.getPos(), target.getYaw(), target.getPitch());
+			if (moved instanceof ServerPlayerEntity other) {
+				other.sendMessage(Text.literal(owner.getName().getString() + " dragged you along with a Noclip Pearl.").formatted(Formatting.YELLOW), false);
+			}
+		}
+	}
+
 	/** A free spot in the Backrooms near x, z. The rooms around it are furnished first. */
 	private static Vec3d hallSpot(ServerWorld hall, int x, int z) {
 		ChunkPos middle = new ChunkPos(new BlockPos(x, 0, z));
@@ -669,7 +713,8 @@ public final class Worlds {
 		Fx.sound(world, start, SoundEvents.ENTITY_FIREWORK_ROCKET_LAUNCH, 3.0F, 0.5F);
 		if (player.getWorld().getRegistryKey() == MOON) {
 			lowGravity(player, true);
-			player.sendMessage(Text.literal("The Moon. You weigh a sixth. Use the rocket again to fly home.").formatted(Formatting.GRAY), true);
+			player.sendMessage(Text.literal(hasAir(player) ? "The Moon. You weigh a sixth. Use the rocket again to fly home."
+					: "The Moon. There is no air here! Put on an Oxygen Helmet, or fly home soon.").formatted(Formatting.GRAY), true);
 		}
 		return true;
 	}
@@ -765,6 +810,30 @@ public final class Worlds {
 			instance.addTemporaryModifier(new EntityAttributeModifier(MOON_GRAVITY, value, operation));
 		} else if (!on && instance.hasModifier(MOON_GRAVITY)) {
 			instance.removeModifier(MOON_GRAVITY);
+		}
+	}
+
+	/** True if the player can breathe on the Moon: an Oxygen Helmet on the head, or creative or spectator mode. */
+	public static boolean hasAir(ServerPlayerEntity player) {
+		return player.isCreative() || player.isSpectator() || player.getEquippedStack(EquipmentSlot.HEAD).isOf(ComboItems.DIVING_HELMET);
+	}
+
+	/**
+	 * No air on the Moon: the air bubbles go down as under water, then it hurts. The game gives back 4 air each tick on land,
+	 * so 5 are taken: 1 per tick is used, as when diving.
+	 */
+	private static void breathe(ServerWorld moon, ServerPlayerEntity player) {
+		if (hasAir(player)) {
+			return;
+		}
+		int air = player.getAir() - 5;
+		if (air <= -20) {
+			air = 0;
+			player.damage(new DamageSource(moon.getRegistryManager().get(RegistryKeys.DAMAGE_TYPE).entryOf(VACUUM)), 2.0F);
+		}
+		player.setAir(air);
+		if (ticks % 60 == 0) {
+			player.sendMessage(Text.literal("No air! Put on an Oxygen Helmet, or fly home.").formatted(Formatting.RED), true);
 		}
 	}
 
@@ -901,6 +970,7 @@ public final class Worlds {
 					tickBackrooms(world, player);
 				} else if (key == MOON) {
 					furnishAround(world, player, 5, false);
+					breathe(world, player);
 				}
 			}
 			if (ticks % 10 == 5) {
