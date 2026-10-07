@@ -2,6 +2,7 @@ package com.combinator.test;
 
 import com.combinator.ItemCombinator;
 import com.combinator.ability.Charms;
+import com.combinator.ability.Worlds;
 import com.combinator.client.CombinerScreen;
 import com.combinator.item.CWings;
 import com.combinator.item.ComboItems;
@@ -19,6 +20,7 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ingame.InventoryScreen;
@@ -26,7 +28,11 @@ import net.minecraft.client.option.Perspective;
 import net.minecraft.client.render.model.BakedModel;
 import net.minecraft.client.resource.language.I18n;
 import net.minecraft.client.util.ScreenshotRecorder;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.mob.EndermanEntity;
+import net.minecraft.entity.passive.PigEntity;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -36,6 +42,7 @@ import net.minecraft.item.Items;
 import net.minecraft.item.SwordItem;
 import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.registry.Registries;
+import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.resource.DataConfiguration;
 import net.minecraft.screen.slot.SlotActionType;
@@ -43,6 +50,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.hit.BlockHitResult;
@@ -53,6 +61,7 @@ import net.minecraft.world.Difficulty;
 import net.minecraft.world.GameMode;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.Heightmap;
+import net.minecraft.world.World;
 import net.minecraft.world.gen.GeneratorOptions;
 import net.minecraft.world.gen.WorldPresets;
 import net.minecraft.world.level.LevelInfo;
@@ -363,6 +372,8 @@ public class ClientSmokeTest implements ClientModInitializer {
 		onClientDo(client -> client.options.setPerspective(Perspective.FIRST_PERSON));
 		screenshot("9_items_in_hand");
 
+		this.otherWorlds();
+
 		// The creative inventory tab of the mod lists the table and every item.
 		int inTab = onClient(client -> {
 			ItemGroup group = Registries.ITEM_GROUP.get(ItemCombinator.id("main"));
@@ -375,6 +386,188 @@ public class ClientSmokeTest implements ClientModInitializer {
 		this.check(inTab == all.size() + 1, "the creative tab shows " + inTab + " items instead of " + (all.size() + 1));
 
 		this.check(ItemCombinator.ERRORS.isEmpty(), "the mod reported errors while the game was running: " + ItemCombinator.ERRORS);
+	}
+
+	private static int count(ServerWorld world, BlockPos from, BlockPos to, Block block) {
+		int count = 0;
+		for (BlockPos pos : BlockPos.iterate(from, to)) {
+			if (world.getBlockState(pos).isOf(block)) {
+				count++;
+			}
+		}
+		return count;
+	}
+
+	/** Right-clicks with the item, on the game's server side, the way a real right-click does. Runs on the server thread. */
+	private static ActionResult useNow(ServerPlayerEntity player, Item item) {
+		ItemStack stack = new ItemStack(item);
+		player.getInventory().selectedSlot = 0;
+		player.getInventory().setStack(0, stack);
+		player.getItemCooldownManager().remove(item);
+		return player.interactionManager.interactItem(player, player.getServerWorld(), stack, Hand.MAIN_HAND);
+	}
+
+	private static String use(Item item) {
+		return onServer(player -> useNow(player, item).toString());
+	}
+
+	/** Waits until the game shows the given world, and a few seconds more so the land around is drawn. */
+	private static void arriveIn(RegistryKey<World> key) {
+		waitFor("arriving in " + key.getValue(), 90, client -> client.world != null && client.player != null
+				&& client.world.getRegistryKey() == key && client.currentScreen == null);
+		sleep(4000L);
+	}
+
+	private static String where() {
+		return onServer(player -> player.getWorld().getRegistryKey().getValue() + " " + player.getBlockPos().toShortString());
+	}
+
+	/**
+	 * The five worlds of the mod: the Pocket Dimension, the Backrooms, the Sky Realm, the Moon and the Other Side.
+	 * The game's test server only makes the Overworld, the Nether and the End, so they are tested here, in a normal world.
+	 */
+	private void otherWorlds() {
+		onServerDo(player -> {
+			player.getInventory().clear();
+			player.setStackInHand(Hand.OFF_HAND, ItemStack.EMPTY);
+			player.changeGameMode(GameMode.SURVIVAL);
+			player.setInvulnerable(true);
+		});
+		List<RegistryKey<World>> keys = List.of(Worlds.POCKET, Worlds.BACKROOMS, Worlds.SKY_REALM, Worlds.MOON, Worlds.PARALLEL);
+		List<String> missing = onServer(player -> {
+			List<String> list = new ArrayList<>();
+			for (RegistryKey<World> key : keys) {
+				if (player.getServer().getWorld(key) == null) {
+					list.add(key.getValue().toString());
+				}
+			}
+			return list;
+		});
+		this.check(missing.isEmpty(), "a new world does not have the worlds of the mod: " + missing);
+		if (!missing.isEmpty()) {
+			return;
+		}
+
+		// ---- the Pocket Dimension: in, look at the workshop wall, out over the lodestone
+		BlockPos home = onServer(player -> player.getBlockPos());
+		use(ComboItems.POCKET_CUBE);
+		arriveIn(Worlds.POCKET);
+		String pocket = onServer(player -> {
+			ServerWorld world = player.getServerWorld();
+			BlockPos room = Worlds.pocketRoom(player.getUuid());
+			int walls = count(world, room.add(-8, 0, -8), room.add(8, 9, 8), Blocks.QUARTZ_BRICKS);
+			int tables = count(world, room.add(-8, 0, -8), room.add(8, 2, 8), Blocks.CRAFTING_TABLE);
+			player.teleport(world, room.getX() + 0.5, room.getY() + 1.0, room.getZ() + 4.5, 180.0F, 10.0F);
+			return walls > 200 && tables == 1 ? null : "the pocket room has " + walls + " wall blocks and " + tables + " crafting tables";
+		});
+		this.check(pocket == null, String.valueOf(pocket));
+		sleep(1500L);
+		screenshot("10_world_pocket_dimension");
+		onServerDo(player -> {
+			BlockPos room = Worlds.pocketRoom(player.getUuid());
+			player.teleport(player.getServerWorld(), room.getX() + 6.5, room.getY() + 1.0, room.getZ() + 6.5, 0.0F, 0.0F);
+		});
+		arriveIn(World.OVERWORLD);
+		this.check(onServer(player -> player.getBlockPos().getSquaredDistance(home) < 9.0), "the lodestone in the pocket room did not lead home: " + where());
+
+		// ---- the Backrooms: walls, lamps and a Smiler
+		use(ComboItems.NOCLIP_PEARL);
+		arriveIn(Worlds.BACKROOMS);
+		String hall = onServer(player -> {
+			ServerWorld world = player.getServerWorld();
+			BlockPos feet = player.getBlockPos();
+			int walls = count(world, new BlockPos(feet.getX() - 20, 4, feet.getZ() - 20), new BlockPos(feet.getX() + 20, 7, feet.getZ() + 20), Blocks.SMOOTH_SANDSTONE);
+			int lamps = count(world, new BlockPos(feet.getX() - 20, 8, feet.getZ() - 20), new BlockPos(feet.getX() + 20, 8, feet.getZ() + 20), Blocks.REDSTONE_LAMP);
+			EndermanEntity smiler = Worlds.spawnSmiler(world, player);
+			boolean invisible = smiler != null && smiler.hasStatusEffect(StatusEffects.INVISIBILITY);
+			if (smiler != null) {
+				smiler.discard();
+			}
+			return feet.getY() == 4 && walls > 40 && lamps > 10 && invisible ? null
+					: "the Backrooms are wrong: standing at " + feet.toShortString() + ", " + walls + " wall blocks, " + lamps + " lamps, a Smiler: " + invisible;
+		});
+		this.check(hall == null, String.valueOf(hall));
+		screenshot("11_world_backrooms");
+		use(ComboItems.NOCLIP_PEARL);
+		arriveIn(World.OVERWORLD);
+
+		// ---- the Sky Realm: an island to stand on, and falling off it
+		use(ComboItems.CLOUD_KEY);
+		arriveIn(Worlds.SKY_REALM);
+		this.check(onServer(player -> !player.getServerWorld().getBlockState(player.getBlockPos().down()).isAir()),
+				"in the Sky Realm the player stands on nothing: " + where());
+		screenshot("12_world_sky_realm");
+		onServerDo(player -> player.teleport(player.getServerWorld(), player.getX(), -20.0, player.getZ(), player.getYaw(), 0.0F));
+		arriveIn(World.OVERWORLD);
+		this.check(onServer(player -> player.hasStatusEffect(StatusEffects.SLOW_FALLING) && player.getY() > 200.0),
+				"falling off the Sky Realm did not drop the player high into the Overworld with Slow Falling: " + where());
+		onServerDo(player -> {
+			player.clearStatusEffects();
+			ServerWorld world = player.getServerWorld();
+			player.teleport(world, home.getX() + 0.5, world.getTopY(Heightmap.Type.MOTION_BLOCKING, home.getX(), home.getZ()), home.getZ() + 0.5, 0.0F, 0.0F);
+		});
+		sleep(1500L);
+
+		// ---- the Moon: a soft landing, then a jump of several blocks
+		use(ComboItems.MOON_ROCKET);
+		arriveIn(Worlds.MOON);
+		this.check(onServer(Worlds::hasLowGravity), "the player is not lighter on the Moon");
+		waitFor("landing on the Moon", 60, client -> client.player.isOnGround());
+		sleep(500L);
+		screenshot("13_world_moon");
+		double moonJump = fly(100, tick -> MinecraftClient.getInstance().options.jumpKey.setPressed(tick < 2));
+		LOG.info("Movement: a jump on the Moon went {} blocks up", moonJump);
+		this.check(moonJump > 3.0, "a jump on the Moon went only " + moonJump + " blocks up");
+		use(ComboItems.MOON_ROCKET);
+		arriveIn(World.OVERWORLD);
+		this.check(!onServer(Worlds::hasLowGravity), "the player is still light after coming home from the Moon");
+
+		// ---- the Other Side
+		use(ComboItems.LOOKING_GLASS);
+		arriveIn(Worlds.PARALLEL);
+		this.check(onServer(player -> !player.getServerWorld().getBlockState(player.getBlockPos().down()).isAir()
+				&& player.getServerWorld().getFluidState(player.getBlockPos()).isEmpty()), "on the Other Side the player stands badly: " + where());
+		screenshot("14_world_other_side");
+		use(ComboItems.LOOKING_GLASS);
+		arriveIn(World.OVERWORLD);
+
+		// ---- the Dimension Hopper: through all eight worlds and home again
+		String hops = onServer(player -> {
+			List<String> seen = new ArrayList<>();
+			int worlds = 0;
+			for (ServerWorld ignored : player.getServer().getWorlds()) {
+				worlds++;
+			}
+			for (int hop = 0; hop < worlds; hop++) {
+				useNow(player, ComboItems.DIMENSION_HOPPER);
+				seen.add(player.getWorld().getRegistryKey().getValue().toString());
+			}
+			LOG.info("The Dimension Hopper went through {}", seen);
+			return seen.size() == worlds && seen.stream().distinct().count() == worlds && player.getWorld().getRegistryKey() == World.OVERWORLD
+					? null : "the Dimension Hopper went through " + seen;
+		});
+		this.check(hops == null, String.valueOf(hops));
+		arriveIn(World.OVERWORLD);
+
+		// ---- the Banishing Wand sends a pig to the Backrooms
+		String banish = onServer(player -> {
+			ServerWorld world = player.getServerWorld();
+			player.teleport(world, player.getX(), player.getY(), player.getZ(), 0.0F, 20.0F);
+			PigEntity pig = EntityType.PIG.create(world);
+			if (pig == null) {
+				return "no pig";
+			}
+			pig.refreshPositionAndAngles(player.getX(), player.getY(), player.getZ() + 3.0, 180.0F, 0.0F);
+			pig.setAiDisabled(true);
+			world.spawnEntity(pig);
+			useNow(player, ComboItems.BANISHING_WAND);
+			return pig.isRemoved() ? null : "the Banishing Wand did not banish the pig";
+		});
+		this.check(banish == null, String.valueOf(banish));
+		onServerDo(player -> {
+			player.getInventory().clear();
+			player.setInvulnerable(false);
+		});
 	}
 
 	/** Runs the key plan for the given number of game ticks and returns how high the player got above the start. */

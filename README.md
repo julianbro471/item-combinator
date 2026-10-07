@@ -1015,16 +1015,20 @@ The tests are in `src/gametest`. They are not part of the mod .jar.
 - copies a block with the Copy-Paste Wand and pastes it, breaks bedrock with the Bedrock Breaker
 - rolls every number of the Dice of Fate, plays every prank of the gremlin, carries the Hot Potato until it
   explodes, and wears the Storm Crown and the Plague Mask next to a zombie
-- travels to all five new worlds and back, checks the pocket room, the Backrooms walls and lamps, the Moon's
-  low gravity, falls off the Sky Realm, hops through all worlds, and banishes a pig
 - sends a pig through a wormhole, sends mail and visits a second fake player with the Friendship Bracelet,
   calls a tame wolf with the Pet Whistle, sorts a chest, digs a quarry and counts the ores in its chest
+
+The game's test server only makes the Overworld, the Nether and the End. The five worlds of the mod are tested
+by the client test below.
 
 **Client test** (`gradlew runClientTest`). The real game starts, makes a flat world, opens the Combiner Table with a
 right-click, puts two items in, takes the result, and takes screenshots of the table, of every item in the
 inventory, and of armor and wings on the player. It checks that every item has a name, a description, a model
 and a texture. It also presses the jump and forward keys (pretend key presses) and measures how high the
-player gets with the double jump, the Pogo Stick and the Sticky Boots.
+player gets with the double jump, the Pogo Stick and the Sticky Boots. Then it travels through the five worlds of
+the mod and takes a screenshot in each: it leaves the pocket room over the lodestone, checks the walls, lamps
+and Smilers of the Backrooms, falls off the Sky Realm, jumps on the Moon, visits the Other Side, hops through all
+eight worlds with the Dimension Hopper and banishes a pig to the Backrooms.
 
 **The same tests with the finished .jar** (`gradlew prodServerTest` and `gradlew prodClientTest`). Here the game
 runs like on a player's PC: with the .jar from `build/libs` and the Fabric API file that players install.
