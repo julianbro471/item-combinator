@@ -1,0 +1,44 @@
+# Makes a GitHub release when a version tag (like v1.5.0) is pushed.
+# The release gets the finished mod .jar, and the message of the tag as its text.
+# The tagged commit should already have passed the tests of the "build" workflow on main.
+name: release
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v6
+      - name: setup jdk
+        uses: actions/setup-java@v5
+        with:
+          java-version: '25'
+          distribution: 'microsoft'
+      - name: make gradle wrapper executable
+        run: chmod +x ./gradlew
+      - name: build
+        run: ./gradlew build -x runGameTest --stacktrace
+      - name: publish the release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          # The checkout keeps only the commit, so the tag (with its message) is fetched again.
+          git fetch --force origin "refs/tags/${TAG}:refs/tags/${TAG}"
+          git tag -l --format='%(contents)' "${TAG}" > notes.md
+          if [ ! -s notes.md ]; then
+            echo "Item Combinator ${TAG#v} for Minecraft Java Edition (Fabric)." > notes.md
+          fi
+          jars=$(find build/libs -name '*.jar' ! -name '*-sources.jar' ! -name '*-dev.jar')
+          version="${TAG#v}"
+          gh release create "${TAG}" ${jars} \
+            --title "Item Combinator ${version} (Minecraft Java Edition 1.21.1, Fabric)" \
+            --notes-file notes.md \
+            --latest

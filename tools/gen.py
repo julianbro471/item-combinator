@@ -397,6 +397,8 @@ def gen_readme(rows, extra):
     A('- [Fabric API](https://modrinth.com/mod/fabric-api) for 1.21.1 (a helper mod most Fabric mods need)\n')
     A('## Getting the .jar file\n')
     A('The .jar is the file the game loads. It is built from this project.\n')
+    A('**Releases (easiest):** open **Releases** on the right side of the GitHub page and download the .jar of the newest')
+    A('version. A release is made when a version tag such as `v1.5.0` is pushed (`.github/workflows/release.yml`).\n')
     A('**From GitHub (no installs on your PC):** GitHub builds the .jar again after every change')
     A('(the file `.github/workflows/build.yml` tells it how). The newest .jar is on the **`builds`** branch of the')
     A('repository, next to `build.log` (the text the build printed). You can also open **Actions**, click the newest run,')
