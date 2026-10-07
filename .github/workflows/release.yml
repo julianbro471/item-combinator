@@ -1,11 +1,14 @@
-# Makes a GitHub release when a version tag (like v1.5.0) is pushed.
-# The release gets the finished mod .jar, and the message of the tag as its text.
-# The tagged commit should already have passed the tests of the "build" workflow on main.
+# Makes a GitHub release with the finished mod .jar.
+# Start it by hand (Actions > release > Run workflow, on main): it makes the tag v<version> from gradle.properties.
+# Pushing a version tag (like v1.5.0) also starts it.
+# The text of the release comes from .github/release-notes/<tag>.md, or else from the message of the tag.
+# The commit should already have passed the tests of the "build" workflow on main.
 name: release
 on:
   push:
     tags:
       - 'v*'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -28,17 +31,26 @@ jobs:
       - name: publish the release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          TAG: ${{ github.ref_name }}
         run: |
-          # The checkout keeps only the commit, so the tag (with its message) is fetched again.
-          git fetch --force origin "refs/tags/${TAG}:refs/tags/${TAG}"
-          git tag -l --format='%(contents)' "${TAG}" > notes.md
+          version=$(grep '^version=' gradle.properties | cut -d= -f2)
+          if [ "${GITHUB_REF_TYPE}" = "tag" ]; then
+            tag="${GITHUB_REF_NAME}"
+          else
+            tag="v${version}"
+          fi
+          if [ -f ".github/release-notes/${tag}.md" ]; then
+            cp ".github/release-notes/${tag}.md" notes.md
+          elif [ "${GITHUB_REF_TYPE}" = "tag" ]; then
+            # The checkout keeps only the commit, so the tag (with its message) is fetched again.
+            git fetch --force origin "refs/tags/${tag}:refs/tags/${tag}"
+            git tag -l --format='%(contents)' "${tag}" > notes.md
+          fi
           if [ ! -s notes.md ]; then
-            echo "Item Combinator ${TAG#v} for Minecraft Java Edition (Fabric)." > notes.md
+            echo "Item Combinator ${version} for Minecraft Java Edition 1.21.1 (Fabric)." > notes.md
           fi
           jars=$(find build/libs -name '*.jar' ! -name '*-sources.jar' ! -name '*-dev.jar')
-          version="${TAG#v}"
-          gh release create "${TAG}" ${jars} \
+          gh release create "${tag}" ${jars} \
+            --target "${GITHUB_SHA}" \
             --title "Item Combinator ${version} (Minecraft Java Edition 1.21.1, Fabric)" \
             --notes-file notes.md \
             --latest

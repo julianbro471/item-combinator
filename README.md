@@ -35,7 +35,8 @@ delete or change large parts of the world for good.
 The .jar is the file the game loads. It is built from this project.
 
 **Releases (easiest):** open **Releases** on the right side of the GitHub page and download the .jar of the newest
-version. A release is made when a version tag such as `v1.5.0` is pushed (`.github/workflows/release.yml`).
+version. To make a release, run the **release** workflow on main (Actions > release > Run workflow). It makes the
+tag `v` + the version and takes its text from `.github/release-notes/`.
 
 **From GitHub (no installs on your PC):** GitHub builds the .jar again after every change
 (the file `.github/workflows/build.yml` tells it how). The newest .jar is on the **`builds`** branch of the
