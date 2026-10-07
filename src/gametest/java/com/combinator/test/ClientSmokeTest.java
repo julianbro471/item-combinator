@@ -28,6 +28,7 @@ import net.minecraft.client.option.Perspective;
 import net.minecraft.client.render.model.BakedModel;
 import net.minecraft.client.resource.language.I18n;
 import net.minecraft.client.util.ScreenshotRecorder;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.effect.StatusEffects;
@@ -487,6 +488,24 @@ public class ClientSmokeTest implements ClientModInitializer {
 					: "the Backrooms are wrong: standing at " + feet.toShortString() + ", " + walls + " wall blocks, " + lamps + " lamps, a Smiler: " + invisible;
 		});
 		this.check(hall == null, String.valueOf(hall));
+		onServerDo(player -> {
+			// look along the longest free way, so the picture shows the rooms and not a wall
+			ServerWorld world = player.getServerWorld();
+			float best = 0.0F;
+			int longest = -1;
+			for (Direction direction : Direction.Type.HORIZONTAL) {
+				int free = 0;
+				while (free < 24 && world.getBlockState(player.getBlockPos().up().offset(direction, free + 1)).isAir()) {
+					free++;
+				}
+				if (free > longest) {
+					longest = free;
+					best = direction.asRotation();
+				}
+			}
+			player.teleport(world, player.getX(), player.getY(), player.getZ(), best, 5.0F);
+		});
+		sleep(1500L);
 		screenshot("11_world_backrooms");
 		use(ComboItems.NOCLIP_PEARL);
 		arriveIn(World.OVERWORLD);
@@ -531,6 +550,28 @@ public class ClientSmokeTest implements ClientModInitializer {
 		use(ComboItems.LOOKING_GLASS);
 		arriveIn(World.OVERWORLD);
 
+		// ---- the Banishing Wand sends a pig to the Backrooms
+		String banish = onServer(player -> {
+			ServerWorld world = player.getServerWorld();
+			player.teleport(world, player.getX(), player.getY(), player.getZ(), 0.0F, 20.0F);
+			PigEntity pig = EntityType.PIG.create(world);
+			if (pig == null) {
+				return "no pig";
+			}
+			pig.refreshPositionAndAngles(player.getX(), player.getY(), player.getZ() + 3.0, 180.0F, 0.0F);
+			pig.setAiDisabled(true);
+			boolean spawned = world.spawnEntity(pig);
+			ActionResult result = useNow(player, ComboItems.BANISHING_WAND);
+			int inBackrooms = 0;
+			for (Entity entity : player.getServer().getWorld(Worlds.BACKROOMS).iterateEntities()) {
+				inBackrooms += entity instanceof PigEntity ? 1 : 0;
+			}
+			return pig.isRemoved() && inBackrooms > 0 ? null : "the Banishing Wand did not banish the pig: right-click " + result + ", pig spawned " + spawned
+					+ " at " + pig.getBlockPos().toShortString() + ", player at " + player.getBlockPos().toShortString() + " looking " + player.getYaw()
+					+ " / " + player.getPitch() + ", pigs in the Backrooms: " + inBackrooms;
+		});
+		this.check(banish == null, String.valueOf(banish));
+
 		// ---- the Dimension Hopper: through all eight worlds and home again
 		String hops = onServer(player -> {
 			List<String> seen = new ArrayList<>();
@@ -549,21 +590,6 @@ public class ClientSmokeTest implements ClientModInitializer {
 		this.check(hops == null, String.valueOf(hops));
 		arriveIn(World.OVERWORLD);
 
-		// ---- the Banishing Wand sends a pig to the Backrooms
-		String banish = onServer(player -> {
-			ServerWorld world = player.getServerWorld();
-			player.teleport(world, player.getX(), player.getY(), player.getZ(), 0.0F, 20.0F);
-			PigEntity pig = EntityType.PIG.create(world);
-			if (pig == null) {
-				return "no pig";
-			}
-			pig.refreshPositionAndAngles(player.getX(), player.getY(), player.getZ() + 3.0, 180.0F, 0.0F);
-			pig.setAiDisabled(true);
-			world.spawnEntity(pig);
-			useNow(player, ComboItems.BANISHING_WAND);
-			return pig.isRemoved() ? null : "the Banishing Wand did not banish the pig";
-		});
-		this.check(banish == null, String.valueOf(banish));
 		onServerDo(player -> {
 			player.getInventory().clear();
 			player.setInvulnerable(false);
