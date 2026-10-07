@@ -234,11 +234,11 @@ public final class Worlds {
 		int y = !world.getDimension().hasCeiling() && surface > bottom && surface <= top ? surface : start;
 		BlockPos feet = new BlockPos(x, y, z);
 		for (BlockPos pos : BlockPos.iterate(feet.add(-1, -1, -1), feet.add(1, -1, 1))) {
-			world.setBlockState(pos, platform.getDefaultState());
+			world.setBlockState(pos.toImmutable(), platform.getDefaultState());
 		}
 		for (BlockPos pos : BlockPos.iterate(feet.add(-1, 0, -1), feet.add(1, 1, 1))) {
 			if (world.getBlockState(pos).getHardness(world, pos) >= 0.0F) {
-				world.setBlockState(pos, Fx.AIR);
+				world.setBlockState(pos.toImmutable(), Fx.AIR);
 			}
 		}
 		return feet;
@@ -619,7 +619,7 @@ public final class Worlds {
 		BlockPos feet = new BlockPos(x, 120, z);
 		for (BlockPos pos : BlockPos.iterate(feet.add(-3, -1, -3), feet.add(3, -1, 3))) {
 			if (Math.abs(pos.getX() - x) + Math.abs(pos.getZ() - z) <= 4) {
-				sky.setBlockState(pos, Blocks.WHITE_WOOL.getDefaultState());
+				sky.setBlockState(pos.toImmutable(), Blocks.WHITE_WOOL.getDefaultState());
 			}
 		}
 		return feet;
@@ -736,7 +736,7 @@ public final class Worlds {
 				Blocks.CRYING_OBSIDIAN, Blocks.AMETHYST_BLOCK};
 		for (BlockPos pos : BlockPos.iterate(at.add(-1, 0, -1), at.add(1, 1, 1))) {
 			if (random.nextFloat() < 0.75F) {
-				world.setBlockState(pos, (random.nextBoolean() ? Blocks.BLACKSTONE : Blocks.MAGMA_BLOCK).getDefaultState(), Fx.QUIET);
+				world.setBlockState(pos.toImmutable(), (random.nextBoolean() ? Blocks.BLACKSTONE : Blocks.MAGMA_BLOCK).getDefaultState(), Fx.QUIET);
 			}
 		}
 		world.setBlockState(at, cores[random.nextInt(cores.length)].getDefaultState(), Fx.QUIET);
