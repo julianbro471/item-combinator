@@ -883,6 +883,76 @@ public final class ComboItems {
 	public static final Item FAULT_LINE = add("fault_line", 3, 3,
 			new CItem(props(3).maxDamage(16)),
 			new Traits().at(Traits.Where.HOTBAR).use(Use.FAULT_LINE).power(160.0f).cooldown(200).cost(1));
+	public static final Item POCKET_CUBE = add("pocket_cube", 3, 4,
+			new CItem(props(3).maxCount(1)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.POCKET_DIMENSION).cooldown(40).sneakUse(Use.POCKET_GROUP, 40));
+	public static final Item NOCLIP_PEARL = add("noclip_pearl", 3, 5,
+			new CItem(props(3).maxCount(1)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.BACKROOMS).cooldown(40));
+	public static final Item CLOUD_KEY = add("cloud_key", 3, 4,
+			new CItem(props(3).maxCount(1)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.SKY_REALM).cooldown(40));
+	public static final Item MOON_ROCKET = add("moon_rocket", 3, 4,
+			new CItem(props(3).maxCount(1)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.MOON).cooldown(60));
+	public static final Item LOOKING_GLASS = add("looking_glass", 3, 5,
+			new CItem(props(3).maxCount(1)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.PARALLEL).cooldown(40));
+	public static final Item DIMENSION_HOPPER = add("dimension_hopper", 3, 4,
+			new CItem(props(3).maxDamage(64)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.DIMENSION_HOP).cooldown(40).cost(1));
+	public static final Item BANISHING_WAND = add("banishing_wand", 2, 3,
+			new CItem(props(2).maxDamage(64)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.BANISH).range(24).cooldown(20).cost(1));
+	public static final Item WORMHOLE_GUN = add("wormhole_gun", 3, 4,
+			new CItem(props(3).maxCount(1)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.WORMHOLE_BLUE).range(64).cooldown(5).sneakUse(Use.WORMHOLE_ORANGE, 5));
+	public static final Item GRAVE_COMPASS = add("grave_compass", 2, 2,
+			new CItem(props(2).maxDamage(32)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.GRAVE_WARP).cooldown(200).cost(1));
+	public static final Item ESCAPE_ROPE = add("escape_rope", 1, 2,
+			new CItem(props(1).maxDamage(32)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.ESCAPE).cooldown(40).cost(1));
+	public static final Item ELEVATOR_PEARL = add("elevator_pearl", 2, 3,
+			new CItem(props(2).maxDamage(256)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.ELEVATOR_UP).range(64).cooldown(10).cost(1).sneakUse(Use.ELEVATOR_DOWN, 10));
+	public static final Item FRIENDSHIP_BRACELET = add("friendship_bracelet", 1, 3,
+			new CItem(props(1).maxCount(1)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.BRACELET_GO).cooldown(100).sneakUse(Use.BRACELET_PULL, 100));
+	public static final Item WANDERLUST_ATLAS = add("wanderlust_atlas", 2, 3,
+			new CItem(props(2).maxDamage(32)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.WANDER).cooldown(200).cost(1));
+	public static final Item PET_WHISTLE = add("pet_whistle", 1, 3,
+			new CItem(props(1).maxCount(1)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.PET_RECALL).cooldown(100));
+	public static final Item BLUEPRINT = add("blueprint", 3, 4,
+			new CItem(props(3).maxDamage(16)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.BLUEPRINT).range(48).cooldown(100).cost(1).sneakUse(Use.BLUEPRINT_PICK, 5));
+	public static final Item BIOME_BRUSH = add("biome_brush", 2, 4,
+			new CItem(props(2).maxDamage(128)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.BIOME_PAINT).range(48).cooldown(20).cost(1).sneakUse(Use.BIOME_PICK, 5));
+	public static final Item BUILDER_WAND = add("builder_wand", 1, 4,
+			new CItem(props(1).maxDamage(1024)),
+			new Traits().at(Traits.Where.HOTBAR).builderWand());
+	public static final Item RAIL_WAND = add("rail_wand", 2, 4,
+			new CItem(props(2).maxDamage(32)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.RAIL_LINE).power(128.0f).cooldown(100).cost(1));
+	public static final Item QUARRY_BOX = add("quarry_box", 2, 4,
+			new CItem(props(2).maxCount(16)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.QUARRY).range(16).power(5.0f).cooldown(200).consume());
+	public static final Item SORTING_WAND = add("sorting_wand", 1, 4,
+			new CItem(props(1).maxCount(1)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.SORT_SELF).sortWand().cooldown(5));
+	public static final Item ENDER_MAIL = add("ender_mail", 1, 4,
+			new CItem(props(1).maxCount(1)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.ENDER_MAIL).cooldown(20));
+	public static final Item LUMEN_ORB = add("lumen_orb", 2, 3,
+			new CItem(props(2).maxDamage(64)),
+			new Traits().at(Traits.Where.HOTBAR).use(Use.LIGHT_UP).range(24).cooldown(60).cost(1));
+	public static final Item ALMOND_WATER = add("almond_water", 1, 3,
+			new CItem(props(1).maxCount(16).food(new FoodComponent.Builder().nutrition(2).saturationModifier(0.5F)
+					.statusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 200, 1), 1.0F).alwaysEdible().usingConvertsTo(Items.GLASS_BOTTLE).build())),
+			new Traits().at(Traits.Where.HELD).cleanse());
 
 	private ComboItems() {
 	}

@@ -1,0 +1,19 @@
+{
+  "type": "combinator:sky_realm",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "minecraft:floating_islands",
+    "biome_source": {
+      "type": "minecraft:checkerboard",
+      "scale": 4,
+      "biomes": [
+        "minecraft:cherry_grove",
+        "minecraft:flower_forest",
+        "minecraft:meadow",
+        "minecraft:birch_forest",
+        "minecraft:mushroom_fields",
+        "minecraft:sunflower_plains"
+      ]
+    }
+  }
+}

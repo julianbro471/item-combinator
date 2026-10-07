@@ -94,6 +94,17 @@
     "combinator:chunk_launcher",
     "combinator:carpet_bomber",
     "combinator:orbital_annihilator",
-    "combinator:fault_line"
+    "combinator:fault_line",
+    "combinator:dimension_hopper",
+    "combinator:banishing_wand",
+    "combinator:grave_compass",
+    "combinator:escape_rope",
+    "combinator:elevator_pearl",
+    "combinator:wanderlust_atlas",
+    "combinator:blueprint",
+    "combinator:biome_brush",
+    "combinator:builder_wand",
+    "combinator:rail_wand",
+    "combinator:lumen_orb"
   ]
 }

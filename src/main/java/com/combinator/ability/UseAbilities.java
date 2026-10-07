@@ -78,6 +78,15 @@ public final class UseAbilities {
 			if (traits.bedrockBreak) {
 				return Wonders.breakBedrock(context, player, stack);
 			}
+			if (traits.builderWand) {
+				return Builders.buildFace(context, player, stack);
+			}
+			if (traits.sortWand) {
+				ActionResult sorted = Utility.sortBlock(context, player, stack);
+				if (sorted != ActionResult.PASS) {
+					return sorted;
+				}
+			}
 			if (traits.sow) {
 				ActionResult sown = sow(context, player, stack);
 				if (sown != ActionResult.PASS) {
@@ -419,6 +428,10 @@ public final class UseAbilities {
 			if (traits.eatBuffSeconds > 0) {
 				PassiveAbilities.grantBuff(player, item, traits.eatBuffSeconds);
 				Fx.particles(serverWorld, ParticleTypes.POOF, player.getPos().add(0.0, 1.0, 0.0), 30, 0.5, 0.05);
+			}
+			if (traits.cleanse) {
+				Utility.cleanse(player);
+				Fx.particles(serverWorld, ParticleTypes.SPLASH, player.getPos().add(0.0, 1.0, 0.0), 30, 0.4, 0.1);
 			}
 			if (traits.eatLaunch > 0) {
 				player.addVelocity(0.0, traits.eatLaunch, 0.0);
@@ -826,6 +839,68 @@ public final class UseAbilities {
 				return Cataclysm.eventHorizon(world, player, traits.range);
 			case FAULT_LINE:
 				return Cataclysm.faultLine(world, player, Math.round(traits.power));
+
+			// ---------------------------------------------------------- other worlds
+			case POCKET_DIMENSION:
+				return Worlds.pocket(world, player, false);
+			case POCKET_GROUP:
+				return Worlds.pocket(world, player, true);
+			case BACKROOMS:
+				return Worlds.backrooms(world, player);
+			case SKY_REALM:
+				return Worlds.skyRealm(world, player);
+			case MOON:
+				return Worlds.moon(world, player);
+			case PARALLEL:
+				return Worlds.parallel(world, player);
+			case DIMENSION_HOP:
+				return Worlds.hop(world, player);
+			case BANISH:
+				return Worlds.banish(world, player, traits.range);
+
+			// ---------------------------------------------------------- teleportation
+			case WORMHOLE_BLUE:
+				return Travel.shootPortal(world, player, traits.range, false);
+			case WORMHOLE_ORANGE:
+				return Travel.shootPortal(world, player, traits.range, true);
+			case GRAVE_WARP:
+				return Travel.graveWarp(world, player);
+			case ESCAPE:
+				return Travel.escape(world, player);
+			case ELEVATOR_UP:
+				return Travel.elevator(world, player, true, traits.range);
+			case ELEVATOR_DOWN:
+				return Travel.elevator(world, player, false, traits.range);
+			case BRACELET_GO:
+				return Travel.bracelet(world, player, false);
+			case BRACELET_PULL:
+				return Travel.bracelet(world, player, true);
+			case WANDER:
+				return Travel.wander(world, player);
+			case PET_RECALL:
+				return Travel.petRecall(world, player);
+
+			// ---------------------------------------------------------- creation tools
+			case BLUEPRINT:
+				return Builders.blueprint(world, player, player.getStackInHand(hand), traits.range);
+			case BLUEPRINT_PICK:
+				return Builders.pick(player, player.getStackInHand(hand), false);
+			case BIOME_PAINT:
+				return Builders.paintBiome(world, player, player.getStackInHand(hand), traits.range);
+			case BIOME_PICK:
+				return Builders.pick(player, player.getStackInHand(hand), true);
+			case RAIL_LINE:
+				return Builders.railLine(world, player, Math.round(traits.power));
+
+			// ---------------------------------------------------------- utility
+			case QUARRY:
+				return Utility.quarry(world, player, traits.range, Math.round(traits.power));
+			case SORT_SELF:
+				return Utility.sortSelf(player);
+			case ENDER_MAIL:
+				return Utility.mail(world, player, hand);
+			case LIGHT_UP:
+				return Utility.lightUp(world, player, traits.range);
 			default:
 				return false;
 		}

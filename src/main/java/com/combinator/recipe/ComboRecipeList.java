@@ -284,6 +284,29 @@ final class ComboRecipeList {
 		ComboRecipes.add("combinator:doomsday_device", "minecraft:respawn_anchor", "combinator:tsar_bomba", 1, 3);
 		ComboRecipes.add("combinator:singularity", "combinator:singularity", "combinator:event_horizon", 1, 3);
 		ComboRecipes.add("combinator:earthshaker", "minecraft:iron_block", "combinator:fault_line", 1, 3);
+		ComboRecipes.add("combinator:backpack", "minecraft:ender_eye", "combinator:pocket_cube", 1, 3);
+		ComboRecipes.add("minecraft:ender_pearl", "minecraft:yellow_wool", "combinator:noclip_pearl", 1, 3);
+		ComboRecipes.add("combinator:skeleton_key", "minecraft:phantom_membrane", "combinator:cloud_key", 1, 3);
+		ComboRecipes.add("minecraft:firework_rocket", "minecraft:end_stone", "combinator:moon_rocket", 1, 3);
+		ComboRecipes.add("combinator:pocket_mirror", "minecraft:ender_eye", "combinator:looking_glass", 1, 3);
+		ComboRecipes.add("combinator:portal_gun", "minecraft:chorus_fruit", "combinator:dimension_hopper", 1, 3);
+		ComboRecipes.add("combinator:noclip_pearl", "minecraft:stick", "combinator:banishing_wand", 1, 2);
+		ComboRecipes.add("combinator:portal_gun", "minecraft:ender_pearl", "combinator:wormhole_gun", 1, 3);
+		ComboRecipes.add("minecraft:recovery_compass", "minecraft:ender_pearl", "combinator:grave_compass", 1, 2);
+		ComboRecipes.add("minecraft:lead", "minecraft:feather", "combinator:escape_rope", 1, 1);
+		ComboRecipes.add("minecraft:ender_pearl", "minecraft:piston", "combinator:elevator_pearl", 1, 2);
+		ComboRecipes.add("minecraft:string", "minecraft:pink_dye", "combinator:friendship_bracelet", 1, 1);
+		ComboRecipes.add("minecraft:map", "minecraft:ender_pearl", "combinator:wanderlust_atlas", 1, 2);
+		ComboRecipes.add("combinator:wolf_whistle", "minecraft:ender_pearl", "combinator:pet_whistle", 1, 1);
+		ComboRecipes.add("combinator:house_box", "minecraft:map", "combinator:blueprint", 1, 3);
+		ComboRecipes.add("combinator:verdant_staff", "minecraft:painting", "combinator:biome_brush", 1, 2);
+		ComboRecipes.add("minecraft:blaze_rod", "minecraft:bricks", "combinator:builder_wand", 1, 1);
+		ComboRecipes.add("minecraft:rail", "minecraft:redstone_block", "combinator:rail_wand", 1, 2);
+		ComboRecipes.add("combinator:excavator", "minecraft:chest", "combinator:quarry_box", 1, 2);
+		ComboRecipes.add("minecraft:stick", "minecraft:hopper", "combinator:sorting_wand", 1, 1);
+		ComboRecipes.add("minecraft:paper", "minecraft:ender_pearl", "combinator:ender_mail", 1, 1);
+		ComboRecipes.add("combinator:firefly_jar", "minecraft:glowstone", "combinator:lumen_orb", 1, 2);
+		ComboRecipes.add("minecraft:glass_bottle", "minecraft:sugar", "combinator:almond_water", 1, 1);
 
 		// --- vanilla items ---
 		ComboRecipes.add("minecraft:rotten_flesh", "minecraft:rotten_flesh", "minecraft:leather", 1, 0);

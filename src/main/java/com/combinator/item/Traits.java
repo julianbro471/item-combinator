@@ -161,6 +161,10 @@ public final class Traits {
 	public boolean gremlin;
 	/** Right-click breaks blocks that cannot be mined, such as bedrock. */
 	public boolean bedrockBreak;
+	/** Right-click a block: the connected blocks of that kind grow one block outwards. */
+	public boolean builderWand;
+	/** Right-click a chest: it is sorted. Sneaking: your things go into it. */
+	public boolean sortWand;
 	/** Changes to the player's body: size, health, reach and so on. */
 	public final List<Attr> attrs = new ArrayList<>();
 
@@ -169,6 +173,8 @@ public final class Traits {
 	public int eatBuffSeconds;
 	/** After eating, the player is thrown upward with this speed. */
 	public float eatLaunch;
+	/** After eating, every bad effect goes away. */
+	public boolean cleanse;
 
 	public Traits area(int radius, boolean cube) {
 		this.areaRadius = radius;
@@ -328,6 +334,21 @@ public final class Traits {
 
 	public Traits bedrockBreak() {
 		this.bedrockBreak = true;
+		return this;
+	}
+
+	public Traits builderWand() {
+		this.builderWand = true;
+		return this;
+	}
+
+	public Traits sortWand() {
+		this.sortWand = true;
+		return this;
+	}
+
+	public Traits cleanse() {
+		this.cleanse = true;
 		return this;
 	}
 

@@ -10,7 +10,7 @@ The number after the name is only the rarity, which sets the name colour in the 
 
 MOD_ID = "combinator"
 MOD_NAME = "Item Combinator"
-VERSION = "1.4.0"
+VERSION = "1.5.0"
 
 ITEMS = []      # custom items, in creative-tab / documentation order
 VANILLA = []    # recipes whose result is a vanilla item
@@ -1156,6 +1156,114 @@ it("event_horizon", "Event Horizon", 3, "singularity", "singularity", "gadget",
 it("fault_line", "Fault Line Spike", 3, "earthshaker", "iron_block", "gadget",
    ["Right-click: a canyon 5 blocks wide and 160", "long tears open in front of you, down to", "the bedrock. Lava runs at the bottom."],
    ".use(Use.FAULT_LINE).power(160.0f).cooldown(200).cost(1)", tex=("spike", "netherite", "magma", "bolt"), dur=16)
+
+# ---------------------------------------------------------------------------------------------
+# OTHER WORLDS (version 1.5, fourth wave): five new dimensions, and travel between all worlds
+# ---------------------------------------------------------------------------------------------
+section("Other worlds")
+it("pocket_cube", "Pocket Dimension Cube", 3, "backpack", "ender_eye", "gadget",
+   ["Right-click: you step into your own room in", "the Pocket Dimension, furnished, under the",
+    "stars. Right-click there: back again.", "Sneak: take everything within 4 blocks along."],
+   ".use(Use.POCKET_DIMENSION).cooldown(40).sneakUse(Use.POCKET_GROUP, 40)", tex=("cube", "pink", "void", "star"))
+it("noclip_pearl", "Noclip Pearl", 3, "ender_pearl", "yellow_wool", "gadget",
+   ["Right-click: you clip through the floor of", "reality into the Backrooms. Endless yellow",
+    "rooms, humming lamps. Do not look at the", "eyes. Right-click there, or step on the",
+    "lodestone under a green light: back."],
+   ".use(Use.BACKROOMS).cooldown(40)", tex=("orb", "honey", "sand", "question"))
+it("cloud_key", "Cloud Key", 3, "skeleton_key", "phantom_membrane", "gadget",
+   ["Right-click: up to the Sky Realm, a world", "of floating islands with nothing below.",
+    "Fall off and you drop back into your world", "from the clouds. Right-click there: back."],
+   ".use(Use.SKY_REALM).cooldown(40)", tex=("key", "wind", "ice", "wing"))
+it("moon_rocket", "Moon Rocket", 3, "firework_rocket", "end_stone", "gadget",
+   ["Right-click: lift-off. You land softly on", "the Moon: grey dust, craters, meteorites,",
+    "a black sky. You weigh a sixth, so you jump", "very high. Right-click there: fly home."],
+   ".use(Use.MOON).cooldown(60)", tex=("rocket", "iron", "redstone", None))
+it("looking_glass", "Looking Glass", 3, "pocket_mirror", "ender_eye", "gadget",
+   ["Right-click: you step through to the Other", "Side: the same land as your world, the same",
+    "villages and caves, but nobody has ever", "been there. Eternal dusk.", "Right-click there: back."],
+   ".use(Use.PARALLEL).cooldown(40)", tex=("mirror", "void", "glass", "gem"))
+it("dimension_hopper", "Dimension Hopper", 3, "portal_gun", "chorus_fruit", "gadget",
+   ["Right-click: you jump to the next world:", "Overworld, Nether, End, the worlds of this",
+    "mod, the worlds of other mods, and round", "again. Same spot on the map, safe ground."],
+   ".use(Use.DIMENSION_HOP).cooldown(40).cost(1)", tex=("compass", "void", "pink", "star"), dur=64)
+it("banishing_wand", "Banishing Wand", 2, "noclip_pearl", "stick", "gadget",
+   ["Right-click a mob: it is banished to the", "Backrooms, thousands of blocks away.", "It does not come back."],
+   ".use(Use.BANISH).range(24).cooldown(20).cost(1)", tex=("wand", "sand", "honey", "skull"), dur=64)
+
+# ---------------------------------------------------------------------------------------------
+# TELEPORTATION (version 1.5)
+# ---------------------------------------------------------------------------------------------
+section("Teleportation")
+it("wormhole_gun", "Wormhole Gun", 3, "portal_gun", "ender_pearl", "gadget",
+   ["Right-click: a blue wormhole end where you", "look. Sneak + right-click: an orange one.",
+    "What goes into one comes out of the other,", "as fast as it went in. Even across worlds."],
+   ".use(Use.WORMHOLE_BLUE).range(64).cooldown(5).sneakUse(Use.WORMHOLE_ORANGE, 5)", tex=("raygun", "lapis", "fire", None))
+it("grave_compass", "Grave Compass", 2, "recovery_compass", "ender_pearl", "gadget",
+   ["Right-click: you are taken to the spot", "where you last died, in any world."],
+   ".use(Use.GRAVE_WARP).cooldown(200).cost(1)", tex=("compass", "bone", "wither", "skull"), dur=32)
+it("escape_rope", "Escape Rope", 1, "lead", "feather", "gadget",
+   ["Right-click: straight up to the open sky,", "from any cave. In the Nether: onto the roof."],
+   ".use(Use.ESCAPE).cooldown(40).cost(1)", tex=("rope", "wheat", "wood", None), dur=32)
+it("elevator_pearl", "Elevator Pearl", 2, "ender_pearl", "piston", "gadget",
+   ["Right-click: up through the ceiling to the", "next floor above you. Sneak + right-click:",
+    "down through the floor to the next room."],
+   ".use(Use.ELEVATOR_UP).range(64).cooldown(10).cost(1).sneakUse(Use.ELEVATOR_DOWN, 10)", tex=("orb", "ender", "iron", "arrows"), dur=256)
+it("friendship_bracelet", "Friendship Bracelet", 1, "string", "pink_dye", "gadget",
+   ["Right-click: you go to the nearest player,", "in any world. Sneak + right-click: the", "nearest player comes to you."],
+   ".use(Use.BRACELET_GO).cooldown(100).sneakUse(Use.BRACELET_PULL, 100)", tex=("bracelet", "pink", "lapis", "heart"))
+it("wanderlust_atlas", "Wanderlust Atlas", 2, "map", "ender_pearl", "gadget",
+   ["Right-click: you are thrown 1000 to 4000", "blocks away in a random direction, onto", "dry land if there is any. Adventure!"],
+   ".use(Use.WANDER).cooldown(200).cost(1)", tex=("book", "leather", "gold", "star"), dur=32)
+it("pet_whistle", "Pet Whistle", 1, "wolf_whistle", "ender_pearl", "gadget",
+   ["Right-click: every tame animal of yours,", "wherever it is in a loaded place of any", "world, comes running to you."],
+   ".use(Use.PET_RECALL).cooldown(100)", tex=("whistle", "gold", "ender", "paw"))
+
+# ---------------------------------------------------------------------------------------------
+# CREATION TOOLS (version 1.5)
+# ---------------------------------------------------------------------------------------------
+section("Instant creation")
+it("blueprint", "Architect's Blueprint", 3, "house_box", "map", "gadget",
+   ["Right-click the ground: a real structure of", "the game is built there at once: a village,",
+    "a mansion, an end city, an ancient city ...", "Sneak + right-click: choose which one."],
+   ".use(Use.BLUEPRINT).range(48).cooldown(100).cost(1).sneakUse(Use.BLUEPRINT_PICK, 5)", tex=("scroll", "lapis", "wood", None), dur=16)
+it("biome_brush", "Biome Brush", 2, "verdant_staff", "painting", "gadget",
+   ["Right-click: the land within 12 blocks of", "the spot you look at becomes another biome:",
+    "colours, sky, weather and mobs. Sneak +", "right-click: choose the biome."],
+   ".use(Use.BIOME_PAINT).range(48).cooldown(20).cost(1).sneakUse(Use.BIOME_PICK, 5)", tex=("brush", "pink", "emerald", None), dur=128)
+it("builder_wand", "Builder's Wand", 1, "blaze_rod", "bricks", "gadget",
+   ["Right-click a block: every connected block", "of that kind on that side grows one block",
+    "outwards. Up to 64 at once. Uses the blocks", "from your inventory."],
+   ".builderWand()", tex=("wand", "gold", "stone", None), dur=1024)
+it("rail_wand", "Express Rail Wand", 2, "rail", "redstone_block", "gadget",
+   ["Right-click: a powered railway 128 blocks", "long in the direction you face. Tunnels",
+    "through hills, a track bed over valleys.", "You get into a minecart on it."],
+   ".use(Use.RAIL_LINE).power(128.0f).cooldown(100).cost(1)", tex=("staff", "iron", "redstone", "bolt"), dur=32)
+
+# ---------------------------------------------------------------------------------------------
+# UTILITY (version 1.5)
+# ---------------------------------------------------------------------------------------------
+section("Utility")
+it("quarry_box", "Quarry in a Box", 2, "excavator", "chest", "gadget",
+   ["Right-click the ground: a pit of 11 x 11", "blocks is dug down to the bedrock. Ores and",
+    "everything else worth keeping go into", "chests at the edge. Stone and dirt do not."],
+   ".use(Use.QUARRY).range(16).power(5.0f).cooldown(200).consume()", tex=("box", "iron", "gold", "gem"), stack=16)
+it("sorting_wand", "Sorting Wand", 1, "stick", "hopper", "gadget",
+   ["Sneak + right-click a chest: everything you", "carry that the chest already holds goes",
+    "into it, then the chest is sorted.", "Right-click: sorts your own inventory."],
+   ".use(Use.SORT_SELF).sortWand().cooldown(5)", tex=("wand", "emerald", "wood", "chain"))
+it("ender_mail", "Ender Mail", 1, "paper", "ender_pearl", "gadget",
+   ["Hold it, and something in the other hand.", "Right-click: that stack flies to the",
+    "nearest player, in any world. Rename the", "mail on an anvil to send it to that player."],
+   ".use(Use.ENDER_MAIL).cooldown(20)", tex=("envelope", "bone", "ender", "gem"))
+it("lumen_orb", "Lumen Orb", 2, "firefly_jar", "glowstone", "gadget",
+   ["Right-click: an invisible light hangs over", "every dark floor within 24 blocks. Caves",
+    "light up, and monsters cannot spawn there."],
+   ".use(Use.LIGHT_UP).range(24).cooldown(60).cost(1)", tex=("orb", "thunder", "fire", "lamp"), dur=64)
+it("almond_water", "Almond Water", 1, "glass_bottle", "sugar", "food",
+   ["Every bad effect goes away. Regeneration.", "Smilers nearby forget you. Lies around in",
+    "the Backrooms. Can be drunk when full."],
+   ".cleanse()", tex=("bottle", "glass", "sand", None), stack=16, always=True, bottle=True,
+   nut=2, sat=0.5, fx=[("REGENERATION", 10, 1)])
 
 # ---------------------------------------------------------------------------------------------
 # VANILLA RESULTS

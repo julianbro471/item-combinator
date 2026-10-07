@@ -4,8 +4,8 @@ A Fabric mod for **Minecraft Java Edition 1.21.1**.
 
 It adds one block, the **Combiner Table**. You put two items into it and get one new item.
 
-- **327 combinations** in total.
-- 277 of them make one of **273 new items**: tools, weapons, armor, gadgets, food, bombs, cheats.
+- **350 combinations** in total.
+- 300 of them make one of **296 new items**: tools, weapons, armor, gadgets, food, bombs, cheats.
 - 50 of them make a vanilla item that you normally cannot craft (saddle, name tag, elytra, ...).
 - Two stackable items that have no combination give a **Chaos Orb**, which does something random.
 - There are no tiers and there is no balance. Some items are normal, many are absurd, a few can destroy your world.
@@ -45,7 +45,7 @@ about 1 GB and takes several minutes. `build` also runs the server tests. To ski
 
 ## Installing
 
-Put `item-combinator-1.4.0.jar` and the Fabric API .jar into the `mods` folder of your Minecraft installation.
+Put `item-combinator-1.5.0.jar` and the Fabric API .jar into the `mods` folder of your Minecraft installation.
 Start the game with the Fabric profile.
 
 ## How the Combiner Table works
@@ -475,6 +475,10 @@ Every new item has a description under its name. All new items are also in their
 | Composter | Wheat Seeds | **Farm in a Box** | Right-click: a ripe 9x9 farm appears where you look: water, farmland, wheat, carrots, potatoes, beetroot and a scarecrow. |  |
 | Oak Sapling | Bone Block | **World Tree Seed** | Right-click the ground: a giant tree grows there. 40 blocks high, with roots, branches and a huge crown. |  |
 | *Mirror of Duplication* | Blaze Rod | **Copy-Paste Wand** | Sneak + right-click two blocks: they are the corners of what to copy. Right-click a block: the copy appears there. Up to 16384 blocks. | 200 uses |
+| *House in a Box* | Empty Map | **Architect's Blueprint** | Right-click the ground: a real structure of the game is built there at once: a village, a mansion, an end city, an ancient city ... Sneak + right-click: choose which one. | 16 uses |
+| *Verdant Staff* | Painting | **Biome Brush** | Right-click: the land within 12 blocks of the spot you look at becomes another biome: colours, sky, weather and mobs. Sneak + right-click: choose the biome. | 128 uses |
+| Blaze Rod | Bricks | **Builder's Wand** | Right-click a block: every connected block of that kind on that side grows one block outwards. Up to 64 at once. Uses the blocks from your inventory. | 1024 uses |
+| Rail | Block of Redstone | **Express Rail Wand** | Right-click: a powered railway 128 blocks long in the direction you face. Tunnels through hills, a track bed over valleys. You get into a minecart on it. | 32 uses |
 
 ### Pure chaos
 
@@ -493,6 +497,40 @@ Every new item has a description under its name. All new items are also in their
 | Shulker Shell | Crossbow | **Shulker Blaster** | Right-click: homing shulker bullets fly at the four nearest mobs. They float away. | 200 uses |
 | *Chrono Clock* | Bone Block | **Hourglass of Ages** | Right-click: for 10 seconds the whole world ticks 100 times faster. Crops grow, grass spreads, fire runs wild, leaves fall. | 16 uses |
 | *Magnet* | Rotten Flesh | **Monster Magnet** | Right-click: every mob within 32 blocks is pulled to you. Every single one. | 64 uses |
+
+### Other worlds
+
+| Item A | Item B | Result | What it does | Stats |
+|---|---|---|---|---|
+| *Backpack* | Eye of Ender | **Pocket Dimension Cube** | Right-click: you step into your own room in the Pocket Dimension, furnished, under the stars. Right-click there: back again. Sneak: take everything within 4 blocks along. |  |
+| Ender Pearl | Yellow Wool | **Noclip Pearl** | Right-click: you clip through the floor of reality into the Backrooms. Endless yellow rooms, humming lamps. Do not look at the eyes. Right-click there, or step on the lodestone under a green light: back. |  |
+| *Skeleton Key* | Phantom Membrane | **Cloud Key** | Right-click: up to the Sky Realm, a world of floating islands with nothing below. Fall off and you drop back into your world from the clouds. Right-click there: back. |  |
+| Firework Rocket | End Stone | **Moon Rocket** | Right-click: lift-off. You land softly on the Moon: grey dust, craters, meteorites, a black sky. You weigh a sixth, so you jump very high. Right-click there: fly home. |  |
+| *Pocket Mirror* | Eye of Ender | **Looking Glass** | Right-click: you step through to the Other Side: the same land as your world, the same villages and caves, but nobody has ever been there. Eternal dusk. Right-click there: back. |  |
+| *Portal Gun* | Chorus Fruit | **Dimension Hopper** | Right-click: you jump to the next world: Overworld, Nether, End, the worlds of this mod, the worlds of other mods, and round again. Same spot on the map, safe ground. | 64 uses |
+| *Noclip Pearl* | Stick | **Banishing Wand** | Right-click a mob: it is banished to the Backrooms, thousands of blocks away. It does not come back. | 64 uses |
+
+### Teleportation
+
+| Item A | Item B | Result | What it does | Stats |
+|---|---|---|---|---|
+| *Portal Gun* | Ender Pearl | **Wormhole Gun** | Right-click: a blue wormhole end where you look. Sneak + right-click: an orange one. What goes into one comes out of the other, as fast as it went in. Even across worlds. |  |
+| Recovery Compass | Ender Pearl | **Grave Compass** | Right-click: you are taken to the spot where you last died, in any world. | 32 uses |
+| Lead | Feather | **Escape Rope** | Right-click: straight up to the open sky, from any cave. In the Nether: onto the roof. | 32 uses |
+| Ender Pearl | Piston | **Elevator Pearl** | Right-click: up through the ceiling to the next floor above you. Sneak + right-click: down through the floor to the next room. | 256 uses |
+| String | Pink Dye | **Friendship Bracelet** | Right-click: you go to the nearest player, in any world. Sneak + right-click: the nearest player comes to you. |  |
+| Empty Map | Ender Pearl | **Wanderlust Atlas** | Right-click: you are thrown 1000 to 4000 blocks away in a random direction, onto dry land if there is any. Adventure! | 32 uses |
+| *Wolf Whistle* | Ender Pearl | **Pet Whistle** | Right-click: every tame animal of yours, wherever it is in a loaded place of any world, comes running to you. |  |
+
+### Utility
+
+| Item A | Item B | Result | What it does | Stats |
+|---|---|---|---|---|
+| *Excavator* | Chest | **Quarry in a Box** | Right-click the ground: a pit of 11 x 11 blocks is dug down to the bedrock. Ores and everything else worth keeping go into chests at the edge. Stone and dirt do not. |  |
+| Stick | Hopper | **Sorting Wand** | Sneak + right-click a chest: everything you carry that the chest already holds goes into it, then the chest is sorted. Right-click: sorts your own inventory. |  |
+| Paper | Ender Pearl | **Ender Mail** | Hold it, and something in the other hand. Right-click: that stack flies to the nearest player, in any world. Rename the mail on an anvil to send it to that player. |  |
+| *Firefly Jar* | Glowstone | **Lumen Orb** | Right-click: an invisible light hangs over every dark floor within 24 blocks. Caves light up, and monsters cannot spawn there. | 64 uses |
+| Glass Bottle | Sugar | **Almond Water** | Every bad effect goes away. Regeneration. Smilers nearby forget you. Lies around in the Backrooms. Can be drunk when full. | 2 hunger |
 
 ## All combinations that make vanilla items
 
@@ -913,7 +951,33 @@ These items need three or more combining steps. Each list shows everything that 
   Living things up to 96 blocks away get fallout: Wither, Weakness and Nausea. Then it rains, and the edge burns.
 - The Chunk Inverter and the Chunk Launcher leave unbreakable blocks and blocks that hold things (chests ...)
   where they are. The Chunk Launcher gives everything standing on the chunk Slow Falling, so it lands softly.
-- The Staff of Wild Magic never casts the cataclysms.
+- The Staff of Wild Magic never casts the cataclysms, and none of the items of version 1.5 either.
+- **The five worlds of this mod** are new dimensions: the Pocket Dimension (Pocket Dimension Cube), the Backrooms
+  (Noclip Pearl), the Sky Realm (Cloud Key), the Moon (Moon Rocket) and the Other Side (Looking Glass). They exist
+  in worlds made with version 1.5 or later. In an older world the items say that the world is missing.
+- Each of these items takes you to its world. Used in its own world, it brings you back to where you left from.
+  That spot is remembered, also when you close the game or die. Without it you go to your spawn point.
+- Every player has their own room in the Pocket Dimension. It is built the first time, then it stays as you left it.
+  Sneaking takes along everything alive and every dropped item within 4 blocks, other players too.
+  The lodestone in the corner of the room is a way out. Who falls out of the room lands back in it.
+- The Backrooms have no end. The rooms are made as you walk. A lodestone under a green light, about one in 40 rooms,
+  is a way out. Smilers are invisible endermen: only their eyes can be seen. Looking at them makes them angry.
+- Who falls off the Sky Realm falls into their own world from high up, with Slow Falling.
+- On the Moon everything alive weighs a sixth, so you jump about 7 blocks high, and falls do not hurt.
+  Some craters have a meteorite: iron, gold, diamonds, emeralds or ancient debris inside.
+- The Other Side is a second copy of the land of the world: the same seed, so the same mountains, caves, villages
+  and treasure. Nothing you change in your world changes there. The sun stays at dusk, so monsters come out.
+- The Dimension Hopper goes through every world of the game in turn, those of other mods too. In the Nether every
+  block counts as 8, as with Nether portals. Over the void of the End it builds a small obsidian platform.
+- The Wormhole Gun's two ends stay open until you shoot new ones, or until the world is closed.
+  Mobs, players, dropped items, arrows, minecarts, falling blocks and lit TNT go through.
+- The Architect's Blueprint and the Biome Brush use the game's own /place and /fillbiome commands, so they work
+  without cheats switched on. Some structures do not fit everywhere: a mansion needs high ground, for example.
+  Then nothing is built and the blueprint does not wear out. The biome is painted from the bottom to the top of
+  the world. Some changes (grass colour) only show after the chunk is loaded again.
+- The Quarry in a Box keeps everything except common stone, dirt, sand, gravel and the like. Water and lava in
+  the pit are removed. When its 6 chests are full, the rest drops next to them. The box is used up.
+- The Builder's Wand and the Sorting Wand have the usual tool durability and can be repaired and enchanted.
 - Texts are in English only.
 
 ## Automatic tests
@@ -951,6 +1015,10 @@ The tests are in `src/gametest`. They are not part of the mod .jar.
 - copies a block with the Copy-Paste Wand and pastes it, breaks bedrock with the Bedrock Breaker
 - rolls every number of the Dice of Fate, plays every prank of the gremlin, carries the Hot Potato until it
   explodes, and wears the Storm Crown and the Plague Mask next to a zombie
+- travels to all five new worlds and back, checks the pocket room, the Backrooms walls and lamps, the Moon's
+  low gravity, falls off the Sky Realm, hops through all worlds, and banishes a pig
+- sends a pig through a wormhole, sends mail and visits a second fake player with the Friendship Bracelet,
+  calls a tame wolf with the Pet Whistle, sorts a chest, digs a quarry and counts the ores in its chest
 
 **Client test** (`gradlew runClientTest`). The real game starts, makes a flat world, opens the Combiner Table with a
 right-click, puts two items in, takes the result, and takes screenshots of the table, of every item in the

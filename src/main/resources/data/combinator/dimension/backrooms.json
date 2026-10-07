@@ -1,0 +1,20 @@
+{
+  "type": "combinator:backrooms",
+  "generator": {
+    "type": "minecraft:flat",
+    "settings": {
+      "biome": "combinator:backrooms",
+      "features": false,
+      "lakes": false,
+      "layers": [
+        {"block": "minecraft:bedrock", "height": 1},
+        {"block": "minecraft:smooth_sandstone", "height": 2},
+        {"block": "minecraft:yellow_terracotta", "height": 1},
+        {"block": "minecraft:air", "height": 4},
+        {"block": "minecraft:calcite", "height": 1},
+        {"block": "minecraft:bedrock", "height": 1}
+      ],
+      "structure_overrides": []
+    }
+  }
+}

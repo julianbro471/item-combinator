@@ -5315,6 +5315,480 @@
       "stats": "16 uses"
     },
     {
+      "a": "backpack",
+      "b": "ender_eye",
+      "a_name": "Backpack",
+      "b_name": "Eye of Ender",
+      "result": "pocket_cube",
+      "result_name": "Pocket Dimension Cube",
+      "count": 1,
+      "rar": 3,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: you step into your own room in",
+        "the Pocket Dimension, furnished, under the",
+        "stars. Right-click there: back again.",
+        "Sneak: take everything within 4 blocks along."
+      ],
+      "cat": "Other worlds",
+      "stats": ""
+    },
+    {
+      "a": "ender_pearl",
+      "b": "yellow_wool",
+      "a_name": "Ender Pearl",
+      "b_name": "Yellow Wool",
+      "result": "noclip_pearl",
+      "result_name": "Noclip Pearl",
+      "count": 1,
+      "rar": 3,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: you clip through the floor of",
+        "reality into the Backrooms. Endless yellow",
+        "rooms, humming lamps. Do not look at the",
+        "eyes. Right-click there, or step on the",
+        "lodestone under a green light: back."
+      ],
+      "cat": "Other worlds",
+      "stats": ""
+    },
+    {
+      "a": "skeleton_key",
+      "b": "phantom_membrane",
+      "a_name": "Skeleton Key",
+      "b_name": "Phantom Membrane",
+      "result": "cloud_key",
+      "result_name": "Cloud Key",
+      "count": 1,
+      "rar": 3,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: up to the Sky Realm, a world",
+        "of floating islands with nothing below.",
+        "Fall off and you drop back into your world",
+        "from the clouds. Right-click there: back."
+      ],
+      "cat": "Other worlds",
+      "stats": ""
+    },
+    {
+      "a": "firework_rocket",
+      "b": "end_stone",
+      "a_name": "Firework Rocket",
+      "b_name": "End Stone",
+      "result": "moon_rocket",
+      "result_name": "Moon Rocket",
+      "count": 1,
+      "rar": 3,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: lift-off. You land softly on",
+        "the Moon: grey dust, craters, meteorites,",
+        "a black sky. You weigh a sixth, so you jump",
+        "very high. Right-click there: fly home."
+      ],
+      "cat": "Other worlds",
+      "stats": ""
+    },
+    {
+      "a": "pocket_mirror",
+      "b": "ender_eye",
+      "a_name": "Pocket Mirror",
+      "b_name": "Eye of Ender",
+      "result": "looking_glass",
+      "result_name": "Looking Glass",
+      "count": 1,
+      "rar": 3,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: you step through to the Other",
+        "Side: the same land as your world, the same",
+        "villages and caves, but nobody has ever",
+        "been there. Eternal dusk.",
+        "Right-click there: back."
+      ],
+      "cat": "Other worlds",
+      "stats": ""
+    },
+    {
+      "a": "portal_gun",
+      "b": "chorus_fruit",
+      "a_name": "Portal Gun",
+      "b_name": "Chorus Fruit",
+      "result": "dimension_hopper",
+      "result_name": "Dimension Hopper",
+      "count": 1,
+      "rar": 3,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: you jump to the next world:",
+        "Overworld, Nether, End, the worlds of this",
+        "mod, the worlds of other mods, and round",
+        "again. Same spot on the map, safe ground."
+      ],
+      "cat": "Other worlds",
+      "stats": "64 uses"
+    },
+    {
+      "a": "noclip_pearl",
+      "b": "stick",
+      "a_name": "Noclip Pearl",
+      "b_name": "Stick",
+      "result": "banishing_wand",
+      "result_name": "Banishing Wand",
+      "count": 1,
+      "rar": 2,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click a mob: it is banished to the",
+        "Backrooms, thousands of blocks away.",
+        "It does not come back."
+      ],
+      "cat": "Other worlds",
+      "stats": "64 uses"
+    },
+    {
+      "a": "portal_gun",
+      "b": "ender_pearl",
+      "a_name": "Portal Gun",
+      "b_name": "Ender Pearl",
+      "result": "wormhole_gun",
+      "result_name": "Wormhole Gun",
+      "count": 1,
+      "rar": 3,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: a blue wormhole end where you",
+        "look. Sneak + right-click: an orange one.",
+        "What goes into one comes out of the other,",
+        "as fast as it went in. Even across worlds."
+      ],
+      "cat": "Teleportation",
+      "stats": ""
+    },
+    {
+      "a": "recovery_compass",
+      "b": "ender_pearl",
+      "a_name": "Recovery Compass",
+      "b_name": "Ender Pearl",
+      "result": "grave_compass",
+      "result_name": "Grave Compass",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: you are taken to the spot",
+        "where you last died, in any world."
+      ],
+      "cat": "Teleportation",
+      "stats": "32 uses"
+    },
+    {
+      "a": "lead",
+      "b": "feather",
+      "a_name": "Lead",
+      "b_name": "Feather",
+      "result": "escape_rope",
+      "result_name": "Escape Rope",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: straight up to the open sky,",
+        "from any cave. In the Nether: onto the roof."
+      ],
+      "cat": "Teleportation",
+      "stats": "32 uses"
+    },
+    {
+      "a": "ender_pearl",
+      "b": "piston",
+      "a_name": "Ender Pearl",
+      "b_name": "Piston",
+      "result": "elevator_pearl",
+      "result_name": "Elevator Pearl",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: up through the ceiling to the",
+        "next floor above you. Sneak + right-click:",
+        "down through the floor to the next room."
+      ],
+      "cat": "Teleportation",
+      "stats": "256 uses"
+    },
+    {
+      "a": "string",
+      "b": "pink_dye",
+      "a_name": "String",
+      "b_name": "Pink Dye",
+      "result": "friendship_bracelet",
+      "result_name": "Friendship Bracelet",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: you go to the nearest player,",
+        "in any world. Sneak + right-click: the",
+        "nearest player comes to you."
+      ],
+      "cat": "Teleportation",
+      "stats": ""
+    },
+    {
+      "a": "map",
+      "b": "ender_pearl",
+      "a_name": "Empty Map",
+      "b_name": "Ender Pearl",
+      "result": "wanderlust_atlas",
+      "result_name": "Wanderlust Atlas",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: you are thrown 1000 to 4000",
+        "blocks away in a random direction, onto",
+        "dry land if there is any. Adventure!"
+      ],
+      "cat": "Teleportation",
+      "stats": "32 uses"
+    },
+    {
+      "a": "wolf_whistle",
+      "b": "ender_pearl",
+      "a_name": "Wolf Whistle",
+      "b_name": "Ender Pearl",
+      "result": "pet_whistle",
+      "result_name": "Pet Whistle",
+      "count": 1,
+      "rar": 1,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: every tame animal of yours,",
+        "wherever it is in a loaded place of any",
+        "world, comes running to you."
+      ],
+      "cat": "Teleportation",
+      "stats": ""
+    },
+    {
+      "a": "house_box",
+      "b": "map",
+      "a_name": "House in a Box",
+      "b_name": "Empty Map",
+      "result": "blueprint",
+      "result_name": "Architect's Blueprint",
+      "count": 1,
+      "rar": 3,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click the ground: a real structure of",
+        "the game is built there at once: a village,",
+        "a mansion, an end city, an ancient city ...",
+        "Sneak + right-click: choose which one."
+      ],
+      "cat": "Instant creation",
+      "stats": "16 uses"
+    },
+    {
+      "a": "verdant_staff",
+      "b": "painting",
+      "a_name": "Verdant Staff",
+      "b_name": "Painting",
+      "result": "biome_brush",
+      "result_name": "Biome Brush",
+      "count": 1,
+      "rar": 2,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: the land within 12 blocks of",
+        "the spot you look at becomes another biome:",
+        "colours, sky, weather and mobs. Sneak +",
+        "right-click: choose the biome."
+      ],
+      "cat": "Instant creation",
+      "stats": "128 uses"
+    },
+    {
+      "a": "blaze_rod",
+      "b": "bricks",
+      "a_name": "Blaze Rod",
+      "b_name": "Bricks",
+      "result": "builder_wand",
+      "result_name": "Builder's Wand",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click a block: every connected block",
+        "of that kind on that side grows one block",
+        "outwards. Up to 64 at once. Uses the blocks",
+        "from your inventory."
+      ],
+      "cat": "Instant creation",
+      "stats": "1024 uses"
+    },
+    {
+      "a": "rail",
+      "b": "redstone_block",
+      "a_name": "Rail",
+      "b_name": "Block of Redstone",
+      "result": "rail_wand",
+      "result_name": "Express Rail Wand",
+      "count": 1,
+      "rar": 2,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: a powered railway 128 blocks",
+        "long in the direction you face. Tunnels",
+        "through hills, a track bed over valleys.",
+        "You get into a minecart on it."
+      ],
+      "cat": "Instant creation",
+      "stats": "32 uses"
+    },
+    {
+      "a": "excavator",
+      "b": "chest",
+      "a_name": "Excavator",
+      "b_name": "Chest",
+      "result": "quarry_box",
+      "result_name": "Quarry in a Box",
+      "count": 1,
+      "rar": 2,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click the ground: a pit of 11 x 11",
+        "blocks is dug down to the bedrock. Ores and",
+        "everything else worth keeping go into",
+        "chests at the edge. Stone and dirt do not."
+      ],
+      "cat": "Utility",
+      "stats": ""
+    },
+    {
+      "a": "stick",
+      "b": "hopper",
+      "a_name": "Stick",
+      "b_name": "Hopper",
+      "result": "sorting_wand",
+      "result_name": "Sorting Wand",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Sneak + right-click a chest: everything you",
+        "carry that the chest already holds goes",
+        "into it, then the chest is sorted.",
+        "Right-click: sorts your own inventory."
+      ],
+      "cat": "Utility",
+      "stats": ""
+    },
+    {
+      "a": "paper",
+      "b": "ender_pearl",
+      "a_name": "Paper",
+      "b_name": "Ender Pearl",
+      "result": "ender_mail",
+      "result_name": "Ender Mail",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Hold it, and something in the other hand.",
+        "Right-click: that stack flies to the",
+        "nearest player, in any world. Rename the",
+        "mail on an anvil to send it to that player."
+      ],
+      "cat": "Utility",
+      "stats": ""
+    },
+    {
+      "a": "firefly_jar",
+      "b": "glowstone",
+      "a_name": "Firefly Jar",
+      "b_name": "Glowstone",
+      "result": "lumen_orb",
+      "result_name": "Lumen Orb",
+      "count": 1,
+      "rar": 2,
+      "a_custom": true,
+      "b_custom": false,
+      "kind": "gadget",
+      "tip": [
+        "Right-click: an invisible light hangs over",
+        "every dark floor within 24 blocks. Caves",
+        "light up, and monsters cannot spawn there."
+      ],
+      "cat": "Utility",
+      "stats": "64 uses"
+    },
+    {
+      "a": "glass_bottle",
+      "b": "sugar",
+      "a_name": "Glass Bottle",
+      "b_name": "Sugar",
+      "result": "almond_water",
+      "result_name": "Almond Water",
+      "count": 1,
+      "rar": 1,
+      "a_custom": false,
+      "b_custom": false,
+      "kind": "food",
+      "tip": [
+        "Every bad effect goes away. Regeneration.",
+        "Smilers nearby forget you. Lies around in",
+        "the Backrooms. Can be drunk when full."
+      ],
+      "cat": "Utility",
+      "stats": "2 hunger"
+    },
+    {
       "a": "rotten_flesh",
       "b": "rotten_flesh",
       "a_name": "Rotten Flesh",
@@ -10415,6 +10889,389 @@
       ],
       "stats": {
         "dur": 16
+      }
+    },
+    {
+      "id": "pocket_cube",
+      "name": "Pocket Dimension Cube",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Other worlds",
+      "a": "backpack",
+      "b": "ender_eye",
+      "tip": [
+        "Right-click: you step into your own room in",
+        "the Pocket Dimension, furnished, under the",
+        "stars. Right-click there: back again.",
+        "Sneak: take everything within 4 blocks along."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "noclip_pearl",
+      "name": "Noclip Pearl",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Other worlds",
+      "a": "ender_pearl",
+      "b": "yellow_wool",
+      "tip": [
+        "Right-click: you clip through the floor of",
+        "reality into the Backrooms. Endless yellow",
+        "rooms, humming lamps. Do not look at the",
+        "eyes. Right-click there, or step on the",
+        "lodestone under a green light: back."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "cloud_key",
+      "name": "Cloud Key",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Other worlds",
+      "a": "skeleton_key",
+      "b": "phantom_membrane",
+      "tip": [
+        "Right-click: up to the Sky Realm, a world",
+        "of floating islands with nothing below.",
+        "Fall off and you drop back into your world",
+        "from the clouds. Right-click there: back."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "moon_rocket",
+      "name": "Moon Rocket",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Other worlds",
+      "a": "firework_rocket",
+      "b": "end_stone",
+      "tip": [
+        "Right-click: lift-off. You land softly on",
+        "the Moon: grey dust, craters, meteorites,",
+        "a black sky. You weigh a sixth, so you jump",
+        "very high. Right-click there: fly home."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "looking_glass",
+      "name": "Looking Glass",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Other worlds",
+      "a": "pocket_mirror",
+      "b": "ender_eye",
+      "tip": [
+        "Right-click: you step through to the Other",
+        "Side: the same land as your world, the same",
+        "villages and caves, but nobody has ever",
+        "been there. Eternal dusk.",
+        "Right-click there: back."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "dimension_hopper",
+      "name": "Dimension Hopper",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Other worlds",
+      "a": "portal_gun",
+      "b": "chorus_fruit",
+      "tip": [
+        "Right-click: you jump to the next world:",
+        "Overworld, Nether, End, the worlds of this",
+        "mod, the worlds of other mods, and round",
+        "again. Same spot on the map, safe ground."
+      ],
+      "stats": {
+        "dur": 64
+      }
+    },
+    {
+      "id": "banishing_wand",
+      "name": "Banishing Wand",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Other worlds",
+      "a": "noclip_pearl",
+      "b": "stick",
+      "tip": [
+        "Right-click a mob: it is banished to the",
+        "Backrooms, thousands of blocks away.",
+        "It does not come back."
+      ],
+      "stats": {
+        "dur": 64
+      }
+    },
+    {
+      "id": "wormhole_gun",
+      "name": "Wormhole Gun",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Teleportation",
+      "a": "portal_gun",
+      "b": "ender_pearl",
+      "tip": [
+        "Right-click: a blue wormhole end where you",
+        "look. Sneak + right-click: an orange one.",
+        "What goes into one comes out of the other,",
+        "as fast as it went in. Even across worlds."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "grave_compass",
+      "name": "Grave Compass",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Teleportation",
+      "a": "recovery_compass",
+      "b": "ender_pearl",
+      "tip": [
+        "Right-click: you are taken to the spot",
+        "where you last died, in any world."
+      ],
+      "stats": {
+        "dur": 32
+      }
+    },
+    {
+      "id": "escape_rope",
+      "name": "Escape Rope",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Teleportation",
+      "a": "lead",
+      "b": "feather",
+      "tip": [
+        "Right-click: straight up to the open sky,",
+        "from any cave. In the Nether: onto the roof."
+      ],
+      "stats": {
+        "dur": 32
+      }
+    },
+    {
+      "id": "elevator_pearl",
+      "name": "Elevator Pearl",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Teleportation",
+      "a": "ender_pearl",
+      "b": "piston",
+      "tip": [
+        "Right-click: up through the ceiling to the",
+        "next floor above you. Sneak + right-click:",
+        "down through the floor to the next room."
+      ],
+      "stats": {
+        "dur": 256
+      }
+    },
+    {
+      "id": "friendship_bracelet",
+      "name": "Friendship Bracelet",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Teleportation",
+      "a": "string",
+      "b": "pink_dye",
+      "tip": [
+        "Right-click: you go to the nearest player,",
+        "in any world. Sneak + right-click: the",
+        "nearest player comes to you."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "wanderlust_atlas",
+      "name": "Wanderlust Atlas",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Teleportation",
+      "a": "map",
+      "b": "ender_pearl",
+      "tip": [
+        "Right-click: you are thrown 1000 to 4000",
+        "blocks away in a random direction, onto",
+        "dry land if there is any. Adventure!"
+      ],
+      "stats": {
+        "dur": 32
+      }
+    },
+    {
+      "id": "pet_whistle",
+      "name": "Pet Whistle",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Teleportation",
+      "a": "wolf_whistle",
+      "b": "ender_pearl",
+      "tip": [
+        "Right-click: every tame animal of yours,",
+        "wherever it is in a loaded place of any",
+        "world, comes running to you."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "blueprint",
+      "name": "Architect's Blueprint",
+      "rar": 3,
+      "kind": "gadget",
+      "cat": "Instant creation",
+      "a": "house_box",
+      "b": "map",
+      "tip": [
+        "Right-click the ground: a real structure of",
+        "the game is built there at once: a village,",
+        "a mansion, an end city, an ancient city ...",
+        "Sneak + right-click: choose which one."
+      ],
+      "stats": {
+        "dur": 16
+      }
+    },
+    {
+      "id": "biome_brush",
+      "name": "Biome Brush",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Instant creation",
+      "a": "verdant_staff",
+      "b": "painting",
+      "tip": [
+        "Right-click: the land within 12 blocks of",
+        "the spot you look at becomes another biome:",
+        "colours, sky, weather and mobs. Sneak +",
+        "right-click: choose the biome."
+      ],
+      "stats": {
+        "dur": 128
+      }
+    },
+    {
+      "id": "builder_wand",
+      "name": "Builder's Wand",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Instant creation",
+      "a": "blaze_rod",
+      "b": "bricks",
+      "tip": [
+        "Right-click a block: every connected block",
+        "of that kind on that side grows one block",
+        "outwards. Up to 64 at once. Uses the blocks",
+        "from your inventory."
+      ],
+      "stats": {
+        "dur": 1024
+      }
+    },
+    {
+      "id": "rail_wand",
+      "name": "Express Rail Wand",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Instant creation",
+      "a": "rail",
+      "b": "redstone_block",
+      "tip": [
+        "Right-click: a powered railway 128 blocks",
+        "long in the direction you face. Tunnels",
+        "through hills, a track bed over valleys.",
+        "You get into a minecart on it."
+      ],
+      "stats": {
+        "dur": 32
+      }
+    },
+    {
+      "id": "quarry_box",
+      "name": "Quarry in a Box",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Utility",
+      "a": "excavator",
+      "b": "chest",
+      "tip": [
+        "Right-click the ground: a pit of 11 x 11",
+        "blocks is dug down to the bedrock. Ores and",
+        "everything else worth keeping go into",
+        "chests at the edge. Stone and dirt do not."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "sorting_wand",
+      "name": "Sorting Wand",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Utility",
+      "a": "stick",
+      "b": "hopper",
+      "tip": [
+        "Sneak + right-click a chest: everything you",
+        "carry that the chest already holds goes",
+        "into it, then the chest is sorted.",
+        "Right-click: sorts your own inventory."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "ender_mail",
+      "name": "Ender Mail",
+      "rar": 1,
+      "kind": "gadget",
+      "cat": "Utility",
+      "a": "paper",
+      "b": "ender_pearl",
+      "tip": [
+        "Hold it, and something in the other hand.",
+        "Right-click: that stack flies to the",
+        "nearest player, in any world. Rename the",
+        "mail on an anvil to send it to that player."
+      ],
+      "stats": {}
+    },
+    {
+      "id": "lumen_orb",
+      "name": "Lumen Orb",
+      "rar": 2,
+      "kind": "gadget",
+      "cat": "Utility",
+      "a": "firefly_jar",
+      "b": "glowstone",
+      "tip": [
+        "Right-click: an invisible light hangs over",
+        "every dark floor within 24 blocks. Caves",
+        "light up, and monsters cannot spawn there."
+      ],
+      "stats": {
+        "dur": 64
+      }
+    },
+    {
+      "id": "almond_water",
+      "name": "Almond Water",
+      "rar": 1,
+      "kind": "food",
+      "cat": "Utility",
+      "a": "glass_bottle",
+      "b": "sugar",
+      "tip": [
+        "Every bad effect goes away. Regeneration.",
+        "Smilers nearby forget you. Lies around in",
+        "the Backrooms. Can be drunk when full."
+      ],
+      "stats": {
+        "nut": 2
       }
     }
   ]
