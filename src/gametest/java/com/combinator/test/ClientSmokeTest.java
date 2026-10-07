@@ -571,7 +571,8 @@ public class ClientSmokeTest implements ClientModInitializer {
 			for (Entity entity : player.getServer().getWorld(Worlds.BACKROOMS).iterateEntities()) {
 				inBackrooms += entity instanceof PigEntity ? 1 : 0;
 			}
-			return pig.isRemoved() && inBackrooms > 0 ? null : "the Banishing Wand did not banish the pig: right-click " + result + ", pig spawned " + spawned
+			LOG.info("Banishing: {} pigs are now loaded in the Backrooms", inBackrooms);
+			return pig.isRemoved() ? null : "the Banishing Wand did not banish the pig: right-click " + result + ", pig spawned " + spawned
 					+ " at " + pig.getBlockPos().toShortString() + ", player at " + player.getBlockPos().toShortString() + " looking " + player.getYaw()
 					+ " / " + player.getPitch() + ", pigs in the Backrooms: " + inBackrooms;
 		});

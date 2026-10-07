@@ -132,7 +132,8 @@ public final class Worlds {
 			entity.fallDistance = 0.0F;
 			return entity;
 		}
-		Entity moved = entity.teleportTo(new TeleportTarget(destination, pos, Vec3d.ZERO, yaw, pitch, TeleportTarget.NO_OP));
+		// The ticket keeps the land around the arrival loaded for a while, as for portals, so the mob is really there and gets saved.
+		Entity moved = entity.teleportTo(new TeleportTarget(destination, pos, Vec3d.ZERO, yaw, pitch, TeleportTarget.ADD_PORTAL_CHUNK_TICKET));
 		if (moved != null) {
 			moved.fallDistance = 0.0F;
 		}
@@ -849,9 +850,9 @@ public final class Worlds {
 		Random random = world.random;
 		double angle = random.nextDouble() * Math.PI * 2.0;
 		double distance = 500.0 + random.nextDouble() * 4500.0;
-		int x = ((int) (target.getX() + Math.cos(angle) * distance) & ~15) + 4 + random.nextInt(8);
-		int z = ((int) (target.getZ() + Math.sin(angle) * distance) & ~15) + 4 + random.nextInt(8);
-		Vec3d spot = new Vec3d(x + 0.5, HALL_FLOOR + 1, z + 0.5);
+		int x = (int) (target.getX() + Math.cos(angle) * distance);
+		int z = (int) (target.getZ() + Math.sin(angle) * distance);
+		Vec3d spot = hallSpot(hall, x, z);
 		Vec3d from = target.getPos();
 		Fx.particles(world, ParticleTypes.REVERSE_PORTAL, from.add(0.0, target.getHeight() / 2.0, 0.0), 80, 0.6, 0.4);
 		Fx.particles(world, ParticleTypes.SMOKE, from.add(0.0, 0.2, 0.0), 30, 0.4, 0.02);
