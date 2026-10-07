@@ -31,6 +31,7 @@ import net.minecraft.client.util.ScreenshotRecorder;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.EndermanEntity;
 import net.minecraft.entity.passive.PigEntity;
@@ -554,6 +555,10 @@ public class ClientSmokeTest implements ClientModInitializer {
 		String banish = onServer(player -> {
 			ServerWorld world = player.getServerWorld();
 			player.teleport(world, player.getX(), player.getY(), player.getZ(), 0.0F, 20.0F);
+			// The flat world has its own animals. One standing in the line of sight would be banished instead of the pig.
+			for (Entity other : world.getOtherEntities(player, player.getBoundingBox().expand(12.0), e -> e instanceof LivingEntity)) {
+				other.discard();
+			}
 			PigEntity pig = EntityType.PIG.create(world);
 			if (pig == null) {
 				return "no pig";
